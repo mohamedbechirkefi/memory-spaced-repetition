@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0
+# Licence: MEMORY Source-Available Non-Commercial Research License v1.0
+# (custom licence, see LICENSE; deliberately not given as an SPDX "license" field).
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite it as below. Status: M0, no results yet."
+title: "MEMORY: forgetting and learning schedules"
+type: software
+authors:
+  - family-names: "Kefi"
+    given-names: "Mohamed Bechir"
+version: "0.0.1"
+keywords:
+  - spaced repetition
+  - forgetting curve
+  - simulation
+  - review scheduling

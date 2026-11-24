@@ -1,0 +1,46 @@
+<!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->
+# Literature review (M0 source audit, not a systematic review)
+
+Access date for every entry: 2026-11-24. Searches used the WebSearch tool; pages were opened with WebFetch. No documented systematic search protocol was followed, so this is not a systematic review.
+
+Verification levels used below:
+
+- **Content read:** the text supporting the stated use was opened and read (full text or the relevant section).
+- **Abstract read:** only the abstract or a publisher/author landing page was read.
+- **Metadata only:** bibliographic metadata verified through the Crossref API; the content was not read. Not cited for content until read.
+- **Unverified:** not opened. Not cited.
+
+## 1. Sources
+
+| ID | Reference | Link | Level | Used for |
+|---|---|---|---|---|
+| L01 | Tabibian, B., Upadhyay, U., De, A., Zarezade, A., Schölkopf, B., & Gomez-Rodriguez, M. (2019). Enhancing human learning via spaced repetition optimization. PNAS 116(10), 3988-3993. | https://doi.org/10.1073/pnas.1815156116 ; full text read in arXiv:1712.01856 v2 ("Optimizing Human Learning") | Content read (arXiv version, sections on memory models and the MEMORIZE algorithm); PNAS metadata via Crossref (licence CC BY 4.0) | Exponential model eq. 1, power-law model eq. 2, multiplicative forgetting-rate update eq. 3 with item parameters α, β; MEMORIZE intensity `u(t) = q^(-1/2)(1 - m(t))`; "Threshold" and "Uniform" baselines appear in their experiments. Note: the arXiv title differs from the PNAS title; the match is by authors, model and algorithm, and the exact correspondence of versions is not verified. |
+| L02 | Settles, B., & Meeder, B. (2016). A trainable spaced repetition model for language learning. Proc. ACL 2016 (Vol. 1), 1848-1858. | https://doi.org/10.18653/v1/P16-1174 ; https://aclanthology.org/P16-1174.pdf | Content read (abstract, sections 1 to 3.3) | Half-life form `p = 2^(-Δ/h)`; descriptions of the Pimsleur graduated-interval method and the Leitner system (boxes with 1, 2, 4, 8, 16 day intervals); HLR as a trainable generalization. The abstract reports 45%+ error reduction and a 12% engagement gain at Duolingo; these are their findings and are not used as parameters here. |
+| L03 | Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin 132(3), 354-380. | https://doi.org/10.1037/0033-2909.132.3.354 ; https://www.yorku.ca/ncepeda/publications/CPVWR2006.html | Abstract read; metadata via Crossref | 839 assessments in 317 experiments from 184 articles; the inter-study interval that maximizes retention increases with the retention interval. Motivates the retention-interval sensitivity analysis. |
+| L04 | Cepeda, N. J., Vul, E., Rohrer, D., Wixted, J. T., & Pashler, H. (2008). Spacing effects in learning: A temporal ridgeline of optimal retention. Psychological Science 19(11), 1095-1102. | https://doi.org/10.1111/j.1467-9280.2008.02209.x | Metadata only | Planned reading for M1 (dependence of optimal gap on retention interval). Not cited for content yet. |
+| L05 | Wixted, J. T., & Ebbesen, E. B. (1991). On the form of forgetting. Psychological Science 2(6), 409-415. | https://doi.org/10.1111/j.1467-9280.1991.tb00175.x | Metadata only (publisher page returned HTTP 403; abstract seen only in a search-engine summary, which does not count as read) | Planned reading for M1: power function versus exponential and other forms. Not cited for content yet. |
+| L06 | Averell, L., & Heathcote, A. (2011). The form of the forgetting curve and the fate of memories. Journal of Mathematical Psychology 55(1), 25-35. | https://doi.org/10.1016/j.jmp.2010.08.009 | Metadata only | Planned reading for M1 (form of forgetting). |
+| L07 | Pavlik, P. I., Jr., & Anderson, J. R. (2005). Practice and forgetting effects on vocabulary memory: An activation-based model of the spacing effect. Cognitive Science 29(4), 559-586. | https://doi.org/10.1207/s15516709cog0000_14 | Metadata only | Planned reading for M1 (an alternative memory model; possible competing explanation). |
+| L08 | Reddy, S., Labutov, I., Banerjee, S., & Joachims, T. (2016). Unbounded human learning: Optimal scheduling for spaced repetition. KDD 2016. arXiv:1602.07032. | https://arxiv.org/abs/1602.07032 ; DOI 10.1145/2939672.2939850 (as listed on arXiv, not checked on Crossref) | Abstract read | Queueing-network model of the Leitner system; reports a phase transition in outcomes as the rate of introducing new items increases. Related work for the Leitner arm. |
+| L09 | Ye, J., Su, J., & Cao, Y. (2022). A stochastic shortest path algorithm for optimizing spaced repetition scheduling. KDD 2022, 4381-4390. | https://doi.org/10.1145/3534678.3539081 | Metadata only | Planned reading for M1 (optimal-control scheduling; origin of the FSRS line of work). |
+| L10 | Ebbinghaus, H. (1913). Memory: A contribution to experimental psychology (H. A. Ruger & C. E. Bussenius, Trans.). Teachers College, Columbia University. Original work published 1885. | https://psychclassics.yorku.ca/Ebbinghaus/index.htm | Table of contents read only | Historical origin; chapter 7 "Retention and Obliviscence as a Function of the Time". Not cited for any numerical claim. |
+
+## 2. Synthesis so far (bounded by what was read)
+
+- **Model forms.** L01 states both the exponential `exp(-n Δ)` and power-law `(1 + ωΔ)^(-n)` recall models and a multiplicative update of the forgetting rate on success or failure, drawing on L02. MEMORY adopts these forms directly, so the simulation is an implementation of published model families, not a new memory model.
+- **Schedules.** L02 describes fixed graduated intervals (Pimsleur) and the adaptive Leitner system. L01 derives an optimal stochastic intensity proportional to `1 - m(t)` under a quadratic loss with a review cost, and compares against uniform and threshold baselines.
+- **Spacing depends on retention interval.** L03 reports that the optimal inter-study interval grows with the retention interval. This is the main reason a single "best schedule" may not exist.
+
+## 3. Candidate gap (to be confirmed in M1, not a novelty claim)
+
+L01 optimizes a soft review cost (reviews have a price, the count is not fixed), and its evaluation uses real learner data. MEMORY instead fixes a hard total budget of review events and the study window, and compares fixed-interval, expanding, massed, Leitner and model-based greedy schedules under matched seeds, with an explicit test of how much of the adaptive advantage depends on the scheduler knowing the true model (misspecification) and on the retention interval. Whether this comparison already exists in L04, L06, L07, L09 or other work has not been checked; no novelty is claimed. The contribution is planned as a transparent, reproducible replication-style comparison within stated model assumptions.
+
+## 4. Datasets audited (none downloaded)
+
+See `data/manifest.json` for machine-readable entries.
+
+| ID | Dataset | Licence (as read on 2026-11-24) | Redistribution | Use in MEMORY |
+|---|---|---|---|---|
+| DS01 | Duolingo spaced repetition data: "Replication Data for: A Trainable Spaced Repetition Model for Language Learning", Settles, Harvard Dataverse, 2017-12-14, v1.0, https://doi.org/10.7910/DVN/N8XJME, one file of 379,004,009 bytes | CC BY-NC 4.0 (Dataverse metadata) | Permitted under CC BY-NC 4.0 with attribution, non-commercial only; too large to bundle in any case | Not used in the draft protocol. Optional future use only for an exploratory parameter-range check; requires owner decision. Related code (github.com/duolingo/halflife-regression) is MIT licensed per its README. |
+| DS02 | anki-revlogs-10k (open-spaced-repetition, Hugging Face), DOI 10.57967/hf/3435, 15.7 GB, gated | Custom licence: provided to the FSRS project for memory research; university students and individuals may use it for their own research; "do not redistribute the data publicly"; other uses need permission | Not redistributable | Not used. Access is gated (requires accepting conditions and sharing account information), which conflicts with the no-accounts preference; flagged for the owner, not needed for the question. |
+| DS03 | Synthetic items generated by this project | Project licence (generated data product) | Yes, as regenerated fixtures | Primary and only data source for EXP-001 to EXP-003. |

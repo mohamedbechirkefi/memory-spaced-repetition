@@ -1,0 +1,6 @@
+{
+  "schema_version": "0.1.0",
+  "generated": "2026-11-24",
+  "note": "No quantitative figure, table or claim exists yet. Each future entry maps an artifact to exp_id, run_ids, metric definition, result path, generator script, config hash, protocol hash and code revision.",
+  "artifacts": []
+}

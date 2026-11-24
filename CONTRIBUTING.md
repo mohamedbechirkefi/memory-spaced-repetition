@@ -35,3 +35,16 @@ Mohamed Bechir Kefi is the project owner and lead maintainer, and the only perso
 ## 5. Privacy and disclosure
 
 Never commit an e-mail address, a name or any other personal identifier in code, logs, fixtures or results. Report security issues privately through GitHub's private vulnerability reporting.
+
+## 6. Development commands
+
+Tools used by the project (free, local):
+
+- Lock dependencies: `uv lock` (uv 0.9.5; `[tool.uv] exclude-newer` keeps every version at least two weeks old).
+- Check the lock: `uv lock --check`.
+- Install the locked environment: `uv sync --frozen`.
+- Run tests (from M2): `uv run pytest`.
+- Build a PDF from Markdown: `pandoc FILE.md -s -V mainfont="Libertinus Serif" -o FILE.typ`, then `python -c "import typst; typst.compile('FILE.typ', output='FILE.pdf')"`.
+- Generate LaTeX source: `pandoc FILE.md -s -o FILE.tex`.
+
+Experiment, smoke and report-export commands are added here when they exist (M2).
