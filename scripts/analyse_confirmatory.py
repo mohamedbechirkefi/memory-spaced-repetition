@@ -51,7 +51,7 @@ def _plt():
 
 def _forest(rows: list[dict], title: str, path: Path, tag: str) -> None:
     plt = _plt()
-    fig, ax = plt.subplots(figsize=(6.4, 0.45 * len(rows) + 1.3))
+    fig, ax = plt.subplots(figsize=(7.6, 0.45 * len(rows) + 1.5))
     for i, r in enumerate(rows):
         ax.errorbar([r["mean_diff"]], [i], xerr=[[r["mean_diff"] - r["boot_ci_low"]], [r["boot_ci_high"] - r["mean_diff"]]],
                     fmt="o", color="black", capsize=3)
@@ -59,8 +59,8 @@ def _forest(rows: list[dict], title: str, path: Path, tag: str) -> None:
     ax.axvspan(-DELTA, DELTA, color="0.85", zorder=0, label="equivalence band +/-0.02")
     ax.set_yticks(range(len(rows)), [f"{r['arm']} - {r['baseline']}" for r in rows])
     ax.invert_yaxis()
-    ax.set_xlabel("mean paired difference in R (probability units), 95% percentile bootstrap interval, 50 seeds")
-    ax.set_title(f"{title} ({tag})")
+    ax.set_xlabel("mean paired difference in R (probability units)\n95% percentile bootstrap interval over seeds")
+    ax.set_title(f"{title} ({tag})", fontsize=9)
     ax.legend(fontsize=7, loc="best")
     fig.tight_layout()
     fig.savefig(path.with_suffix(".svg"))
@@ -70,15 +70,15 @@ def _forest(rows: list[dict], title: str, path: Path, tag: str) -> None:
 
 def _arm_means(rows: list[dict], title: str, path: Path, tag: str) -> None:
     plt = _plt()
-    fig, ax = plt.subplots(figsize=(6.4, 0.45 * len(rows) + 1.3))
+    fig, ax = plt.subplots(figsize=(7.6, 0.45 * len(rows) + 1.5))
     for i, r in enumerate(rows):
         m = r["recall_mean_mean"]
         ax.errorbar([m], [i], xerr=[[m - r["recall_mean_boot_ci_low"]], [r["recall_mean_boot_ci_high"] - m]],
                     fmt="s", color="tab:blue", capsize=3)
     ax.set_yticks(range(len(rows)), [r["arm"] for r in rows])
     ax.invert_yaxis()
-    ax.set_xlabel("mean delayed modelled recall R, 95% percentile bootstrap interval over seeds")
-    ax.set_title(f"{title} ({tag})")
+    ax.set_xlabel("mean delayed modelled recall R\n95% percentile bootstrap interval over seeds")
+    ax.set_title(f"{title} ({tag})", fontsize=9)
     fig.tight_layout()
     fig.savefig(path.with_suffix(".svg"))
     fig.savefig(path.with_suffix(".png"), dpi=150)
