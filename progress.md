@@ -137,3 +137,33 @@ D-009 (DS01 adopted, licence check), D-010 (amendments and fit), D-011 (freeze).
 ### Next action
 
 M3, when the coordinator schedules it on a quiet machine: `uv run python -m memory_research run --config research/experiments/EXP-00N/config.json --report --pdf` for N = 1, 2, 3.
+
+## 2026-11-24, session 4: round-3 recalibration and re-freeze v1.1 (owner-approved)
+
+**Milestone:** M1 (re-freeze). **Bounded task:** ROUND3 brief: owner rules (a), (b), (c) of `labs/_shared/owner-approvals-2026-11-24c.md` section 2, in that order; baseline arm only; no confirmatory run.
+
+### Commands and actual outputs
+
+- Rule (a). Protocol 16.1 and code (`duolingo.compare_models`, `scripts/diagnose_forgetting_fit.py`, 5 tests) committed at `664de3c` before computing; suite there `214 passed, 3 failed` (the 3 guard-accepts tests, protocol under amendment). `.venv/bin/python scripts/diagnose_forgetting_fit.py` (clean, `664de3c`): held-out log-loss constant 0.328, exp-median 0.587 (equals CAL-001), exp-population 0.549, exp-mle 0.569, power-median 0.473, power-population 0.476, power-mle 0.428; `neither_beats_constant: true`. 0.87 s.
+- Rule (b). Protocol 16.2 and code (`memory_research.design`, `scripts/select_retention_interval.py`, 3 tests) committed at `8d4854a` before applying; suite `217 passed, 3 failed` (same 3). `.venv/bin/python scripts/select_retention_interval.py` (clean, `8d4854a`): uniform only, seeds 1 to 30; candidates in range 142 to 365; chosen `RI = 281`, baseline `R` 0.5497; monotone; power-law baseline 0.6805; `R` at 7 equals PROBE-005 (0.959).
+- `.venv/bin/python -m memory_research run --config experiments/configs/probe_baseline_ri281.json --out results/exploratory/PROBE-006` (clean, `39399c5`): `60 runs, 60 ok, 0 excluded, 0 failed, wall clock 0.054 s`; means 0.5497 (exponential), 0.6805 (power).
+- Rule (c). Content v1.1 committed at `dcdaf2e` (suite `219 passed, 3 failed`, the 3 guard-accepts tests before the record). Freeze record v1.1 written; `.venv/bin/python -m pytest -q`: `222 passed`.
+- Guard: `freeze_status` frozen for the three v1.1 configurations; the v1.0 configurations from `6a8bc29` refused by the CLI (`refused: ... differs from the frozen configuration`, exit 3, no output written).
+
+### Decisions
+
+D-012 (misfit diagnosis), D-013 (RI 281; EXP-003 fourth level, revertible by the owner), D-014 (re-freeze v1.1).
+
+### Files created or changed
+
+Created: `src/memory_research/design.py`, `scripts/diagnose_forgetting_fit.py`, `scripts/select_retention_interval.py`, `tests/test_design.py`, `experiments/configs/probe_baseline_ri281.json`, `results/exploratory/{CAL-002,RI-001,PROBE-006}/`. Changed: `src/memory_research/duolingo.py`, `tests/test_duolingo.py`, `tests/test_pipeline.py`, `research/protocol.md` (section 16, status), EXP-001 to EXP-003 protocols and configurations, `research/freeze.json`, `research/experiment_registry.csv`, `research/experiment_journal.jsonl` (CAL-002, RI-001, PROBE-006), `research/limitations.md`, `research/decision_log.md`, `roadmap.md`, `README.md`, `research/paper/manuscript.md` (status line).
+
+### Failures and risks
+
+- No run failed. `research/paper/manuscript.tex` is stale relative to `manuscript.md` (since M0; not regenerated this session).
+- The central cell now describes retention 281 days after a 28-day course; the seed-spread estimate was not re-measured (needs a contrast).
+- Results are model-dependent (CAL-002).
+
+### Next action
+
+M3 when the coordinator schedules it: `uv run python -m memory_research run --config research/experiments/EXP-00N/config.json --report --pdf` for N = 1, 2, 3 (EXP-003 now 18,000 runs).

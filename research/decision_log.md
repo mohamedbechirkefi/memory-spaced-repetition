@@ -88,3 +88,26 @@ Each entry: id, date, decision, decided by, rationale, alternatives, consequence
 - **Decided by:** the owner ("yes for all others", "Approve all"). Recorded by the session.
 - **Frozen.** `research/protocol.md` v1.0 SHA-256 `0d437fd2b722c3361b8e67b8107f933468da5b2631ff246656d9be94f6df4da4`; EXP-001 `df9a38cf...`, EXP-002 `596ab71f...`, EXP-003 `be44baa1...` protocols; configuration hashes in `research/freeze.json` (which also holds the git revision and the data manifest hash).
 - **Guard.** `run` accepts a confirmatory configuration only if the study protocol, the experiment protocol and the canonical configuration hash all match the freeze record; any change is refused (exit 3). Tested both ways without running a confirmatory matrix.
+
+## D-012 (2026-11-24): round-3 rule (a), forgetting-model misfit diagnosed
+
+- **Decided by:** the owner ("Approve all", 2026-11-24, round 3; approvals file `labs/_shared/owner-approvals-2026-11-24c.md`, section 2, rule (a): "Diagnose the misfit first. Write a pre-stated method in the protocol, then compare the exponential and power-law forgetting fits by held-out log-loss on the validation split."). Applied by the session.
+- **Method.** `research/protocol.md` section 16.1, committed at `664de3c` before any computation. Seven predictors fitted on split C only, scored on split V only; no simulation, no schedule arm.
+- **Outcome (CAL-002).** Held-out log-loss per trial: constant 0.328; best exponential (`exp-population`) 0.549; best power law (`power-mle`, `n = 0.0764`, `ω = 1`) 0.428. The power law fits better, but neither family beats the constant. Real first-review recall is nearly flat in the delay (0.91 to 0.87).
+- **Consequences.** Recorded as a limitation; the claims boundary now states that every result is conditional on the assumed memory model (protocol 16.3, `research/limitations.md`). No parameter changed.
+
+## D-013 (2026-11-24): round-3 rule (b), central retention interval 281 days
+
+- **Decided by:** the owner (same approval, rule (b): "Move off the ceiling by changing the study design, not the fitted parameters. [...] the baseline uniform schedule's recall lands in [0.4, 0.7] at the central cell."). The selection rule was written by the session in protocol 16.2 and committed at `8d4854a` before it was applied.
+- **Rule.** Step 1: `RI` from 1 to 365 days, uniform arm only, exploratory seeds 1 to 30; the candidate in `[0.4, 0.7]` closest to 0.55, ties to the smaller `RI`. Step 2 (harder-half lexeme subset) only if step 1 fails.
+- **Outcome (RI-001, PROBE-006).** Candidates 142 to 365 days; `RI* = 281` days, baseline mean `R` 0.550 (exponential); 0.680 under the power law (descriptive). Step 2 not used; no parameter value changed. No other arm and no contrast was computed.
+- **Consequences (fixed in 16.2.5 before the value was known).** EXP-001 and EXP-002 central `RI = 281`. EXP-003 adds `RI = 281` as a fourth level (seed block 3300 to 3349; 72 cells, 18,000 runs). This EXP-003 extension is the session's reading of "the central cell" for a full-factorial sweep; the owner may revert it to the three original levels before M3.
+- **Not done.** The seed-spread estimate was not re-measured at `RI = 281`: it needs a contrast, which rule (b) forbids.
+
+## D-014 (2026-11-24): re-freeze v1.1 (rule (c), G-FREEZE owner-approved)
+
+- **Decided by:** the owner (same approval, rule (c): "Then re-freeze. Keep the superseded hashes, and add the C4 disclosure of everything seen."). Recorded by the session.
+- **Frozen v1.1.** `research/protocol.md` SHA-256 `fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d`; EXP-001 `91a79174...`, EXP-002 `9f1e4e7c...`, EXP-003 `f4767c19...` protocols; configuration hashes, git revision `dcdaf2e` and the data manifest hash in `research/freeze.json`.
+- **Superseded.** The v1.0 hashes (protocol `0d437fd2...`, git revision `6a8bc29`) are kept under `superseded` in `research/freeze.json` with the reason. No confirmatory run was made under v1.0.
+- **C4.** Extended with CAL-002, RI-001 and PROBE-006 (values and paths).
+- **Guard.** Accepts the three v1.1 configurations; refuses the v1.0 configurations (CLI exit 3, checked on the configurations at `6a8bc29`) and any changed configuration (tested).

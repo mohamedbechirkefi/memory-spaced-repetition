@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0
 title: "The mathematics of remembering (working title; to be revised after results)"
 author: "Mohamed Bechir Kefi"
-status: "Skeleton (protocol frozen 2026-11-24, v1.0). Independent research manuscript / preprint draft, not peer-reviewed. No results exist."
+status: "Skeleton (protocol frozen 2026-11-24, v1.1 after the round-3 pre-data amendment). Independent research manuscript / preprint draft, not peer-reviewed. No results exist."
 ai_disclosure: "An AI system (Claude, Anthropic) was used as a research and development assistant for code, protocol drafting and documentation under the author's direction; it is not an author."
 ---
 

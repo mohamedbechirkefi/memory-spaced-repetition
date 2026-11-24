@@ -2,16 +2,17 @@
  "schema": "memory.freeze_record",
  "schema_version": "1.0.0",
  "status": "frozen",
- "protocol_version": "1.0",
+ "protocol_version": "1.1",
  "approved_by": "the owner",
  "approval_date": "2026-11-24",
- "approval_source": "labs/_shared/owner-approvals-2026-11-24b.md (coordinator file outside this repository), sections 1 and 7, MEMORY rows; first-round file labs/_shared/owner-approvals-2026-11-24.md",
+ "approval_source": "labs/_shared/owner-approvals-2026-11-24b.md (coordinator file outside this repository), sections 1 and 7, MEMORY rows; first-round file labs/_shared/owner-approvals-2026-11-24.md; round 3: labs/_shared/owner-approvals-2026-11-24c.md, section 2 (MEMORY: recalibration)",
  "approval_quote": {
   "round_1": "\"yes for all others\" (amendments)",
   "round_2": "\"Approve all\" (real data and the coordinator's recommendations)",
   "memory_data": "MEMORY | Duolingo spaced-repetition logs (Settles and Meeder 2016), CC BY-NC 4.0 | Fit the forgetting parameters to real learners",
   "memory_amendments": "Starting half-life h0 about 6 days, unless fitted from Duolingo. Greedy and Leitner cover every item (state the capacity and tie rule). 50 seeds. Keep EXP-003. EXP-003 retention cells must not reuse the same runs.",
-  "freeze": "G-FREEZE, owner-approved 2026-11-24 (session brief: add owner-approved real data, apply amendments, freeze)"
+  "freeze": "G-FREEZE, owner-approved 2026-11-24 (session brief: add owner-approved real data, apply amendments, freeze); re-freeze v1.1 under the round-3 rule (c), owner-approved 2026-11-24",
+  "round_3": "\"Approve all\" (2026-11-24, round 3), section 2 MEMORY: recalibration: \"(a) Diagnose the misfit first. [...] (b) Move off the ceiling by changing the study design, not the fitted parameters. [...] the baseline uniform schedule's recall lands in [0.4, 0.7] at the central cell. [...] (c) Then re-freeze. Keep the superseded hashes, and add the C4 disclosure of everything seen.\""
  },
  "common_decisions": {
   "C1_data": "Real data as approved, synthetic otherwise: DS01 (Duolingo traces, CC BY-NC 4.0) calibrates h0 and sigma (protocol 15.2); all learners, items and schedules are simulated.",
@@ -20,7 +21,7 @@
   "C4_disclosure": "Where exploratory values of the primary contrast were seen before the freeze, the freeze record says so, with the values and where they are stored."
  },
  "c4_disclosure": {
-  "statement": "Exploratory values of the primary contrast (greedy minus uniform) and of the EXP-002 contrasts were seen before the freeze, at the DRAFT setting (h0 = 1 day, sigma = 0.75, pre-amendment greedy and Leitner rules), on exploratory seeds 1 to 30 (disjoint from all confirmatory seeds). No run at the frozen setting has computed any contrast: the only run at the fitted setting (PROBE-005) ran the uniform arm alone. The amendments were set by the owner's approvals and the calibration rule, not chosen from these values.",
+  "statement": "Round 2: Exploratory values of the primary contrast (greedy minus uniform) and of the EXP-002 contrasts were seen before the freeze, at the DRAFT setting (h0 = 1 day, sigma = 0.75, pre-amendment greedy and Leitner rules), on exploratory seeds 1 to 30 (disjoint from all confirmatory seeds). No run at the frozen setting has computed any contrast: the only run at the fitted setting (PROBE-005) ran the uniform arm alone. The amendments were set by the owner's approvals and the calibration rule, not chosen from these values. Round 3 (v1.1): before the re-freeze the session saw (i) the held-out model comparison CAL-002 (no simulation), and (ii) the uniform arm's mean R at RI 1 to 365 days on exploratory seeds 1 to 30 (RI-001, PROBE-006). No arm other than uniform was simulated at the v1.1 setting and no contrast has been computed at any RI other than the draft-setting probes of round 1. The central RI was set by the pre-stated rule 16.2, not chosen from any contrast.",
   "values_seen": [
    {
     "run": "PROBE-001",
@@ -76,7 +77,55 @@
   "other_disclosures": [
    "Calibration CAL-001: held-out log-loss of the calibrated exponential curve 0.587 vs 0.328 for a constant predictor (model-form misfit).",
    "Regime: baseline-only PROBE-005 at the fitted setting, mean uniform R 0.959 (exponential) and 0.810 (power law), seeds 1-30: near ceiling for EXP-001.",
-   "Session interpretation: 'cover every item' implemented as a coverage-first key (every item reviewed at least once), not a per-item quota (D-010)."
+   "Session interpretation: 'cover every item' implemented as a coverage-first key (every item reviewed at least once), not a per-item quota (D-010).",
+   "Round 3: neither forgetting model beats a constant predictor of real first-review recall (CAL-002); results are conditional on the assumed memory model (claims boundary, protocol 16.3).",
+   "Round 3: the seed-spread estimate was not re-measured at RI 281 because it needs a contrast, which rule (b) forbids."
+  ],
+  "values_seen_round_3": [
+   {
+    "run": "CAL-002",
+    "setting": "DS01 split V, no simulation",
+    "holdout_log_loss_per_trial": {
+     "constant": 0.3276,
+     "exp-median": 0.5866,
+     "exp-population": 0.5489,
+     "exp-mle": 0.5688,
+     "power-median": 0.4726,
+     "power-population": 0.4756,
+     "power-mle": 0.4281
+    },
+    "neither_beats_constant": true,
+    "path": "results/exploratory/CAL-002/model_comparison.json"
+   },
+   {
+    "run": "RI-001",
+    "setting": "v1.0 central cell, exponential, uniform arm only, seeds 1-30, RI 1-365",
+    "baseline_R": {
+     "1": 0.9821,
+     "7": 0.959,
+     "30": 0.8945,
+     "90": 0.7763,
+     "180": 0.6518,
+     "281": 0.5497,
+     "365": 0.4833
+    },
+    "candidates_in_range": [
+     142,
+     365
+    ],
+    "chosen_ri_days": 281,
+    "power_law_baseline_R_at_281": 0.6805,
+    "path": "results/exploratory/RI-001/selection.json"
+   },
+   {
+    "run": "PROBE-006",
+    "setting": "RI 281, uniform arm only, exponential and power law, seeds 1-30",
+    "baseline_R_mean": {
+     "exponential": 0.5497,
+     "power": 0.6805
+    },
+    "path": "results/exploratory/PROBE-006/results.json"
+   }
   ]
  },
  "calibration": {
@@ -90,41 +139,90 @@
  },
  "study_protocol": {
   "path": "research/protocol.md",
-  "sha256": "0d437fd2b722c3361b8e67b8107f933468da5b2631ff246656d9be94f6df4da4"
+  "sha256": "fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d"
  },
  "experiments": {
   "EXP-001": {
    "protocol_path": "research/experiments/EXP-001/protocol.md",
-   "protocol_sha256": "df9a38cfef622d5fd61d4be686c0427825eaa5f0b5768c694c71e3d02e3ecd59",
+   "protocol_sha256": "91a79174986aa519bb1f9c1bc294c474ca441ce172076a6779826535689c496d",
    "config_path": "research/experiments/EXP-001/config.json",
-   "config_sha256": "04fd7f6cd85461dbf2f501f4acbf6857db7da465748f09d2b3371778efccc3e6",
-   "config_canonical_sha256": "c143b3e36c9151455173d14063931c41cc4ef2fb28c109ef1935eae6102c57a4"
+   "config_sha256": "70d17c27396ef0728108e5a6415329deb1c975c2a2f681078b405c81ebffd5d7",
+   "config_canonical_sha256": "841629fa27db8c9652746f7dde5887afc8f8a6c8b538bb0234cddba3ca1818ce"
   },
   "EXP-002": {
    "protocol_path": "research/experiments/EXP-002/protocol.md",
-   "protocol_sha256": "596ab71fabd40fe171b192df9dceaefac743eeec8a74dd03068cca96ed4661c3",
+   "protocol_sha256": "9f1e4e7c1b0275fb1d052015e13b5a88500fc3eaf5f82bebc7057e79621fbfa0",
    "config_path": "research/experiments/EXP-002/config.json",
-   "config_sha256": "ce7f338aba9c9605e8208cfdb06ad5fbeecad8c62ae4deb1f064dd80322b25c7",
-   "config_canonical_sha256": "f6b7f1ecd7b4f53f2b383722e9fef678e5fb195591519cfaf475566d14c1f251"
+   "config_sha256": "4a77547bf60483b2b60f0ab11f46c3474cb9c558092ae16819a3bcda8a7687d7",
+   "config_canonical_sha256": "930b73f2b673f44b4b066c3c9990c26a671dced9b8287a91bd892983d5c3c44d"
   },
   "EXP-003": {
    "protocol_path": "research/experiments/EXP-003/protocol.md",
-   "protocol_sha256": "be44baa1263865082e2c6540b28a0b7487f8579221aa3dd9450ad5cc33dc50bb",
+   "protocol_sha256": "f4767c1998268d9a74272d32ec6916038acd1df92c2605e94c09bdfa771cf9a4",
    "config_path": "research/experiments/EXP-003/config.json",
-   "config_sha256": "b75a75e2a57c06ac9ded659377a29dc93261b75f0710695e010d50744db40fae",
-   "config_canonical_sha256": "d03712f3db15a597900635e65dde28ef3773247932ea8483f8c88e1037cabcee"
+   "config_sha256": "a90ae57b233980db6964444e735a5bc41c739d005d3a9f57d8d807c13d78ccdd",
+   "config_canonical_sha256": "7c886211f6f949112a8ff1193b6d1b073f776c391df94f4d0e542e89b264b2c8"
   }
  },
  "data_manifest": {
   "path": "data/manifest.json",
   "sha256": "6d828809a1b2597fac61cd2e08d936383a7c86877242168421d7496c2602eb36"
  },
- "git_revision": "6a8bc2936b40ceaf8985480d6a64cb0c69311c87",
- "git_revision_note": "Commit holding the frozen protocol, configurations and manifest. The freeze record itself is committed afterwards.",
+ "git_revision": "dcdaf2e7d227cd21565768f6219a9163d53ea447",
+ "git_revision_note": "Commit holding the frozen v1.1 protocol and configurations. The freeze record itself is committed afterwards.",
  "seeds": {
   "EXP-001": "1000-1049",
   "EXP-002": "1000-1049",
-  "EXP-003": "RI 1: 3000-3049; RI 7: 3100-3149; RI 30: 3200-3249"
+  "EXP-003": "RI 1: 3000-3049; RI 7: 3100-3149; RI 30: 3200-3249; RI 281: 3300-3349"
  },
- "guard": "src/memory_research/guard.py: study protocol hash, experiment protocol hash (registry) and canonical config hash must match this record."
+ "guard": "src/memory_research/guard.py: study protocol hash, experiment protocol hash (registry) and canonical config hash must match this record.",
+ "round_3_amendment": {
+  "section": "research/protocol.md section 16",
+  "rule_a_method_commit": "664de3c",
+  "rule_b_rule_commit": "8d4854a",
+  "changes": [
+   "B1: central RI 281 days in EXP-001 and EXP-002 (was 7)",
+   "B2: EXP-003 RI levels {1, 7, 30, 281}; new seed block 3300-3349; 72 cells, 18,000 runs"
+  ],
+  "unchanged": "h0 54.0 d, sigma 0.759, omega, alpha, beta, N, D, k, arms, seeds, metrics, analysis"
+ },
+ "superseded": [
+  {
+   "version": "1.0",
+   "superseded_on": "2026-11-24",
+   "reason": "Round-3 pre-data amendment (owner-approved 2026-11-24, 'Approve all'): the v1.0 central cell sat near the recall ceiling (uniform R 0.959); the central RI was moved to 281 days by rule 16.2 and EXP-003 gained RI 281. No confirmatory run was made under v1.0.",
+   "study_protocol": {
+    "path": "research/protocol.md",
+    "sha256": "0d437fd2b722c3361b8e67b8107f933468da5b2631ff246656d9be94f6df4da4"
+   },
+   "experiments": {
+    "EXP-001": {
+     "protocol_path": "research/experiments/EXP-001/protocol.md",
+     "protocol_sha256": "df9a38cfef622d5fd61d4be686c0427825eaa5f0b5768c694c71e3d02e3ecd59",
+     "config_path": "research/experiments/EXP-001/config.json",
+     "config_sha256": "04fd7f6cd85461dbf2f501f4acbf6857db7da465748f09d2b3371778efccc3e6",
+     "config_canonical_sha256": "c143b3e36c9151455173d14063931c41cc4ef2fb28c109ef1935eae6102c57a4"
+    },
+    "EXP-002": {
+     "protocol_path": "research/experiments/EXP-002/protocol.md",
+     "protocol_sha256": "596ab71fabd40fe171b192df9dceaefac743eeec8a74dd03068cca96ed4661c3",
+     "config_path": "research/experiments/EXP-002/config.json",
+     "config_sha256": "ce7f338aba9c9605e8208cfdb06ad5fbeecad8c62ae4deb1f064dd80322b25c7",
+     "config_canonical_sha256": "f6b7f1ecd7b4f53f2b383722e9fef678e5fb195591519cfaf475566d14c1f251"
+    },
+    "EXP-003": {
+     "protocol_path": "research/experiments/EXP-003/protocol.md",
+     "protocol_sha256": "be44baa1263865082e2c6540b28a0b7487f8579221aa3dd9450ad5cc33dc50bb",
+     "config_path": "research/experiments/EXP-003/config.json",
+     "config_sha256": "b75a75e2a57c06ac9ded659377a29dc93261b75f0710695e010d50744db40fae",
+     "config_canonical_sha256": "d03712f3db15a597900635e65dde28ef3773247932ea8483f8c88e1037cabcee"
+    }
+   },
+   "git_revision": "6a8bc2936b40ceaf8985480d6a64cb0c69311c87",
+   "data_manifest": {
+    "path": "data/manifest.json",
+    "sha256": "6d828809a1b2597fac61cd2e08d936383a7c86877242168421d7496c2602eb36"
+   }
+  }
+ ]
 }

@@ -3,7 +3,7 @@
 
 **Question.** Which review schedule maximizes modelled delayed recall under a fixed study budget?
 
-**Status: protocol frozen v1.0 (owner-approved 2026-11-24), M3 not started.** No confirmatory experiment has been run and no finding exists. Two simulation parameters (initial half-life and its spread) are calibrated to the public Duolingo spaced-repetition traces (Settles 2017, CC BY-NC 4.0, downloaded by `scripts/download_duolingo.py`, never committed); exploratory runs under `results/exploratory/` are not results.
+**Status: protocol frozen v1.1 (owner-approved 2026-11-24; round-3 pre-data amendment: central retention interval 281 days), M3 not started.** No confirmatory experiment has been run and no finding exists. Two simulation parameters (initial half-life and its spread) are calibrated to the public Duolingo spaced-repetition traces (Settles 2017, CC BY-NC 4.0, downloaded by `scripts/download_duolingo.py`, never committed); exploratory runs under `results/exploratory/` are not results. Neither forgetting model predicts real first-review recall better than a constant (CAL-002), so every result will be a property of the assumed memory model, not of human learners.
 
 ## Why it matters
 
