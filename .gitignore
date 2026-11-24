@@ -11,3 +11,4 @@ results/raw/
 # real data: downloaded by scripts/, never committed (row-level, pseudonymous IDs)
 data/raw/
 data/processed/
+results/confirmatory/EXP-003/results.json
