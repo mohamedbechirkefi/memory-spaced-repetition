@@ -188,7 +188,7 @@ def make_figures(doc: dict[str, Any], analysis: dict[str, Any], fig_dir: Path, m
                 f"Paired difference in {metric} (arm minus {baseline}) for each seed, cell {cid}; dots are seeds "
                 f"(n = {n} baseline runs), red bars are means. Exploratory; not a finding."),
                 "alt": f"Strip plot of per-seed paired differences against {baseline} for {len(arms)} arms in cell {cid}."})
-    else:
+    elif arms:
         fig, ax = plt.subplots(figsize=(7.0, 0.18 * len(cells) + 1.2))
         cmap = plt.get_cmap("tab10")
         for k, arm in enumerate(arms):
@@ -226,6 +226,9 @@ def build_report(result_path: Path, out_dir: Path, pdf: bool = False, metric: st
     _write_csv(analysis["contrasts"], out_dir / "contrasts.csv")
     figs = make_figures(doc, analysis, out_dir / "figures", metric)
     env = doc["environment"]
+    from .environment import environment as _env
+    gen = _env()
+    generator = f"memory_research.report {gen['package_version']} at {gen['git_revision']} (dirty: {gen['git_dirty']})"
     exploratory = doc["kind"] == "exploratory"
     lines = [
         "<!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->",
@@ -243,7 +246,8 @@ def build_report(result_path: Path, out_dir: Path, pdf: bool = False, metric: st
             ["experiment", doc["experiment_id"]], ["kind", doc["kind"]], ["created (UTC)", doc["created_utc"]],
             ["matrix config SHA-256", doc["matrix_config_hash"]],
             ["protocol", f"{doc['protocol']['path']} (frozen: {doc['protocol']['frozen']})"],
-            ["code revision", f"{env['git_revision']} (dirty: {env['git_dirty']})"],
+            ["code revision of the run", f"{env['git_revision']} (dirty: {env['git_dirty']})"],
+            ["report generator", generator],
             ["python / numpy", f"{env['python']} / {env['packages'].get('numpy')}"],
             ["OS", env["os"]], ["CPU", env["cpu"]],
         ]),
@@ -296,13 +300,13 @@ def build_report(result_path: Path, out_dir: Path, pdf: bool = False, metric: st
         lines += ["The `rule` column applies the protocol's section 4 decision rule mechanically. In an exploratory "
                   "run it is a planning diagnostic only and is not a test of any hypothesis.", ""]
     lines += ["## Degenerate-case flags", ""] + ([f"- {f}" for f in flags] if flags else ["None detected by the automatic checks."]) + [""]
-    lines += ["## Figures", ""]
+    lines += ["## Figures", ""] + ([] if figs else ["No figure: the matrix has no arm other than the baseline.", ""])
     for k, f in enumerate(figs, 1):
         lines += [f"![{f['alt']}](figures/{f['file']})", "", f"*Figure {k}.* {f['caption']}", ""]
     lines += ["## Tables", "", "`summary.csv` (per cell and arm) and `contrasts.csv` (paired contrasts) are written next to this report.", ""]
     md_path = out_dir / "report.md"
     md_path.write_text("\n".join(lines), encoding="utf-8")
-    (out_dir / "analysis.json").write_text(json.dumps({"result_sha256": result_sha, "runtime": rt, "flags": flags, **analysis},
+    (out_dir / "analysis.json").write_text(json.dumps({"result_sha256": result_sha, "generator": generator, "runtime": rt, "flags": flags, **analysis},
                                                       indent=1, sort_keys=True, default=str) + "\n", encoding="utf-8")
     outputs = {"markdown": md_path, "summary": out_dir / "summary.csv", "contrasts": out_dir / "contrasts.csv"}
     if pdf:
