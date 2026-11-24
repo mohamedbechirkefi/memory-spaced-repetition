@@ -33,3 +33,11 @@
 
 - The protocol is a draft and is not frozen. Until the owner freezes it, every run is exploratory.
 - Several sources are verified at metadata level only (see `research/literature_review.md`); they are not cited for content.
+
+## Added at the freeze (2026-11-24, round 2)
+
+- **Calibration fit.** `h0` and `σ` come from first-review recall in the Duolingo traces (protocol 15.2). The single exponential curve through `p(0) = 1` predicts held-out first-review recall worse than a constant (log-loss 0.587 vs 0.328, CAL-001): real recall stays near 0.9 at short delays. The calibrated parameters therefore match the median half-life of real lexemes, not the shape of real forgetting curves.
+- **`σ` is an upper estimate.** Per-lexeme half-lives include sampling noise (protocol 15.2.6).
+- **Ceiling regime.** At the fitted setting, baseline recall is about 0.96 for exponential learners (PROBE-005, baseline only), which compresses arm differences in EXP-001.
+- **Not calibrated.** `α`, `β`, `ω` remain planning values.
+- **Population.** Duolingo learners and lexemes in 2013 data; not representative of other learners or materials.

@@ -2,15 +2,27 @@
 # Licence: MEMORY Source-Available Non-Commercial Research License v1.0
 # (custom licence, see LICENSE; deliberately not given as an SPDX "license" field).
 cff-version: 1.2.0
-message: "If you use this software or its results, please cite it as below. Status: M0, no results yet."
+message: "If you use this software or its results, please cite it as below. Status: protocol frozen 2026-11-24 (v1.0), no results yet. An AI system (Claude, Anthropic) was used as a research and development assistant; it is not an author."
 title: "MEMORY: forgetting and learning schedules"
 type: software
 authors:
   - family-names: "Kefi"
     given-names: "Mohamed Bechir"
-version: "0.0.1"
+version: "0.2.0"
 keywords:
   - spaced repetition
   - forgetting curve
   - simulation
   - review scheduling
+references:
+  - type: data
+    title: "Replication Data for: A Trainable Spaced Repetition Model for Language Learning"
+    authors:
+      - family-names: "Settles"
+        given-names: "Burr"
+    doi: "10.7910/DVN/N8XJME"
+    year: 2017
+    publisher:
+      name: "Harvard Dataverse"
+    license: CC-BY-NC-4.0
+    notes: "Used to calibrate the initial half-life h0 and its spread (protocol section 15.2); not redistributed."

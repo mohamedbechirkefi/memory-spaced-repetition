@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->
 # MEMORY study protocol
 
-**Status: DRAFT v0.1 (2026-11-24). NOT FROZEN.** Freezing is the owner's decision (G-FREEZE). No confirmatory run may start until the owner approves a frozen version and its hash is recorded in `research/decision_log.md` and `research/experiment_registry.csv`. All numerical settings below are planning assumptions for a simulation; none is calibrated to human data.
+**Status: FROZEN v1.0 (owner-approved 2026-11-24, round 2: "yes for all others", "Approve all").** The SHA-256 of this file, of the experiment protocols and of the confirmatory configurations is recorded in `research/freeze.json`, `research/experiment_registry.csv` and `research/decision_log.md` (D-009). Section 15 amends sections 1 to 14 and wins where they differ. Two parameters (`h0`, `σ`) are calibrated to the Duolingo traces (section 15.2); every other numerical setting is a planning assumption for a simulation.
 
 ## 1. Research question
 
@@ -50,7 +50,7 @@ For the exponential model `n_i(0) = ln 2 / h_i(0)`. For the power-law model `n_i
 
 ### 2.5 Central parameter setting (planning assumption)
 
-`N = 50` items, `D = 28` days, `RI = 7` days, budget `k = 4` reviews per item (`B = k N = 200` review events), `h0 = 1` day, `α = 0.4`, `β = 0.6`, `ω = 1` per day, item distribution `lognormal`. These values are not empirical estimates; their influence is examined in EXP-003.
+`N = 50` items, `D = 28` days, `RI = 7` days, budget `k = 4` reviews per item (`B = k N = 200` review events), `h0 = 54.0` days (fitted, section 15; draft planning value 1 day), `α = 0.4`, `β = 0.6`, `ω = 1` per day, item distribution `lognormal` with `σ = 0.759` (fitted, section 15; draft 0.75). Apart from `h0` and `σ` these values are not empirical estimates; their influence is examined in EXP-003.
 
 ## 3. Schedules (arms)
 
@@ -185,3 +185,12 @@ The simulation stays the controlled part of the study. The real data sets two pa
 9. **Second test (validation on split V).** The real data is not a second test of the hypotheses: Duolingo did not assign schedules at random, so the traces cannot compare `greedy` with `uniform`. The second test checks the calibration itself, on split V only, after the values from split C are fixed: (a) `h0` and `σ` recomputed on split V by the same method, with the relative differences; the calibration is flagged unstable if either differs by more than 25% (a disclosure; the split C values are used regardless); (b) held-out mean binomial log-loss per trial on split V calibration-subset rows of the calibrated population curve `p = 2^(-Δ/h0)`, compared with a constant predictor equal to the split C mean recall rate. Both are reported descriptively.
 10. **Independence from the primary contrast.** The fit reads only DS01 recall rows. No simulation is run, no schedule arm is evaluated, and no paired difference enters the fit. A baseline-only diagnostic of the fitted setting (the `uniform` arm alone, exploratory seeds 1 to 30, no other arm) may be run after the fit to locate the regime relative to floor and ceiling; it shows no contrast.
 11. **Journal.** The fit is an exploratory journal entry (`research/experiment_journal.jsonl`, CAL-001) with code revision, data SHA-256, counts and values; outputs in `results/exploratory/CAL-001/`.
+
+### 15.3 Fitted values (recorded after the fit, CAL-001)
+
+The fit ran once, at code revision `037b46e` (which already contained section 15.2), on DS01 with SHA-256 `26cf9b33f2e9b2e8aa9a8f262a017b30699ca2f625c56a12ce699d4ea7076873`. Output: `results/exploratory/CAL-001/calibration.json`; journal entry CAL-001.
+
+- Ingestion: 12,854,226 rows, all valid (0 excluded, 0 missing values); 559,900 rows in the calibration subset (split C 276,676 rows, 415,315 trials, 31,234 learners; split V 283,224 rows, 427,005 trials, 31,271 learners).
+- Split C: 738 eligible lexemes, 1 boundary estimate (0.14%). **`h0 = 54.0` days, `σ = 0.759`.** Usability rule 15.2.7 met, so these values are used. Pooled MLE half-life 54.2 days (secondary, unused).
+- Validation on split V: `h0 = 55.2` days (+2.2%), `σ = 0.721` (-4.9%); not flagged unstable. Held-out log-loss per trial: calibrated curve 0.587, constant predictor (split C mean recall 0.898) 0.328. The single exponential curve through `p(0) = 1` predicts first-review recall worse than a constant: in the traces, recall stays near 0.9 even at short delays, which this model form cannot represent. This is disclosed as a limitation of the memory model, not corrected.
+- Consequence for the regime (baseline-only diagnostic PROBE-005, `uniform` arm only, exploratory seeds 1 to 30, no contrast): mean baseline `R` at the fitted central setting is 0.959 under exponential forgetting and 0.810 under the power law. The draft setting sat at the recall floor (AP-001); the fitted setting sits near the ceiling for exponential learners, which compresses differences between arms. The owner's rule ("the fitted value wins") is applied as written; the regime is disclosed in the freeze record.

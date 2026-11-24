@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->
 # EXP-003 protocol: robustness sweep over models, budgets, retention intervals and item distributions
 
-**Status: DRAFT v0.1 (2026-11-24), planned, awaiting owner freeze. Not run. Protocol hash: none until frozen.** Descriptive (no hypothesis tests). Depends on EXP-001 and EXP-002 engines. Shared definitions: `research/protocol.md`.
+**Status: FROZEN v1.0 (owner-approved 2026-11-24, round 2), not yet run. Protocol hash: recorded in `research/freeze.json` and `research/experiment_registry.csv`.** Descriptive (no hypothesis tests). Depends on EXP-001 and EXP-002 engines. Shared definitions: `research/protocol.md`.
 
 ## 1. Precise question
 
@@ -70,3 +70,13 @@ This experiment is itself the sensitivity analysis for parameter range and item 
 ## 17. Reproducibility commands
 
 To be fixed in M2, before the freeze.
+
+## Amendments before freeze (owner-approved 2026-11-24, round 2)
+
+Applied from study protocol section 15; these lines override the sections above where they differ.
+
+- Kept with all 54 cells (A4). Other parameters central: `h0 = 54.0` days, `σ = 0.759` (fitted, study protocol 15.2 and 15.3).
+- Section 9 is replaced: each `RI` level has its own seed block, `RI = 1` seeds 3000 to 3049, `RI = 7` seeds 3100 to 3149, `RI = 30` seeds 3200 to 3249 (A5). Within a cell all arms share common random numbers; no run is shared across `RI` levels or with EXP-001 and EXP-002. `RI` cells are independent samples.
+- Adaptive arms follow the coverage-first rules of study protocol 15.1 (A2).
+- Run count 13,500 (unchanged).
+- Reproduction: `uv sync --frozen`, then `uv run python -m memory_research run --config research/experiments/EXP-003/config.json --report --pdf`. The guard accepts only the configuration whose canonical hash is in `research/freeze.json`.

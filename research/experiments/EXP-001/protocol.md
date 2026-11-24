@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->
 # EXP-001 protocol: schedule comparison under exponential forgetting
 
-**Status: DRAFT v0.1 (2026-11-24), planned, awaiting owner freeze. Not run. Protocol hash: none until frozen.** Shared definitions are in `research/protocol.md` (version DRAFT v0.1); where this file and the study protocol differ, the study protocol wins until the freeze reconciles them.
+**Status: FROZEN v1.0 (owner-approved 2026-11-24, round 2), not yet run. Protocol hash: recorded in `research/freeze.json` and `research/experiment_registry.csv`.** Shared definitions are in `research/protocol.md` (FROZEN v1.0); where this file and the study protocol differ, the study protocol wins.
 
 ## 1. Precise question
 
@@ -79,3 +79,12 @@ Main invalidation test is EXP-002 (oracle advantage). Within EXP-001: report the
 ## 17. Reproducibility commands (to be fixed in M2, before the freeze)
 
 Planned: `uv sync --frozen`, then a CLI of the form `uv run python -m memory_research.run --config research/experiments/EXP-001/config.json`. Not implemented yet.
+
+## Amendments before freeze (owner-approved 2026-11-24, round 2)
+
+Applied from study protocol section 15; these lines override the sections above where they differ.
+
+- Central setting: `h0 = 54.0` days and `σ = 0.759` (fitted from DS01, study protocol 15.2 and 15.3), replacing `h0 = 1` day and `σ = 0.75` in section 6.
+- `leitner` and `greedy`: coverage-first capacity and tie rules of study protocol 15.1 (A2).
+- Seeds 1000 to 1049 (50 seeds, A3), unchanged.
+- Reproduction: `uv sync --frozen`, then `uv run python -m memory_research run --config research/experiments/EXP-001/config.json --report --pdf`. The guard accepts only the configuration whose canonical hash is in `research/freeze.json`.

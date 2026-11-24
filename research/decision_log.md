@@ -68,3 +68,23 @@ Each entry: id, date, decision, decided by, rationale, alternatives, consequence
 - **Decided by:** session (M2) proposes; the owner decides (G-FREEZE).
 - **Decision.** `research/amendment_proposals.md` records six proposals: AP-001 central setting at the recall floor; AP-002 failure update and greedy rule review hopeless items; AP-003 Leitner priority starves items; AP-004 seed count adequate under the draft rule but to be re-measured after AP-001/AP-002; AP-005 compute budget not binding (about 12 s to 55 s for the 14,050-run matrix); AP-006 EXP-003 `RI` cells share runs.
 - **Consequences.** The draft protocol, experiment protocols and draft configurations are unchanged. If amendments are accepted, configurations, tests and protocol text are updated and the planning probe is re-run before the freeze.
+
+## D-009 (2026-11-24): Duolingo traces (DS01) adopted for calibration; licence checked
+
+- **Decided by:** the owner ("Approve all", approvals file `labs/_shared/owner-approvals-2026-11-24b.md`, section 1: "MEMORY | Duolingo spaced-repetition logs (Settles and Meeder 2016), CC BY-NC 4.0 | Fit the forgetting parameters to real learners"). Applied by the session.
+- **Licence check.** Dataverse API for doi:10.7910/DVN/N8XJME read on 2026-11-24: terms of use "This work is released under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)." Matches the approval. One file, `settles.acl16.learning_traces.13m.csv.gz`, 379,004,009 bytes, MD5 `0a1cae5eb7ad4b0bd9c0de91d74fcced` (Dataverse), SHA-256 `26cf9b33f2e9b2e8aa9a8f262a017b30699ca2f625c56a12ce699d4ea7076873`, downloaded 2026-11-24T18:33:02Z by `scripts/download_duolingo.py`.
+- **Handling.** Above the 20 MB commit limit and row-level with pseudonymous learner IDs, so `data/raw/` and `data/processed/` are git-ignored; only aggregate values are committed (`results/exploratory/CAL-001/calibration.json`). D-003 (synthetic data only) is superseded for these two parameters.
+
+## D-010 (2026-11-24): round-2 amendments applied and calibration fitted
+
+- **Decided by:** the owner ("yes for all others", section 7 of the approvals file); applied by the session as written in `research/protocol.md` section 15.
+- **Applied.** A1 `h0` and `σ` fitted from DS01 (method 15.2 committed at `037b46e` before the fit): `h0 = 54.0` days, `σ = 0.759` (CAL-001); fallback `h0 = 6` not needed. A2 coverage-first rule for every adaptive arm; capacity unchanged (exact carry); Leitner ties by due, earliest due day, box, index (AP-003 order); greedy ties by predicted recall, index. A3 50 seeds. A4 EXP-003 kept. A5 EXP-003 `RI` levels on disjoint seed blocks 3000, 3100, 3200 (50 each); configuration field `seeds.block_by`.
+- **Not calibrated, by stated rule (15.2.8).** `α`, `β`, `ω` and the design factors.
+- **Interpretation choice by the session.** "Cover every item" is read as "every item is reviewed at least once" (coverage-first key), not as a fixed per-item quota; the per-item allocation after coverage stays adaptive. The owner may revisit this before M3.
+- **Consequences.** The calibrated exponential curve fits held-out first-review recall worse than a constant (log-loss 0.587 vs 0.328), and the fitted central setting is near the ceiling for exponential learners (baseline-only PROBE-005: mean `R` 0.959; power law 0.810). Both are disclosed (freeze record, limitations).
+
+## D-011 (2026-11-24): protocol frozen (G-FREEZE, owner-approved)
+
+- **Decided by:** the owner ("yes for all others", "Approve all"). Recorded by the session.
+- **Frozen.** `research/protocol.md` v1.0 SHA-256 `0d437fd2b722c3361b8e67b8107f933468da5b2631ff246656d9be94f6df4da4`; EXP-001 `df9a38cf...`, EXP-002 `596ab71f...`, EXP-003 `be44baa1...` protocols; configuration hashes in `research/freeze.json` (which also holds the git revision and the data manifest hash).
+- **Guard.** `run` accepts a confirmatory configuration only if the study protocol, the experiment protocol and the canonical configuration hash all match the freeze record; any change is refused (exit 3). Tested both ways without running a confirmatory matrix.

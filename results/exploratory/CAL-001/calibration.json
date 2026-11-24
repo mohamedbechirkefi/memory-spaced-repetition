@@ -1,0 +1,129 @@
+{
+ "calibration": {
+  "fit_split_C": {
+   "boundary_share": 0.0013550135501355014,
+   "h0_days": 54.02334222262585,
+   "half_life_quantiles_days": {
+    "0.1": 21.455065828579002,
+    "0.25": 32.598419194581226,
+    "0.5": 54.02336285403565,
+    "0.75": 91.93520527470531,
+    "0.9": 169.17007995378447
+   },
+   "lognormal_sigma": 0.7585100830125937,
+   "mean_recall_rate": 0.8984674283375269,
+   "n_at_lower_bound": 0,
+   "n_at_upper_bound": 1,
+   "n_boundary": 1,
+   "n_eligible_lexemes": 738,
+   "n_rows": 276676,
+   "n_trials": 415315,
+   "pooled_mle_half_life_days": 54.174365137672176
+  },
+  "method": "research/protocol.md section 15.2",
+  "source": "fitted on split C (protocol 15.2.6)",
+  "usability_reasons": [],
+  "usable": true,
+  "validation": {
+   "flag_unstable": false,
+   "holdout_log_loss_per_trial": {
+    "calibrated_curve": 0.5866083824174148,
+    "constant_split_C_mean": 0.327641273174504,
+    "n_rows": 283224,
+    "n_trials": 427005
+   },
+   "refit_split_V": {
+    "boundary_share": 0.00129366106080207,
+    "h0_days": 55.196316224994064,
+    "half_life_quantiles_days": {
+     "0.1": 22.14271359384747,
+     "0.25": 33.71738489049269,
+     "0.5": 55.196316224994064,
+     "0.75": 88.69385003808702,
+     "0.9": 178.17621355181944
+    },
+    "lognormal_sigma": 0.7214262519974391,
+    "mean_recall_rate": 0.8988325663633915,
+    "n_at_lower_bound": 0,
+    "n_at_upper_bound": 1,
+    "n_boundary": 1,
+    "n_eligible_lexemes": 773,
+    "n_rows": 283224,
+    "n_trials": 427005,
+    "pooled_mle_half_life_days": 54.936397549437686
+   },
+   "relative_difference_V_vs_C": {
+    "h0_days": 0.02171235532845195,
+    "lognormal_sigma": -0.04889035999082281
+   }
+  },
+  "values": {
+   "h0_days": 54.0,
+   "lognormal_sigma": 0.759
+  }
+ },
+ "created_utc": "2026-11-24T18:36:14Z",
+ "data": {
+  "accessed_utc": "2026-11-24T18:33:02Z",
+  "dataset_id": "DS01",
+  "file": "data/raw/settles.acl16.learning_traces.13m.csv.gz",
+  "licence": "CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)",
+  "sha256": "26cf9b33f2e9b2e8aa9a8f262a017b30699ca2f625c56a12ce699d4ea7076873",
+  "size_bytes": 379004009,
+  "url": "https://dataverse.harvard.edu/api/access/datafile/3091087"
+ },
+ "environment": {
+  "cpu": "Apple M1 Pro",
+  "git_dirty": false,
+  "git_revision": "037b46e59fa92fedd3e312a95bdda628c1527f84",
+  "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+  "package_version": "0.1.0",
+  "packages": {
+   "jsonschema": "4.26.0",
+   "matplotlib": "3.11.2",
+   "numpy": "2.5.4"
+  },
+  "python": "3.12.1"
+ },
+ "id": "CAL-001",
+ "ingest_report": {
+  "excluded": {},
+  "missing": {
+   "delta": 0,
+   "history_correct": 0,
+   "history_seen": 0,
+   "learning_language": 0,
+   "lexeme_id": 0,
+   "lexeme_string": 0,
+   "p_recall": 0,
+   "session_correct": 0,
+   "session_seen": 0,
+   "timestamp": 0,
+   "ui_language": 0,
+   "user_id": 0
+  },
+  "n_not_first_review": 12294326,
+  "n_rows": 12854226,
+  "n_subset_learners_by_split": {
+   "C": 31234,
+   "V": 31271
+  },
+  "n_subset_rows": 559900,
+  "n_subset_rows_by_split": {
+   "C": 276676,
+   "V": 283224
+  },
+  "n_subset_trials_by_split": {
+   "C": 415315,
+   "V": 427005
+  },
+  "n_valid": 12854226,
+  "n_zero_delta_first_review": 0
+ },
+ "kind": "exploratory",
+ "label": "EXPLORATORY calibration of simulation parameters from DS01; no schedule arm, no contrast.",
+ "runtime_s": {
+  "fit_and_validation": 0.7151708750025136,
+  "ingest": 36.9378476660022
+ }
+}

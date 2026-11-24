@@ -12,3 +12,7 @@ While the protocol is unfrozen, step 3 exits with status 3 and a message such as
 Tolerance: reruns are bit-identical on the same platform except the timing and memory fields; across platforms, metric values are expected to agree to about 1e-12 relative (floating-point library differences).
 
 Note: `config.json` mirrors the draft protocol. If the owner accepts amendments (`research/amendment_proposals.md`), it must be updated before the freeze.
+
+## Update at the freeze (2026-11-24, round 2)
+
+The protocol is FROZEN v1.0 and `config.json` holds the amended, calibrated values (study protocol section 15). Step 3 is now accepted by the guard for the frozen configuration only; any edit to `config.json`, to `research/protocol.md` or to this experiment's protocol makes it exit with status 3. The statements above about the draft state are historical.

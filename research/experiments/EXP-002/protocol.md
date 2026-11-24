@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->
 # EXP-002 protocol: oracle advantage and model misspecification under power-law forgetting
 
-**Status: DRAFT v0.1 (2026-11-24), planned, awaiting owner freeze. Not run. Protocol hash: none until frozen.** Depends on EXP-001 (shared engine and analysis). Shared definitions: `research/protocol.md`.
+**Status: FROZEN v1.0 (owner-approved 2026-11-24, round 2), not yet run. Protocol hash: recorded in `research/freeze.json` and `research/experiment_registry.csv`.** Depends on EXP-001 (shared engine and analysis). Shared definitions: `research/protocol.md`.
 
 ## 1. Precise question
 
@@ -73,3 +73,12 @@ Repeat the two primary contrasts with `ω ∈ {0.3, 3}` as a descriptive check (
 ## 17. Reproducibility commands
 
 To be fixed in M2, before the freeze.
+
+## Amendments before freeze (owner-approved 2026-11-24, round 2)
+
+Applied from study protocol section 15; these lines override the sections above where they differ.
+
+- Central setting: `h0 = 54.0` days and `σ = 0.759` (fitted, study protocol 15.2 and 15.3).
+- `leitner`, `greedy-power` and `greedy-exp`: coverage-first capacity and tie rules of study protocol 15.1 (A2).
+- Seeds 1000 to 1049 (50 seeds, A3), unchanged.
+- Reproduction: `uv sync --frozen`, then `uv run python -m memory_research run --config research/experiments/EXP-002/config.json --report --pdf`. The guard accepts only the configuration whose canonical hash is in `research/freeze.json`.

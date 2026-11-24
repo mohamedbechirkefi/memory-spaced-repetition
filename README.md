@@ -3,11 +3,11 @@
 
 **Question.** Which review schedule maximizes modelled delayed recall under a fixed study budget?
 
-**Status: M2 (core implementation), 2026-11-24.** The simulation engine, tests and tooling exist. No confirmatory experiment has been run and no finding exists. The study protocol is a draft awaiting the owner's freeze; exploratory planning runs under `results/exploratory/` are not results.
+**Status: protocol frozen v1.0 (owner-approved 2026-11-24), M3 not started.** No confirmatory experiment has been run and no finding exists. Two simulation parameters (initial half-life and its spread) are calibrated to the public Duolingo spaced-repetition traces (Settles 2017, CC BY-NC 4.0, downloaded by `scripts/download_duolingo.py`, never committed); exploratory runs under `results/exploratory/` are not results.
 
 ## Why it matters
 
-Spaced-repetition tools decide when to review each item. Published memory models (exponential and power-law forgetting with updates after each retrieval) make it possible to compare schedules exactly, inside the model, with the review budget held fixed. MEMORY is a simulation study: it makes no claim about human learning gains and uses no user data.
+Spaced-repetition tools decide when to review each item. Published memory models (exponential and power-law forgetting with updates after each retrieval) make it possible to compare schedules exactly, inside the model, with the review budget held fixed. MEMORY is a simulation study: it makes no claim about human learning gains. Its only real data are public, pseudonymous Duolingo learning traces, used in aggregate to calibrate two parameters; no row-level data is committed.
 
 ## What is implemented
 
@@ -17,9 +17,9 @@ A Python package `memory_research` (`src/`): exponential and power-law forgettin
 
 | ID | Question | Status |
 |---|---|---|
-| EXP-001 | Greedy (model-based) versus uniform schedule under exponential forgetting, plus expanding, Leitner and massed arms | planned (protocol draft, awaiting owner freeze) |
-| EXP-002 | Does the adaptive advantage survive when the scheduler's model is wrong (power-law learners)? | planned (protocol draft, awaiting owner freeze) |
-| EXP-003 | Rank stability across models, budgets, retention intervals and item distributions (descriptive) | planned (protocol draft, awaiting owner freeze) |
+| EXP-001 | Greedy (model-based) versus uniform schedule under exponential forgetting, plus expanding, Leitner and massed arms | frozen (owner-approved 2026-11-24), not yet run |
+| EXP-002 | Does the adaptive advantage survive when the scheduler's model is wrong (power-law learners)? | frozen (owner-approved 2026-11-24), not yet run |
+| EXP-003 | Rank stability across models, budgets, retention intervals and item distributions (descriptive) | frozen (owner-approved 2026-11-24), not yet run |
 
 ## Repository map
 
