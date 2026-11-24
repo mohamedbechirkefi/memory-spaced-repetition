@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import platform
 import resource
 import subprocess
@@ -14,6 +15,7 @@ from typing import Any
 from . import __version__
 
 PACKAGES = ("numpy", "jsonschema", "matplotlib")
+DATA_MANIFEST = Path("data") / "manifest.json"
 
 
 def repo_root() -> Path:
@@ -64,6 +66,8 @@ def environment(root: Path | None = None) -> dict[str, Any]:
             pkgs[p] = metadata.version(p)
         except metadata.PackageNotFoundError:
             pkgs[p] = None
+    manifest = root / DATA_MANIFEST
+    data_sha = hashlib.sha256(manifest.read_bytes()).hexdigest() if manifest.is_file() else None
     return {
         "git_revision": rev,
         "git_dirty": None if status is None else bool(status),
@@ -72,4 +76,5 @@ def environment(root: Path | None = None) -> dict[str, Any]:
         "os": f"{platform.system()} {platform.release()} ({platform.platform()})",
         "cpu": cpu_description(),
         "package_version": __version__,
+        "data_manifest_sha256": data_sha,
     }

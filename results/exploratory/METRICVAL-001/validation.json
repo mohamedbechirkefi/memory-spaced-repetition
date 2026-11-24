@@ -1,0 +1,284 @@
+{
+ "checks": [
+  {
+   "check": "A recall_mean (massed, exponential)",
+   "expected": 0.8122523963562356,
+   "got": 0.8122523963562356,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "A observed_recall (u = 0.5, 0.9 vs m = 0.812)",
+   "expected": 0.5,
+   "got": 0.5,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "A mastery_share (m < 0.9)",
+   "expected": 0.0,
+   "got": 0.0,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "A recall_min",
+   "expected": 0.8122523963562356,
+   "got": 0.8122523963562356,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "A recall_p10",
+   "expected": 0.8122523963562356,
+   "got": 0.8122523963562356,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "A recall at RI 1",
+   "expected": 0.9592641193252643,
+   "got": 0.9592641193252643,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "A recall at RI 30",
+   "expected": 0.2871745887492587,
+   "got": 0.28717458874925883,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "A peak_daily_load (both at session 2)",
+   "expected": 2,
+   "got": 2,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "A sessions_used",
+   "expected": 1,
+   "got": 1,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "A review_events = B",
+   "expected": 2,
+   "got": 2,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "A calibration_mae for a non-adaptive arm",
+   "expected": null,
+   "got": null,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "B recall_mean (one failure, one success)",
+   "expected": 0.5502677755751544,
+   "got": 0.5502677755751544,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "B mastery_share (item 1 >= 0.9 only)",
+   "expected": 0.5,
+   "got": 0.5,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "B recall_min",
+   "expected": 0.1088188204120155,
+   "got": 0.10881882041201553,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "B recall_p10 (linear interpolation, numpy default)",
+   "expected": 0.19710861144464328,
+   "got": 0.1971086114446433,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "B observed_recall (u = 0)",
+   "expected": 1.0,
+   "got": 1.0,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "B review_success_rate",
+   "expected": 0.5,
+   "got": 0.5,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "C recall_mean (power law)",
+   "expected": 0.7248611793996609,
+   "got": 0.7248611793996609,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "D greedy oracle calibration_mae = 0 (seed 1)",
+   "expected": 0.0,
+   "got": 0.0,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "D leitner calibration_mae is not reported (model-free, seed 1)",
+   "expected": null,
+   "got": null,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "D greedy oracle calibration_mae = 0 (seed 2)",
+   "expected": 0.0,
+   "got": 0.0,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "D leitner calibration_mae is not reported (model-free, seed 2)",
+   "expected": null,
+   "got": null,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "D greedy oracle calibration_mae = 0 (seed 3)",
+   "expected": 0.0,
+   "got": 0.0,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "D leitner calibration_mae is not reported (model-free, seed 3)",
+   "expected": null,
+   "got": null,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "S paired t mean",
+   "expected": 3.0,
+   "got": 3.0,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "S paired t sd",
+   "expected": 1.5811388300841898,
+   "got": 1.5811388300841898,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "S paired t 95% half-width (t(0.975,4) = 2.7764451)",
+   "expected": 1.9632431614791175,
+   "got": 1.9632431614774069,
+   "pass": true,
+   "tolerance": 1e-08
+  },
+  {
+   "check": "S d_z",
+   "expected": 1.8973665961010275,
+   "got": 1.8973665961010275,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "S bootstrap of a constant: low",
+   "expected": 0.3,
+   "got": 0.30000000000000004,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "S bootstrap of a constant: high",
+   "expected": 0.3,
+   "got": 0.30000000000000004,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "S holm a",
+   "expected": 0.04,
+   "got": 0.04,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "S holm b",
+   "expected": 0.09,
+   "got": 0.09,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "S holm c",
+   "expected": 0.09,
+   "got": 0.09,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "S holm d",
+   "expected": 0.2,
+   "got": 0.2,
+   "pass": true,
+   "tolerance": 1e-12
+  },
+  {
+   "check": "S verdict [0.001, 0.01]",
+   "expected": "above zero",
+   "got": "above zero",
+   "pass": true
+  },
+  {
+   "check": "S verdict [-0.01, -0.001]",
+   "expected": "below zero",
+   "got": "below zero",
+   "pass": true
+  },
+  {
+   "check": "S verdict [-0.01, 0.015]",
+   "expected": "equivalent within delta",
+   "got": "equivalent within delta",
+   "pass": true
+  },
+  {
+   "check": "S verdict [-0.03, 0.01]",
+   "expected": "inconclusive",
+   "got": "inconclusive",
+   "pass": true
+  }
+ ],
+ "environment": {
+  "cpu": "Apple M1 Pro",
+  "data_manifest_sha256": "6d828809a1b2597fac61cd2e08d936383a7c86877242168421d7496c2602eb36",
+  "git_dirty": true,
+  "git_revision": "e7d4ab2e43d45abede64f2e075c9d6d388cd11e7",
+  "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+  "package_version": "0.2.0",
+  "packages": {
+   "jsonschema": "4.26.0",
+   "matplotlib": "3.11.2",
+   "numpy": "2.5.4"
+  },
+  "python": "3.12.1"
+ },
+ "id": "METRICVAL-001",
+ "label": "EXPLORATORY metric validation on hand-computed cases; no confirmatory seed.",
+ "n_checks": 38,
+ "n_failed": 0
+}

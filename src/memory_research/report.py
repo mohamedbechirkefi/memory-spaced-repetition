@@ -161,6 +161,9 @@ def make_figures(doc: dict[str, Any], analysis: dict[str, Any], fig_dir: Path, m
     baseline = analysis["baseline"]
     figs = []
     cells = doc["cells"]
+    exploratory = doc["kind"] == "exploratory"
+    tag = "EXPLORATORY" if exploratory else "CONFIRMATORY"
+    note = "Exploratory; not a finding." if exploratory else "Confirmatory run against the frozen protocol."
     arms = [a for a in doc["matrix_config"]["arms"] if a != baseline]
     if len(cells) <= 4:
         for cell in cells:
@@ -177,7 +180,7 @@ def make_figures(doc: dict[str, Any], analysis: dict[str, Any], fig_dir: Path, m
             ax.axhline(0, color="0.5", lw=0.8)
             ax.set_xticks(range(len(arms)), arms)
             ax.set_ylabel(f"{metric} minus {baseline}\n(probability units)")
-            ax.set_title(f"{doc['experiment_id']} {cid}: paired differences per seed (EXPLORATORY)")
+            ax.set_title(f"{doc['experiment_id']} {cid}: paired differences per seed ({tag})")
             fig.tight_layout()
             name = f"paired_diff_{cid}"
             fig.savefig(fig_dir / f"{name}.svg")
@@ -186,7 +189,7 @@ def make_figures(doc: dict[str, Any], analysis: dict[str, Any], fig_dir: Path, m
             n = len(base)
             figs.append({"file": f"{name}.svg", "caption": (
                 f"Paired difference in {metric} (arm minus {baseline}) for each seed, cell {cid}; dots are seeds "
-                f"(n = {n} baseline runs), red bars are means. Exploratory; not a finding."),
+                f"(n = {n} baseline runs), red bars are means. {note}"),
                 "alt": f"Strip plot of per-seed paired differences against {baseline} for {len(arms)} arms in cell {cid}."})
     elif arms:
         fig, ax = plt.subplots(figsize=(7.0, 0.18 * len(cells) + 1.2))
@@ -202,14 +205,14 @@ def make_figures(doc: dict[str, Any], analysis: dict[str, Any], fig_dir: Path, m
         ax.invert_yaxis()
         ax.set_xlabel(f"mean paired difference in {metric} versus {baseline} (probability units), 95% bootstrap interval")
         ax.legend(fontsize=7, loc="lower right")
-        ax.set_title(f"{doc['experiment_id']}: all cells (EXPLORATORY)")
+        ax.set_title(f"{doc['experiment_id']}: all cells ({tag})")
         fig.tight_layout()
         fig.savefig(fig_dir / "cells_overview.svg")
         fig.savefig(fig_dir / "cells_overview.png", dpi=150)
         plt.close(fig)
         figs.append({"file": "cells_overview.svg", "caption": (
             f"Mean paired difference versus {baseline} per cell and arm with 95% percentile bootstrap intervals over seeds. "
-            "Cell factor levels are listed in contrasts.csv. Exploratory; not a finding."),
+            f"Cell factor levels are listed in contrasts.csv. {note}"),
             "alt": f"Dot plot with interval bars of mean differences against {baseline} for {len(cells)} cells."})
     return figs
 

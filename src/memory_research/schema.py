@@ -121,6 +121,7 @@ _ENVIRONMENT = {
         "os": {"type": "string"},
         "cpu": {"type": "string"},
         "package_version": {"type": "string"},
+        "data_manifest_sha256": {"type": ["string", "null"]},
     },
 }
 
@@ -174,6 +175,8 @@ RESULT_SCHEMA: dict[str, Any] = {
                     "metrics": {"oneOf": [_METRICS, {"type": "null"}]},
                     "runtime_s": {"type": "number", "minimum": 0},
                     "peak_rss_bytes": {"type": ["integer", "null"], "minimum": 0},
+                    "start_utc": {"type": "string"},
+                    "end_utc": {"type": "string"},
                 },
                 "allOf": [
                     {"if": {"properties": {"status": {"const": "ok"}}}, "then": {"properties": {"metrics": _METRICS, "reasons": {"maxItems": 0}}}},

@@ -1,0 +1,23 @@
+{
+  "config_schema": "memory-matrix-config/1.0.0",
+  "experiment_id": "SMOKE-002",
+  "kind": "exploratory",
+  "description": "Smoke matrix of protocol section 9 at the frozen v1.1 central setting (h0 54.0 days, sigma 0.759, RI 281 days) with N = 10, 5 arms, exploratory seeds 1 to 5 (disjoint from every confirmatory seed). Exploratory; run in M3 before the confirmatory matrices.",
+  "base": {
+    "n_items": 10,
+    "window_days": 28,
+    "retention_interval_days": 281,
+    "reviews_per_item": 4,
+    "h0_days": 54.0,
+    "alpha": 0.4,
+    "beta": 0.6,
+    "omega_per_day": 1.0,
+    "true_model": "exponential",
+    "item_distribution": "lognormal",
+    "lognormal_sigma": 0.759,
+    "bimodal_factor": 3.0
+  },
+  "arms": ["uniform", "expanding", "massed", "leitner", "greedy"],
+  "baseline": "uniform",
+  "seeds": {"start": 1, "count": 5}
+}

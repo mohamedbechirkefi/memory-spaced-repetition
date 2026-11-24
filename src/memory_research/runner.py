@@ -69,7 +69,12 @@ def expand_cells(matrix: dict[str, Any]) -> list[dict[str, Any]]:
     return cells
 
 
+def _utc_now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+
+
 def run_one(cfg: SimConfig, arm: str, crn, run_id: str, cell_id: str) -> dict[str, Any]:
+    start_utc = _utc_now()
     t0 = time.perf_counter()
     status, reasons, metrics = "ok", [], None
     try:
@@ -82,8 +87,10 @@ def run_one(cfg: SimConfig, arm: str, crn, run_id: str, cell_id: str) -> dict[st
     except Exception as exc:  # recorded, never silently dropped
         status, reasons = "failed", [f"{type(exc).__name__}: {exc}"]
     runtime = time.perf_counter() - t0
+    end_utc = _utc_now()
     return {"run_id": run_id, "cell_id": cell_id, "arm": arm, "seed": crn.seed, "status": status,
-            "reasons": reasons, "metrics": metrics, "runtime_s": runtime, "peak_rss_bytes": peak_rss_bytes()}
+            "reasons": reasons, "metrics": metrics, "runtime_s": runtime, "peak_rss_bytes": peak_rss_bytes(),
+            "start_utc": start_utc, "end_utc": end_utc}
 
 
 def run_matrix(matrix: dict[str, Any], root: Path | None = None, allow_confirmatory: bool = False) -> dict[str, Any]:
@@ -157,7 +164,8 @@ def write_outputs(doc: dict[str, Any], out_dir: Path, root: Path | None = None) 
         "environment": doc["environment"],
         "runs": [
             {"run_id": r["run_id"], "seed": r["seed"], "arm": r["arm"], "config_hash": cfg_hash[r["cell_id"]],
-             "status": r["status"], "runtime_s": r["runtime_s"], "peak_rss_bytes": r["peak_rss_bytes"]}
+             "status": r["status"], "runtime_s": r["runtime_s"], "peak_rss_bytes": r["peak_rss_bytes"],
+             **{k: r[k] for k in ("start_utc", "end_utc") if k in r}}
             for r in doc["runs"]
         ],
         "wall_clock_s": doc["summary"]["wall_clock_s"],
