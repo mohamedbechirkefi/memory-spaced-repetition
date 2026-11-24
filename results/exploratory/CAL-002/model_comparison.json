@@ -1,0 +1,145 @@
+{
+ "comparison": {
+  "better_family": "power",
+  "calibration_by_delay_bin_V": [
+   {
+    "bin": "< 1 hour",
+    "mean_prediction": {
+     "constant": 0.8984674283375268,
+     "exp-median": 0.9998830093386055,
+     "exp-mle": 0.999933165701975,
+     "exp-population": 0.9998439810324609,
+     "power-median": 0.9984395280171271,
+     "power-mle": 0.9993098510793199,
+     "power-population": 0.998383126562103
+    },
+    "n_rows": 60491,
+    "n_trials": 87437,
+    "observed_recall": 0.9115134325285634
+   },
+   {
+    "bin": "1 hour to 1 day",
+    "mean_prediction": {
+     "constant": 0.8984674283375269,
+     "exp-median": 0.9926576640563367,
+     "exp-mle": 0.9957968754274271,
+     "exp-population": 0.9902714229195745,
+     "power-median": 0.9289580928107718,
+     "power-mle": 0.9677818914586395,
+     "power-population": 0.9266472388924275
+    },
+    "n_rows": 49381,
+    "n_trials": 73704,
+    "observed_recall": 0.9045642027569738
+   },
+   {
+    "bin": "1 to 7 days",
+    "mean_prediction": {
+     "constant": 0.898467428337527,
+     "exp-median": 0.9604439890393223,
+     "exp-mle": 0.9771515516514677,
+     "exp-population": 0.9489539899618774,
+     "power-median": 0.7946491055606506,
+     "power-mle": 0.9028627491859121,
+     "power-population": 0.7891159137095008
+    },
+    "n_rows": 103120,
+    "n_trials": 158925,
+    "observed_recall": 0.9003303445021237
+   },
+   {
+    "bin": "7 to 30 days",
+    "mean_prediction": {
+     "constant": 0.898467428337527,
+     "exp-median": 0.8382635587812797,
+     "exp-mle": 0.9035004589180309,
+     "exp-population": 0.8066986412616944,
+     "power-median": 0.6356018191598211,
+     "power-mle": 0.8180922551990168,
+     "power-population": 0.6281247961242786
+    },
+    "n_rows": 47826,
+    "n_trials": 70574,
+    "observed_recall": 0.8897752713463882
+   },
+   {
+    "bin": ">= 30 days",
+    "mean_prediction": {
+     "constant": 0.898467428337527,
+     "exp-median": 0.3237113494622729,
+     "exp-mle": 0.4748301430491807,
+     "exp-population": 0.3381112239699374,
+     "power-median": 0.4572919850472713,
+     "power-mle": 0.7060698524697493,
+     "power-population": 0.4504788481231222
+    },
+    "n_rows": 22406,
+    "n_trials": 36365,
+    "observed_recall": 0.8677574590952839
+   }
+  ],
+  "family_best": {
+   "exponential": {
+    "beats_constant": false,
+    "curve": "exp-population",
+    "log_loss": 0.5488659486577893
+   },
+   "power": {
+    "beats_constant": false,
+    "curve": "power-mle",
+    "log_loss": 0.428064872976741
+   }
+  },
+  "fits_split_C": {
+   "constant_recall": 0.8984674283375269,
+   "exp_mle_boundary": false,
+   "exp_mle_half_life_days": 94.52939349553061,
+   "power_median_exponent": 0.1729696904450771,
+   "power_mle_boundary": false,
+   "power_mle_exponent": 0.07643449839936714
+  },
+  "holdout_log_loss_per_trial": {
+   "constant": 0.327641273174504,
+   "exp-median": 0.5866083824174148,
+   "exp-mle": 0.5687535545004405,
+   "exp-population": 0.5488659486577893,
+   "power-median": 0.4726256651275385,
+   "power-mle": 0.428064872976741,
+   "power-population": 0.4755735928764164
+  },
+  "inputs": {
+   "h0_days": 54.0,
+   "lognormal_sigma": 0.759,
+   "omega_per_day": 1.0,
+   "quadrature_nodes": 64
+  },
+  "method": "research/protocol.md section 16.1",
+  "n_rows_V": 283224,
+  "n_trials_V": 427005,
+  "neither_beats_constant": true
+ },
+ "created_utc": "2026-11-24T19:42:24Z",
+ "data": {
+  "dataset_id": "DS01",
+  "processed_file": "data/processed/DS01_first_review_subset.npz",
+  "processed_sha256": "e090557213a19418f968085e00cc920674c41a30feaa26e04c2506f5636df449",
+  "written_by": "scripts/calibrate_duolingo.py (CAL-001)"
+ },
+ "environment": {
+  "cpu": "Apple M1 Pro",
+  "git_dirty": false,
+  "git_revision": "664de3c56ee6488849a2274c524ad8cfd3b05dd3",
+  "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+  "package_version": "0.2.0",
+  "packages": {
+   "jsonschema": "4.26.0",
+   "matplotlib": "3.11.2",
+   "numpy": "2.5.4"
+  },
+  "python": "3.12.1"
+ },
+ "id": "CAL-002",
+ "kind": "exploratory",
+ "label": "EXPLORATORY diagnosis of the forgetting-model fit on DS01; no schedule arm, no contrast.",
+ "runtime_s": 0.8685376249995898
+}
