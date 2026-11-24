@@ -1,0 +1,130 @@
+{
+ "schema": "memory.freeze_record",
+ "schema_version": "1.0.0",
+ "status": "frozen",
+ "protocol_version": "1.0",
+ "approved_by": "the owner",
+ "approval_date": "2026-11-24",
+ "approval_source": "labs/_shared/owner-approvals-2026-11-24b.md (coordinator file outside this repository), sections 1 and 7, MEMORY rows; first-round file labs/_shared/owner-approvals-2026-11-24.md",
+ "approval_quote": {
+  "round_1": "\"yes for all others\" (amendments)",
+  "round_2": "\"Approve all\" (real data and the coordinator's recommendations)",
+  "memory_data": "MEMORY | Duolingo spaced-repetition logs (Settles and Meeder 2016), CC BY-NC 4.0 | Fit the forgetting parameters to real learners",
+  "memory_amendments": "Starting half-life h0 about 6 days, unless fitted from Duolingo. Greedy and Leitner cover every item (state the capacity and tie rule). 50 seeds. Keep EXP-003. EXP-003 retention cells must not reuse the same runs.",
+  "freeze": "G-FREEZE, owner-approved 2026-11-24 (session brief: add owner-approved real data, apply amendments, freeze)"
+ },
+ "common_decisions": {
+  "C1_data": "Real data as approved, synthetic otherwise: DS01 (Duolingo traces, CC BY-NC 4.0) calibrates h0 and sigma (protocol 15.2); all learners, items and schedules are simulated.",
+  "C2_pdfs": "Built with pandoc and Typst (-V mainfont=\"Libertinus Serif\"); there is no LaTeX on the machine.",
+  "C3_authorship": "\"Mohamed Bechir Kefi\", no affiliation. The AI is disclosed as a research and development assistant, not as an author.",
+  "C4_disclosure": "Where exploratory values of the primary contrast were seen before the freeze, the freeze record says so, with the values and where they are stored."
+ },
+ "c4_disclosure": {
+  "statement": "Exploratory values of the primary contrast (greedy minus uniform) and of the EXP-002 contrasts were seen before the freeze, at the DRAFT setting (h0 = 1 day, sigma = 0.75, pre-amendment greedy and Leitner rules), on exploratory seeds 1 to 30 (disjoint from all confirmatory seeds). No run at the frozen setting has computed any contrast: the only run at the fitted setting (PROBE-005) ran the uniform arm alone. The amendments were set by the owner's approvals and the calibration rule, not chosen from these values.",
+  "values_seen": [
+   {
+    "run": "PROBE-001",
+    "setting": "draft central, exponential, 30 seeds",
+    "contrast": "greedy - uniform",
+    "mean_diff": -0.0286,
+    "bootstrap_ci95": [
+     -0.0349,
+     -0.0226
+    ],
+    "path": "results/exploratory/PROBE-001/report/report.md; contrasts.csv"
+   },
+   {
+    "run": "PROBE-002",
+    "setting": "draft central, power law, 30 seeds",
+    "contrast": "greedy-power - uniform",
+    "mean_diff": -0.0321,
+    "bootstrap_ci95": [
+     -0.0402,
+     -0.0241
+    ],
+    "path": "results/exploratory/PROBE-002/report/report.md"
+   },
+   {
+    "run": "PROBE-002",
+    "setting": "draft central, power law, 30 seeds",
+    "contrast": "greedy-exp - uniform",
+    "mean_diff": -0.0321,
+    "bootstrap_ci95": [
+     -0.0402,
+     -0.0239
+    ],
+    "path": "results/exploratory/PROBE-002/report/report.md"
+   },
+   {
+    "run": "SMOKE-001",
+    "setting": "draft, N = 10, 5 seeds",
+    "contrast": "greedy - uniform",
+    "mean_diff": -0.0209,
+    "bootstrap_ci95": [
+     -0.044,
+     -0.0027
+    ],
+    "path": "results/exploratory/SMOKE-001/report/report.md"
+   },
+   {
+    "run": "PROBE-003",
+    "setting": "54 draft EXP-003 cells, 5 seeds each",
+    "contrast": "all arms vs uniform",
+    "path": "results/exploratory/PROBE-003/report/report.md"
+   }
+  ],
+  "other_disclosures": [
+   "Calibration CAL-001: held-out log-loss of the calibrated exponential curve 0.587 vs 0.328 for a constant predictor (model-form misfit).",
+   "Regime: baseline-only PROBE-005 at the fitted setting, mean uniform R 0.959 (exponential) and 0.810 (power law), seeds 1-30: near ceiling for EXP-001.",
+   "Session interpretation: 'cover every item' implemented as a coverage-first key (every item reviewed at least once), not a per-item quota (D-010)."
+  ]
+ },
+ "calibration": {
+  "id": "CAL-001",
+  "method": "research/protocol.md section 15.2 (committed at 037b46e before the fit)",
+  "h0_days": 54.0,
+  "lognormal_sigma": 0.759,
+  "result_path": "results/exploratory/CAL-001/calibration.json",
+  "result_sha256": "068afc0cdd414b57f7d0f001b8b496c4925d81b46ca84a7a27679535ebf8aa94",
+  "data_sha256": "26cf9b33f2e9b2e8aa9a8f262a017b30699ca2f625c56a12ce699d4ea7076873"
+ },
+ "study_protocol": {
+  "path": "research/protocol.md",
+  "sha256": "0d437fd2b722c3361b8e67b8107f933468da5b2631ff246656d9be94f6df4da4"
+ },
+ "experiments": {
+  "EXP-001": {
+   "protocol_path": "research/experiments/EXP-001/protocol.md",
+   "protocol_sha256": "df9a38cfef622d5fd61d4be686c0427825eaa5f0b5768c694c71e3d02e3ecd59",
+   "config_path": "research/experiments/EXP-001/config.json",
+   "config_sha256": "04fd7f6cd85461dbf2f501f4acbf6857db7da465748f09d2b3371778efccc3e6",
+   "config_canonical_sha256": "c143b3e36c9151455173d14063931c41cc4ef2fb28c109ef1935eae6102c57a4"
+  },
+  "EXP-002": {
+   "protocol_path": "research/experiments/EXP-002/protocol.md",
+   "protocol_sha256": "596ab71fabd40fe171b192df9dceaefac743eeec8a74dd03068cca96ed4661c3",
+   "config_path": "research/experiments/EXP-002/config.json",
+   "config_sha256": "ce7f338aba9c9605e8208cfdb06ad5fbeecad8c62ae4deb1f064dd80322b25c7",
+   "config_canonical_sha256": "f6b7f1ecd7b4f53f2b383722e9fef678e5fb195591519cfaf475566d14c1f251"
+  },
+  "EXP-003": {
+   "protocol_path": "research/experiments/EXP-003/protocol.md",
+   "protocol_sha256": "be44baa1263865082e2c6540b28a0b7487f8579221aa3dd9450ad5cc33dc50bb",
+   "config_path": "research/experiments/EXP-003/config.json",
+   "config_sha256": "b75a75e2a57c06ac9ded659377a29dc93261b75f0710695e010d50744db40fae",
+   "config_canonical_sha256": "d03712f3db15a597900635e65dde28ef3773247932ea8483f8c88e1037cabcee"
+  }
+ },
+ "data_manifest": {
+  "path": "data/manifest.json",
+  "sha256": "6d828809a1b2597fac61cd2e08d936383a7c86877242168421d7496c2602eb36"
+ },
+ "git_revision": "6a8bc2936b40ceaf8985480d6a64cb0c69311c87",
+ "git_revision_note": "Commit holding the frozen protocol, configurations and manifest. The freeze record itself is committed afterwards.",
+ "seeds": {
+  "EXP-001": "1000-1049",
+  "EXP-002": "1000-1049",
+  "EXP-003": "RI 1: 3000-3049; RI 7: 3100-3149; RI 30: 3200-3249"
+ },
+ "guard": "src/memory_research/guard.py: study protocol hash, experiment protocol hash (registry) and canonical config hash must match this record."
+}

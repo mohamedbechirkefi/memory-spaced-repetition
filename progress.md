@@ -105,3 +105,35 @@ As listed above (two test failures fixed in the tests, not the engine; one PDF b
 ### Next action
 
 Wait for the owner's decisions on AP-001 to AP-006. If amendments are accepted: update schedules, configs and tests, re-run the planning probes on seeds 1 to 30, then ask for the freeze. M3 stays blocked by G-FREEZE.
+
+## 2026-11-24, session 3: real data, round-2 amendments and freeze (G-FREEZE, owner-approved)
+
+**Milestone:** M1 freeze. **Bounded task:** DATA-FREEZE brief: licence check and download of DS01, ingestion, calibration method then fit, amendments A1 to A5, freeze record, records. No confirmatory run.
+
+### Commands and actual outputs
+
+- Dataverse API (`/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/N8XJME`): terms of use CC BY-NC 4.0; one file, id 3091087, 379,004,009 bytes, MD5 `0a1cae5eb7ad4b0bd9c0de91d74fcced`.
+- `scripts/download_duolingo.py`: first attempt (urllib) failed, `HTTP Error 403: Forbidden` on the signed S3 redirect; switched to curl; second attempt verified size and MD5, SHA-256 `26cf9b33...076873`, accessed 2026-11-24T18:33:02Z.
+- Commit `037b46e`: protocol section 15 (calibration method) and code, before any fit. Suite at that commit: `8 failed, 204 passed` before a test fix and the freeze record; the 8 were 6 freeze-dependent guard tests (no freeze record yet), 1 EXP-003 seed-block test (config not yet updated) and 1 MLE recovery test with uninformative delays (test data changed, not the estimator).
+- `.venv/bin/python scripts/calibrate_duolingo.py` (at `037b46e`, clean): 12,854,226 rows, 0 excluded, 0 missing; subset 559,900 rows; split C 738 eligible lexemes, 1 boundary; `h0 = 54.0` days, `σ = 0.759`; split V `h0` +2.2%, `σ` -4.9%, not unstable; held-out log-loss 0.587 (curve) vs 0.328 (constant). 38.5 s.
+- `run --config experiments/configs/probe_baseline_fitted.json --out results/exploratory/PROBE-005` (uniform arm only): `60 runs, 60 ok, 0 excluded, 0 failed, wall clock 0.060 s`; mean `R` 0.959 (exponential), 0.810 (power law).
+- `uv lock`: `Updated memory-spaced-repetition v0.1.0 -> v0.2.0`. `uv sync --frozen --all-groups --all-extras`, then `.venv/bin/python -m pytest -q`: `212 passed` (twice).
+- Guard: `freeze_status` is frozen for the three committed configurations and refuses each with a changed seed count or `h0` ("differs from the frozen configuration"); CLI exit 3 on a changed configuration (tested). No confirmatory matrix was run; `results/confirmatory/` does not exist.
+
+### Decisions
+
+D-009 (DS01 adopted, licence check), D-010 (amendments and fit), D-011 (freeze).
+
+### Commits
+
+`037b46e` (method before fit), `6a8bc29` (frozen content), and the freeze-record commit that contains this entry.
+
+### Outstanding risks
+
+- The fitted setting is near the ceiling for exponential learners (baseline 0.959), so EXP-001 differences are compressed (disclosed).
+- The exponential curve misfits real first-review recall (held-out log-loss worse than a constant; disclosed).
+- "Cover every item" read as at-least-once coverage (D-010); the owner may revisit.
+
+### Next action
+
+M3, when the coordinator schedules it on a quiet machine: `uv run python -m memory_research run --config research/experiments/EXP-00N/config.json --report --pdf` for N = 1, 2, 3.
