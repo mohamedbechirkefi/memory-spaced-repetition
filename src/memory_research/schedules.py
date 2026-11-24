@@ -145,10 +145,19 @@ class LeitnerScheduler:
     """Leitner boxes 1..5 with intervals 1, 2, 4, 8, 16 days.
 
     Encoding at day 0 places every item in box 1, due at day 1. Each session
-    fills its capacity c_s: priority key (not due, box, item index), so due
-    items come first (lowest box first, then lowest index) and spare capacity
-    goes to the lowest-box items that are not yet due. Success promotes one
-    box (capped at 5); failure demotes to box 1; next due = session + interval.
+    fills its capacity c_s (exact-carry rule of :func:`daily_capacity`) with
+    the priority key (amendment A2, owner-approved 2026-11-24):
+
+      1. coverage: items never reviewed since encoding first;
+      2. due items (due day <= session) before items not yet due;
+      3. earliest due day first (oldest overdue first);
+      4. lowest box first;
+      5. lowest item index.
+
+    Spare capacity therefore goes to not-yet-due items by earliest due day,
+    then lowest box, then index. Every item is reviewed at least once
+    because B = k N >= N. Success promotes one box (capped at 5); failure
+    demotes to box 1; next due = session + interval of the new box.
     """
 
     name = "leitner"
@@ -158,13 +167,16 @@ class LeitnerScheduler:
         n = config.n_items
         self.box = np.ones(n, dtype=np.int64)
         self.due = np.ones(n, dtype=np.int64)
+        self.reviewed = np.zeros(n, dtype=bool)
         self._idx = np.arange(n, dtype=np.int64)
         self._intervals = np.array(LEITNER_INTERVALS_DAYS, dtype=np.int64)
 
     def select(self, session: int) -> NDArray[np.int64]:
         c = int(self._cap[session - 1])
         not_due = (self.due > session).astype(np.int64)
-        order = np.lexsort((self._idx, self.box, not_due))
+        covered = self.reviewed.astype(np.int64)
+        # np.lexsort sorts by the last key first.
+        order = np.lexsort((self._idx, self.box, self.due, not_due, covered))
         return order[:c].astype(np.int64)
 
     def predicted_recall(self, session: int, items: NDArray[np.int64]) -> None:
@@ -174,10 +186,17 @@ class LeitnerScheduler:
         new_box = np.where(success, np.minimum(self.box[items] + 1, len(self._intervals)), 1)
         self.box[items] = new_box
         self.due[items] = session + self._intervals[new_box - 1]
+        self.reviewed[items] = True
 
 
 class GreedyScheduler:
-    """Reviews the c_s items with the lowest predicted recall under its own model.
+    """Reviews c_s items per session: coverage first, then lowest predicted recall.
+
+    Priority key (amendment A2, owner-approved 2026-11-24): (1) items never
+    reviewed since encoding first; (2) lowest predicted recall under the
+    scheduler's own model; (3) lowest item index. Capacity c_s follows the
+    exact-carry rule of :func:`daily_capacity`, so every item is reviewed at
+    least once (B = k N >= N).
 
     The scheduler knows each item's true initial half-life and the update
     parameters alpha, beta; it converts the half-life to a rate under its own
@@ -194,6 +213,7 @@ class GreedyScheduler:
         self._alpha, self._beta = config.alpha, config.beta
         self.rate = initial_rate(model, half_lives_days, self._omega)
         self.last = np.zeros(config.n_items, dtype=np.float64)
+        self.reviewed = np.zeros(config.n_items, dtype=bool)
         self._idx = np.arange(config.n_items, dtype=np.int64)
 
     def _predict_all(self, session: int) -> NDArray[np.float64]:
@@ -202,7 +222,7 @@ class GreedyScheduler:
     def select(self, session: int) -> NDArray[np.int64]:
         c = int(self._cap[session - 1])
         m_hat = self._predict_all(session)
-        order = np.lexsort((self._idx, m_hat))
+        order = np.lexsort((self._idx, m_hat, self.reviewed.astype(np.int64)))
         return order[:c].astype(np.int64)
 
     def predicted_recall(self, session: int, items: NDArray[np.int64]) -> NDArray[np.float64]:
@@ -211,6 +231,7 @@ class GreedyScheduler:
     def observe(self, session: int, items: NDArray[np.int64], success: NDArray[np.bool_]) -> None:
         self.rate[items] = update_rate(self.rate[items], success, self._alpha, self._beta)
         self.last[items] = float(session)
+        self.reviewed[items] = True
 
 
 def make_scheduler(arm: str, config: SimConfig, half_lives_days: NDArray[np.float64]) -> Scheduler:

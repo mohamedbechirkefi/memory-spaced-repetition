@@ -79,11 +79,11 @@ def ref_simulate(c: SimConfig, arm: str, half_lives, review_u, test_time: float 
         if plan is not None:
             chosen = sorted(plan[s])
         elif arm == "leitner":
-            order = sorted(range(n), key=lambda i: (0 if due[i] <= s else 1, box[i], i))
+            order = sorted(range(n), key=lambda i: (count[i] > 0, 0 if due[i] <= s else 1, due[i], box[i], i))
             chosen = sorted(order[: ref_capacity(c, s)])
         else:
             preds = {i: ref_recall(sched_model, s_rate[i], s - s_last[i], omega) for i in range(n)}
-            order = sorted(range(n), key=lambda i: (preds[i], i))
+            order = sorted(range(n), key=lambda i: (count[i] > 0, preds[i], i))
             chosen = sorted(order[: ref_capacity(c, s)])
         for i in chosen:
             m = ref_recall(model, rate[i], s - last[i], omega)

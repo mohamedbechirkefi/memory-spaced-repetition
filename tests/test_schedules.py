@@ -90,10 +90,11 @@ def test_leitner_hand_example():
     # u = 0 always succeeds (m > 0); u = 1 always fails (m <= 1)
     ru = np.array([[0.0, 0.0, 0.0], [1.0, 1.0, 1.0], [0.0, 0.0, 0.0]])
     tr = simulate(c, "leitner", make_crn(c, [1.0, 1.0, 1.0], ru))
-    # s1: all due, box 1 -> item 0 (success: box 2, due 3)
-    # s2: items 1, 2 due (box 1) -> item 1 (failure: box 1, due 3)
-    # s3: items 0 (box 2), 1 (box 1), 2 (box 1) due -> lowest box, then index -> item 1
-    assert tr.event_item.tolist() == [0, 1, 1]
+    # Amended rule (A2): never-reviewed items first, then due, oldest due day, box, index.
+    # s1: all never reviewed, due 1 -> item 0 (success: box 2, due 3)
+    # s2: items 1, 2 never reviewed -> item 1 (failure: box 1, due 3)
+    # s3: item 2 never reviewed -> item 2 (the draft rule picked item 1 again)
+    assert tr.event_item.tolist() == [0, 1, 2]
     assert tr.event_session.tolist() == [1, 2, 3]
 
 
@@ -102,6 +103,37 @@ def test_leitner_uses_spare_capacity_on_lowest_box():
     tr = simulate(c, "leitner", make_crn(c, [1.0, 1.0]))
     # capacity 2 per session: both items reviewed every session, due or not
     assert tr.event_session.size == 6
+
+
+def test_leitner_oldest_due_first_after_coverage():
+    # N = 2, D = 5, k = 2: B = 4 over sessions 1..4, capacity 1 per session
+    c = SimConfig(n_items=2, window_days=5, reviews_per_item=2, item_distribution="homogeneous")
+    # capacity per session 1..4 is 1; item 0 fails at s1 (due 2), item 1 succeeds at s2 (box 2, due 4)
+    ru = np.array([[1.0, 1.0, 1.0, 1.0], [0.0, 0.0, 0.0, 0.0]])
+    tr = simulate(c, "leitner", make_crn(c, [1.0, 1.0], ru))
+    # s1: item 0 (coverage, index); s2: item 1 (coverage); s3: item 0 due 2 (overdue), item 1 due 4 -> item 0;
+    # s4: item 0 failed at s3 -> due 4, box 1; item 1 due 4, box 2 -> equal due day, lower box -> item 0
+    assert tr.event_item.tolist() == [0, 1, 0, 0]
+
+
+@pytest.mark.parametrize("arm", ["leitner", "greedy", "greedy-exp", "greedy-power"])
+@pytest.mark.parametrize("seed", [1, 2, 3])
+def test_adaptive_arms_cover_every_item(arm, seed):
+    from memory_research.items import draw_common_random_numbers
+    for model in ("exponential", "power"):
+        for k in (1, 2, 4):
+            c = SimConfig(n_items=50, window_days=28, reviews_per_item=k, true_model=model)
+            tr = simulate(c, arm, draw_common_random_numbers(c, seed))
+            assert set(tr.event_item.tolist()) == set(range(50))
+            assert tr.event_item.size == c.budget
+
+
+def test_greedy_reviews_unreviewed_items_before_reviewed_ones():
+    c = SimConfig(n_items=3, window_days=4, reviews_per_item=1, item_distribution="lognormal")
+    # capacity 1 per session; item 0 hardest. Draft rule could re-pick item 0; amended rule covers 1 and 2 first.
+    ru = np.ones((3, 3))  # every review fails
+    tr = simulate(c, "greedy", make_crn(c, [0.2, 5.0, 10.0], ru))
+    assert tr.event_item.tolist() == [0, 1, 2]
 
 
 def test_greedy_picks_lowest_predicted_recall_with_index_ties():

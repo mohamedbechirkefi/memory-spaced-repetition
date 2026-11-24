@@ -67,7 +67,18 @@ MATRIX_CONFIG_SCHEMA: dict[str, Any] = {
                     "type": "object",
                     "required": ["start", "count"],
                     "additionalProperties": False,
-                    "properties": {"start": {"type": "integer", "minimum": 0}, "count": {"type": "integer", "minimum": 1}},
+                    "properties": {
+                        "start": {"type": "integer", "minimum": 0},
+                        "count": {"type": "integer", "minimum": 1},
+                        # Disjoint seed block per level of one factor (amendment A5, EXP-003 RI cells):
+                        # cell seeds = start + step * (index of the level in the factor list) + 0..count-1.
+                        "block_by": {
+                            "type": "object",
+                            "required": ["factor", "step"],
+                            "additionalProperties": False,
+                            "properties": {"factor": {"type": "string"}, "step": {"type": "integer", "minimum": 1}},
+                        },
+                    },
                 },
             ]
         },

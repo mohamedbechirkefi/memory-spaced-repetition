@@ -42,6 +42,22 @@ def seed_list(spec: Any) -> list[int]:
     return list(spec)
 
 
+def cell_seeds(matrix: dict[str, Any], cell: dict[str, Any]) -> list[int]:
+    """Seeds of one cell. With ``seeds.block_by`` each level of the named factor
+    gets its own disjoint block, so cells at different levels share no run."""
+    spec = matrix["seeds"]
+    if not (isinstance(spec, dict) and "block_by" in spec):
+        return seed_list(spec)
+    factor, step = spec["block_by"]["factor"], spec["block_by"]["step"]
+    levels = matrix.get("factors", {}).get(factor)
+    if levels is None:
+        raise ValueError(f"seeds.block_by names {factor!r}, which is not a factor of the matrix")
+    if step < spec["count"]:
+        raise ValueError("seeds.block_by.step must be at least seeds.count so that blocks are disjoint")
+    start = spec["start"] + step * levels.index(cell["factors"][factor])
+    return list(range(start, start + spec["count"]))
+
+
 def expand_cells(matrix: dict[str, Any]) -> list[dict[str, Any]]:
     factors = matrix.get("factors", {})
     names = sorted(factors)
@@ -78,16 +94,17 @@ def run_matrix(matrix: dict[str, Any], root: Path | None = None, allow_confirmat
     if matrix["kind"] == "confirmatory":
         if not allow_confirmatory:
             raise PermissionError("confirmatory matrices are run only through the guarded CLI path")
-        fs = require_frozen(root, exp_id, matrix.get("protocol_path"))
+        fs = require_frozen(root, exp_id, matrix.get("protocol_path"), matrix)
     else:
         fs = freeze_status(root, exp_id, matrix.get("protocol_path"))
     cells = expand_cells(matrix)
-    seeds = seed_list(matrix["seeds"])
+    for cell in cells:
+        cell["seeds"] = cell_seeds(matrix, cell)
     runs = []
     wall0 = time.perf_counter()
     for cell in cells:
         cfg = SimConfig.from_dict(cell["config"])
-        for seed in seeds:
+        for seed in cell["seeds"]:
             crn = draw_common_random_numbers(cfg, seed)
             for arm in matrix["arms"]:
                 run_id = f"{exp_id}/{cell['cell_id']}/{arm}/s{seed}"
@@ -158,4 +175,4 @@ def load_result(path: Path) -> dict[str, Any]:
     return doc
 
 
-__all__ = ["run_matrix", "write_outputs", "load_result", "load_matrix_config", "expand_cells", "seed_list", "canonical_json"]
+__all__ = ["run_matrix", "write_outputs", "load_result", "load_matrix_config", "expand_cells", "seed_list", "cell_seeds", "canonical_json"]
