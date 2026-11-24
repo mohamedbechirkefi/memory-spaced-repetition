@@ -62,7 +62,7 @@ def test_bootstrap_rejects_bad_input(bad):
 
 
 @pytest.mark.parametrize("lo, hi, verdict", [
-    (-0.05, -0.01, "below zero"), (0.01, 0.05, "above zero"), (-0.01, 0.015, "practically equivalent"), (-0.03, 0.01, "inconclusive"),
+    (-0.05, -0.01, "below zero"), (0.01, 0.05, "above zero"), (-0.01, 0.015, "equivalent within delta"), (-0.03, 0.01, "inconclusive"),
 ])
 def test_equivalence_rule(lo, hi, verdict):
     assert equivalence_verdict(lo, hi).startswith(verdict)

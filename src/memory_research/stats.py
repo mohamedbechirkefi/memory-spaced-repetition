@@ -140,9 +140,9 @@ def holm(p_values: Sequence[float | None]) -> list[float | None]:
 def equivalence_verdict(ci_low: float, ci_high: float, delta: float = 0.02) -> str:
     """Protocol section 4 rule, applied to a 95% interval of the paired difference."""
     if ci_high < 0:
-        return "below zero (contradicts the directional prediction)"
+        return "below zero"
     if ci_low > 0:
         return "above zero"
     if -delta <= ci_low and ci_high <= delta:
-        return "practically equivalent within delta"
+        return "equivalent within delta"
     return "inconclusive"

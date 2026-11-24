@@ -282,11 +282,13 @@ def build_report(result_path: Path, out_dir: Path, pdf: bool = False, metric: st
         "effect `d_z`, and the projected 95% half-width with 50 seeds (`t(0.975, 49) s / sqrt(50)`). "
         f"The protocol (section 6) treats 50 seeds as adequate when `s < {SEED_SD_THRESHOLD}`.",
         "",
-        _md_table(["cell", "arm", "pairs", "mean diff", "s", "boot 95% CI", "t 95% CI", "p (Holm)", "d_z", "half-width @50", "rule"],
-                  [[c["cell_id"], c["arm"], c.get("n_pairs"), c.get("mean_diff"), c.get("sd_diff"),
-                    f"[{_fmt(c.get('boot_ci_low'))}, {_fmt(c.get('boot_ci_high'))}]",
-                    f"[{_fmt(c.get('t_ci_low'))}, {_fmt(c.get('t_ci_high'))}]",
-                    c.get("p_holm"), c.get("d_z"), c.get("projected_half_width_50"), c.get("verdict_rule", "n/a")]
+        _md_table(["cell", "arm", "pairs", "mean diff", "s", "d_z", "p (Holm)", "half-width, 50 seeds"],
+                  [[c["cell_id"], c["arm"], c.get("n_pairs"), c.get("mean_diff"), c.get("sd_diff"), c.get("d_z"),
+                    c.get("p_holm"), c.get("projected_half_width_50")] for c in analysis["contrasts"]]),
+        "",
+        _md_table(["cell", "arm", "bootstrap 95% CI", "paired t 95% CI", "section 4 rule"],
+                  [[c["cell_id"], c["arm"], f"[{_fmt(c.get('boot_ci_low'))}, {_fmt(c.get('boot_ci_high'))}]",
+                    f"[{_fmt(c.get('t_ci_low'))}, {_fmt(c.get('t_ci_high'))}]", c.get("verdict_rule", "n/a")]
                    for c in analysis["contrasts"]]),
         "",
     ]
@@ -317,7 +319,7 @@ def build_pdf(md_path: Path) -> Path:
     md_path = md_path.resolve()
     typ = md_path.with_suffix(".typ")
     pdf = md_path.with_suffix(".pdf")
-    subprocess.run([pandoc, md_path.name, "-s", "-f", "markdown-implicit_figures", "-V", "mainfont=Libertinus Serif",
+    subprocess.run([pandoc, md_path.name, "-s", "-f", "markdown-implicit_figures-citations", "-V", "mainfont=Libertinus Serif",
                     "-V", "papersize=a4", "-o", typ.name], cwd=md_path.parent, check=True)
     subprocess.run([py, "-I", "-c", "import sys, typst; typst.compile(sys.argv[1], output=sys.argv[2], root=sys.argv[3])",
                     str(typ), str(pdf), str(md_path.parent)], check=True)

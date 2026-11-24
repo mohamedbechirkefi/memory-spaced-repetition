@@ -1,0 +1,11 @@
+{
+  "config_schema": "memory-matrix-config/1.0.0",
+  "experiment_id": "PROBE-004",
+  "kind": "exploratory",
+  "description": "Floor diagnostic for the central setting: baseline arm (uniform) only, initial half-life h0 in {1, 2, 4, 8, 16} days, otherwise central; seeds 1 to 5 (disjoint from the confirmatory seeds). Only the baseline is run, so no arm contrast is observed. Exploratory.",
+  "base": {"n_items": 50, "window_days": 28, "retention_interval_days": 7, "reviews_per_item": 4, "h0_days": 1.0, "alpha": 0.4, "beta": 0.6, "omega_per_day": 1.0, "true_model": "exponential", "item_distribution": "lognormal", "lognormal_sigma": 0.75, "bimodal_factor": 3.0},
+  "factors": {"h0_days": [1.0, 2.0, 4.0, 8.0, 16.0]},
+  "arms": ["uniform"],
+  "baseline": "uniform",
+  "seeds": {"start": 1, "count": 5}
+}
