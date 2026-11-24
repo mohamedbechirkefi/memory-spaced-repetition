@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0
 [project]
-name = "memory-research"
+name = "memory-spaced-repetition"
 version = "0.0.1"
 description = "MEMORY: simulation study of forgetting models and review schedules under a fixed study budget"
 readme = "README.md"

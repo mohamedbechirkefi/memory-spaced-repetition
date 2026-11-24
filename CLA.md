@@ -14,9 +14,9 @@ and
 **Contributor:** The individual accepting this Agreement.
 
 The Agreement concerns contributions intentionally submitted
-for inclusion in MEMORY (research repository), planned at:
+for inclusion in MEMORY (research repository), at:
 
-https://github.com/mohamedbechirkefi/memory-research
+https://github.com/mohamedbechirkefi/memory-spaced-repetition
 
 ## 1. Ownership of contributions
 

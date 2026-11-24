@@ -33,7 +33,7 @@ Then run `git status` and inspect existing files. Never overwrite the owner's ch
 - No confirmatory experiments without a frozen, owner-approved protocol. Tiny exploratory smoke checks of the toolchain or engine are allowed and labelled exploratory.
 
 ### Scope
-- Work only inside `/Users/bechir/research/labs/memory-research/`. Tools under `/Users/bechir/research/labs/.tools/` and `/Users/bechir/research/helix/.tools/node/bin` are used read-only; never modify them.
+- Work only inside `/Users/bechir/research/labs/memory-spaced-repetition/`. Tools under `/Users/bechir/research/labs/.tools/` and `/Users/bechir/research/helix/.tools/node/bin` are used read-only; never modify them.
 - Do not touch any other folder under `/Users/bechir/research` (hive, helix, cogkt, trading, other labs).
 - Never kill processes you did not start. Never delete anything you did not create in the current session.
 
