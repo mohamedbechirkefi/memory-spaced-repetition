@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->
 # MEMORY study protocol
 
-**Status: FROZEN v1.0 (owner-approved 2026-11-24, round 2: "yes for all others", "Approve all").** The SHA-256 of this file, of the experiment protocols and of the confirmatory configurations is recorded in `research/freeze.json`, `research/experiment_registry.csv` and `research/decision_log.md` (D-009). Section 15 amends sections 1 to 14 and wins where they differ. Two parameters (`h0`, `σ`) are calibrated to the Duolingo traces (section 15.2); every other numerical setting is a planning assumption for a simulation.
+**Status: FROZEN v1.1 (owner-approved 2026-11-24: round 2, "yes for all others", "Approve all"; round 3 pre-data amendment, "Approve all"). v1.0 is superseded by the round-3 recalibration (section 16): central retention interval 281 days.** The SHA-256 of this file, of the experiment protocols and of the confirmatory configurations is recorded in `research/freeze.json`, `research/experiment_registry.csv` and `research/decision_log.md` (D-009). Section 15 amends sections 1 to 14 and section 16 amends sections 1 to 15; the later section wins where they differ. Two parameters (`h0`, `σ`) are calibrated to the Duolingo traces (section 15.2); every other numerical setting is a planning assumption for a simulation.
 
 ## 1. Research question
 
@@ -227,3 +227,24 @@ Approved target: "the baseline uniform schedule's recall lands in [0.4, 0.7] at 
 5. **Consequences fixed now, before the value is known.** The selected `RI*` replaces `RI = 7` as the central retention interval in EXP-001 and EXP-002 (EXP-002 shares the central setting). EXP-003 keeps its levels `RI ∈ {1, 7, 30}` and gains `RI*` as a fourth level (unless `RI*` already is one of them), so that the sweep contains the new central cell; that level gets its own disjoint seed block (`3000 + 100 × level index`, that is 3300 to 3349), and the run count becomes 2 × 3 × 4 × 3 × 5 × 50 = 18,000. The secondary metric "recall at `RI ∈ {1, 30}`" is unchanged. Seeds, arms, metrics, analysis and every other parameter are unchanged.
 6. **Disclosure.** The baseline mean `R` under power-law forgetting at `RI*` (EXP-002's baseline, still the `uniform` arm alone) is recorded as well, descriptively; it plays no role in the selection.
 7. **Journal.** Exploratory entries RI-001 (selection, `results/exploratory/RI-001/selection.json`) and PROBE-006 (runner re-check, `results/exploratory/PROBE-006/`).
+
+### 16.3 Outcomes and applied changes (recorded after the computations)
+
+**Rule (a), CAL-002** (method 16.1 committed at `664de3c`; output `results/exploratory/CAL-002/model_comparison.json`). Held-out log-loss per trial on split V (427,005 trials): `constant` 0.328; `exp-median` 0.587, `exp-population` 0.549, `exp-mle` 0.569 (pooled half-life 94.5 days); `power-median` 0.473, `power-population` 0.476, `power-mle` 0.428 (pooled exponent `n = 0.0764` with `ω = 1`). The power-law family fits better than the exponential family (0.428 against 0.549), but **neither family beats the constant predictor**. Observed split V recall is nearly flat in the delay: 0.912 below one hour, 0.905 from one hour to one day, 0.900 from 1 to 7 days, 0.890 from 7 to 30 days, 0.868 at 30 days or more. A curve that starts at `p(0) = 1` cannot represent recall that stays near 0.9 even at the shortest delays. Consequences, as 16.1.4 and 16.1.6 require:
+
+- **Limitation.** Neither forgetting model used by the simulation predicts the real first-review recall of DS01 better than a constant. The real data calibrates the time scale of the simulated item population (`h0`, `σ`); it does not validate the memory model.
+- **Claims boundary (model dependence).** Every result of EXP-001 to EXP-003 is a property of the assumed memory model (exponential or power-law forgetting with multiplicative updates, section 2), conditional on that model. No result is a claim about the schedules' effect on Duolingo learners or on any human learner, and the DS01 calibration does not turn it into one.
+- No parameter is changed by rule (a).
+
+**Rule (b), RI-001 and PROBE-006** (rule 16.2 committed at `8d4854a`; outputs `results/exploratory/RI-001/selection.json`, `results/exploratory/PROBE-006/`). Uniform arm only, exponential learners, exploratory seeds 1 to 30. Baseline mean `R` is non-increasing in `RI` (checked): 0.982 at `RI = 1`, 0.959 at 7, 0.895 at 30, 0.776 at 90, 0.652 at 180, 0.483 at 365. Candidates in `[0.4, 0.7]`: `RI` 142 to 365 days. Step 1 succeeds: **`RI* = 281` days, baseline mean `R` 0.550** (per seed 0.454 to 0.606). Step 2 (difficulty subset) is not used, so no parameter value changes. The runner re-check (PROBE-006) gives the same mean. Descriptive (16.2.6): the power-law baseline at `RI = 281` is 0.680. No other arm was simulated and no contrast was computed at any `RI`.
+
+**Applied changes (v1.1).**
+
+- B1. Central retention interval `RI = 281` days in EXP-001 and EXP-002 (replacing 7). The delayed test is at `T_test = 27 + 281 = 308` days.
+- B2. EXP-003 levels `RI ∈ {1, 7, 30, 281}`; the new level has seed block 3300 to 3349; 72 cells, 18,000 runs. The other three blocks are unchanged.
+- Unchanged: `h0 = 54.0` days, `σ = 0.759`, `ω`, `α`, `β`, `N`, `D`, `k`, arms, seeds 1000 to 1049 for EXP-001 and EXP-002, metrics, analysis, `δ`.
+- Sample size: the seed-spread estimate of section 6 has not been re-measured at `RI = 281`, because measuring it needs a second arm (a contrast), which rule (b) forbids. The 50 seeds stay as approved; the achieved interval width is reported with the results.
+
+### 16.4 Re-freeze (rule (c))
+
+The SHA-256 values of v1.1 (this file, the three experiment protocols and the three configurations) are in `research/freeze.json`, which keeps the v1.0 values under `superseded` with the reason, and extends the C4 disclosure with everything seen in rounds 1 to 3. The guard accepts only the v1.1 configurations.

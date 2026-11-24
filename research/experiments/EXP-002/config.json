@@ -7,7 +7,7 @@
   "base": {
     "n_items": 50,
     "window_days": 28,
-    "retention_interval_days": 7,
+    "retention_interval_days": 281,
     "reviews_per_item": 4,
     "h0_days": 54.0,
     "alpha": 0.4,
@@ -31,5 +31,5 @@
     "start": 1000,
     "count": 50
   },
-  "status_note": "FROZEN v1.0 (owner-approved 2026-11-24, round 2). h0_days and lognormal_sigma fitted from DS01 by protocol 15.2 (CAL-001, results/exploratory/CAL-001/calibration.json)."
+  "status_note": "FROZEN v1.1 (owner-approved 2026-11-24, rounds 2 and 3). h0_days and lognormal_sigma fitted from DS01 by protocol 15.2 (CAL-001, results/exploratory/CAL-001/calibration.json). Round 3 (protocol 16): central RI 281 days, selected from the uniform arm alone (RI-001)."
 }

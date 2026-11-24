@@ -38,6 +38,13 @@
 
 - **Calibration fit.** `h0` and `σ` come from first-review recall in the Duolingo traces (protocol 15.2). The single exponential curve through `p(0) = 1` predicts held-out first-review recall worse than a constant (log-loss 0.587 vs 0.328, CAL-001): real recall stays near 0.9 at short delays. The calibrated parameters therefore match the median half-life of real lexemes, not the shape of real forgetting curves.
 - **`σ` is an upper estimate.** Per-lexeme half-lives include sampling noise (protocol 15.2.6).
-- **Ceiling regime.** At the fitted setting, baseline recall is about 0.96 for exponential learners (PROBE-005, baseline only), which compresses arm differences in EXP-001.
+- **Ceiling regime.** At the fitted setting with `RI = 7`, baseline recall is about 0.96 for exponential learners (PROBE-005, baseline only). Superseded in round 3: the central `RI` is now 281 days (see below).
 - **Not calibrated.** `α`, `β`, `ω` remain planning values.
 - **Population.** Duolingo learners and lexemes in 2013 data; not representative of other learners or materials.
+
+## Added at the round-3 re-freeze (2026-11-24, protocol section 16)
+
+- **Model dependence (CAL-002).** Neither forgetting model beats a constant predictor of held-out first-review recall in DS01: best power-law curve 0.428, best exponential curve 0.549, constant 0.328 (log-loss per trial). Real recall is nearly flat in the delay (0.91 below one hour, 0.87 at 30 days or more). Every result is therefore a property of the assumed memory model, conditional on it; the calibration sets the time scale of the simulated items and does not validate the model.
+- **Long central retention interval.** To leave the ceiling, the central `RI` is 281 days (rule 16.2, baseline-only; baseline recall 0.550 exponential, 0.680 power law). The study window stays 28 days, so the central cell describes retention about nine months after a four-week course.
+- **Ceiling at short `RI`.** EXP-003 keeps `RI = 1, 7, 30`, where exponential baselines are 0.98, 0.96 and 0.89 at `k = 4` (RI-001); differences there are compressed.
+- **Seed spread not re-measured** at `RI = 281` (it needs a contrast, which rule (b) forbids); the achieved interval width is reported with the results.

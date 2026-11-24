@@ -120,8 +120,28 @@ def test_frozen_confirmatory_configs_validate_and_expand():
         cells = expand_cells(m)
         sizes[exp] = sum(len(cell_seeds(m, c)) for c in cells) * len(m["arms"])
         seeds[exp] = {c["cell_id"]: cell_seeds(m, c) for c in cells}
-    assert sizes == {"EXP-001": 250, "EXP-002": 300, "EXP-003": 13500}  # protocol section 9
+    assert sizes == {"EXP-001": 250, "EXP-002": 300, "EXP-003": 18000}  # protocol section 9, round 3 (16.3 B2)
     assert seeds["EXP-001"]["C000"] == list(range(1000, 1050)) == seeds["EXP-002"]["C000"]
+
+
+def test_round3_central_retention_interval():
+    # Protocol 16.3 B1: RI* = 281 days in EXP-001 and EXP-002; fitted values unchanged.
+    for exp in ("EXP-001", "EXP-002"):
+        b = load_matrix_config(ROOT / "research" / "experiments" / exp / "config.json")["base"]
+        assert b["retention_interval_days"] == 281 and b["h0_days"] == 54.0 and b["lognormal_sigma"] == 0.759
+
+
+def test_guard_refuses_superseded_v1_0_configs():
+    # The v1.0 configurations (RI = 7 in EXP-001/EXP-002; RI levels 1, 7, 30 in EXP-003) are refused.
+    for exp in ("EXP-001", "EXP-002", "EXP-003"):
+        m = load_matrix_config(ROOT / "research" / "experiments" / exp / "config.json")
+        old = copy.deepcopy(m)
+        old["base"]["retention_interval_days"] = 7
+        if "factors" in old:
+            old["factors"]["retention_interval_days"] = [1, 7, 30]
+        old["status_note"] = "FROZEN v1.0"
+        st = freeze_status(ROOT, exp, m["protocol_path"], old)
+        assert not st.frozen and any("differs from the frozen configuration" in r for r in st.reasons)
 
 
 def test_exp003_retention_cells_use_disjoint_runs():
@@ -130,10 +150,11 @@ def test_exp003_retention_cells_use_disjoint_runs():
     by_ri: dict = {}
     for c in expand_cells(m):
         by_ri.setdefault(c["factors"]["retention_interval_days"], set()).update(cell_seeds(m, c))
-    assert sorted(by_ri) == [1, 7, 30]
+    assert sorted(by_ri) == [1, 7, 30, 281]  # round 3 (protocol 16.3 B2): RI* = 281 added
+    assert sorted(by_ri[281]) == list(range(3300, 3350)) and sorted(by_ri[7]) == list(range(3100, 3150))
     blocks = list(by_ri.values())
     assert all(len(b) == 50 for b in blocks)
-    assert not (blocks[0] & blocks[1]) and not (blocks[0] & blocks[2]) and not (blocks[1] & blocks[2])
+    assert all(not (a & b) for i, a in enumerate(blocks) for b in blocks[i + 1:])
     assert all(not (b & set(range(1000, 1050))) for b in blocks)  # nor with EXP-001/EXP-002 runs
     assert all(min(b) >= 1000 for b in blocks)  # disjoint from exploratory seeds 1 to 30
 

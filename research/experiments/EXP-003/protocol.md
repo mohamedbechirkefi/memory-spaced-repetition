@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->
 # EXP-003 protocol: robustness sweep over models, budgets, retention intervals and item distributions
 
-**Status: FROZEN v1.0 (owner-approved 2026-11-24, round 2), not yet run. Protocol hash: recorded in `research/freeze.json` and `research/experiment_registry.csv`.** Descriptive (no hypothesis tests). Depends on EXP-001 and EXP-002 engines. Shared definitions: `research/protocol.md`.
+**Status: FROZEN v1.1 (owner-approved 2026-11-24, rounds 2 and 3; round-3 pre-data amendment at the end of this file), not yet run. Protocol hash: recorded in `research/freeze.json` and `research/experiment_registry.csv`.** Descriptive (no hypothesis tests). Depends on EXP-001 and EXP-002 engines. Shared definitions: `research/protocol.md`.
 
 ## 1. Precise question
 
@@ -80,3 +80,14 @@ Applied from study protocol section 15; these lines override the sections above 
 - Adaptive arms follow the coverage-first rules of study protocol 15.1 (A2).
 - Run count 13,500 (unchanged).
 - Reproduction: `uv sync --frozen`, then `uv run python -m memory_research run --config research/experiments/EXP-003/config.json --report --pdf`. The guard accepts only the configuration whose canonical hash is in `research/freeze.json`.
+
+## Pre-data amendment, round 3 (owner-approved 2026-11-24, round 3: "Approve all")
+
+Applied from study protocol section 16 (recalibration); these lines override the sections above where they differ. No confirmatory run had taken place.
+
+- `RI` levels become `{1, 7, 30, 281}`: the new central retention interval `RI = 281` days (rule 16.2, selected from the `uniform` arm alone on exploratory seeds; RI-001) is added as a fourth level so that the sweep contains the new central cell. The three earlier levels are kept.
+- Seed block of the new level: 3300 to 3349 (`3000 + 100 × level index`); the blocks of `RI = 1, 7, 30` are unchanged. All four blocks are disjoint from each other and from EXP-001 and EXP-002.
+- 2 models × 3 budgets × 4 retention intervals × 3 distributions = 72 cells; 18,000 runs.
+- Section 15 (failure modes): at `RI = 1, 7, 30` the fitted setting is near the ceiling for exponential learners (baseline 0.98, 0.96, 0.89 at `k = 4`, `lognormal`); differences there are compressed and reported as such.
+- Claims boundary: neither forgetting model beats a constant predictor of real first-review recall (CAL-002, study protocol 16.3). Results are properties of the assumed memory model, not of human learners.
+- Superseded v1.0 hashes are kept in `research/freeze.json`.
