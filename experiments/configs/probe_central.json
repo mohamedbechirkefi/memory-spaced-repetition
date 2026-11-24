@@ -1,0 +1,32 @@
+{
+  "config_schema": "memory-matrix-config/1.0.0",
+  "experiment_id": "PROBE-001",
+  "kind": "exploratory",
+  "description": "Planning probe for EXP-001 sample size: central setting at full size (N = 50), 5 arms, seeds 1 to 30 (disjoint from the confirmatory seeds). Measures runtime and the SD of paired differences. Exploratory.",
+  "base": {
+    "n_items": 50,
+    "window_days": 28,
+    "retention_interval_days": 7,
+    "reviews_per_item": 4,
+    "h0_days": 1.0,
+    "alpha": 0.4,
+    "beta": 0.6,
+    "omega_per_day": 1.0,
+    "true_model": "exponential",
+    "item_distribution": "lognormal",
+    "lognormal_sigma": 0.75,
+    "bimodal_factor": 3.0
+  },
+  "arms": [
+    "uniform",
+    "expanding",
+    "massed",
+    "leitner",
+    "greedy"
+  ],
+  "baseline": "uniform",
+  "seeds": {
+    "start": 1,
+    "count": 30
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "config_schema": "memory-matrix-config/1.0.0",
+  "experiment_id": "EXP-002",
+  "kind": "confirmatory",
+  "description": "EXP-002: oracle advantage and model misspecification under power-law forgetting.",
+  "protocol_path": "research/experiments/EXP-002/protocol.md",
+  "base": {
+    "n_items": 50,
+    "window_days": 28,
+    "retention_interval_days": 7,
+    "reviews_per_item": 4,
+    "h0_days": 1.0,
+    "alpha": 0.4,
+    "beta": 0.6,
+    "omega_per_day": 1.0,
+    "true_model": "power",
+    "item_distribution": "lognormal",
+    "lognormal_sigma": 0.75,
+    "bimodal_factor": 3.0
+  },
+  "arms": [
+    "uniform",
+    "expanding",
+    "massed",
+    "leitner",
+    "greedy-power",
+    "greedy-exp"
+  ],
+  "baseline": "uniform",
+  "seeds": {
+    "start": 1000,
+    "count": 50
+  },
+  "status_note": "DRAFT, not frozen. Written in M2 so that the reproduction command exists before the freeze; the CLI refuses to run it until the owner freezes the protocol (G-FREEZE)."
+}
