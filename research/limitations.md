@@ -48,3 +48,12 @@
 - **Long central retention interval.** To leave the ceiling, the central `RI` is 281 days (rule 16.2, baseline-only; baseline recall 0.550 exponential, 0.680 power law). The study window stays 28 days, so the central cell describes retention about nine months after a four-week course.
 - **Ceiling at short `RI`.** EXP-003 keeps `RI = 1, 7, 30`, where exponential baselines are 0.98, 0.96 and 0.89 at `k = 4` (RI-001); differences there are compressed.
 - **Seed spread not re-measured** at `RI = 281` (it needs a contrast, which rule (b) forbids); the achieved interval width is reported with the results.
+
+## Added in M3 (2026-11-25, after the confirmatory runs)
+
+- **Oracle dependence (EXP-002).** The EXP-001 greedy advantage (+0.016) does not survive model misspecification: with an exponential model on power-law learners, greedy is practically equivalent to uniform within 0.02 (CLM-004, CLM-005). Both greedy schedulers also receive each item's true initial half-life, an advantage no deployed scheduler has.
+- **Metric dependence (EXP-001).** Greedy raises the weakest items and lowers mastery share (CLM-002); the conclusion holds for mean recall only. Observed (Bernoulli) recall gives an interval that contains 0.
+- **Setting dependence (EXP-003).** The ranking of arms changes across forgetting model, budget, retention interval and item distribution (CLM-007); at `k = 2` greedy is below uniform in 13 cells. Many exponential cells at `RI` 1 to 30 sit at the ceiling (automatic flags in the generated EXP-003 report), where differences are compressed.
+- **Daily load confound.** `expanding` and `massed` place every item's reviews on the same 4 sessions (peak load 50 reviews per session), while `uniform`, `leitner` and the greedy arms spread reviews over 27 sessions with a peak of 8. Total budget is equal; daily burden is not.
+- **Achieved precision.** At `RI = 281` the SD of paired differences was 0.0186 (EXP-001 primary) and 0.041 (EXP-002 primary contrasts), below the 0.07 adequacy threshold of protocol section 6.
+- **EXP-002 `ω` check not run.** The descriptive check with `ω ∈ {0.3, 3}` (EXP-002 protocol section 16) has no frozen configuration; robustness to `ω` is untested.

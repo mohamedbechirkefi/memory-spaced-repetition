@@ -167,3 +167,40 @@ Created: `src/memory_research/design.py`, `scripts/diagnose_forgetting_fit.py`, 
 ### Next action
 
 M3 when the coordinator schedules it: `uv run python -m memory_research run --config research/experiments/EXP-00N/config.json --report --pdf` for N = 1, 2, 3 (EXP-003 now 18,000 runs).
+
+## 2026-11-25, session 5: M3 confirmatory runs (owner: "Start next")
+
+**Milestone:** M3. **Bounded task:** `labs/_shared/M3-brief.md`: pre-run checks, smoke and metric validation, the three frozen matrices, analysis, records. No push.
+
+### Commands and actual outputs
+
+- Pre-run: tree clean at `e7d4ab2`; SHA-256 of `research/protocol.md`, the three experiment protocols, the three configurations and `data/manifest.json` all equal `research/freeze.json`. `../.tools/py/bin/uv sync --frozen --all-groups --all-extras`: `Audited 24 packages`. `.venv/bin/python -m pytest -q`: `222 passed`. The package imports from this repository's `src/`. DS01 present, SHA-256 `26cf9b33...076873` equals the manifest.
+- Pre-run code (`6bde8ef`, D-015): `frozen_analysis.py`, `scripts/analyse_confirmatory.py`, `scripts/validate_metrics.py`, per-run `start_utc`/`end_utc`, data manifest hash in the environment, figure labels by result kind, 12 new tests. Suite: `234 passed`.
+- `.venv/bin/python scripts/validate_metrics.py`: `METRICVAL-001: 38 checks, 0 failed`.
+- `.venv/bin/python -m memory_research smoke`: 25 runs ok; it overwrote the committed SMOKE-001 output, which was copied to `results/exploratory/SMOKE-001-M3/` and restored (D-016). `run --config experiments/configs/smoke_v11.json --report`: `SMOKE-002 [exploratory]: 25 runs, 25 ok, 0 excluded, 0 failed, wall clock 0.037 s`.
+- Rehearsals (exploratory seeds, at clean `d4a793d`): PROBE-007 25 runs, PROBE-008 30 runs, PROBE-009 1,800 runs, all ok; the frozen analysis ran end to end on each.
+- Confirmatory at clean `d4a793d`, `nice -n 10 .venv/bin/python -m memory_research run --config research/experiments/EXP-00N/config.json --report --pdf`:
+  - `EXP-001 [confirmatory]: 250 runs, 250 ok, 0 excluded, 0 failed, wall clock 0.603 s` (exit 0)
+  - `EXP-002 [confirmatory]: 300 runs, 300 ok, 0 excluded, 0 failed, wall clock 0.907 s` (exit 0)
+  - `EXP-003 [confirmatory]: 18000 runs, 18000 ok, 0 excluded, 0 failed, wall clock 36.063 s` (exit 0)
+  - Process wall clock 2026-11-24T23:36:11Z to 23:37:32Z UTC (including report and PDF generation).
+- `scripts/analyse_confirmatory.py` for each experiment (EXP-002 and EXP-003 read the EXP-001 analysis). Rerun at `3811bb9` after a figure-layout fix; all analysis values identical (D-016). A second execution of EXP-001 to a scratch directory reproduced every per-run metric exactly.
+- `scripts/build_experiment_records.py`: `research/experiments/EXP-00N/{results_tables.md, metrics.csv, figures/}`.
+
+### Results (frozen rules)
+
+- EXP-001 primary greedy minus uniform +0.0162, 95% bootstrap CI [0.0110, 0.0213]: above zero, directional prediction supported; mastery share reverses sign, so restricted to mean recall.
+- EXP-002: greedy-power +0.0347 [0.0232, 0.0461] (H0a rejected); greedy-exp +0.0085 [-0.0026, 0.0195] (H0b not rejected, within ±0.02): the EXP-001 advantage is declared dependent on model knowledge.
+- EXP-003 (descriptive): 70 of 72 cells with a pairwise rank reversal against EXP-001; E1 13 of 18, E2 16 of 24.
+
+### Failures and deviations
+
+No run failed or was excluded. No deviation from the frozen matrices. EXP-002 `ω` check not run (no frozen configuration). The 11.3 narrative reports were not written: the file tool refused report files in this session (D-016).
+
+### Files created or changed
+
+Created: `src/memory_research/frozen_analysis.py`, `scripts/{analyse_confirmatory,validate_metrics,build_experiment_records}.py`, `tests/test_frozen_analysis.py`, `experiments/configs/{smoke_v11,rehearsal_exp001,rehearsal_exp002,rehearsal_exp003}.json`, `results/confirmatory/`, `results/exploratory/{METRICVAL-001,SMOKE-001-M3,SMOKE-002,PROBE-007,PROBE-008,PROBE-009}/`, `research/experiments/EXP-00N/{results_tables.md,metrics.csv,figures/}`. Changed: `runner.py`, `environment.py`, `schema.py`, `report.py`, `.gitignore`, registry, journal, claims register, limitations, decision log, roadmap.
+
+### Next action
+
+Write the three 11.3 narrative reports from the generated tables, then M4 (evidence audit, second review pass, manuscript synthesis).

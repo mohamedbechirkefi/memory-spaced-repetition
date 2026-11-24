@@ -1,0 +1,301 @@
+{
+ "environment": {
+  "cpu": "Apple M1 Pro",
+  "data_manifest_sha256": "6d828809a1b2597fac61cd2e08d936383a7c86877242168421d7496c2602eb36",
+  "git_dirty": false,
+  "git_revision": "6bde8efc2560ed999d532c6f4552fec8b30cdc97",
+  "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+  "package_version": "0.2.0",
+  "packages": {
+   "jsonschema": "4.26.0",
+   "matplotlib": "3.11.2",
+   "numpy": "2.5.4"
+  },
+  "python": "3.12.1"
+ },
+ "experiment_id": "SMOKE-001",
+ "kind": "exploratory",
+ "matrix_config_hash": "cda83ad8da4f35c2f8c19856f53ca2f125400d8074c66e0f1c47ac4bac676e9f",
+ "peak_rss_bytes": 42123264,
+ "result_path": "results/exploratory/SMOKE-001/results.json",
+ "result_sha256": "df88ba0365aab546262d2e9dc2c82af962fdba580c3833e74baadd8752b99a67",
+ "runs": [
+  {
+   "arm": "uniform",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.004871Z",
+   "peak_rss_bytes": 40615936,
+   "run_id": "SMOKE-001/C000/uniform/s1",
+   "runtime_s": 0.008246708996011876,
+   "seed": 1,
+   "start_utc": "2026-11-24T23:34:48.996183Z",
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.005799Z",
+   "peak_rss_bytes": 40615936,
+   "run_id": "SMOKE-001/C000/expanding/s1",
+   "runtime_s": 0.0008560839996789582,
+   "seed": 1,
+   "start_utc": "2026-11-24T23:34:49.004931Z",
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.006763Z",
+   "peak_rss_bytes": 40615936,
+   "run_id": "SMOKE-001/C000/massed/s1",
+   "runtime_s": 0.0009274999974877574,
+   "seed": 1,
+   "start_utc": "2026-11-24T23:34:49.005824Z",
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.010111Z",
+   "peak_rss_bytes": 40615936,
+   "run_id": "SMOKE-001/C000/leitner/s1",
+   "runtime_s": 0.003300750002381392,
+   "seed": 1,
+   "start_utc": "2026-11-24T23:34:49.006797Z",
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.014480Z",
+   "peak_rss_bytes": 40648704,
+   "run_id": "SMOKE-001/C000/greedy/s1",
+   "runtime_s": 0.004306875001930166,
+   "seed": 1,
+   "start_utc": "2026-11-24T23:34:49.010158Z",
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.015755Z",
+   "peak_rss_bytes": 40648704,
+   "run_id": "SMOKE-001/C000/uniform/s2",
+   "runtime_s": 0.001002749995677732,
+   "seed": 2,
+   "start_utc": "2026-11-24T23:34:49.014737Z",
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.016048Z",
+   "peak_rss_bytes": 40648704,
+   "run_id": "SMOKE-001/C000/expanding/s2",
+   "runtime_s": 0.00026420799986226484,
+   "seed": 2,
+   "start_utc": "2026-11-24T23:34:49.015779Z",
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.016302Z",
+   "peak_rss_bytes": 40648704,
+   "run_id": "SMOKE-001/C000/massed/s2",
+   "runtime_s": 0.00024158299493137747,
+   "seed": 2,
+   "start_utc": "2026-11-24T23:34:49.016057Z",
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.017222Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/leitner/s2",
+   "runtime_s": 0.000906458000827115,
+   "seed": 2,
+   "start_utc": "2026-11-24T23:34:49.016313Z",
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.018516Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/greedy/s2",
+   "runtime_s": 0.0012832499996875413,
+   "seed": 2,
+   "start_utc": "2026-11-24T23:34:49.017230Z",
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.019323Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/uniform/s3",
+   "runtime_s": 0.0007310410001082346,
+   "seed": 3,
+   "start_utc": "2026-11-24T23:34:49.018588Z",
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.019584Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/expanding/s3",
+   "runtime_s": 0.00025024999922607094,
+   "seed": 3,
+   "start_utc": "2026-11-24T23:34:49.019331Z",
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.019833Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/massed/s3",
+   "runtime_s": 0.0002389169967500493,
+   "seed": 3,
+   "start_utc": "2026-11-24T23:34:49.019591Z",
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.020729Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/leitner/s3",
+   "runtime_s": 0.0008859999943524599,
+   "seed": 3,
+   "start_utc": "2026-11-24T23:34:49.019840Z",
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.021998Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/greedy/s3",
+   "runtime_s": 0.0012594159998116083,
+   "seed": 3,
+   "start_utc": "2026-11-24T23:34:49.020736Z",
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.022759Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/uniform/s4",
+   "runtime_s": 0.000706124999851454,
+   "seed": 4,
+   "start_utc": "2026-11-24T23:34:49.022049Z",
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.023004Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/expanding/s4",
+   "runtime_s": 0.00023491600586567074,
+   "seed": 4,
+   "start_utc": "2026-11-24T23:34:49.022766Z",
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.023240Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/massed/s4",
+   "runtime_s": 0.00022637499932898208,
+   "seed": 4,
+   "start_utc": "2026-11-24T23:34:49.023010Z",
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.024110Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/leitner/s4",
+   "runtime_s": 0.0008612500023446046,
+   "seed": 4,
+   "start_utc": "2026-11-24T23:34:49.023246Z",
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.025356Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/greedy/s4",
+   "runtime_s": 0.0012334579951129854,
+   "seed": 4,
+   "start_utc": "2026-11-24T23:34:49.024118Z",
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.026116Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/uniform/s5",
+   "runtime_s": 0.0007003339997027069,
+   "seed": 5,
+   "start_utc": "2026-11-24T23:34:49.025412Z",
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.026358Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/expanding/s5",
+   "runtime_s": 0.00023195800167741254,
+   "seed": 5,
+   "start_utc": "2026-11-24T23:34:49.026122Z",
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.026593Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/massed/s5",
+   "runtime_s": 0.00022600000374950469,
+   "seed": 5,
+   "start_utc": "2026-11-24T23:34:49.026364Z",
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.027460Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/leitner/s5",
+   "runtime_s": 0.0008580409994465299,
+   "seed": 5,
+   "start_utc": "2026-11-24T23:34:49.026599Z",
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "end_utc": "2026-11-24T23:34:49.028703Z",
+   "peak_rss_bytes": 40697856,
+   "run_id": "SMOKE-001/C000/greedy/s5",
+   "runtime_s": 0.001233041002706159,
+   "seed": 5,
+   "start_utc": "2026-11-24T23:34:49.027466Z",
+   "status": "ok"
+  }
+ ],
+ "schema_version": "memory-run-manifest/1.0.0",
+ "wall_clock_s": 0.03923887499695411
+}

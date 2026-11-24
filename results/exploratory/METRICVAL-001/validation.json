@@ -266,8 +266,8 @@
  "environment": {
   "cpu": "Apple M1 Pro",
   "data_manifest_sha256": "6d828809a1b2597fac61cd2e08d936383a7c86877242168421d7496c2602eb36",
-  "git_dirty": true,
-  "git_revision": "e7d4ab2e43d45abede64f2e075c9d6d388cd11e7",
+  "git_dirty": false,
+  "git_revision": "6bde8efc2560ed999d532c6f4552fec8b30cdc97",
   "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
   "package_version": "0.2.0",
   "packages": {

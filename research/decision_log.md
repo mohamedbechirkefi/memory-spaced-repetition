@@ -120,3 +120,13 @@ Each entry: id, date, decision, decided by, rationale, alternatives, consequence
 - **Provenance fields.** Each run now records `start_utc` and `end_utc`; the environment records the SHA-256 of `data/manifest.json`. Both are optional schema fields (`memory-result/1.0.0` remains valid for earlier files).
 - **Labels.** The M2 figure titles said "EXPLORATORY" for every result file; they now follow the result's kind.
 - **Not run.** The EXP-002 `ω ∈ {0.3, 3}` descriptive check (EXP-002 protocol section 16) has no frozen configuration; it is not run in M3 (brief: an optional experiment runs only if it has a frozen config). Writing its configuration would require choosing its seeds and arms, which the protocol does not fix.
+
+## D-016 (2026-11-25): M3 confirmatory runs, records and one presentation change
+
+- **Decided by:** the session, under the M3 brief (the owner's "Start next", 2026-11-25).
+- **Runs.** EXP-001 (250 runs), EXP-002 (300) and EXP-003 (18,000) ran once each through the guard at clean revision `d4a793d`, with the frozen configurations and seeds; every run `ok`, none excluded or failed. No protocol, configuration, seed, exclusion rule or analysis code changed after the output existed.
+- **Presentation change after output (no analysis change).** The forest-plot titles and axis labels of `scripts/analyse_confirmatory.py` were clipped; the figure size and label line breaks were changed at `3811bb9` and the analysis rerun. Every value in the three `frozen_analysis.json` files was compared before and after and is identical; only the generator revision differs.
+- **Smoke output overwritten and restored.** `python -m memory_research smoke` writes to `results/exploratory/SMOKE-001/`, which held the committed M2 smoke output. The session copied the new output to `results/exploratory/SMOKE-001-M3/` and restored the committed files with `git restore` (its own modification only).
+- **Storage.** EXP-003 outputs total about 24 MB, above the 20 MB limit; its `results.json` (15.5 MB) is git-ignored and regenerable (bit-identical on the same platform); the run manifest, SHA-256 manifest, generated report, analysis and tables are committed. EXP-001 and EXP-002 are committed in full.
+- **Not run.** EXP-002 `ω` descriptive check (no frozen configuration; D-015).
+- **Records blocked.** The 11.3 narrative reports `research/experiments/EXP-00N/report.md` were not written in this session: the session's file tool refused to create report files. The generated tables (`results_tables.md`), generated reports and PDFs (`results/confirmatory/EXP-00N/report/`) and the analysis files exist; the narrative reports are pending for the owner or a later session.

@@ -1,0 +1,896 @@
+{
+ "cells": [
+  {
+   "cell_id": "C000",
+   "config": {
+    "alpha": 0.4,
+    "beta": 0.6,
+    "bimodal_factor": 3.0,
+    "h0_days": 54.0,
+    "item_distribution": "lognormal",
+    "lognormal_sigma": 0.759,
+    "n_items": 50,
+    "omega_per_day": 1.0,
+    "retention_interval_days": 281,
+    "reviews_per_item": 4,
+    "true_model": "exponential",
+    "window_days": 28
+   },
+   "config_hash": "166d257a2d5e9d1ee7b1e2ee37da182b0efc7c6370cc67f0ca2d2b7e0878920b",
+   "factors": {},
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  }
+ ],
+ "created_utc": "2026-11-24T23:35:37Z",
+ "environment": {
+  "cpu": "Apple M1 Pro",
+  "data_manifest_sha256": "6d828809a1b2597fac61cd2e08d936383a7c86877242168421d7496c2602eb36",
+  "git_dirty": false,
+  "git_revision": "d4a793df271ec2dc1963d00715e3a6525a07863f",
+  "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+  "package_version": "0.2.0",
+  "packages": {
+   "jsonschema": "4.26.0",
+   "matplotlib": "3.11.2",
+   "numpy": "2.5.4"
+  },
+  "python": "3.12.1"
+ },
+ "experiment_id": "PROBE-007",
+ "kind": "exploratory",
+ "label": "EXPLORATORY: not a confirmatory result; protocol not frozen; never to be presented as a finding.",
+ "matrix_config": {
+  "arms": [
+   "uniform",
+   "expanding",
+   "massed",
+   "leitner",
+   "greedy"
+  ],
+  "base": {
+   "alpha": 0.4,
+   "beta": 0.6,
+   "bimodal_factor": 3.0,
+   "h0_days": 54.0,
+   "item_distribution": "lognormal",
+   "lognormal_sigma": 0.759,
+   "n_items": 50,
+   "omega_per_day": 1.0,
+   "retention_interval_days": 281,
+   "reviews_per_item": 4,
+   "true_model": "exponential",
+   "window_days": 28
+  },
+  "baseline": "uniform",
+  "config_schema": "memory-matrix-config/1.0.0",
+  "description": "Exploratory rehearsal of the EXP-001 frozen configuration with exploratory seeds (start 1, count 5), disjoint from every confirmatory seed; tests the runner and the frozen analysis code before any confirmatory output exists. Not a finding.",
+  "experiment_id": "PROBE-007",
+  "kind": "exploratory",
+  "seeds": {
+   "count": 5,
+   "start": 1
+  }
+ },
+ "matrix_config_hash": "f748632c9516e3bc913ac4c77a1f80788ac2db8a634e4237894a7c0fe845fd8a",
+ "protocol": {
+  "frozen": false,
+  "path": null,
+  "sha256": null
+ },
+ "runs": [
+  {
+   "arm": "uniform",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.427886Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.02,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.58,
+    "peak_daily_load": 8,
+    "recall_mean": 0.49446829843316215,
+    "recall_mean_at_ri": {
+     "1": 0.9628751465628064,
+     "30": 0.8434453708890609,
+     "7": 0.9264891628951453
+    },
+    "recall_min": 6.227643624440607e-75,
+    "recall_p10": 0.012892297886576072,
+    "review_events": 200,
+    "review_success_rate": 0.9,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40370176,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/uniform/s1",
+   "runtime_s": 0.005685249998350628,
+   "seed": 1,
+   "start_utc": "2026-11-24T23:35:37.421881Z",
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.428281Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.02,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.56,
+    "peak_daily_load": 50,
+    "recall_mean": 0.5058887954389186,
+    "recall_mean_at_ri": {
+     "1": 0.991343007094143,
+     "30": 0.8728288254264709,
+     "7": 0.9538968237034893
+    },
+    "recall_min": 1.8687412322061031e-28,
+    "recall_p10": 0.029567743754834733,
+    "review_events": 200,
+    "review_success_rate": 0.925,
+    "sessions_used": 4
+   },
+   "peak_rss_bytes": 40370176,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/expanding/s1",
+   "runtime_s": 0.00035708399809664115,
+   "seed": 1,
+   "start_utc": "2026-11-24T23:35:37.427918Z",
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.428589Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.02,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.56,
+    "peak_daily_load": 50,
+    "recall_mean": 0.49795017483892506,
+    "recall_mean_at_ri": {
+     "1": 0.9951750622989587,
+     "30": 0.8821234385622887,
+     "7": 0.9677753066572826
+    },
+    "recall_min": 7.646445595608775e-05,
+    "recall_p10": 0.029646661586529576,
+    "review_events": 200,
+    "review_success_rate": 0.93,
+    "sessions_used": 4
+   },
+   "peak_rss_bytes": 40386560,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/massed/s1",
+   "runtime_s": 0.00029329099925234914,
+   "seed": 1,
+   "start_utc": "2026-11-24T23:35:37.428292Z",
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.429578Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.02,
+    "max_reviews_per_item": 10,
+    "min_reviews_per_item": 3,
+    "observed_recall": 0.54,
+    "peak_daily_load": 8,
+    "recall_mean": 0.45678188749082255,
+    "recall_mean_at_ri": {
+     "1": 0.9618570602038844,
+     "30": 0.8652282689691265,
+     "7": 0.9398447211045057
+    },
+    "recall_min": 0.0,
+    "recall_p10": 0.07397669207746663,
+    "review_events": 200,
+    "review_success_rate": 0.875,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40402944,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/leitner/s1",
+   "runtime_s": 0.0009742080001160502,
+   "seed": 1,
+   "start_utc": "2026-11-24T23:35:37.428601Z",
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.430911Z",
+   "metrics": {
+    "calibration_mae": 0.0,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.0,
+    "max_reviews_per_item": 8,
+    "min_reviews_per_item": 2,
+    "observed_recall": 0.52,
+    "peak_daily_load": 8,
+    "recall_mean": 0.49300140014872873,
+    "recall_mean_at_ri": {
+     "1": 0.9895586920839692,
+     "30": 0.9182960274538071,
+     "7": 0.9743231537850499
+    },
+    "recall_min": 0.19883193556693257,
+    "recall_p10": 0.3386173334319499,
+    "review_events": 200,
+    "review_success_rate": 0.935,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40435712,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/greedy/s1",
+   "runtime_s": 0.0013210420001996681,
+   "seed": 1,
+   "start_utc": "2026-11-24T23:35:37.429587Z",
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.431783Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.02,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.56,
+    "peak_daily_load": 8,
+    "recall_mean": 0.5589083907597586,
+    "recall_mean_at_ri": {
+     "1": 0.9893337741067485,
+     "30": 0.9171556462191292,
+     "7": 0.9731603170606506
+    },
+    "recall_min": 0.0004080980575886919,
+    "recall_p10": 0.20180218604794883,
+    "review_events": 200,
+    "review_success_rate": 0.975,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40435712,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/uniform/s2",
+   "runtime_s": 0.0007702919974690303,
+   "seed": 2,
+   "start_utc": "2026-11-24T23:35:37.431008Z",
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.432075Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.02,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.62,
+    "peak_daily_load": 50,
+    "recall_mean": 0.5737080505765216,
+    "recall_mean_at_ri": {
+     "1": 0.9964543134956709,
+     "30": 0.9211598207383601,
+     "7": 0.977192384575663
+    },
+    "recall_min": 1.1415900168455478e-09,
+    "recall_p10": 0.3338190101924628,
+    "review_events": 200,
+    "review_success_rate": 0.98,
+    "sessions_used": 4
+   },
+   "peak_rss_bytes": 40452096,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/expanding/s2",
+   "runtime_s": 0.00028091599961044267,
+   "seed": 2,
+   "start_utc": "2026-11-24T23:35:37.431790Z",
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.432351Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.02,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.52,
+    "peak_daily_load": 50,
+    "recall_mean": 0.4687131870402997,
+    "recall_mean_at_ri": {
+     "1": 0.9961056207546557,
+     "30": 0.8949262491264194,
+     "7": 0.9733558585599736
+    },
+    "recall_min": 0.006120013759036582,
+    "recall_p10": 0.10472365082399163,
+    "review_events": 200,
+    "review_success_rate": 0.9,
+    "sessions_used": 4
+   },
+   "peak_rss_bytes": 40452096,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/massed/s2",
+   "runtime_s": 0.00026633399829734117,
+   "seed": 2,
+   "start_utc": "2026-11-24T23:35:37.432081Z",
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.433259Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.02,
+    "max_reviews_per_item": 8,
+    "min_reviews_per_item": 3,
+    "observed_recall": 0.58,
+    "peak_daily_load": 8,
+    "recall_mean": 0.5515785884795446,
+    "recall_mean_at_ri": {
+     "1": 0.9888462529142502,
+     "30": 0.9218997576080936,
+     "7": 0.9743817017879892
+    },
+    "recall_min": 0.06918113044472696,
+    "recall_p10": 0.2748442133891695,
+    "review_events": 200,
+    "review_success_rate": 0.975,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40468480,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/leitner/s2",
+   "runtime_s": 0.000898915997822769,
+   "seed": 2,
+   "start_utc": "2026-11-24T23:35:37.432357Z",
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.434565Z",
+   "metrics": {
+    "calibration_mae": 0.0,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.0,
+    "max_reviews_per_item": 8,
+    "min_reviews_per_item": 2,
+    "observed_recall": 0.56,
+    "peak_daily_load": 8,
+    "recall_mean": 0.5612412151348551,
+    "recall_mean_at_ri": {
+     "1": 0.991771600877533,
+     "30": 0.9340301895386905,
+     "7": 0.9795197606815375
+    },
+    "recall_min": 0.36378121676922665,
+    "recall_p10": 0.46831447033975127,
+    "review_events": 200,
+    "review_success_rate": 0.96,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40468480,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/greedy/s2",
+   "runtime_s": 0.0012959169980604202,
+   "seed": 2,
+   "start_utc": "2026-11-24T23:35:37.433266Z",
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.435381Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.04,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.58,
+    "peak_daily_load": 8,
+    "recall_mean": 0.6051699492340015,
+    "recall_mean_at_ri": {
+     "1": 0.9901524169224192,
+     "30": 0.9249606882100518,
+     "7": 0.9755621558417782
+    },
+    "recall_min": 0.002116822609736902,
+    "recall_p10": 0.3428576793293793,
+    "review_events": 200,
+    "review_success_rate": 0.965,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40484864,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/uniform/s3",
+   "runtime_s": 0.0007517499980167486,
+   "seed": 3,
+   "start_utc": "2026-11-24T23:35:37.434625Z",
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.435667Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.04,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.6,
+    "peak_daily_load": 50,
+    "recall_mean": 0.6188847675089522,
+    "recall_mean_at_ri": {
+     "1": 0.9969646236177236,
+     "30": 0.9291846542153143,
+     "7": 0.9801141834349757
+    },
+    "recall_min": 8.786678581512187e-08,
+    "recall_p10": 0.34834368571339963,
+    "review_events": 200,
+    "review_success_rate": 0.97,
+    "sessions_used": 4
+   },
+   "peak_rss_bytes": 40484864,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/expanding/s3",
+   "runtime_s": 0.0002745419988059439,
+   "seed": 3,
+   "start_utc": "2026-11-24T23:35:37.435389Z",
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.435942Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.04,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.56,
+    "peak_daily_load": 50,
+    "recall_mean": 0.6096396436212378,
+    "recall_mean_at_ri": {
+     "1": 0.9969539313816894,
+     "30": 0.9284053190682452,
+     "7": 0.9800129058101146
+    },
+    "recall_min": 8.786678581512187e-08,
+    "recall_p10": 0.3200238108093532,
+    "review_events": 200,
+    "review_success_rate": 0.965,
+    "sessions_used": 4
+   },
+   "peak_rss_bytes": 40484864,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/massed/s3",
+   "runtime_s": 0.000265417002083268,
+   "seed": 3,
+   "start_utc": "2026-11-24T23:35:37.435673Z",
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.436840Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.04,
+    "max_reviews_per_item": 6,
+    "min_reviews_per_item": 3,
+    "observed_recall": 0.58,
+    "peak_daily_load": 8,
+    "recall_mean": 0.608949179731451,
+    "recall_mean_at_ri": {
+     "1": 0.9918711498705612,
+     "30": 0.9370642248492487,
+     "7": 0.9801344337912726
+    },
+    "recall_min": 0.1098086077061407,
+    "recall_p10": 0.3432518010380665,
+    "review_events": 200,
+    "review_success_rate": 0.97,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40484864,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/leitner/s3",
+   "runtime_s": 0.0008881250032573007,
+   "seed": 3,
+   "start_utc": "2026-11-24T23:35:37.435948Z",
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.439780Z",
+   "metrics": {
+    "calibration_mae": 0.0,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.0,
+    "max_reviews_per_item": 8,
+    "min_reviews_per_item": 2,
+    "observed_recall": 0.6,
+    "peak_daily_load": 8,
+    "recall_mean": 0.6400549906248291,
+    "recall_mean_at_ri": {
+     "1": 0.9934463384477366,
+     "30": 0.948474798546224,
+     "7": 0.9839552366641975
+    },
+    "recall_min": 0.4502033338689925,
+    "recall_p10": 0.5263723510649455,
+    "review_events": 200,
+    "review_success_rate": 0.97,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40484864,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/greedy/s3",
+   "runtime_s": 0.0029258750000735745,
+   "seed": 3,
+   "start_utc": "2026-11-24T23:35:37.436847Z",
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.440752Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.0,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.46,
+    "peak_daily_load": 8,
+    "recall_mean": 0.541052462722114,
+    "recall_mean_at_ri": {
+     "1": 0.9763314895936943,
+     "30": 0.8746306728013447,
+     "7": 0.9481110474718955
+    },
+    "recall_min": 2.7887701434031576e-12,
+    "recall_p10": 0.08828646379475798,
+    "review_events": 200,
+    "review_success_rate": 0.93,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40484864,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/uniform/s4",
+   "runtime_s": 0.0008379999999306165,
+   "seed": 4,
+   "start_utc": "2026-11-24T23:35:37.439907Z",
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.441085Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.0,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.44,
+    "peak_daily_load": 50,
+    "recall_mean": 0.540342166085877,
+    "recall_mean_at_ri": {
+     "1": 0.9935484544094879,
+     "30": 0.8777848614951353,
+     "7": 0.9601066769667327
+    },
+    "recall_min": 4.440337635397536e-12,
+    "recall_p10": 0.028022094898064655,
+    "review_events": 200,
+    "review_success_rate": 0.925,
+    "sessions_used": 4
+   },
+   "peak_rss_bytes": 40501248,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/expanding/s4",
+   "runtime_s": 0.0003129579999949783,
+   "seed": 4,
+   "start_utc": "2026-11-24T23:35:37.440768Z",
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.441381Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.0,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.44,
+    "peak_daily_load": 50,
+    "recall_mean": 0.49191880069726474,
+    "recall_mean_at_ri": {
+     "1": 0.9915567185846289,
+     "30": 0.8632734646308303,
+     "7": 0.9514071403900596
+    },
+    "recall_min": 2.5628365389997703e-19,
+    "recall_p10": 0.04730336222848453,
+    "review_events": 200,
+    "review_success_rate": 0.885,
+    "sessions_used": 4
+   },
+   "peak_rss_bytes": 40501248,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/massed/s4",
+   "runtime_s": 0.0002830840021488257,
+   "seed": 4,
+   "start_utc": "2026-11-24T23:35:37.441095Z",
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.442392Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.0,
+    "max_reviews_per_item": 8,
+    "min_reviews_per_item": 3,
+    "observed_recall": 0.5,
+    "peak_daily_load": 8,
+    "recall_mean": 0.5299293492876036,
+    "recall_mean_at_ri": {
+     "1": 0.9835897881989025,
+     "30": 0.8966450310898124,
+     "7": 0.9630906857026088
+    },
+    "recall_min": 5.527527687105884e-05,
+    "recall_p10": 0.14537081032475574,
+    "review_events": 200,
+    "review_success_rate": 0.935,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40501248,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/leitner/s4",
+   "runtime_s": 0.0009971659965231083,
+   "seed": 4,
+   "start_utc": "2026-11-24T23:35:37.441389Z",
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.443768Z",
+   "metrics": {
+    "calibration_mae": 0.0,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.0,
+    "max_reviews_per_item": 10,
+    "min_reviews_per_item": 2,
+    "observed_recall": 0.52,
+    "peak_daily_load": 8,
+    "recall_mean": 0.5358124122804728,
+    "recall_mean_at_ri": {
+     "1": 0.9908111143770172,
+     "30": 0.9274771769977445,
+     "7": 0.9773123124479421
+    },
+    "recall_min": 0.23441191330535338,
+    "recall_p10": 0.4191346181248582,
+    "review_events": 200,
+    "review_success_rate": 0.935,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40501248,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/greedy/s4",
+   "runtime_s": 0.0013459170004352927,
+   "seed": 4,
+   "start_utc": "2026-11-24T23:35:37.442418Z",
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.444633Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.06,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.48,
+    "peak_daily_load": 8,
+    "recall_mean": 0.5388372748369734,
+    "recall_mean_at_ri": {
+     "1": 0.9678327168504498,
+     "30": 0.8728793375408468,
+     "7": 0.9391169049056522
+    },
+    "recall_min": 3.952912601288503e-20,
+    "recall_p10": 0.09522571312061948,
+    "review_events": 200,
+    "review_success_rate": 0.91,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40501248,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/uniform/s5",
+   "runtime_s": 0.0007691250066272914,
+   "seed": 5,
+   "start_utc": "2026-11-24T23:35:37.443860Z",
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.444932Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.06,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.5,
+    "peak_daily_load": 50,
+    "recall_mean": 0.5587592566961453,
+    "recall_mean_at_ri": {
+     "1": 0.9960989484377015,
+     "30": 0.9086092731721652,
+     "7": 0.9743641318440217
+    },
+    "recall_min": 6.698313084341406e-08,
+    "recall_p10": 0.17128970011585629,
+    "review_events": 200,
+    "review_success_rate": 0.945,
+    "sessions_used": 4
+   },
+   "peak_rss_bytes": 40501248,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/expanding/s5",
+   "runtime_s": 0.0002862920009647496,
+   "seed": 5,
+   "start_utc": "2026-11-24T23:35:37.444643Z",
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.445218Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.06,
+    "max_reviews_per_item": 4,
+    "min_reviews_per_item": 4,
+    "observed_recall": 0.5,
+    "peak_daily_load": 50,
+    "recall_mean": 0.5128483189745534,
+    "recall_mean_at_ri": {
+     "1": 0.9964373718703985,
+     "30": 0.9043872873084866,
+     "7": 0.975659924664249
+    },
+    "recall_min": 0.002040502076670682,
+    "recall_p10": 0.10740388556744086,
+    "review_events": 200,
+    "review_success_rate": 0.92,
+    "sessions_used": 4
+   },
+   "peak_rss_bytes": 40501248,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/massed/s5",
+   "runtime_s": 0.0002760419956757687,
+   "seed": 5,
+   "start_utc": "2026-11-24T23:35:37.444939Z",
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.446121Z",
+   "metrics": {
+    "calibration_mae": null,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.06,
+    "max_reviews_per_item": 6,
+    "min_reviews_per_item": 3,
+    "observed_recall": 0.48,
+    "peak_daily_load": 8,
+    "recall_mean": 0.511146073380019,
+    "recall_mean_at_ri": {
+     "1": 0.9848589917821178,
+     "30": 0.8952783210643702,
+     "7": 0.9632792075463114
+    },
+    "recall_min": 1.2257944989411346e-07,
+    "recall_p10": 0.1307620376071306,
+    "review_events": 200,
+    "review_success_rate": 0.915,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40501248,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/leitner/s5",
+   "runtime_s": 0.0008932499986258335,
+   "seed": 5,
+   "start_utc": "2026-11-24T23:35:37.445225Z",
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "cell_id": "C000",
+   "end_utc": "2026-11-24T23:35:37.447404Z",
+   "metrics": {
+    "calibration_mae": 0.0,
+    "items_never_reviewed": 0,
+    "mastery_share": 0.0,
+    "max_reviews_per_item": 8,
+    "min_reviews_per_item": 2,
+    "observed_recall": 0.54,
+    "peak_daily_load": 8,
+    "recall_mean": 0.5764137119116748,
+    "recall_mean_at_ri": {
+     "1": 0.991976165282179,
+     "30": 0.9364589851029977,
+     "7": 0.9801999026444308
+    },
+    "recall_min": 0.34115884846306244,
+    "recall_p10": 0.4441616623019814,
+    "review_events": 200,
+    "review_success_rate": 0.955,
+    "sessions_used": 27
+   },
+   "peak_rss_bytes": 40501248,
+   "reasons": [],
+   "run_id": "PROBE-007/C000/greedy/s5",
+   "runtime_s": 0.0012714999975287355,
+   "seed": 5,
+   "start_utc": "2026-11-24T23:35:37.446129Z",
+   "status": "ok"
+  }
+ ],
+ "schema_version": "memory-result/1.0.0",
+ "summary": {
+  "n_excluded": 0,
+  "n_failed": 0,
+  "n_ok": 25,
+  "n_runs": 25,
+  "wall_clock_s": 0.03216645800421247
+ }
+}
