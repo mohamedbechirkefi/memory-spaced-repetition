@@ -286,3 +286,105 @@ def calibrate(data: Processed) -> dict[str, Any]:
             },
         },
     }
+
+
+# Protocol 16.1 (round 3): diagnosis of the forgetting-model misfit. Fixed before computing.
+QUADRATURE_NODES = 64
+DELAY_BINS_DAYS = (0.0, 1.0 / 24.0, 1.0, 7.0, 30.0, math.inf)
+DELAY_BIN_LABELS = ("< 1 hour", "1 hour to 1 day", "1 to 7 days", "7 to 30 days", ">= 30 days")
+
+
+def exp_curve(delta_days: NDArray[np.float64], h_days: float) -> NDArray[np.float64]:
+    """p = 2^(-delta/h)."""
+    return np.exp2(-np.asarray(delta_days, dtype=np.float64) / h_days)
+
+
+def power_curve(delta_days: NDArray[np.float64], n: float, omega: float) -> NDArray[np.float64]:
+    """p = (1 + omega delta)^(-n), evaluated as exp(-n log1p(omega delta))."""
+    return np.exp(-n * np.log1p(omega * np.asarray(delta_days, dtype=np.float64)))
+
+
+def power_exponent_for_half_life(h_days: Any, omega: float) -> Any:
+    """Protocol 2.4: n = ln 2 / ln(1 + omega h), same initial half-life as the exponential."""
+    return LN2 / np.log1p(omega * np.asarray(h_days, dtype=np.float64))
+
+
+def lognormal_population_curve(delta_days: NDArray[np.float64], h0: float, sigma: float, model: str,
+                               omega: float = 1.0, nodes: int = QUADRATURE_NODES) -> NDArray[np.float64]:
+    """E[p(delta; H)] with log H ~ Normal(log h0, sigma^2), by Gauss-Hermite quadrature."""
+    x, w = np.polynomial.hermite.hermgauss(nodes)
+    h = np.exp(math.log(h0) + math.sqrt(2.0) * sigma * x)
+    w = w / math.sqrt(math.pi)
+    d = np.asarray(delta_days, dtype=np.float64)[:, None]
+    if model == "exponential":
+        p = np.exp2(-d / h[None, :])
+    elif model == "power":
+        p = np.exp(-power_exponent_for_half_life(h, omega)[None, :] * np.log1p(omega * d))
+    else:
+        raise ValueError(f"unknown model {model!r}")
+    return p @ w
+
+
+def mle_power_exponent(delta: NDArray[np.float64], n: NDArray[np.int64], k: NDArray[np.int64],
+                       omega: float) -> tuple[float, bool]:
+    """Pooled MLE of n for p = (1 + omega delta)^(-n) (protocol 16.1.3, power-mle).
+
+    p = exp(-n a) with a = log1p(omega delta), the exponential form with rate n and
+    'delay' a, so the bisection of protocol 15.2.5 applies unchanged; it returns
+    h = ln 2 / n, hence n = ln 2 / h, over the same bounds."""
+    a = np.log1p(omega * np.asarray(delta, dtype=np.float64))
+    h, boundary = mle_half_lives(np.zeros(a.size, dtype=np.int64), 1, a, n, k)
+    return float(LN2 / h[0]), bool(boundary[0])
+
+
+def compare_models(data: Processed, h0: float, sigma: float, omega: float = 1.0) -> dict[str, Any]:
+    """Protocol 16.1: fit on split C, held-out log-loss on split V, family decision."""
+    c, v = data.split_c, ~data.split_c
+    dc, nc, kc = data.delta_days[c], data.trials[c], data.successes[c]
+    dv, nv, kv = data.delta_days[v], data.trials[v], data.successes[v]
+    const = float(kc.sum() / nc.sum())
+    h_exp, b_exp = mle_half_lives(np.zeros(dc.size, dtype=np.int64), 1, dc, nc, kc)
+    n_pow, b_pow = mle_power_exponent(dc, nc, kc, omega)
+    n_med = float(power_exponent_for_half_life(h0, omega))
+    curves = {
+        "constant": lambda d: np.full(d.shape, const),
+        "exp-median": lambda d: exp_curve(d, h0),
+        "exp-population": lambda d: lognormal_population_curve(d, h0, sigma, "exponential"),
+        "power-median": lambda d: power_curve(d, n_med, omega),
+        "power-population": lambda d: lognormal_population_curve(d, h0, sigma, "power", omega),
+        "exp-mle": lambda d: exp_curve(d, float(h_exp[0])),
+        "power-mle": lambda d: power_curve(d, n_pow, omega),
+    }
+    pred_v = {name: f(dv) for name, f in curves.items()}
+    losses = {name: log_loss(p, nv, kv) for name, p in pred_v.items()}
+    families = {
+        "exponential": min(("exp-median", "exp-population", "exp-mle"), key=lambda m: losses[m]),
+        "power": min(("power-median", "power-population", "power-mle"), key=lambda m: losses[m]),
+    }
+    best = {fam: {"curve": m, "log_loss": losses[m], "beats_constant": losses[m] < losses["constant"]}
+            for fam, m in families.items()}
+    bins = []
+    idx = np.digitize(dv, DELAY_BINS_DAYS[1:-1], right=False)
+    for b, label in enumerate(DELAY_BIN_LABELS):
+        m = idx == b
+        tn = int(nv[m].sum())
+        bins.append({
+            "bin": label, "n_rows": int(m.sum()), "n_trials": tn,
+            "observed_recall": float(kv[m].sum() / tn) if tn else None,
+            "mean_prediction": {name: (float(np.sum(p[m] * nv[m]) / tn) if tn else None) for name, p in pred_v.items()},
+        })
+    better = "exponential" if best["exponential"]["log_loss"] < best["power"]["log_loss"] else "power"
+    return {
+        "method": "research/protocol.md section 16.1",
+        "inputs": {"h0_days": h0, "lognormal_sigma": sigma, "omega_per_day": omega,
+                   "quadrature_nodes": QUADRATURE_NODES},
+        "fits_split_C": {"constant_recall": const, "exp_mle_half_life_days": float(h_exp[0]),
+                         "exp_mle_boundary": bool(b_exp[0]), "power_mle_exponent": n_pow,
+                         "power_mle_boundary": b_pow, "power_median_exponent": n_med},
+        "holdout_log_loss_per_trial": losses,
+        "n_rows_V": int(v.sum()), "n_trials_V": int(nv.sum()),
+        "family_best": best,
+        "better_family": better,
+        "neither_beats_constant": not (best["exponential"]["beats_constant"] or best["power"]["beats_constant"]),
+        "calibration_by_delay_bin_V": bins,
+    }

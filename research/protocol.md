@@ -194,3 +194,24 @@ The fit ran once, at code revision `037b46e` (which already contained section 15
 - Split C: 738 eligible lexemes, 1 boundary estimate (0.14%). **`h0 = 54.0` days, `σ = 0.759`.** Usability rule 15.2.7 met, so these values are used. Pooled MLE half-life 54.2 days (secondary, unused).
 - Validation on split V: `h0 = 55.2` days (+2.2%), `σ = 0.721` (-4.9%); not flagged unstable. Held-out log-loss per trial: calibrated curve 0.587, constant predictor (split C mean recall 0.898) 0.328. The single exponential curve through `p(0) = 1` predicts first-review recall worse than a constant: in the traces, recall stays near 0.9 even at short delays, which this model form cannot represent. This is disclosed as a limitation of the memory model, not corrected.
 - Consequence for the regime (baseline-only diagnostic PROBE-005, `uniform` arm only, exploratory seeds 1 to 30, no contrast): mean baseline `R` at the fitted central setting is 0.959 under exponential forgetting and 0.810 under the power law. The draft setting sat at the recall floor (AP-001); the fitted setting sits near the ceiling for exponential learners, which compresses differences between arms. The owner's rule ("the fitted value wins") is applied as written; the regime is disclosed in the freeze record.
+
+## 16. Pre-data amendment, round 3 (owner-approved 2026-11-24, round 3): recalibration
+
+Authority: the owner's answer "Approve all" (2026-11-24, round 3) to the coordinator's list, recorded in `labs/_shared/owner-approvals-2026-11-24c.md`, section 2 (MEMORY: recalibration). Approved rule, quoted: "(a) Diagnose the misfit first. [...] (b) Move off the ceiling by changing the study design, not the fitted parameters. [...] (c) Then re-freeze." No confirmatory run has taken place. Each subsection below was written and committed before the computation it governs. Where this section and sections 1 to 15 differ, this section wins.
+
+### 16.1 Rule (a): diagnosis of the forgetting-model misfit (method fixed before computing)
+
+1. **Data.** The DS01 calibration subset of 15.2.3 and the learner split of 15.2.4, read from the processed arrays written by CAL-001 (`data/processed/DS01_first_review_subset.npz`, git-ignored; its SHA-256 is recorded with the result). Every curve below is fitted on split C only and evaluated on split V only. No simulation is run and no schedule arm is evaluated.
+2. **Score.** Held-out mean binomial log-loss per trial on split V (the measure of 15.2.9b), with probabilities clipped to `[1e-12, 1 - 1e-12]`.
+3. **Predictors compared.** All curves predict recall at the first review after a delay `Δ` (days) since the first exposure.
+   - `constant`: the split C mean recall rate (as in 15.2.9b).
+   - `exp-median`: `p = 2^(-Δ/h0)` with the frozen `h0 = 54.0` days (the 15.2.9b curve).
+   - `exp-population`: the recall the simulated `lognormal` item population implies, `p = E[2^(-Δ/H)]` with `log H ~ Normal(log h0, σ²)`, `h0 = 54.0`, `σ = 0.759`, computed by 64-node Gauss-Hermite quadrature.
+   - `power-median`: `p = (1 + ωΔ)^(-n)` with `ω = 1` per day and `n = ln 2 / ln(1 + ω h0)` (section 2.4, same initial half-life).
+   - `power-population`: the same power law averaged over the `lognormal` population of initial half-lives, by the same quadrature.
+   - `exp-mle`: the exponential curve with one pooled half-life fitted by maximum likelihood on split C (the pooled value of 15.2.6), the best single exponential curve.
+   - `power-mle`: the power law with `ω = 1` per day and one pooled exponent `n` fitted by maximum likelihood on split C. The log-likelihood is concave in `n`; the estimate is found by bisection on the score in `log n` (60 iterations) over `n ∈ [ln 2 / 3650, ln 2 / 0.01]`, as in 15.2.5.
+4. **Comparison and decision.** The exponential family is represented by the lowest held-out log-loss among `exp-median`, `exp-population` and `exp-mle`; the power-law family by the lowest among `power-median`, `power-population` and `power-mle`. The families are compared with each other and each with `constant`. A family "beats the constant" if its held-out log-loss is strictly lower than that of `constant`. If neither family beats the constant, this is recorded as a limitation, and the claims boundary states that every result is conditional on the assumed memory model and not supported by the real traces' first-review recall.
+5. **Descriptive calibration table.** For split V, by delay bin (`Δ` < 1 hour, 1 hour to 1 day, 1 to 7 days, 7 to 30 days, 30 days or more): number of trials, observed recall rate and the mean prediction of every curve above.
+6. **What rule (a) does not change.** No parameter of the simulation (`h0`, `σ`, `ω`, `α`, `β`) is refitted or changed by this diagnosis, whatever its outcome. The forgetting-model family stays a design factor (EXP-002, EXP-003).
+7. **Journal.** Exploratory entry CAL-002 in `research/experiment_journal.jsonl`; output `results/exploratory/CAL-002/model_comparison.json`.

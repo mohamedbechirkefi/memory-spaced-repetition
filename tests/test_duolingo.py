@@ -101,3 +101,63 @@ def test_fit_split_ignores_lexemes_below_trial_minimum():
     rng = np.random.default_rng(4)
     data = _processed(np.full(3, 3.0), 10, rng)  # 5 rows x 5 trials = 25 per split per lexeme
     assert fit_split(data, True)["n_eligible_lexemes"] == 0
+
+
+# Protocol 16.1 (round 3): model comparison on synthetic data with a known generating curve.
+
+from memory_research.duolingo import (  # noqa: E402
+    compare_models, exp_curve, lognormal_population_curve, mle_power_exponent, power_curve,
+    power_exponent_for_half_life,
+)
+
+
+def test_power_exponent_matches_initial_half_life():
+    h = np.array([0.5, 6.0, 54.0])
+    n = power_exponent_for_half_life(h, 1.0)
+    np.testing.assert_allclose(power_curve(h[:1], n[0], 1.0), [0.5])
+    np.testing.assert_allclose([power_curve(np.array([hh]), nn, 1.0)[0] for hh, nn in zip(h, n)], 0.5)
+
+
+def test_population_curve_quadrature_matches_monte_carlo():
+    rng = np.random.default_rng(5)
+    hs = np.exp(rng.normal(np.log(10.0), 0.8, 400_000))
+    d = np.array([0.1, 3.0, 10.0, 60.0])
+    for model in ("exponential", "power"):
+        q = lognormal_population_curve(d, 10.0, 0.8, model, 1.0)
+        if model == "exponential":
+            mc = np.exp2(-d[:, None] / hs[None, :]).mean(axis=1)
+        else:
+            mc = np.exp(-power_exponent_for_half_life(hs, 1.0)[None, :] * np.log1p(d[:, None])).mean(axis=1)
+        np.testing.assert_allclose(q, mc, atol=2e-3)
+
+
+def test_power_mle_recovers_exponent():
+    rng = np.random.default_rng(6)
+    d = rng.uniform(0.05, 60.0, 50_000)
+    k = rng.binomial(5, power_curve(d, 0.3, 1.0))
+    n_hat, boundary = mle_power_exponent(d, np.full(d.size, 5), k, 1.0)
+    assert not boundary and n_hat == pytest.approx(0.3, rel=0.03)
+
+
+def _single_curve_data(p_of_d, rng, rows=40_000):
+    d = rng.uniform(0.01, 90.0, rows)
+    k = rng.binomial(4, p_of_d(d))
+    split = np.arange(rows) % 2 == 0
+    return Processed(["x"], np.zeros(rows, dtype=np.int64), split, d, np.full(rows, 4), k)
+
+
+def test_compare_models_prefers_the_generating_family():
+    rng = np.random.default_rng(7)
+    res = compare_models(_single_curve_data(lambda d: power_curve(d, 0.25, 1.0), rng), 10.0, 0.5)
+    assert res["better_family"] == "power" and res["family_best"]["power"]["curve"] == "power-mle"
+    assert res["family_best"]["power"]["beats_constant"] and not res["neither_beats_constant"]
+    res = compare_models(_single_curve_data(lambda d: exp_curve(d, 20.0), rng), 20.0, 0.5)
+    assert res["better_family"] == "exponential"
+    assert sum(b["n_trials"] for b in res["calibration_by_delay_bin_V"]) == res["n_trials_V"]
+
+
+def test_compare_models_flags_when_no_family_beats_constant():
+    # Recall flat at 0.9 whatever the delay: every curve with p(0) = 1 loses to the constant.
+    rng = np.random.default_rng(8)
+    res = compare_models(_single_curve_data(lambda d: np.full(d.shape, 0.9), rng), 54.0, 0.759)
+    assert res["neither_beats_constant"]
