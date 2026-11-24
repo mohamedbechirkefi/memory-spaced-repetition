@@ -1,0 +1,1375 @@
+{
+ "environment": {
+  "cpu": "Apple M1 Pro",
+  "git_dirty": false,
+  "git_revision": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+  "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+  "package_version": "0.1.0",
+  "packages": {
+   "jsonschema": "4.26.0",
+   "matplotlib": "3.11.2",
+   "numpy": "2.5.4"
+  },
+  "python": "3.12.1"
+ },
+ "experiment_id": "PROBE-001",
+ "kind": "exploratory",
+ "matrix_config_hash": "55f58826ff0fec0ebe8d43fdade1994baadc9e5ff942c0909ae1b13e202abdeb",
+ "peak_rss_bytes": 42532864,
+ "result_path": "results/exploratory/PROBE-001/results.json",
+ "result_sha256": "d056641861a7e151306d3c8a97f4b0eeff9b2668c91429d8a089d0c76d566723",
+ "runs": [
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40321024,
+   "run_id": "PROBE-001/C000/uniform/s1",
+   "runtime_s": 0.004873292000411311,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40353792,
+   "run_id": "PROBE-001/C000/expanding/s1",
+   "runtime_s": 0.00034612499985087197,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40353792,
+   "run_id": "PROBE-001/C000/massed/s1",
+   "runtime_s": 0.00029187499967520125,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40353792,
+   "run_id": "PROBE-001/C000/leitner/s1",
+   "runtime_s": 0.0009224999994330574,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40386560,
+   "run_id": "PROBE-001/C000/greedy/s1",
+   "runtime_s": 0.001294874999075546,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40402944,
+   "run_id": "PROBE-001/C000/uniform/s2",
+   "runtime_s": 0.0007776669990562368,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40402944,
+   "run_id": "PROBE-001/C000/expanding/s2",
+   "runtime_s": 0.00027954200049862266,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40419328,
+   "run_id": "PROBE-001/C000/massed/s2",
+   "runtime_s": 0.0002745000001596054,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40419328,
+   "run_id": "PROBE-001/C000/leitner/s2",
+   "runtime_s": 0.0008871250010997755,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40419328,
+   "run_id": "PROBE-001/C000/greedy/s2",
+   "runtime_s": 0.0012739169997075805,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40419328,
+   "run_id": "PROBE-001/C000/uniform/s3",
+   "runtime_s": 0.0007505419998778962,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40419328,
+   "run_id": "PROBE-001/C000/expanding/s3",
+   "runtime_s": 0.00027320799927110784,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40419328,
+   "run_id": "PROBE-001/C000/massed/s3",
+   "runtime_s": 0.00026279199846612755,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40419328,
+   "run_id": "PROBE-001/C000/leitner/s3",
+   "runtime_s": 0.0010396670004411135,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40419328,
+   "run_id": "PROBE-001/C000/greedy/s3",
+   "runtime_s": 0.0013127080001140712,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40419328,
+   "run_id": "PROBE-001/C000/uniform/s4",
+   "runtime_s": 0.0007623750007041963,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40435712,
+   "run_id": "PROBE-001/C000/expanding/s4",
+   "runtime_s": 0.0002834169990819646,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40435712,
+   "run_id": "PROBE-001/C000/massed/s4",
+   "runtime_s": 0.0002687090000108583,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40435712,
+   "run_id": "PROBE-001/C000/leitner/s4",
+   "runtime_s": 0.0008839170004648622,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40435712,
+   "run_id": "PROBE-001/C000/greedy/s4",
+   "runtime_s": 0.0012639590004255297,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40435712,
+   "run_id": "PROBE-001/C000/uniform/s5",
+   "runtime_s": 0.0007542919993284158,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40435712,
+   "run_id": "PROBE-001/C000/expanding/s5",
+   "runtime_s": 0.0002729579991864739,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40435712,
+   "run_id": "PROBE-001/C000/massed/s5",
+   "runtime_s": 0.00026241700106766075,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40435712,
+   "run_id": "PROBE-001/C000/leitner/s5",
+   "runtime_s": 0.0008927079998102272,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40435712,
+   "run_id": "PROBE-001/C000/greedy/s5",
+   "runtime_s": 0.001253667000128189,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40435712,
+   "run_id": "PROBE-001/C000/uniform/s6",
+   "runtime_s": 0.0007472920005966444,
+   "seed": 6,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40452096,
+   "run_id": "PROBE-001/C000/expanding/s6",
+   "runtime_s": 0.0002927919995272532,
+   "seed": 6,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40452096,
+   "run_id": "PROBE-001/C000/massed/s6",
+   "runtime_s": 0.00026737500047602225,
+   "seed": 6,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40452096,
+   "run_id": "PROBE-001/C000/leitner/s6",
+   "runtime_s": 0.0008738340002309997,
+   "seed": 6,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40452096,
+   "run_id": "PROBE-001/C000/greedy/s6",
+   "runtime_s": 0.0012567919984576292,
+   "seed": 6,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40452096,
+   "run_id": "PROBE-001/C000/uniform/s7",
+   "runtime_s": 0.003011458000401035,
+   "seed": 7,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40452096,
+   "run_id": "PROBE-001/C000/expanding/s7",
+   "runtime_s": 0.00031191699963528663,
+   "seed": 7,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40452096,
+   "run_id": "PROBE-001/C000/massed/s7",
+   "runtime_s": 0.00027808300001197495,
+   "seed": 7,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40452096,
+   "run_id": "PROBE-001/C000/leitner/s7",
+   "runtime_s": 0.000888999999006046,
+   "seed": 7,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40452096,
+   "run_id": "PROBE-001/C000/greedy/s7",
+   "runtime_s": 0.0012579579997691326,
+   "seed": 7,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40468480,
+   "run_id": "PROBE-001/C000/uniform/s8",
+   "runtime_s": 0.0007611249984620372,
+   "seed": 8,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40468480,
+   "run_id": "PROBE-001/C000/expanding/s8",
+   "runtime_s": 0.00027437500102678314,
+   "seed": 8,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40468480,
+   "run_id": "PROBE-001/C000/massed/s8",
+   "runtime_s": 0.0002675420000741724,
+   "seed": 8,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40468480,
+   "run_id": "PROBE-001/C000/leitner/s8",
+   "runtime_s": 0.0008675409990246408,
+   "seed": 8,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40484864,
+   "run_id": "PROBE-001/C000/greedy/s8",
+   "runtime_s": 0.0012702500007435447,
+   "seed": 8,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40501248,
+   "run_id": "PROBE-001/C000/uniform/s9",
+   "runtime_s": 0.0007616250004502945,
+   "seed": 9,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40501248,
+   "run_id": "PROBE-001/C000/expanding/s9",
+   "runtime_s": 0.0002796669996314449,
+   "seed": 9,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40501248,
+   "run_id": "PROBE-001/C000/massed/s9",
+   "runtime_s": 0.0002647500004968606,
+   "seed": 9,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40501248,
+   "run_id": "PROBE-001/C000/leitner/s9",
+   "runtime_s": 0.0008646669994050171,
+   "seed": 9,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40501248,
+   "run_id": "PROBE-001/C000/greedy/s9",
+   "runtime_s": 0.0012447910012269858,
+   "seed": 9,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40517632,
+   "run_id": "PROBE-001/C000/uniform/s10",
+   "runtime_s": 0.0012378330011415528,
+   "seed": 10,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40517632,
+   "run_id": "PROBE-001/C000/expanding/s10",
+   "runtime_s": 0.0002892080010497011,
+   "seed": 10,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40517632,
+   "run_id": "PROBE-001/C000/massed/s10",
+   "runtime_s": 0.000269042000581976,
+   "seed": 10,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40517632,
+   "run_id": "PROBE-001/C000/leitner/s10",
+   "runtime_s": 0.0008832500006974442,
+   "seed": 10,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40517632,
+   "run_id": "PROBE-001/C000/greedy/s10",
+   "runtime_s": 0.001254666000022553,
+   "seed": 10,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40517632,
+   "run_id": "PROBE-001/C000/uniform/s11",
+   "runtime_s": 0.000757792000513291,
+   "seed": 11,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40517632,
+   "run_id": "PROBE-001/C000/expanding/s11",
+   "runtime_s": 0.0002722909994190559,
+   "seed": 11,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40517632,
+   "run_id": "PROBE-001/C000/massed/s11",
+   "runtime_s": 0.000262542000200483,
+   "seed": 11,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40517632,
+   "run_id": "PROBE-001/C000/leitner/s11",
+   "runtime_s": 0.0008730829995329259,
+   "seed": 11,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40517632,
+   "run_id": "PROBE-001/C000/greedy/s11",
+   "runtime_s": 0.0012493750000430737,
+   "seed": 11,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40517632,
+   "run_id": "PROBE-001/C000/uniform/s12",
+   "runtime_s": 0.0007558340003015473,
+   "seed": 12,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/expanding/s12",
+   "runtime_s": 0.00027716699878510553,
+   "seed": 12,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/massed/s12",
+   "runtime_s": 0.0002743339991866378,
+   "seed": 12,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/leitner/s12",
+   "runtime_s": 0.000860708998516202,
+   "seed": 12,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/greedy/s12",
+   "runtime_s": 0.0012668330000451533,
+   "seed": 12,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/uniform/s13",
+   "runtime_s": 0.0007502499993279343,
+   "seed": 13,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/expanding/s13",
+   "runtime_s": 0.00026954100030707195,
+   "seed": 13,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/massed/s13",
+   "runtime_s": 0.000261417000729125,
+   "seed": 13,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/leitner/s13",
+   "runtime_s": 0.0008647920003568288,
+   "seed": 13,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/greedy/s13",
+   "runtime_s": 0.0012521669996203855,
+   "seed": 13,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/uniform/s14",
+   "runtime_s": 0.0007427920008922229,
+   "seed": 14,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/expanding/s14",
+   "runtime_s": 0.0002679999997781124,
+   "seed": 14,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/massed/s14",
+   "runtime_s": 0.000262542000200483,
+   "seed": 14,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/leitner/s14",
+   "runtime_s": 0.001260459001059644,
+   "seed": 14,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/greedy/s14",
+   "runtime_s": 0.0012779580010828795,
+   "seed": 14,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/uniform/s15",
+   "runtime_s": 0.0007635830006620381,
+   "seed": 15,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40534016,
+   "run_id": "PROBE-001/C000/expanding/s15",
+   "runtime_s": 0.0002810830010275822,
+   "seed": 15,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40550400,
+   "run_id": "PROBE-001/C000/massed/s15",
+   "runtime_s": 0.0002712499990593642,
+   "seed": 15,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40550400,
+   "run_id": "PROBE-001/C000/leitner/s15",
+   "runtime_s": 0.0008713340012036497,
+   "seed": 15,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40550400,
+   "run_id": "PROBE-001/C000/greedy/s15",
+   "runtime_s": 0.0012522079996415414,
+   "seed": 15,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40550400,
+   "run_id": "PROBE-001/C000/uniform/s16",
+   "runtime_s": 0.0007473750010831282,
+   "seed": 16,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/expanding/s16",
+   "runtime_s": 0.0002714590009418316,
+   "seed": 16,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/massed/s16",
+   "runtime_s": 0.00026041700039058924,
+   "seed": 16,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/leitner/s16",
+   "runtime_s": 0.0008630829997855471,
+   "seed": 16,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/greedy/s16",
+   "runtime_s": 0.00124770799993712,
+   "seed": 16,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/uniform/s17",
+   "runtime_s": 0.0007422919989039656,
+   "seed": 17,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/expanding/s17",
+   "runtime_s": 0.00027091700030723587,
+   "seed": 17,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/massed/s17",
+   "runtime_s": 0.0002600839998194715,
+   "seed": 17,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/leitner/s17",
+   "runtime_s": 0.0008626250000816071,
+   "seed": 17,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/greedy/s17",
+   "runtime_s": 0.00124770799993712,
+   "seed": 17,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/uniform/s18",
+   "runtime_s": 0.0007424160012305947,
+   "seed": 18,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/expanding/s18",
+   "runtime_s": 0.0002667919998202706,
+   "seed": 18,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/massed/s18",
+   "runtime_s": 0.0002593749995867256,
+   "seed": 18,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/leitner/s18",
+   "runtime_s": 0.0008760830005485332,
+   "seed": 18,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/greedy/s18",
+   "runtime_s": 0.0012419169997883728,
+   "seed": 18,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/uniform/s19",
+   "runtime_s": 0.0009279999994760146,
+   "seed": 19,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/expanding/s19",
+   "runtime_s": 0.00026854199859371874,
+   "seed": 19,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40566784,
+   "run_id": "PROBE-001/C000/massed/s19",
+   "runtime_s": 0.0002598749997559935,
+   "seed": 19,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40583168,
+   "run_id": "PROBE-001/C000/leitner/s19",
+   "runtime_s": 0.0008750840006541694,
+   "seed": 19,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40583168,
+   "run_id": "PROBE-001/C000/greedy/s19",
+   "runtime_s": 0.001246542000444606,
+   "seed": 19,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40583168,
+   "run_id": "PROBE-001/C000/uniform/s20",
+   "runtime_s": 0.0007381249997706618,
+   "seed": 20,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40583168,
+   "run_id": "PROBE-001/C000/expanding/s20",
+   "runtime_s": 0.0002641669998411089,
+   "seed": 20,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40599552,
+   "run_id": "PROBE-001/C000/massed/s20",
+   "runtime_s": 0.00026091600011568516,
+   "seed": 20,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40599552,
+   "run_id": "PROBE-001/C000/leitner/s20",
+   "runtime_s": 0.0008559170000808081,
+   "seed": 20,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40615936,
+   "run_id": "PROBE-001/C000/greedy/s20",
+   "runtime_s": 0.001248374999704538,
+   "seed": 20,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40615936,
+   "run_id": "PROBE-001/C000/uniform/s21",
+   "runtime_s": 0.0007395840002573095,
+   "seed": 21,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40615936,
+   "run_id": "PROBE-001/C000/expanding/s21",
+   "runtime_s": 0.00027437499920779373,
+   "seed": 21,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40615936,
+   "run_id": "PROBE-001/C000/massed/s21",
+   "runtime_s": 0.0005969169997115387,
+   "seed": 21,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40615936,
+   "run_id": "PROBE-001/C000/leitner/s21",
+   "runtime_s": 0.0009195830007229233,
+   "seed": 21,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40615936,
+   "run_id": "PROBE-001/C000/greedy/s21",
+   "runtime_s": 0.0012756249998346902,
+   "seed": 21,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40615936,
+   "run_id": "PROBE-001/C000/uniform/s22",
+   "runtime_s": 0.0009376669986522757,
+   "seed": 22,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40615936,
+   "run_id": "PROBE-001/C000/expanding/s22",
+   "runtime_s": 0.0009363749995827675,
+   "seed": 22,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40615936,
+   "run_id": "PROBE-001/C000/massed/s22",
+   "runtime_s": 0.0002757499987637857,
+   "seed": 22,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40615936,
+   "run_id": "PROBE-001/C000/leitner/s22",
+   "runtime_s": 0.004043417000502814,
+   "seed": 22,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40697856,
+   "run_id": "PROBE-001/C000/greedy/s22",
+   "runtime_s": 0.0014292089999798918,
+   "seed": 22,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40714240,
+   "run_id": "PROBE-001/C000/uniform/s23",
+   "runtime_s": 0.0007839579993742518,
+   "seed": 23,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40714240,
+   "run_id": "PROBE-001/C000/expanding/s23",
+   "runtime_s": 0.00028449999990698416,
+   "seed": 23,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40714240,
+   "run_id": "PROBE-001/C000/massed/s23",
+   "runtime_s": 0.0002703339996514842,
+   "seed": 23,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40714240,
+   "run_id": "PROBE-001/C000/leitner/s23",
+   "runtime_s": 0.0008738750002521556,
+   "seed": 23,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40714240,
+   "run_id": "PROBE-001/C000/greedy/s23",
+   "runtime_s": 0.001271458999326569,
+   "seed": 23,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40714240,
+   "run_id": "PROBE-001/C000/uniform/s24",
+   "runtime_s": 0.0007490000007237541,
+   "seed": 24,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40714240,
+   "run_id": "PROBE-001/C000/expanding/s24",
+   "runtime_s": 0.000271332999545848,
+   "seed": 24,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40714240,
+   "run_id": "PROBE-001/C000/massed/s24",
+   "runtime_s": 0.00026229099967167713,
+   "seed": 24,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40730624,
+   "run_id": "PROBE-001/C000/leitner/s24",
+   "runtime_s": 0.0008742910013097571,
+   "seed": 24,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40730624,
+   "run_id": "PROBE-001/C000/greedy/s24",
+   "runtime_s": 0.00124991699885868,
+   "seed": 24,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40747008,
+   "run_id": "PROBE-001/C000/uniform/s25",
+   "runtime_s": 0.0007549590009148233,
+   "seed": 25,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40747008,
+   "run_id": "PROBE-001/C000/expanding/s25",
+   "runtime_s": 0.00027137500001117587,
+   "seed": 25,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40747008,
+   "run_id": "PROBE-001/C000/massed/s25",
+   "runtime_s": 0.00026362500102550257,
+   "seed": 25,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/leitner/s25",
+   "runtime_s": 0.000861791000716039,
+   "seed": 25,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/greedy/s25",
+   "runtime_s": 0.0012430829992808867,
+   "seed": 25,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/uniform/s26",
+   "runtime_s": 0.0007397080007649492,
+   "seed": 26,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/expanding/s26",
+   "runtime_s": 0.00026945799982058816,
+   "seed": 26,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/massed/s26",
+   "runtime_s": 0.0002604159999464173,
+   "seed": 26,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/leitner/s26",
+   "runtime_s": 0.0008871659993019421,
+   "seed": 26,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/greedy/s26",
+   "runtime_s": 0.0012551250001706649,
+   "seed": 26,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/uniform/s27",
+   "runtime_s": 0.0007453340003849007,
+   "seed": 27,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/expanding/s27",
+   "runtime_s": 0.00027562499963096343,
+   "seed": 27,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/massed/s27",
+   "runtime_s": 0.00026125000113097485,
+   "seed": 27,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/leitner/s27",
+   "runtime_s": 0.0008654579996800749,
+   "seed": 27,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/greedy/s27",
+   "runtime_s": 0.0012469160010368796,
+   "seed": 27,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/uniform/s28",
+   "runtime_s": 0.0007477919989469228,
+   "seed": 28,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40763392,
+   "run_id": "PROBE-001/C000/expanding/s28",
+   "runtime_s": 0.00027116599994769786,
+   "seed": 28,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40779776,
+   "run_id": "PROBE-001/C000/massed/s28",
+   "runtime_s": 0.00027604099886957556,
+   "seed": 28,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40779776,
+   "run_id": "PROBE-001/C000/leitner/s28",
+   "runtime_s": 0.0008807909998722607,
+   "seed": 28,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40779776,
+   "run_id": "PROBE-001/C000/greedy/s28",
+   "runtime_s": 0.0012656660001084674,
+   "seed": 28,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40779776,
+   "run_id": "PROBE-001/C000/uniform/s29",
+   "runtime_s": 0.0007574169994768454,
+   "seed": 29,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40779776,
+   "run_id": "PROBE-001/C000/expanding/s29",
+   "runtime_s": 0.00026695800079323817,
+   "seed": 29,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40779776,
+   "run_id": "PROBE-001/C000/massed/s29",
+   "runtime_s": 0.00026095800058101304,
+   "seed": 29,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40779776,
+   "run_id": "PROBE-001/C000/leitner/s29",
+   "runtime_s": 0.0008807089998299489,
+   "seed": 29,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40779776,
+   "run_id": "PROBE-001/C000/greedy/s29",
+   "runtime_s": 0.0012407500016706763,
+   "seed": 29,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40779776,
+   "run_id": "PROBE-001/C000/uniform/s30",
+   "runtime_s": 0.0007395409993478097,
+   "seed": 30,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40779776,
+   "run_id": "PROBE-001/C000/expanding/s30",
+   "runtime_s": 0.0004539159999694675,
+   "seed": 30,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40779776,
+   "run_id": "PROBE-001/C000/massed/s30",
+   "runtime_s": 0.0003277080013504019,
+   "seed": 30,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40779776,
+   "run_id": "PROBE-001/C000/leitner/s30",
+   "runtime_s": 0.000900417000593734,
+   "seed": 30,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 40779776,
+   "run_id": "PROBE-001/C000/greedy/s30",
+   "runtime_s": 0.001275459000680712,
+   "seed": 30,
+   "status": "ok"
+  }
+ ],
+ "schema_version": "memory-run-manifest/1.0.0",
+ "wall_clock_s": 0.1333835410005122
+}

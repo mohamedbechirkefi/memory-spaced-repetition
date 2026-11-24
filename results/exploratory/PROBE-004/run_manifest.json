@@ -1,0 +1,250 @@
+{
+ "environment": {
+  "cpu": "Apple M1 Pro",
+  "git_dirty": false,
+  "git_revision": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+  "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+  "package_version": "0.1.0",
+  "packages": {
+   "jsonschema": "4.26.0",
+   "matplotlib": "3.11.2",
+   "numpy": "2.5.4"
+  },
+  "python": "3.12.1"
+ },
+ "experiment_id": "PROBE-004",
+ "kind": "exploratory",
+ "matrix_config_hash": "7f3fec1bacd0806dc76bb50e9e99c97527fe12738da87523e4ffc1332732c3df",
+ "peak_rss_bytes": 41598976,
+ "result_path": "results/exploratory/PROBE-004/results.json",
+ "result_sha256": "aa33d9eb544225c4584d2a1e82c4259f2b355116c1b8eaefdf3cfc5dd90f29c3",
+ "runs": [
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 39813120,
+   "run_id": "PROBE-004/C000/uniform/s1",
+   "runtime_s": 0.005803749998449348,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 39845888,
+   "run_id": "PROBE-004/C000/uniform/s2",
+   "runtime_s": 0.0009227919999830192,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 39862272,
+   "run_id": "PROBE-004/C000/uniform/s3",
+   "runtime_s": 0.0008632079989183694,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 39862272,
+   "run_id": "PROBE-004/C000/uniform/s4",
+   "runtime_s": 0.0008187920011550887,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b4b5f8fe1b2dde1ecd6062f48880e211ab0314e57bca7c3c61b68401f8c1f466",
+   "peak_rss_bytes": 39862272,
+   "run_id": "PROBE-004/C000/uniform/s5",
+   "runtime_s": 0.0007812499989086064,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "6972cf60885bc1d0fe547482f4ff4f69f7d4c207ca789d65a18ffe44e70c4572",
+   "peak_rss_bytes": 39862272,
+   "run_id": "PROBE-004/C001/uniform/s1",
+   "runtime_s": 0.0007839999998395797,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "6972cf60885bc1d0fe547482f4ff4f69f7d4c207ca789d65a18ffe44e70c4572",
+   "peak_rss_bytes": 39862272,
+   "run_id": "PROBE-004/C001/uniform/s2",
+   "runtime_s": 0.0007522080013586674,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "6972cf60885bc1d0fe547482f4ff4f69f7d4c207ca789d65a18ffe44e70c4572",
+   "peak_rss_bytes": 39862272,
+   "run_id": "PROBE-004/C001/uniform/s3",
+   "runtime_s": 0.000751042000047164,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "6972cf60885bc1d0fe547482f4ff4f69f7d4c207ca789d65a18ffe44e70c4572",
+   "peak_rss_bytes": 39862272,
+   "run_id": "PROBE-004/C001/uniform/s4",
+   "runtime_s": 0.0007509589995606802,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "6972cf60885bc1d0fe547482f4ff4f69f7d4c207ca789d65a18ffe44e70c4572",
+   "peak_rss_bytes": 39862272,
+   "run_id": "PROBE-004/C001/uniform/s5",
+   "runtime_s": 0.0007439589990099194,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b89804d33e068dcaabb0940e65bf10a0334391fc30722df36ca2c604a31c6c2c",
+   "peak_rss_bytes": 39862272,
+   "run_id": "PROBE-004/C002/uniform/s1",
+   "runtime_s": 0.0008093749984254828,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b89804d33e068dcaabb0940e65bf10a0334391fc30722df36ca2c604a31c6c2c",
+   "peak_rss_bytes": 39862272,
+   "run_id": "PROBE-004/C002/uniform/s2",
+   "runtime_s": 0.0011511660013638902,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b89804d33e068dcaabb0940e65bf10a0334391fc30722df36ca2c604a31c6c2c",
+   "peak_rss_bytes": 39878656,
+   "run_id": "PROBE-004/C002/uniform/s3",
+   "runtime_s": 0.00078229199971247,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b89804d33e068dcaabb0940e65bf10a0334391fc30722df36ca2c604a31c6c2c",
+   "peak_rss_bytes": 39944192,
+   "run_id": "PROBE-004/C002/uniform/s4",
+   "runtime_s": 0.04117516599944793,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "b89804d33e068dcaabb0940e65bf10a0334391fc30722df36ca2c604a31c6c2c",
+   "peak_rss_bytes": 39944192,
+   "run_id": "PROBE-004/C002/uniform/s5",
+   "runtime_s": 0.0008015829989744816,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "6a79afc3ff3df643c1ba27edec3dbbb38cb16ff25eb4b1b713b4f137484fb943",
+   "peak_rss_bytes": 39944192,
+   "run_id": "PROBE-004/C003/uniform/s1",
+   "runtime_s": 0.0007508750004490139,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "6a79afc3ff3df643c1ba27edec3dbbb38cb16ff25eb4b1b713b4f137484fb943",
+   "peak_rss_bytes": 39944192,
+   "run_id": "PROBE-004/C003/uniform/s2",
+   "runtime_s": 0.0007446250001521548,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "6a79afc3ff3df643c1ba27edec3dbbb38cb16ff25eb4b1b713b4f137484fb943",
+   "peak_rss_bytes": 39944192,
+   "run_id": "PROBE-004/C003/uniform/s3",
+   "runtime_s": 0.0007561250004073372,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "6a79afc3ff3df643c1ba27edec3dbbb38cb16ff25eb4b1b713b4f137484fb943",
+   "peak_rss_bytes": 39944192,
+   "run_id": "PROBE-004/C003/uniform/s4",
+   "runtime_s": 0.0007406670010823291,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "6a79afc3ff3df643c1ba27edec3dbbb38cb16ff25eb4b1b713b4f137484fb943",
+   "peak_rss_bytes": 39960576,
+   "run_id": "PROBE-004/C003/uniform/s5",
+   "runtime_s": 0.000745249999454245,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "08f3de753abd672088b1e5c6f21dfa2024d323b8ed2100cabe4ef093200950b2",
+   "peak_rss_bytes": 39960576,
+   "run_id": "PROBE-004/C004/uniform/s1",
+   "runtime_s": 0.0007364580014836974,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "08f3de753abd672088b1e5c6f21dfa2024d323b8ed2100cabe4ef093200950b2",
+   "peak_rss_bytes": 39960576,
+   "run_id": "PROBE-004/C004/uniform/s2",
+   "runtime_s": 0.0007382920011878014,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "08f3de753abd672088b1e5c6f21dfa2024d323b8ed2100cabe4ef093200950b2",
+   "peak_rss_bytes": 39960576,
+   "run_id": "PROBE-004/C004/uniform/s3",
+   "runtime_s": 0.0007346250004047761,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "08f3de753abd672088b1e5c6f21dfa2024d323b8ed2100cabe4ef093200950b2",
+   "peak_rss_bytes": 39960576,
+   "run_id": "PROBE-004/C004/uniform/s4",
+   "runtime_s": 0.0007310830005735625,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "08f3de753abd672088b1e5c6f21dfa2024d323b8ed2100cabe4ef093200950b2",
+   "peak_rss_bytes": 39960576,
+   "run_id": "PROBE-004/C004/uniform/s5",
+   "runtime_s": 0.02956304100007401,
+   "seed": 5,
+   "status": "ok"
+  }
+ ],
+ "schema_version": "memory-run-manifest/1.0.0",
+ "wall_clock_s": 0.10221958300098777
+}

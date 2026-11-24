@@ -47,4 +47,9 @@ Tools used by the project (free, local):
 - Build a PDF from Markdown: `pandoc FILE.md -s -V mainfont="Libertinus Serif" -o FILE.typ`, then `python -c "import typst; typst.compile('FILE.typ', output='FILE.pdf')"`.
 - Generate LaTeX source: `pandoc FILE.md -s -o FILE.tex`.
 
-Experiment, smoke and report-export commands are added here when they exist (M2).
+Experiment, smoke and report-export commands (M2):
+
+- Run the tests: `uv run python -m memory_research test`.
+- Exploratory smoke run and report: `uv run python -m memory_research smoke --pdf`.
+- Run a matrix configuration: `uv run python -m memory_research run --config experiments/configs/probe_central.json --report`. Confirmatory configurations (`research/experiments/EXP-NNN/config.json`) are refused until their protocol is frozen.
+- Rebuild a report from a result file: `uv run python -m memory_research report --results results/exploratory/SMOKE-001/results.json --pdf`.

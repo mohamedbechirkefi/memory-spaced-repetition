@@ -1,0 +1,250 @@
+{
+ "environment": {
+  "cpu": "Apple M1 Pro",
+  "git_dirty": false,
+  "git_revision": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+  "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+  "package_version": "0.1.0",
+  "packages": {
+   "jsonschema": "4.26.0",
+   "matplotlib": "3.11.2",
+   "numpy": "2.5.4"
+  },
+  "python": "3.12.1"
+ },
+ "experiment_id": "SMOKE-001",
+ "kind": "exploratory",
+ "matrix_config_hash": "cda83ad8da4f35c2f8c19856f53ca2f125400d8074c66e0f1c47ac4bac676e9f",
+ "peak_rss_bytes": 41467904,
+ "result_path": "results/exploratory/SMOKE-001/results.json",
+ "result_sha256": "66cb8a9dadb7e4c0412ca20a25835b8865662455d1e3ef1fa856f64f4af4cd88",
+ "runs": [
+  {
+   "arm": "uniform",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39829504,
+   "run_id": "SMOKE-001/C000/uniform/s1",
+   "runtime_s": 0.010794333999001537,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39829504,
+   "run_id": "SMOKE-001/C000/expanding/s1",
+   "runtime_s": 0.00030620799952885136,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39829504,
+   "run_id": "SMOKE-001/C000/massed/s1",
+   "runtime_s": 0.00026950000028591603,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39845888,
+   "run_id": "SMOKE-001/C000/leitner/s1",
+   "runtime_s": 0.0009014580009534257,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39878656,
+   "run_id": "SMOKE-001/C000/greedy/s1",
+   "runtime_s": 0.0012691660012933426,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39878656,
+   "run_id": "SMOKE-001/C000/uniform/s2",
+   "runtime_s": 0.0007242089995997958,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39878656,
+   "run_id": "SMOKE-001/C000/expanding/s2",
+   "runtime_s": 0.00024033299996517599,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39878656,
+   "run_id": "SMOKE-001/C000/massed/s2",
+   "runtime_s": 0.0002307920003659092,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39878656,
+   "run_id": "SMOKE-001/C000/leitner/s2",
+   "runtime_s": 0.0008665420009492664,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39878656,
+   "run_id": "SMOKE-001/C000/greedy/s2",
+   "runtime_s": 0.0012599589990713866,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39878656,
+   "run_id": "SMOKE-001/C000/uniform/s3",
+   "runtime_s": 0.000735792000341462,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39878656,
+   "run_id": "SMOKE-001/C000/expanding/s3",
+   "runtime_s": 0.000248416999966139,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39878656,
+   "run_id": "SMOKE-001/C000/massed/s3",
+   "runtime_s": 0.00023212499945657328,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39895040,
+   "run_id": "SMOKE-001/C000/leitner/s3",
+   "runtime_s": 0.0008662920008646324,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39895040,
+   "run_id": "SMOKE-001/C000/greedy/s3",
+   "runtime_s": 0.0012424589986039791,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39895040,
+   "run_id": "SMOKE-001/C000/uniform/s4",
+   "runtime_s": 0.0007099580016074469,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39895040,
+   "run_id": "SMOKE-001/C000/expanding/s4",
+   "runtime_s": 0.0002442500008328352,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39895040,
+   "run_id": "SMOKE-001/C000/massed/s4",
+   "runtime_s": 0.0002253339989692904,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39911424,
+   "run_id": "SMOKE-001/C000/leitner/s4",
+   "runtime_s": 0.0008578329998272238,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39911424,
+   "run_id": "SMOKE-001/C000/greedy/s4",
+   "runtime_s": 0.0012099160012439825,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39911424,
+   "run_id": "SMOKE-001/C000/uniform/s5",
+   "runtime_s": 0.0006997500004217727,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39911424,
+   "run_id": "SMOKE-001/C000/expanding/s5",
+   "runtime_s": 0.00023174999842012767,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39911424,
+   "run_id": "SMOKE-001/C000/massed/s5",
+   "runtime_s": 0.00022399999943445437,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39927808,
+   "run_id": "SMOKE-001/C000/leitner/s5",
+   "runtime_s": 0.0008450419991277158,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy",
+   "config_hash": "023ac9ac18225a2ccc252c97b2ea752438c2c179d2da8bd01d959605d13e1c2a",
+   "peak_rss_bytes": 39927808,
+   "run_id": "SMOKE-001/C000/greedy/s5",
+   "runtime_s": 0.001211707998663769,
+   "seed": 5,
+   "status": "ok"
+  }
+ ],
+ "schema_version": "memory-run-manifest/1.0.0",
+ "wall_clock_s": 0.03555649999907473
+}

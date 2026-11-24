@@ -1,0 +1,78 @@
+{
+ "baseline": "uniform",
+ "contrasts": [],
+ "flags": [
+  "C000 uniform: near floor (mean recall 0.0295 < 0.10)",
+  "C001 uniform: near floor (mean recall 0.0983 < 0.10)"
+ ],
+ "generator": "memory_research.report 0.1.0 at `13bb3d9fab7a312eb6edbb7678298f038aefe05d` (dirty: False)",
+ "metric": "recall_mean",
+ "result_sha256": "aa33d9eb544225c4584d2a1e82c4259f2b355116c1b8eaefdf3cfc5dd90f29c3",
+ "runtime": {
+  "max_s": 0.04117516599944793,
+  "mean_s": 0.003757303320016945,
+  "median_s": 0.0007561250004073372,
+  "peak_rss_bytes": 39960576,
+  "per_arm_mean_s": {
+   "uniform": 0.003757303320016945
+  },
+  "wall_clock_s": 0.10221958300098777
+ },
+ "summary": [
+  {
+   "arm": "uniform",
+   "cell_id": "C000",
+   "factor_h0_days": 1.0,
+   "max": 0.06596309144026473,
+   "mean": 0.02945779450681313,
+   "median": 0.017321177422979676,
+   "min": 0.0005742184778888025,
+   "n_ok": 5,
+   "sd": 0.027487369964328687
+  },
+  {
+   "arm": "uniform",
+   "cell_id": "C001",
+   "factor_h0_days": 2.0,
+   "max": 0.16106448306806978,
+   "mean": 0.09826570752567762,
+   "median": 0.09015003618477659,
+   "min": 0.04939568928771828,
+   "n_ok": 5,
+   "sd": 0.050270383821342225
+  },
+  {
+   "arm": "uniform",
+   "cell_id": "C002",
+   "factor_h0_days": 4.0,
+   "max": 0.39291128137136694,
+   "mean": 0.2791340771770156,
+   "median": 0.2608051307356808,
+   "min": 0.22693642815085674,
+   "n_ok": 5,
+   "sd": 0.06625738784894843
+  },
+  {
+   "arm": "uniform",
+   "cell_id": "C003",
+   "factor_h0_days": 8.0,
+   "max": 0.6193015478747018,
+   "mean": 0.5570669636461024,
+   "median": 0.5552602750519616,
+   "min": 0.4900422640684723,
+   "n_ok": 5,
+   "sd": 0.0462383140136751
+  },
+  {
+   "arm": "uniform",
+   "cell_id": "C004",
+   "factor_h0_days": 16.0,
+   "max": 0.8557080799714076,
+   "mean": 0.8022103968658675,
+   "median": 0.7992292226646529,
+   "min": 0.7596987845317215,
+   "n_ok": 5,
+   "sd": 0.03504834268696782
+  }
+ ]
+}

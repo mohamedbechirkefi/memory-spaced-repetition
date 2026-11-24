@@ -1,6 +1,77 @@
 {
   "schema_version": "0.1.0",
   "generated": "2026-11-24",
-  "note": "No quantitative figure, table or claim exists yet. Each future entry maps an artifact to exp_id, run_ids, metric definition, result path, generator script, config hash, protocol hash and code revision.",
-  "artifacts": []
+  "note": "No confirmatory figure, table or claim exists yet. Exploratory planning artifacts are listed for traceability only; they are not findings and may not be cited as results.",
+  "artifacts": [
+    {
+      "artifact_id": "XPL-SMOKE-001",
+      "status": "exploratory",
+      "exp_id": null,
+      "related_draft_exp": "EXP-001",
+      "run_ids": "SMOKE-001/*",
+      "metric": "recall_mean (mean true-model recall at the delayed test)",
+      "result_path": "results/exploratory/SMOKE-001/results.json",
+      "report_path": "results/exploratory/SMOKE-001/report/report.md",
+      "generator": "memory_research.report",
+      "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+      "code_revision_report": "13bb3d9",
+      "protocol_hash": null
+    },
+    {
+      "artifact_id": "XPL-PROBE-001",
+      "status": "exploratory",
+      "exp_id": null,
+      "related_draft_exp": "EXP-001",
+      "run_ids": "PROBE-001/*",
+      "metric": "recall_mean (mean true-model recall at the delayed test)",
+      "result_path": "results/exploratory/PROBE-001/results.json",
+      "report_path": "results/exploratory/PROBE-001/report/report.md",
+      "generator": "memory_research.report",
+      "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+      "code_revision_report": "13bb3d9",
+      "protocol_hash": null
+    },
+    {
+      "artifact_id": "XPL-PROBE-002",
+      "status": "exploratory",
+      "exp_id": null,
+      "related_draft_exp": "EXP-002",
+      "run_ids": "PROBE-002/*",
+      "metric": "recall_mean (mean true-model recall at the delayed test)",
+      "result_path": "results/exploratory/PROBE-002/results.json",
+      "report_path": "results/exploratory/PROBE-002/report/report.md",
+      "generator": "memory_research.report",
+      "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+      "code_revision_report": "13bb3d9",
+      "protocol_hash": null
+    },
+    {
+      "artifact_id": "XPL-PROBE-003",
+      "status": "exploratory",
+      "exp_id": null,
+      "related_draft_exp": "EXP-003",
+      "run_ids": "PROBE-003/*",
+      "metric": "recall_mean (mean true-model recall at the delayed test)",
+      "result_path": "results/exploratory/PROBE-003/results.json",
+      "report_path": "results/exploratory/PROBE-003/report/report.md",
+      "generator": "memory_research.report",
+      "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+      "code_revision_report": "13bb3d9",
+      "protocol_hash": null
+    },
+    {
+      "artifact_id": "XPL-PROBE-004",
+      "status": "exploratory",
+      "exp_id": null,
+      "related_draft_exp": "EXP-003",
+      "run_ids": "PROBE-004/*",
+      "metric": "recall_mean (mean true-model recall at the delayed test)",
+      "result_path": "results/exploratory/PROBE-004/results.json",
+      "report_path": "results/exploratory/PROBE-004/report/report.md",
+      "generator": "memory_research.report",
+      "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+      "code_revision_report": "13bb3d9",
+      "protocol_hash": null
+    }
+  ]
 }

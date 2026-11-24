@@ -1,0 +1,1645 @@
+{
+ "environment": {
+  "cpu": "Apple M1 Pro",
+  "git_dirty": false,
+  "git_revision": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+  "os": "Darwin 24.3.0 (macOS-15.3.1-arm64-arm-64bit)",
+  "package_version": "0.1.0",
+  "packages": {
+   "jsonschema": "4.26.0",
+   "matplotlib": "3.11.2",
+   "numpy": "2.5.4"
+  },
+  "python": "3.12.1"
+ },
+ "experiment_id": "PROBE-002",
+ "kind": "exploratory",
+ "matrix_config_hash": "2426cf8fb6373570ed61ad6e87b8d3362712902092bf33e8b95739443254ee9c",
+ "peak_rss_bytes": 42582016,
+ "result_path": "results/exploratory/PROBE-002/results.json",
+ "result_sha256": "b807448c3ab642adf39616538b39966b21fe6d086d928afaccc2879d0e6badcd",
+ "runs": [
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39469056,
+   "run_id": "PROBE-002/C000/uniform/s1",
+   "runtime_s": 0.04273037500024657,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39485440,
+   "run_id": "PROBE-002/C000/expanding/s1",
+   "runtime_s": 0.00038950000089243986,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39485440,
+   "run_id": "PROBE-002/C000/massed/s1",
+   "runtime_s": 0.00030820800020592287,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39485440,
+   "run_id": "PROBE-002/C000/leitner/s1",
+   "runtime_s": 0.0009784160010894993,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39518208,
+   "run_id": "PROBE-002/C000/greedy-power/s1",
+   "runtime_s": 0.001399082999341772,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39534592,
+   "run_id": "PROBE-002/C000/greedy-exp/s1",
+   "runtime_s": 0.013829583998813177,
+   "seed": 1,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39534592,
+   "run_id": "PROBE-002/C000/uniform/s2",
+   "runtime_s": 0.0008542499999748543,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39534592,
+   "run_id": "PROBE-002/C000/expanding/s2",
+   "runtime_s": 0.0002927920013462426,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39534592,
+   "run_id": "PROBE-002/C000/massed/s2",
+   "runtime_s": 0.00027683299958880525,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39534592,
+   "run_id": "PROBE-002/C000/leitner/s2",
+   "runtime_s": 0.000909166999917943,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39534592,
+   "run_id": "PROBE-002/C000/greedy-power/s2",
+   "runtime_s": 0.00134066699865798,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39534592,
+   "run_id": "PROBE-002/C000/greedy-exp/s2",
+   "runtime_s": 0.0012851250012317905,
+   "seed": 2,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39534592,
+   "run_id": "PROBE-002/C000/uniform/s3",
+   "runtime_s": 0.0007758339997963049,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39550976,
+   "run_id": "PROBE-002/C000/expanding/s3",
+   "runtime_s": 0.0002873329995054519,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39550976,
+   "run_id": "PROBE-002/C000/massed/s3",
+   "runtime_s": 0.0002733750006882474,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39550976,
+   "run_id": "PROBE-002/C000/leitner/s3",
+   "runtime_s": 0.0008863750008458737,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39567360,
+   "run_id": "PROBE-002/C000/greedy-power/s3",
+   "runtime_s": 0.001318666998486151,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39567360,
+   "run_id": "PROBE-002/C000/greedy-exp/s3",
+   "runtime_s": 0.01757754199934425,
+   "seed": 3,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39649280,
+   "run_id": "PROBE-002/C000/uniform/s4",
+   "runtime_s": 0.017617458001041086,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39649280,
+   "run_id": "PROBE-002/C000/expanding/s4",
+   "runtime_s": 0.0003407080002943985,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39649280,
+   "run_id": "PROBE-002/C000/massed/s4",
+   "runtime_s": 0.00029962500047986396,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39649280,
+   "run_id": "PROBE-002/C000/leitner/s4",
+   "runtime_s": 0.0009325829996669199,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39649280,
+   "run_id": "PROBE-002/C000/greedy-power/s4",
+   "runtime_s": 0.0013690840005438076,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39649280,
+   "run_id": "PROBE-002/C000/greedy-exp/s4",
+   "runtime_s": 0.0013081670003884938,
+   "seed": 4,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39665664,
+   "run_id": "PROBE-002/C000/uniform/s5",
+   "runtime_s": 0.0008156250005413312,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39665664,
+   "run_id": "PROBE-002/C000/expanding/s5",
+   "runtime_s": 0.0002871249998861458,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39682048,
+   "run_id": "PROBE-002/C000/massed/s5",
+   "runtime_s": 0.00028949999978067353,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39682048,
+   "run_id": "PROBE-002/C000/leitner/s5",
+   "runtime_s": 0.0049304160002066055,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39682048,
+   "run_id": "PROBE-002/C000/greedy-power/s5",
+   "runtime_s": 0.0066429590006009676,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39698432,
+   "run_id": "PROBE-002/C000/greedy-exp/s5",
+   "runtime_s": 0.019650666999950772,
+   "seed": 5,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39714816,
+   "run_id": "PROBE-002/C000/uniform/s6",
+   "runtime_s": 0.011730082998838043,
+   "seed": 6,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39714816,
+   "run_id": "PROBE-002/C000/expanding/s6",
+   "runtime_s": 0.013836000000083004,
+   "seed": 6,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39714816,
+   "run_id": "PROBE-002/C000/massed/s6",
+   "runtime_s": 0.0008812089999992168,
+   "seed": 6,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39714816,
+   "run_id": "PROBE-002/C000/leitner/s6",
+   "runtime_s": 0.012973958000657149,
+   "seed": 6,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39714816,
+   "run_id": "PROBE-002/C000/greedy-power/s6",
+   "runtime_s": 0.010490375001609209,
+   "seed": 6,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39714816,
+   "run_id": "PROBE-002/C000/greedy-exp/s6",
+   "runtime_s": 0.004155833001277642,
+   "seed": 6,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39714816,
+   "run_id": "PROBE-002/C000/uniform/s7",
+   "runtime_s": 0.0025962090003304183,
+   "seed": 7,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39714816,
+   "run_id": "PROBE-002/C000/expanding/s7",
+   "runtime_s": 0.00033216699921467807,
+   "seed": 7,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39714816,
+   "run_id": "PROBE-002/C000/massed/s7",
+   "runtime_s": 0.0002856249993783422,
+   "seed": 7,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39714816,
+   "run_id": "PROBE-002/C000/leitner/s7",
+   "runtime_s": 0.0009204590005538194,
+   "seed": 7,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39731200,
+   "run_id": "PROBE-002/C000/greedy-power/s7",
+   "runtime_s": 0.0013670410007762257,
+   "seed": 7,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39747584,
+   "run_id": "PROBE-002/C000/greedy-exp/s7",
+   "runtime_s": 0.001315290999627905,
+   "seed": 7,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39747584,
+   "run_id": "PROBE-002/C000/uniform/s8",
+   "runtime_s": 0.000803375000032247,
+   "seed": 8,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39747584,
+   "run_id": "PROBE-002/C000/expanding/s8",
+   "runtime_s": 0.0002863329991669161,
+   "seed": 8,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39747584,
+   "run_id": "PROBE-002/C000/massed/s8",
+   "runtime_s": 0.0002733750006882474,
+   "seed": 8,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39747584,
+   "run_id": "PROBE-002/C000/leitner/s8",
+   "runtime_s": 0.0008959170008893125,
+   "seed": 8,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39747584,
+   "run_id": "PROBE-002/C000/greedy-power/s8",
+   "runtime_s": 0.01184829100020579,
+   "seed": 8,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39747584,
+   "run_id": "PROBE-002/C000/greedy-exp/s8",
+   "runtime_s": 0.020958832999895094,
+   "seed": 8,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39763968,
+   "run_id": "PROBE-002/C000/uniform/s9",
+   "runtime_s": 0.0029066669994790573,
+   "seed": 9,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39763968,
+   "run_id": "PROBE-002/C000/expanding/s9",
+   "runtime_s": 0.0008790000010776566,
+   "seed": 9,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39763968,
+   "run_id": "PROBE-002/C000/massed/s9",
+   "runtime_s": 0.0008408749999944121,
+   "seed": 9,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39763968,
+   "run_id": "PROBE-002/C000/leitner/s9",
+   "runtime_s": 0.002796082999338978,
+   "seed": 9,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39763968,
+   "run_id": "PROBE-002/C000/greedy-power/s9",
+   "runtime_s": 0.0019441670010564849,
+   "seed": 9,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39763968,
+   "run_id": "PROBE-002/C000/greedy-exp/s9",
+   "runtime_s": 0.017941375001100823,
+   "seed": 9,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39763968,
+   "run_id": "PROBE-002/C000/uniform/s10",
+   "runtime_s": 0.0008464160000585252,
+   "seed": 10,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39780352,
+   "run_id": "PROBE-002/C000/expanding/s10",
+   "runtime_s": 0.00032554099925619084,
+   "seed": 10,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39796736,
+   "run_id": "PROBE-002/C000/massed/s10",
+   "runtime_s": 0.0002933750001830049,
+   "seed": 10,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39796736,
+   "run_id": "PROBE-002/C000/leitner/s10",
+   "runtime_s": 0.0009863750001386506,
+   "seed": 10,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39796736,
+   "run_id": "PROBE-002/C000/greedy-power/s10",
+   "runtime_s": 0.04484512499948323,
+   "seed": 10,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39911424,
+   "run_id": "PROBE-002/C000/greedy-exp/s10",
+   "runtime_s": 0.0026918750008917414,
+   "seed": 10,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39911424,
+   "run_id": "PROBE-002/C000/uniform/s11",
+   "runtime_s": 0.0008089580005616881,
+   "seed": 11,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39911424,
+   "run_id": "PROBE-002/C000/expanding/s11",
+   "runtime_s": 0.00029320799876586534,
+   "seed": 11,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39911424,
+   "run_id": "PROBE-002/C000/massed/s11",
+   "runtime_s": 0.00027704199965228327,
+   "seed": 11,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39911424,
+   "run_id": "PROBE-002/C000/leitner/s11",
+   "runtime_s": 0.0009017079992190702,
+   "seed": 11,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39911424,
+   "run_id": "PROBE-002/C000/greedy-power/s11",
+   "runtime_s": 0.001324249999015592,
+   "seed": 11,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39911424,
+   "run_id": "PROBE-002/C000/greedy-exp/s11",
+   "runtime_s": 0.0012821250002161833,
+   "seed": 11,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39944192,
+   "run_id": "PROBE-002/C000/uniform/s12",
+   "runtime_s": 0.0007772080007271143,
+   "seed": 12,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39944192,
+   "run_id": "PROBE-002/C000/expanding/s12",
+   "runtime_s": 0.000280999998722109,
+   "seed": 12,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39944192,
+   "run_id": "PROBE-002/C000/massed/s12",
+   "runtime_s": 0.00027429199872130994,
+   "seed": 12,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39944192,
+   "run_id": "PROBE-002/C000/leitner/s12",
+   "runtime_s": 0.0008869159992173081,
+   "seed": 12,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39944192,
+   "run_id": "PROBE-002/C000/greedy-power/s12",
+   "runtime_s": 0.001314084000114235,
+   "seed": 12,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39944192,
+   "run_id": "PROBE-002/C000/greedy-exp/s12",
+   "runtime_s": 0.0012673749988607597,
+   "seed": 12,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39960576,
+   "run_id": "PROBE-002/C000/uniform/s13",
+   "runtime_s": 0.0007751659995847149,
+   "seed": 13,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39976960,
+   "run_id": "PROBE-002/C000/expanding/s13",
+   "runtime_s": 0.00027941600092162844,
+   "seed": 13,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39976960,
+   "run_id": "PROBE-002/C000/massed/s13",
+   "runtime_s": 0.00027266700089967344,
+   "seed": 13,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39976960,
+   "run_id": "PROBE-002/C000/leitner/s13",
+   "runtime_s": 0.000885125000422704,
+   "seed": 13,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39976960,
+   "run_id": "PROBE-002/C000/greedy-power/s13",
+   "runtime_s": 0.0013126659996487433,
+   "seed": 13,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39976960,
+   "run_id": "PROBE-002/C000/greedy-exp/s13",
+   "runtime_s": 0.0012656660001084674,
+   "seed": 13,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39976960,
+   "run_id": "PROBE-002/C000/uniform/s14",
+   "runtime_s": 0.0007653749999008141,
+   "seed": 14,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39976960,
+   "run_id": "PROBE-002/C000/expanding/s14",
+   "runtime_s": 0.0002749579998635454,
+   "seed": 14,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39976960,
+   "run_id": "PROBE-002/C000/massed/s14",
+   "runtime_s": 0.00026891699963016436,
+   "seed": 14,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39976960,
+   "run_id": "PROBE-002/C000/leitner/s14",
+   "runtime_s": 0.0008819590002531186,
+   "seed": 14,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39976960,
+   "run_id": "PROBE-002/C000/greedy-power/s14",
+   "runtime_s": 0.0013218750009400537,
+   "seed": 14,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39976960,
+   "run_id": "PROBE-002/C000/greedy-exp/s14",
+   "runtime_s": 0.0012742090002575424,
+   "seed": 14,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39976960,
+   "run_id": "PROBE-002/C000/uniform/s15",
+   "runtime_s": 0.0007687079996685497,
+   "seed": 15,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39993344,
+   "run_id": "PROBE-002/C000/expanding/s15",
+   "runtime_s": 0.00028058300085831434,
+   "seed": 15,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39993344,
+   "run_id": "PROBE-002/C000/massed/s15",
+   "runtime_s": 0.000270874999841908,
+   "seed": 15,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39993344,
+   "run_id": "PROBE-002/C000/leitner/s15",
+   "runtime_s": 0.0008854589996190043,
+   "seed": 15,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39993344,
+   "run_id": "PROBE-002/C000/greedy-power/s15",
+   "runtime_s": 0.001315041999987443,
+   "seed": 15,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39993344,
+   "run_id": "PROBE-002/C000/greedy-exp/s15",
+   "runtime_s": 0.0012655829996219836,
+   "seed": 15,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39993344,
+   "run_id": "PROBE-002/C000/uniform/s16",
+   "runtime_s": 0.0007676250006625196,
+   "seed": 16,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39993344,
+   "run_id": "PROBE-002/C000/expanding/s16",
+   "runtime_s": 0.00027600000066740904,
+   "seed": 16,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 39993344,
+   "run_id": "PROBE-002/C000/massed/s16",
+   "runtime_s": 0.00026858300043386407,
+   "seed": 16,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40009728,
+   "run_id": "PROBE-002/C000/leitner/s16",
+   "runtime_s": 0.0008856669992383104,
+   "seed": 16,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40009728,
+   "run_id": "PROBE-002/C000/greedy-power/s16",
+   "runtime_s": 0.0013174159994377987,
+   "seed": 16,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40009728,
+   "run_id": "PROBE-002/C000/greedy-exp/s16",
+   "runtime_s": 0.001275500000701868,
+   "seed": 16,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/uniform/s17",
+   "runtime_s": 0.0007703749997745035,
+   "seed": 17,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/expanding/s17",
+   "runtime_s": 0.0002765000008366769,
+   "seed": 17,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/massed/s17",
+   "runtime_s": 0.0002707499988900963,
+   "seed": 17,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/leitner/s17",
+   "runtime_s": 0.0008841670005494962,
+   "seed": 17,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/greedy-power/s17",
+   "runtime_s": 0.0013102909997542156,
+   "seed": 17,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/greedy-exp/s17",
+   "runtime_s": 0.0012665419999393634,
+   "seed": 17,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/uniform/s18",
+   "runtime_s": 0.0007650000006833579,
+   "seed": 18,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/expanding/s18",
+   "runtime_s": 0.0012848749993281672,
+   "seed": 18,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/massed/s18",
+   "runtime_s": 0.0002749579998635454,
+   "seed": 18,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/leitner/s18",
+   "runtime_s": 0.0008935410005506128,
+   "seed": 18,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/greedy-power/s18",
+   "runtime_s": 0.0017702919994917465,
+   "seed": 18,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/greedy-exp/s18",
+   "runtime_s": 0.034010291999948095,
+   "seed": 18,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/uniform/s19",
+   "runtime_s": 0.0008453330010524951,
+   "seed": 19,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/expanding/s19",
+   "runtime_s": 0.00030212499950721394,
+   "seed": 19,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/massed/s19",
+   "runtime_s": 0.00028158399982203264,
+   "seed": 19,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/leitner/s19",
+   "runtime_s": 0.0009193339992634719,
+   "seed": 19,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/greedy-power/s19",
+   "runtime_s": 0.0013454580002871808,
+   "seed": 19,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40026112,
+   "run_id": "PROBE-002/C000/greedy-exp/s19",
+   "runtime_s": 0.001282708000871935,
+   "seed": 19,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40042496,
+   "run_id": "PROBE-002/C000/uniform/s20",
+   "runtime_s": 0.007801333000315935,
+   "seed": 20,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40042496,
+   "run_id": "PROBE-002/C000/expanding/s20",
+   "runtime_s": 0.00030904199957149103,
+   "seed": 20,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40058880,
+   "run_id": "PROBE-002/C000/massed/s20",
+   "runtime_s": 0.00028987500081711914,
+   "seed": 20,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40075264,
+   "run_id": "PROBE-002/C000/leitner/s20",
+   "runtime_s": 0.0009132499999395804,
+   "seed": 20,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40075264,
+   "run_id": "PROBE-002/C000/greedy-power/s20",
+   "runtime_s": 0.0013317920002009487,
+   "seed": 20,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40075264,
+   "run_id": "PROBE-002/C000/greedy-exp/s20",
+   "runtime_s": 0.0013011669998377329,
+   "seed": 20,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40075264,
+   "run_id": "PROBE-002/C000/uniform/s21",
+   "runtime_s": 0.0010000420006690547,
+   "seed": 21,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40075264,
+   "run_id": "PROBE-002/C000/expanding/s21",
+   "runtime_s": 0.0002860830009012716,
+   "seed": 21,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40075264,
+   "run_id": "PROBE-002/C000/massed/s21",
+   "runtime_s": 0.0002753749995463295,
+   "seed": 21,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40091648,
+   "run_id": "PROBE-002/C000/leitner/s21",
+   "runtime_s": 0.0009032920006575296,
+   "seed": 21,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40091648,
+   "run_id": "PROBE-002/C000/greedy-power/s21",
+   "runtime_s": 0.001318249998803367,
+   "seed": 21,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40091648,
+   "run_id": "PROBE-002/C000/greedy-exp/s21",
+   "runtime_s": 0.00127779099966574,
+   "seed": 21,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40091648,
+   "run_id": "PROBE-002/C000/uniform/s22",
+   "runtime_s": 0.002484709000782459,
+   "seed": 22,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40091648,
+   "run_id": "PROBE-002/C000/expanding/s22",
+   "runtime_s": 0.02159145800033002,
+   "seed": 22,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40091648,
+   "run_id": "PROBE-002/C000/massed/s22",
+   "runtime_s": 0.010809583000082057,
+   "seed": 22,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40091648,
+   "run_id": "PROBE-002/C000/leitner/s22",
+   "runtime_s": 0.001024874998620362,
+   "seed": 22,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40091648,
+   "run_id": "PROBE-002/C000/greedy-power/s22",
+   "runtime_s": 0.0013596249991678633,
+   "seed": 22,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40091648,
+   "run_id": "PROBE-002/C000/greedy-exp/s22",
+   "runtime_s": 0.001307167000049958,
+   "seed": 22,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40108032,
+   "run_id": "PROBE-002/C000/uniform/s23",
+   "runtime_s": 0.0008170420005626511,
+   "seed": 23,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40108032,
+   "run_id": "PROBE-002/C000/expanding/s23",
+   "runtime_s": 0.0002925000007962808,
+   "seed": 23,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40108032,
+   "run_id": "PROBE-002/C000/massed/s23",
+   "runtime_s": 0.00028508300056273583,
+   "seed": 23,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40108032,
+   "run_id": "PROBE-002/C000/leitner/s23",
+   "runtime_s": 0.015715915998953278,
+   "seed": 23,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40108032,
+   "run_id": "PROBE-002/C000/greedy-power/s23",
+   "runtime_s": 0.0013855409997631796,
+   "seed": 23,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40124416,
+   "run_id": "PROBE-002/C000/greedy-exp/s23",
+   "runtime_s": 0.0012989589995413553,
+   "seed": 23,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/uniform/s24",
+   "runtime_s": 0.00773295800172491,
+   "seed": 24,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/expanding/s24",
+   "runtime_s": 0.0003040829997189576,
+   "seed": 24,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/massed/s24",
+   "runtime_s": 0.0002904579996538814,
+   "seed": 24,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/leitner/s24",
+   "runtime_s": 0.0009085410001716809,
+   "seed": 24,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/greedy-power/s24",
+   "runtime_s": 0.001329875000010361,
+   "seed": 24,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/greedy-exp/s24",
+   "runtime_s": 0.01240666600097029,
+   "seed": 24,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/uniform/s25",
+   "runtime_s": 0.0009824580010899808,
+   "seed": 25,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/expanding/s25",
+   "runtime_s": 0.00029466699925251305,
+   "seed": 25,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/massed/s25",
+   "runtime_s": 0.00027745900115405675,
+   "seed": 25,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/leitner/s25",
+   "runtime_s": 0.0008985420008684741,
+   "seed": 25,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/greedy-power/s25",
+   "runtime_s": 0.001331707999270293,
+   "seed": 25,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/greedy-exp/s25",
+   "runtime_s": 0.001275958000405808,
+   "seed": 25,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/uniform/s26",
+   "runtime_s": 0.0007771250002406305,
+   "seed": 26,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/expanding/s26",
+   "runtime_s": 0.00028250000104890205,
+   "seed": 26,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/massed/s26",
+   "runtime_s": 0.00027216699891141616,
+   "seed": 26,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/leitner/s26",
+   "runtime_s": 0.0009174159986287123,
+   "seed": 26,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/greedy-power/s26",
+   "runtime_s": 0.0013202499994804384,
+   "seed": 26,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/greedy-exp/s26",
+   "runtime_s": 0.0012648330011870712,
+   "seed": 26,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40140800,
+   "run_id": "PROBE-002/C000/uniform/s27",
+   "runtime_s": 0.002778209000098286,
+   "seed": 27,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40157184,
+   "run_id": "PROBE-002/C000/expanding/s27",
+   "runtime_s": 0.0008910839987947838,
+   "seed": 27,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40157184,
+   "run_id": "PROBE-002/C000/massed/s27",
+   "runtime_s": 0.0019134169997414574,
+   "seed": 27,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40157184,
+   "run_id": "PROBE-002/C000/leitner/s27",
+   "runtime_s": 0.010753500000646454,
+   "seed": 27,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40157184,
+   "run_id": "PROBE-002/C000/greedy-power/s27",
+   "runtime_s": 0.0036153330001980066,
+   "seed": 27,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40157184,
+   "run_id": "PROBE-002/C000/greedy-exp/s27",
+   "runtime_s": 0.015631042000677553,
+   "seed": 27,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/uniform/s28",
+   "runtime_s": 0.0008192919995053671,
+   "seed": 28,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/expanding/s28",
+   "runtime_s": 0.0002968339995277347,
+   "seed": 28,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/massed/s28",
+   "runtime_s": 0.001020583000354236,
+   "seed": 28,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/leitner/s28",
+   "runtime_s": 0.002929541000412428,
+   "seed": 28,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/greedy-power/s28",
+   "runtime_s": 0.0014198749995557591,
+   "seed": 28,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/greedy-exp/s28",
+   "runtime_s": 0.001318583001193474,
+   "seed": 28,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/uniform/s29",
+   "runtime_s": 0.0008154580009431811,
+   "seed": 29,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/expanding/s29",
+   "runtime_s": 0.00028862499857496005,
+   "seed": 29,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/massed/s29",
+   "runtime_s": 0.00028324999948381446,
+   "seed": 29,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/leitner/s29",
+   "runtime_s": 0.021902500000578584,
+   "seed": 29,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/greedy-power/s29",
+   "runtime_s": 0.0013545000001613516,
+   "seed": 29,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/greedy-exp/s29",
+   "runtime_s": 0.001300666999668465,
+   "seed": 29,
+   "status": "ok"
+  },
+  {
+   "arm": "uniform",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/uniform/s30",
+   "runtime_s": 0.0007888330001151189,
+   "seed": 30,
+   "status": "ok"
+  },
+  {
+   "arm": "expanding",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/expanding/s30",
+   "runtime_s": 0.0002860000004147878,
+   "seed": 30,
+   "status": "ok"
+  },
+  {
+   "arm": "massed",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40173568,
+   "run_id": "PROBE-002/C000/massed/s30",
+   "runtime_s": 0.0002737499999057036,
+   "seed": 30,
+   "status": "ok"
+  },
+  {
+   "arm": "leitner",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40189952,
+   "run_id": "PROBE-002/C000/leitner/s30",
+   "runtime_s": 0.0009667500016803388,
+   "seed": 30,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-power",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40206336,
+   "run_id": "PROBE-002/C000/greedy-power/s30",
+   "runtime_s": 0.0016126659993460635,
+   "seed": 30,
+   "status": "ok"
+  },
+  {
+   "arm": "greedy-exp",
+   "config_hash": "1a1dc2f49678c75a8da788a8b176a0ac028e1d1df92c59a1bc1369c1b9cf8d57",
+   "peak_rss_bytes": 40206336,
+   "run_id": "PROBE-002/C000/greedy-exp/s30",
+   "runtime_s": 0.0013069589986116625,
+   "seed": 30,
+   "status": "ok"
+  }
+ ],
+ "schema_version": "memory-run-manifest/1.0.0",
+ "wall_clock_s": 0.6409745000000839
+}

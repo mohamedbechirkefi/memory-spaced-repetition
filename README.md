@@ -3,7 +3,7 @@
 
 **Question.** Which review schedule maximizes modelled delayed recall under a fixed study budget?
 
-**Status: M0 (bootstrap and feasibility), 2026-11-24.** No core code, no experiment and no finding exists yet. The study protocol is a draft awaiting the owner's freeze. Nothing in this repository is a result.
+**Status: M2 (core implementation), 2026-11-24.** The simulation engine, tests and tooling exist. No confirmatory experiment has been run and no finding exists. The study protocol is a draft awaiting the owner's freeze; exploratory planning runs under `results/exploratory/` are not results.
 
 ## Why it matters
 
@@ -11,7 +11,7 @@ Spaced-repetition tools decide when to review each item. Published memory models
 
 ## What is implemented
 
-Nothing beyond control files, a draft protocol and a dependency lock. See `roadmap.md` for the plan.
+A Python package `memory_research` (`src/`): exponential and power-law forgetting, multiplicative retrieval updates, synthetic item difficulty with common random numbers, five schedules (uniform baseline, expanding, massed, Leitner, greedy with matched or misspecified model), run validation, versioned JSON results and run manifests, a report generator and a CLI. A test suite in `tests/` (unit, property, hand-computed and differential tests). No demo yet.
 
 ## Planned experiments
 
@@ -27,11 +27,11 @@ Nothing beyond control files, a draft protocol and a dependency lock. See `roadm
 - `CLAUDE.md`, `roadmap.md`, `progress.md`: working rules, plan, journal.
 - `research/`: protocol, literature review, limitations, decision log, registries, experiments, paper skeleton, publication checklists.
 - `data/manifest.json`: data sources and licences (synthetic data only in the draft protocol).
-- `src/`, `tests/`, `experiments/`, `results/`, `demo/`, `articles/`: empty or placeholder at M0.
+- `src/`, `tests/`: engine and tests (M2). `experiments/configs/`: exploratory configurations. `results/exploratory/`: exploratory planning runs (not results). `demo/`, `articles/`: placeholders.
 
 ## Quick start
 
-Not available yet. The dependency lock can be checked with `uv lock --check` (uv 0.9.5).
+`uv sync --frozen`, then `uv run python -m memory_research test` and `uv run python -m memory_research smoke`. The smoke run is exploratory.
 
 ## Data sources and licences
 

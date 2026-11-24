@@ -58,8 +58,11 @@ Then run `git status` and inspect existing files. Never overwrite the owner's ch
 4. Run the test suite if code changed, or record why not.
 5. Commit locally only, with the owner's git identity passed as `git -c user.name=... -c user.email=... commit` (identity given in the session brief; the address is deliberately not written in this repository), message ending with a blank line and `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
 
-## 4. Commands (planned; see CONTRIBUTING.md once implemented)
+## 4. Commands (implemented in M2; also in CONTRIBUTING.md)
 
 - Lock dependencies: `/Users/bechir/research/labs/.tools/py/bin/uv lock`
 - Sync environment: `/Users/bechir/research/labs/.tools/py/bin/uv sync`
-- Tests, smoke, full run, report export: defined in M2 and recorded here when they exist.
+- Tests: `uv run python -m memory_research test` (or `uv run pytest`).
+- Exploratory smoke: `uv run python -m memory_research smoke [--pdf]` (writes `results/exploratory/SMOKE-001/`).
+- Run a matrix: `uv run python -m memory_research run --config PATH [--report] [--pdf]`. Confirmatory configs are refused (exit 3) until the protocol is frozen and its hash recorded in the registry.
+- Report export: `uv run python -m memory_research report --results PATH [--pdf]`.
