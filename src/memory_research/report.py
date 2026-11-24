@@ -228,7 +228,7 @@ def build_report(result_path: Path, out_dir: Path, pdf: bool = False, metric: st
     env = doc["environment"]
     from .environment import environment as _env
     gen = _env()
-    generator = f"memory_research.report {gen['package_version']} at {gen['git_revision']} (dirty: {gen['git_dirty']})"
+    generator = f"memory_research.report {gen['package_version']} at `{gen['git_revision']}` (dirty: {gen['git_dirty']})"
     exploratory = doc["kind"] == "exploratory"
     lines = [
         "<!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->",
@@ -242,11 +242,11 @@ def build_report(result_path: Path, out_dir: Path, pdf: bool = False, metric: st
         "",
         "## Provenance",
         "",
-        _md_table(["field", "value"], [
+        "\n".join(f"- {k}: {v}" for k, v in [
             ["experiment", doc["experiment_id"]], ["kind", doc["kind"]], ["created (UTC)", doc["created_utc"]],
-            ["matrix config SHA-256", doc["matrix_config_hash"]],
+            ["matrix config SHA-256", f"`{doc['matrix_config_hash']}`"],
             ["protocol", f"{doc['protocol']['path']} (frozen: {doc['protocol']['frozen']})"],
-            ["code revision of the run", f"{env['git_revision']} (dirty: {env['git_dirty']})"],
+            ["code revision of the run", f"`{env['git_revision']}` (dirty: {env['git_dirty']})"],
             ["report generator", generator],
             ["python / numpy", f"{env['python']} / {env['packages'].get('numpy')}"],
             ["OS", env["os"]], ["CPU", env["cpu"]],
