@@ -56,7 +56,8 @@ def peak_rss_bytes() -> int | None:
 def environment(root: Path | None = None) -> dict[str, Any]:
     root = root or repo_root()
     rev = _git(["rev-parse", "HEAD"], root)
-    status = _git(["status", "--porcelain"], root)
+    # Dirty = any change outside results/ (run outputs do not change the code).
+    status = _git(["status", "--porcelain", "--", ".", ":(exclude)results"], root)
     pkgs: dict[str, str | None] = {}
     for p in PACKAGES:
         try:
