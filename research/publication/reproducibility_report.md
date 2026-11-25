@@ -71,6 +71,17 @@ Metadata (pypdf): every PDF has a title (manuscript: the approved title; supplem
 - Dependency licences: `research/publication/dependency_licences.md` (23 Python packages, 84 npm packages); none outside the permissive set.
 - SPDX headers: every tracked text file whose format allows a comment carries `LicenseRef-MEMORY-NC-Research-1.0`, except the owner's licence files and `master_prompt.md` (initial commit, before M0) and the `SHA256SUMS` files (a comment line would break `shasum -c`).
 
-## 6. Clean clone (second pass, after the M6 commit)
+## 6. Clean clone (second pass, M6 commit `ac66801`)
 
-Recorded in section 7 after the M6 commit.
+A fresh local clone of `ac66801` in the session scratchpad (deleted afterwards), to re-check the fixes of section 2.
+
+| step | actual output |
+|---|---|
+| `uv sync --frozen --all-groups --all-extras` | environment created (last line `+ tzdata==2026.6`) |
+| `.venv/bin/python -m pytest -q` | `256 passed in 8.50s` |
+| `memory_research smoke --out <scratch>/exploratory/SMOKE-001` | `25 runs, 25 ok, 0 excluded, 0 failed, wall clock 0.029 s`; against `SMOKE-001-M3`: 103 differing leaves, all timing or provenance; `summary.csv` and `contrasts.csv` identical |
+| `scripts/check_links.py` | `LINK-CHECK PASS` |
+| `scripts/audit_numbers.py` | `AUDIT: 0 unmatched` |
+| demo: `npm ci --prefer-offline`, `npm test`, `npm run build`, `node tools/a11y_check.mjs dist` | `added 53 packages`; `Tests 43 passed (43)`; `✓ built`; `A11Y-CHECK PASS` |
+| `scripts/export_demo_data.py`, `--check`; `export_engine_fixture.py --check`; `git status --short` | `EXPORT-CHECK PASS`, `FIXTURE-CHECK PASS`; 0 changed files |
+| PDF rebuild of the manuscript, supplement and three reports with `build_pdf` (the clone lies outside the labs folder, so `MEMORY_PANDOC` and `MEMORY_TYPST_PYTHON` were set as documented) | builds succeed (finding R1 fixed); pages 15, 5, 7, 7, 10 and byte sizes identical to the committed PDFs; every PDF titled; the files differ from the committed ones only in 3 lines each (creation and modification timestamps), so PDFs are reproducible except for their timestamps |

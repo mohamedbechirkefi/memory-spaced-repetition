@@ -372,3 +372,11 @@ Line 258 of this file (post-M4 entry) contains an absolute home-directory path. 
 ### M6 status
 
 Release candidate prepared, awaiting owner review and G-PUBLIC. M6 is not done until the owner signs off `research/publication/author_review.md`.
+
+### Second clean clone (after `ac66801`)
+
+Fresh clone of `ac66801`: `uv sync --frozen` ok; `pytest -q` `256 passed in 8.50s`; smoke `25 runs, 25 ok`, tables identical to `SMOKE-001-M3`; `LINK-CHECK PASS`; `AUDIT: 0 unmatched`; demo `Tests 43 passed (43)`, build ok, `A11Y-CHECK PASS`; export and fixture checks pass and `git status` stays clean; the five PDFs rebuild with the same page counts and sizes (only timestamps differ). Clone deleted. Recorded in `research/publication/reproducibility_report.md` section 6. Tests in the working repository after this entry: see the commit below.
+
+### Next action
+
+The owner reads `research/publication/author_review.md` (section "Prepared for the owner") and decides on sign-off and any publication (G-PUBLIC).
