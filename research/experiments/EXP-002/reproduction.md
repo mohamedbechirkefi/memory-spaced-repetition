@@ -1,18 +1,18 @@
 <!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->
-# EXP-002 reproduction (draft, written in M2 before the freeze)
+# EXP-002 reproduction
 
-**Status: not run. The protocol is DRAFT v0.1 and not frozen; the command below is refused until the owner freezes it (G-FREEZE).**
+**Status: run (confirmatory, 2026-11-25), 300 of 300 runs ok.** Protocol FROZEN v1.1; configuration canonical SHA-256 `930b73f2b673f44b4b066c3c9990c26a671dced9b8287a91bd892983d5c3c44d`; provenance revision `d4a793df271ec2dc1963d00715e3a6525a07863f`.
 
-1. `uv sync --frozen` (uv 0.9.5; lock in `uv.lock`).
-2. `uv run python -m memory_research test` (whole test suite).
-3. `uv run python -m memory_research run --config research/experiments/EXP-002/config.json --report --pdf`
+1. `../.tools/py/bin/uv sync --frozen --all-groups --all-extras` (uv 0.9.5; lock in `uv.lock`).
+2. `.venv/bin/python -m pytest` (234 tests passed at the M3 revisions).
+3. `.venv/bin/python -m memory_research run --config research/experiments/EXP-002/config.json --report --pdf`. Only the frozen configuration is accepted; any change exits with status 3.
+4. `.venv/bin/python scripts/analyse_confirmatory.py --exp EXP-002 --results results/confirmatory/EXP-002/results.json --exp001 results/confirmatory/EXP-001/analysis/frozen_analysis.json`. EXP-001 must be analysed first, because the interpretation rule reads its result.
+5. `.venv/bin/python scripts/build_experiment_records.py EXP-002`
 
-While the protocol is unfrozen, step 3 exits with status 3 and a message such as "refusing confirmatory run of EXP-002: research/protocol.md is marked NOT FROZEN; registry protocol_hash for EXP-002 is 'none (not frozen)', not a SHA-256". After the freeze it writes `results/confirmatory/EXP-002/results.json` (schema `memory-result/1.0.0`), `run_manifest.json` (schema `memory-run-manifest/1.0.0`) and `report/` (tables, figures, generated report, PDF).
+**Outputs.** `results/confirmatory/EXP-002/results.json` (SHA-256 `9d58dd0aabc4ba620d41574c856134b6909213d47671f0884c1dceb2cc22c78c`), plus `run_manifest.json`, `report/`, `analysis/` and `SHA256SUMS`.
 
-Tolerance: reruns are bit-identical on the same platform except the timing and memory fields; across platforms, metric values are expected to agree to about 1e-12 relative (floating-point library differences).
+**Tolerance.** As for EXP-001.
 
-Note: `config.json` mirrors the draft protocol. If the owner accepts amendments (`research/amendment_proposals.md`), it must be updated before the freeze.
+**Not run.** The `ω ∈ {0.3, 3}` descriptive check of protocol section 16 has no frozen configuration. It is not run, by the owner's decision of 2026-11-25 (D-017).
 
-## Update at the freeze (2026-11-24, round 2)
-
-The protocol is FROZEN v1.0 and `config.json` holds the amended, calibrated values (study protocol section 15). Step 3 is now accepted by the guard for the frozen configuration only; any edit to `config.json`, to `research/protocol.md` or to this experiment's protocol makes it exit with status 3. The statements above about the draft state are historical.
+**History.** Written in M2 before the freeze. The earlier "not run" statements are superseded.
