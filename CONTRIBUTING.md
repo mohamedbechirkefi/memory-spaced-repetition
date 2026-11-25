@@ -59,3 +59,9 @@ Interactive page (M5):
 - Regenerate the page data: `.venv/bin/python scripts/export_demo_data.py` (`--check` compares with the committed file).
 - Regenerate the engine fixture: `.venv/bin/python scripts/export_engine_fixture.py` (`--check` likewise).
 - Build and check the page: `cd demo && npm ci && npm test && npm run build && node tools/a11y_check.mjs dist`; serve it with `npm run preview`.
+
+Release candidate checks (M6):
+
+- Build the manuscript, supplement and report PDFs: `.venv/bin/python -c "from pathlib import Path; from memory_research.report import build_pdf; build_pdf(Path('research/paper/manuscript.md'))"` (likewise for `research/paper/supplementary.md` and `research/experiments/EXP-00N/report.md`). The builder uses the shared tools folder next to the repository unless `MEMORY_PANDOC` and `MEMORY_TYPST_PYTHON` are set; delete the intermediate `.typ` files afterwards.
+- Check relative links in tracked Markdown: `.venv/bin/python scripts/check_links.py` (prints `LINK-CHECK PASS`).
+- Check every decimal number against committed sources: `.venv/bin/python scripts/audit_numbers.py` (prints `AUDIT: 0 unmatched`).

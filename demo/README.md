@@ -18,7 +18,7 @@ Measured results, sandbox output and assumptions carry distinct labels and are n
 
 ## Commands
 
-Node 22 (in this workspace: `export PATH=/Users/bechir/research/helix/.tools/node/bin:$PATH`).
+Node 22 on `PATH` (in the development workspace, the Node binary of the shared tools folder is used read-only).
 
     npm ci
     npm test                 # vitest

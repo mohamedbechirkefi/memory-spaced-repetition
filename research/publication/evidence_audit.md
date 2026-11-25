@@ -57,3 +57,18 @@ No external claim relies on a source that was not read at the stated level.
 ## 5. Verdict
 
 Every decimal number in the manuscript, the supplement, the three reports and the claims register maps to a committed result or record; every figure and table maps to an experiment id, run ids, configuration and figure source in the manifest; every external claim maps to a source read at the stated level. Two mismatches were found and fixed (F1, F2) and two stale status texts updated (F7, F8). The M4 evidence gate holds.
+
+## 6. M6 addendum (2026-11-25): sources rechecked in full text
+
+At M6 a free, legal full text was opened for each external source that a claim depends on, and each cited statement was checked against it. No paid access, login or shadow library was used. Classification used for the M6 counts: **full text checked for the cited statements** (the full text was obtained and the passages that support the citation were read; the rest of the work was not necessarily read), **abstract only**, **unverified** (metadata only).
+
+| source | full text used | where the cited statement was checked | result | level after M6 |
+|---|---|---|---|---|
+| Tabibian et al. (2019) | arXiv:1712.01856 v2 (21 pages) | section 2, equations 1 (exponential), 2 (power law) and 3 (multiplicative update); section 3, the intensity `u*(t) = q^(-1/2)(1 - m(t))` under quadratic loss; section 4, Uniform and Threshold baselines | matches; the PNAS version itself was not opened (version correspondence unverified, as before) | full text checked |
+| Settles and Meeder (2016) | ACL Anthology PDF P16-1174 (11 pages) | section 3.1 (Pimsleur, exponentially increasing intervals); section 3.2 and Figure 3, p. 1850 (Leitner boxes 1, 2, 4, 8, 16 days); section 3.3, equation 1 (`p = 2^(-Δ/h)`) | matches | full text checked |
+| Cepeda et al. (2006) | author manuscript, UC San Diego eScholarship (https://escholarship.org/uc/item/3rr6q10c, 36 pages) | abstract; Method, literature search (317 experiments in 184 articles, 839 assessments of distributed practice); Results and Discussion (optimal ISI increases with retention interval) | matches; the published APA version was not opened | full text checked (was abstract only) |
+| Reddy et al. (2016) | arXiv:1602.07032 PDF (10 pages) | abstract; section 3.1, The Leitner Queue Network | matches | full text checked (was abstract only) |
+| Settles (2017) dataset | Dataverse metadata and the downloaded file | licence CC BY-NC 4.0; SHA-256 rechecked at M6 | matches | dataset record |
+| Wixted and Ebbesen (1991), Averell and Heathcote (2011), Pavlik and Anderson (2005), Ye et al. (2022), Cepeda et al. (2008) | none | not cited for content | unchanged | unverified (metadata only) |
+
+Counts: 4 sources with the full text checked for the cited statements (none read cover to cover), 0 abstract only, 5 unverified and not cited for content, 1 dataset. No claim needed to be qualified further; the labels in manuscript section 2 and the reference list, `research/literature_review.md`, `research/claims_register.csv` (EXT-003, EXT-004) and `research/paper/references.bib` were updated. The remark in `review_pass_2.md` (C11) that "only the abstract of that source was read" is a dated M4 record and is left as written; the discussion in manuscript section 6 still refers to the abstract's statement, which the full text confirms. The number audit was rerun after the edits: `AUDIT: 0 unmatched`.

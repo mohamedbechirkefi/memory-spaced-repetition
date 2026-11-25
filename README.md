@@ -3,7 +3,7 @@
 
 **Question.** Which review schedule maximizes modelled delayed recall under a fixed study budget?
 
-**Status: simulation study; M5 (interactive page) done; independent research manuscript / preprint draft, not peer-reviewed.** The three frozen experiments (protocol v1.1, owner-approved 2026-11-24) ran in full: 18,550 runs, none excluded or failed. The owner approved the manuscript title and the funding, competing-interest and AI-use statements on 2026-11-25. Full-text owner review of the manuscript is still pending (M6). Simulated learners are not human participants: nothing here shows a human learning gain.
+**Status: simulation study; M6 release candidate prepared (2026-11-25), awaiting the owner's review and any publication decision; independent research manuscript / preprint draft, not peer-reviewed.** The three frozen experiments (protocol v1.1, owner-approved 2026-11-24) ran in full: 18,550 runs, none excluded or failed. The owner approved the manuscript title and the funding, competing-interest and AI-use statements on 2026-11-25. Full-text owner review of the manuscript is still pending (`research/publication/author_review.md`). Simulated learners are not human participants: nothing here shows a human learning gain.
 
 ![Screenshot of the MEMORY research page: the question, the status line, three result cards (0.0162 with interval [0.0110, 0.0213]; 0.0085 with interval [-0.0026, 0.0195]; 70 of 72 cells) and the forgetting-curve chart of mean modelled recall by retention interval for five schedules.](docs/demo.png)
 
@@ -30,7 +30,7 @@ Spaced-repetition tools decide when to review each item. Model-based schedulers 
 
 ## Research navigation
 
-- Manuscript: `research/paper/manuscript.md` (canonical), supplement `research/paper/supplementary.md`. No PDF is claimed before M6.
+- Manuscript: `research/paper/manuscript.md` (canonical), supplement `research/paper/supplementary.md`. PDFs (built with the Typst toolchain and visually inspected at M6): `research/paper/manuscript.pdf`, `research/paper/supplementary.pdf`, `research/experiments/EXP-00N/report.pdf`.
 - Protocols and freeze record: `research/protocol.md`, `research/experiments/EXP-00N/protocol.md`, `research/freeze.json`.
 - Evidence: `research/claims_register.csv`, `research/publication/artifact_manifest.json`, `research/publication/evidence_audit.md`.
 - Limitations: `research/limitations.md`. Decisions: `research/decision_log.md`.

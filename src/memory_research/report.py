@@ -17,14 +17,18 @@ from typing import Any
 
 import numpy as np
 
+from .environment import repo_root
 from .runner import load_result
 from .stats import bootstrap_mean_ci, equivalence_verdict, holm, paired_t, t_quantile
 
 SEED_SD_THRESHOLD = 0.07  # protocol section 6: 50 seeds give half-width < delta when s < 0.07
 PLANNED_SEEDS = 50
 DELTA = 0.02
-DEFAULT_PANDOC = "/Users/bechir/research/labs/.tools/pandoc"
-DEFAULT_TYPST_PYTHON = "/Users/bechir/research/labs/.tools/py/bin/python"
+# Toolchain (D-002): the shared tools folder next to the repository (`../.tools`), unless MEMORY_PANDOC and
+# MEMORY_TYPST_PYTHON are set. No absolute home-directory path is stored in the repository (M6 scan).
+_TOOLS = Path(__file__).resolve().parents[3] / ".tools"
+DEFAULT_PANDOC = str(_TOOLS / "pandoc")
+DEFAULT_TYPST_PYTHON = str(_TOOLS / "py" / "bin" / "python")
 
 
 def _fmt(x: Any, nd: int = 4) -> str:
@@ -318,7 +322,10 @@ def build_report(result_path: Path, out_dir: Path, pdf: bool = False, metric: st
 
 
 def build_pdf(md_path: Path) -> Path:
-    """Markdown -> Typst (pandoc, Libertinus Serif) -> PDF (typst Python package). Decision D-002."""
+    """Markdown -> Typst (pandoc, Libertinus Serif) -> PDF (typst Python package). Decision D-002.
+
+    `--wrap=none` keeps each paragraph on one Typst line: with wrapping, a line that starts with "0. " was
+    read by Typst as a numbered list item (M6 finding in the manuscript, section 5.2)."""
     pandoc = os.environ.get("MEMORY_PANDOC", DEFAULT_PANDOC)
     py = os.environ.get("MEMORY_TYPST_PYTHON", DEFAULT_TYPST_PYTHON)
     if not (shutil.which(pandoc) or Path(pandoc).is_file()) or not Path(py).is_file():
@@ -326,8 +333,45 @@ def build_pdf(md_path: Path) -> Path:
     md_path = md_path.resolve()
     typ = md_path.with_suffix(".typ")
     pdf = md_path.with_suffix(".pdf")
+    root = _typst_root(md_path)
     subprocess.run([pandoc, md_path.name, "-s", "-f", "markdown-implicit_figures-citations", "-V", "mainfont=Libertinus Serif",
-                    "-V", "papersize=a4", "-o", typ.name], cwd=md_path.parent, check=True)
+                    "-V", "papersize=a4", "--wrap=none", "--columns=10000",
+                    "-V", "header-includes=#show figure: set block(breakable: true)",
+                    "-V", "header-includes=#show table: set text(size: 0.85em)", "-o", typ.name], cwd=md_path.parent, check=True)
+    _set_pdf_title(md_path, typ)
     subprocess.run([py, "-I", "-c", "import sys, typst; typst.compile(sys.argv[1], output=sys.argv[2], root=sys.argv[3])",
-                    str(typ), str(pdf), str(md_path.parent)], check=True)
+                    str(typ), str(pdf), str(root)], check=True)
     return pdf
+
+
+def _set_pdf_title(md_path: Path, typ: Path) -> None:
+    """Give the PDF a document title when the Markdown has no YAML title: the first level-1 heading
+    (M6 finding: reports and the supplement had no PDF title). The heading itself is left in the text."""
+    text = typ.read_text(encoding="utf-8")
+    lines = text.splitlines(keepends=True)
+    try:
+        start = next(i for i, ln in enumerate(lines) if ln.startswith("#show: doc => conf("))
+        end = next(i for i in range(start, len(lines)) if lines[i].rstrip("\n") == ")")
+    except StopIteration:
+        return
+    if any(ln.lstrip().startswith("title:") for ln in lines[start:end]):
+        return
+    heading = next((ln[2:].strip() for ln in md_path.read_text(encoding="utf-8").splitlines() if ln.startswith("# ")), None)
+    if not heading:
+        return
+    heading = heading.replace("`", "").replace("*", "")
+    escaped = heading.replace("\\", "\\\\").replace('"', '\\"')
+    lines.insert(end + 1, f'#set document(title: "{escaped}")\n')
+    typ.write_text("".join(lines), encoding="utf-8")
+
+
+def _typst_root(md_path: Path) -> Path:
+    """Typst project root: the repository root for files inside the repository, so that a document may
+    reference figures in a sibling folder (the manuscript cites research/experiments/*/figures); otherwise
+    the file's own folder (M6 finding)."""
+    try:
+        root = repo_root()
+        md_path.relative_to(root)
+        return root
+    except (FileNotFoundError, ValueError):
+        return md_path.parent

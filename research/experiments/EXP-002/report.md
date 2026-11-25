@@ -16,11 +16,13 @@
 **Method.** The central setting with power-law learners (`ω` 1 per day), seeds 1000 to 1049, and six arms with common random numbers. Paired differences against `uniform`, with Holm adjustment over the two primary contrasts.
 
 **Outcome.**
+
 - `greedy-power` minus uniform is **+0.0347**, 95% bootstrap CI **[0.0232, 0.0461]**; H0a is rejected (Holm p 7.87e-07).
 - `greedy-exp` minus uniform is **+0.0085**, 95% bootstrap CI **[-0.0026, 0.0195]**; H0b is not rejected (Holm p 0.1457), and the interval lies within ±0.02.
 - **Under the frozen interpretation rule, the EXP-001 greedy advantage is declared dependent on model knowledge.**
 
 **Principal caveats.**
+
 - On power-law learners, the non-adaptive `massed` (+0.0530) and `expanding` (+0.0399) arms beat uniform by more than either greedy arm.
 - Both greedy schedulers receive each item's true initial half-life.
 - Results are conditional on the assumed memory model (CAL-002).

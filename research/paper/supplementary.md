@@ -5,12 +5,12 @@ Companion to `research/paper/manuscript.md` (independent research manuscript / p
 
 ## S1. Complete experimental matrix
 
-| experiment | kind | forgetting model | factors | arms | seeds | cells | runs | ok / excluded / failed |
-|---|---|---|---|---|---|---|---|---|
-| EXP-001 | confirmatory | exponential | central setting | uniform, expanding, massed, leitner, greedy (oracle) | 1000 to 1049 | 1 | 250 | 250 / 0 / 0 |
-| EXP-002 | confirmatory | power law (`ω` 1 per day) | central setting | uniform, expanding, massed, leitner, greedy-power, greedy-exp | 1000 to 1049 | 1 | 300 | 300 / 0 / 0 |
-| EXP-003 | confirmatory run, descriptive | both | `k` {2, 4, 8} × `RI` {1, 7, 30, 281} × items {homogeneous, lognormal, bimodal} | uniform, expanding, massed, leitner, greedy (matched) | one block of 50 per `RI`: 3000, 3100, 3200, 3300 onward | 72 | 18,000 | 18,000 / 0 / 0 |
-| SENS-001 | exploratory, post hoc | both (central settings) | none (A and B reuse committed outputs) | as EXP-001 and EXP-002 | 5000 to 5049 (part C only) | 2 | 550 simulations | not applicable (no validation run) |
+| experiment (kind) | forgetting model and factors | arms | seeds | cells; runs; ok / excluded / failed |
+|---|---|---|---|---|
+| EXP-001 (confirmatory) | exponential; central setting | uniform, expanding, massed, leitner, greedy (oracle) | 1000 to 1049 | 1; 250; 250 / 0 / 0 |
+| EXP-002 (confirmatory) | power law (`ω` 1 per day); central setting | uniform, expanding, massed, leitner, greedy-power, greedy-exp | 1000 to 1049 | 1; 300; 300 / 0 / 0 |
+| EXP-003 (confirmatory run, descriptive) | both models; `k` {2, 4, 8} × `RI` {1, 7, 30, 281} × items {homogeneous, lognormal, bimodal} | uniform, expanding, massed, leitner, greedy (matched) | one block of 50 per `RI`: 3000, 3100, 3200, 3300 onward | 72; 18,000; 18,000 / 0 / 0 |
+| SENS-001 (exploratory, post hoc) | both (central settings); none (A and B reuse committed outputs) | as EXP-001 and EXP-002 | 5000 to 5049 (part C only) | 2; 550 simulations; not applicable (no validation run) |
 
 Central setting: `N` 50, `D` 28, `k` 4 (`B` 200), `RI` 281 days (test at day 308), `h0` 54.0 days, lognormal `σ` 0.759, `α` 0.4, `β` 0.6, `ω` 1 per day.
 
@@ -36,20 +36,20 @@ Generated tables, never edited by hand:
 
 ## S3. Configurations and hashes
 
-| item | path | SHA-256 |
-|---|---|---|
-| study protocol v1.1 | `research/protocol.md` | `fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d` |
-| EXP-001 protocol | `research/experiments/EXP-001/protocol.md` | `91a79174986aa519bb1f9c1bc294c474ca441ce172076a6779826535689c496d` |
-| EXP-001 configuration (canonical) | `research/experiments/EXP-001/config.json` | `841629fa27db8c9652746f7dde5887afc8f8a6c8b538bb0234cddba3ca1818ce` |
-| EXP-002 protocol | `research/experiments/EXP-002/protocol.md` | `9f1e4e7c1b0275fb1d052015e13b5a88500fc3eaf5f82bebc7057e79621fbfa0` |
-| EXP-002 configuration (canonical) | `research/experiments/EXP-002/config.json` | `930b73f2b673f44b4b066c3c9990c26a671dced9b8287a91bd892983d5c3c44d` |
-| EXP-003 protocol | `research/experiments/EXP-003/protocol.md` | `f4767c1998268d9a74272d32ec6916038acd1df92c2605e94c09bdfa771cf9a4` |
-| EXP-003 configuration (canonical) | `research/experiments/EXP-003/config.json` | `7c886211f6f949112a8ff1193b6d1b073f776c391df94f4d0e542e89b264b2c8` |
-| data manifest | `data/manifest.json` | `6d828809a1b2597fac61cd2e08d936383a7c86877242168421d7496c2602eb36` |
-| EXP-001 raw results | `results/confirmatory/EXP-001/results.json` | `8662acfb1b6af627c22f58cf65b1463b11f73805b59ca3c95172e79a42694f88` |
-| EXP-002 raw results | `results/confirmatory/EXP-002/results.json` | `9d58dd0aabc4ba620d41574c856134b6909213d47671f0884c1dceb2cc22c78c` |
-| EXP-003 raw results (git-ignored) | `results/confirmatory/EXP-003/results.json` | `22c56bdb9bdb06b6e438e37f2cc8c41e04bce1b613fcc66325febcb71bd78038` |
-| SENS-001 output | `results/exploratory/SENS-001/sensitivity.json` | `68930eea8fe9e46bf172ae1e29f622818177cc988cfabb3d15a8d8625a8d41c9` |
+Each item with its path and SHA-256 (listed rather than tabulated so that the 64-character hashes stay on one line):
+
+- study protocol v1.1: `research/protocol.md`, SHA-256 `fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d`.
+- EXP-001 protocol: `research/experiments/EXP-001/protocol.md`, SHA-256 `91a79174986aa519bb1f9c1bc294c474ca441ce172076a6779826535689c496d`.
+- EXP-001 configuration (canonical): `research/experiments/EXP-001/config.json`, SHA-256 `841629fa27db8c9652746f7dde5887afc8f8a6c8b538bb0234cddba3ca1818ce`.
+- EXP-002 protocol: `research/experiments/EXP-002/protocol.md`, SHA-256 `9f1e4e7c1b0275fb1d052015e13b5a88500fc3eaf5f82bebc7057e79621fbfa0`.
+- EXP-002 configuration (canonical): `research/experiments/EXP-002/config.json`, SHA-256 `930b73f2b673f44b4b066c3c9990c26a671dced9b8287a91bd892983d5c3c44d`.
+- EXP-003 protocol: `research/experiments/EXP-003/protocol.md`, SHA-256 `f4767c1998268d9a74272d32ec6916038acd1df92c2605e94c09bdfa771cf9a4`.
+- EXP-003 configuration (canonical): `research/experiments/EXP-003/config.json`, SHA-256 `7c886211f6f949112a8ff1193b6d1b073f776c391df94f4d0e542e89b264b2c8`.
+- data manifest: `data/manifest.json`, SHA-256 `6d828809a1b2597fac61cd2e08d936383a7c86877242168421d7496c2602eb36`.
+- EXP-001 raw results: `results/confirmatory/EXP-001/results.json`, SHA-256 `8662acfb1b6af627c22f58cf65b1463b11f73805b59ca3c95172e79a42694f88`.
+- EXP-002 raw results: `results/confirmatory/EXP-002/results.json`, SHA-256 `9d58dd0aabc4ba620d41574c856134b6909213d47671f0884c1dceb2cc22c78c`.
+- EXP-003 raw results (git-ignored): `results/confirmatory/EXP-003/results.json`, SHA-256 `22c56bdb9bdb06b6e438e37f2cc8c41e04bce1b613fcc66325febcb71bd78038`.
+- SENS-001 output: `results/exploratory/SENS-001/sensitivity.json`, SHA-256 `68930eea8fe9e46bf172ae1e29f622818177cc988cfabb3d15a8d8625a8d41c9`.
 
 Run revision `d4a793df271ec2dc1963d00715e3a6525a07863f` (clean); analysis revision `3811bb93bca8798c57b80c55d97a8713732a13b8` (figure layout only, D-016); SENS-001 revision `2e8cf056fab41ee9391e49dabf5b781199a30e40` (clean). The superseded v1.0 hashes are kept in `research/freeze.json`.
 

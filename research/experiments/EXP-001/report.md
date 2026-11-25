@@ -18,6 +18,7 @@
 **Outcome.** Greedy minus uniform is **+0.0162** in recall probability. The 95% bootstrap CI is **[0.0110, 0.0213]**, the paired t CI is [0.0109, 0.0215], the relative change is 0.0303 and `d_z` is 0.8674. The interval lies entirely above 0. Under the frozen rule, the difference is **above zero and the directional prediction is supported**. The effect is small: the upper end of the interval only just exceeds the practical-equivalence margin of 0.02.
 
 **Principal caveats.**
+
 1. The greedy scheduler knows the true model (it is an oracle). EXP-002's frozen interpretation rule declares this advantage dependent on model knowledge.
 2. On mastery share the sign reverses (greedy 0.0000, uniform 0.0200), so the conclusion is restricted to mean recall.
 3. Neither forgetting model predicts real first-review recall better than a constant (CAL-002). Every result is a property of the assumed memory model, not of human learners.

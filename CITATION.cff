@@ -8,7 +8,9 @@ type: software
 authors:
   - family-names: "Kefi"
     given-names: "Mohamed Bechir"
-version: "0.2.0"
+version: "0.2.0-rc1"
+# Release candidate prepared at M6 (2026-11-25); no release exists. date-released is omitted until the owner
+# releases (owner-approvals-2026-11-25e, coordinator default); re-adding it is part of the publication step.
 # repository-code: <REPOSITORY URL: unpublished> (owner to supply at release; G-PUBLIC)
 # affiliation: <AFFILIATION: to be supplied or confirmed by the owner>
 keywords:
@@ -28,3 +30,11 @@ references:
       name: "Harvard Dataverse"
     license: CC-BY-NC-4.0
     notes: "Used to calibrate the initial half-life h0 and its spread (protocol section 15.2); not redistributed."
+preferred-citation:
+  type: report
+  title: "Review scheduling under a fixed budget in simulated forgetting models: a model-based advantage that depends on model knowledge and on the setting"
+  authors:
+    - family-names: "Kefi"
+      given-names: "Mohamed Bechir"
+  status: in-preparation
+  notes: "Independent research manuscript / preprint draft, not peer-reviewed (research/paper/manuscript.md). Title approved by the owner on 2026-11-25."

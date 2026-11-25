@@ -16,6 +16,7 @@
 **Method.** A full factorial design: model {exponential, power} × `k` {2, 4, 8} × `RI` {1, 7, 30, 281} × items {homogeneous, lognormal, bimodal}, giving 72 cells. Each cell has 5 arms and 50 seeds, with a disjoint seed block per `RI` level. Results are per-cell means with unadjusted 95% bootstrap intervals, first-rank shares and rank comparison with EXP-001.
 
 **Outcome.** **The EXP-001 ranking is not stable.**
+
 - 70 of 72 cells show at least one pairwise rank reversal against EXP-001 (greedy > expanding > uniform > leitner > massed).
 - In 51 cells the top arm is not greedy. Top arm by mean `R`: massed 29 cells, greedy 21, expanding 19, uniform 3, leitner 0.
 - Greedy minus uniform has the opposite sign to EXP-001 in 17 cells. Its interval lies entirely below 0 in 13 cells, all at `k = 2`, and entirely above 0 in 53.
@@ -102,6 +103,7 @@ Full per-cell tables are in `research/experiments/EXP-003/results_tables.md` (ge
 C044 reproduces the EXP-001 ordering on an independent seed block. C045 has the same ordering pattern as EXP-002, with massed first.
 
 **Where greedy falls below uniform.** The interval lies entirely below 0 in 13 cells, all with `k = 2`:
+
 - 10 power-law cells (M4 correction: the M3 text said 9; the frozen analysis lists C001, C007, C019, C025, C031, C043, C049, C055, C061 and C067);
 - the exponential cells at `RI` 281 for all three distributions: homogeneous -0.0090 [-0.0107, -0.0074], lognormal -0.0444 [-0.0487, -0.0402] and bimodal -0.0698 [-0.0725, -0.0668].
 
@@ -123,11 +125,11 @@ C044 reproduces the EXP-001 ordering on an independent seed block. C045 has the 
 
 *Figure 4.* Leitner minus uniform per cell; layout as in Figure 1.
 
-![Heat map of the share of seeds in which each arm ranks first, per cell.](figures/exp003_first_rank_share.svg)
+![Heat map of the share of seeds in which each arm ranks first, per cell.](figures/exp003_first_rank_share.svg){height=20cm}
 
 *Figure 5.* Share of the 50 seeds in which each arm has the highest `R`, per cell, with exact ties shared (ties occur in 3 cells).
 
-![Dot plot of all cells and arms with intervals.](figures/cells_overview.svg)
+![Dot plot of all cells and arms with intervals.](figures/cells_overview.svg){height=20cm}
 
 *Figure 6.* Overview of all 72 cells × 4 contrasts with 95% bootstrap intervals (generated report figure).
 

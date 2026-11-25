@@ -41,9 +41,9 @@ The related-work base is small and every source is labelled by how much of it wa
 
 **Half-life regression and classic schedules (content read).** Settles and Meeder (2016; abstract and sections 1 to 3.3 read) model recall as $p = 2^{-\Delta/h}$ with a learned half-life $h$, and describe the Pimsleur graduated-interval method and the Leitner box system (intervals of 1, 2, 4, 8 and 16 days). The expanding and Leitner arms of this study follow those descriptions. Their engagement and error-reduction findings are theirs and are not used here.
 
-**Spacing and retention interval (abstract read only).** The abstract of Cepeda et al. (2006) reports, from a quantitative synthesis of 839 assessments in 317 experiments, that the inter-study interval that maximizes retention increases with the retention interval. This motivated the retention-interval factor of EXP-003. Only the abstract was read; no further claim about that work is made.
+**Spacing and retention interval (cited statement checked in the full text).** Cepeda et al. (2006) report, from a quantitative synthesis of 839 assessments in 317 experiments, that the inter-study interval that maximizes retention increases with the retention interval (abstract; Method, literature search; Results and Discussion; checked in the author manuscript on eScholarship). This motivated the retention-interval factor of EXP-003. The rest of that work was not reviewed, and no further claim about it is made.
 
-**Leitner queueing model (abstract read only).** Reddy et al. (2016; arXiv:1602.07032, abstract read) model the Leitner system as a queueing network. It is related work for the Leitner arm and is not used for any result.
+**Leitner queueing model (cited statement checked in the full text).** Reddy et al. (2016; arXiv:1602.07032, abstract and section 3.1) model the Leitner system as a queueing network. It is related work for the Leitner arm and is not used for any result.
 
 **Not read.** Wixted and Ebbesen (1991), Averell and Heathcote (2011), Pavlik and Anderson (2005), Ye et al. (2022) and Cepeda et al. (2008) were identified at metadata level only. They are relevant (the form of forgetting curves, alternative memory models, optimal-control scheduling) but are not cited for content, and the study cannot say whether its comparison already exists in them.
 
@@ -205,7 +205,7 @@ The sweep crossed forgetting model (2) × budget $k \in \{2, 4, 8\}$ × $RI \in 
 
 *Figure 3 (FIG-003).* EXP-003: greedy minus uniform per cell. Panels show model × item distribution; the x axis is $RI$ in days; lines show budget $k$; bars are unadjusted 95% percentile bootstrap intervals over 50 seeds. Confirmatory, descriptive. Source: `results/confirmatory/EXP-003/analysis/frozen_analysis.json`.
 
-![Heat map of the share of seeds in which each arm ranks first, per cell.](../experiments/EXP-003/figures/exp003_first_rank_share.svg)
+![Heat map of the share of seeds in which each arm ranks first, per cell.](../experiments/EXP-003/figures/exp003_first_rank_share.svg){height=20cm}
 
 *Figure 4 (FIG-004).* EXP-003: share of the 50 seeds in which each arm has the highest $R$, per cell; exact ties share the credit (ties occur in 3 cells). Confirmatory, descriptive.
 
@@ -279,10 +279,10 @@ No funding was received. The author declares no competing interests. An AI syste
 
 # References
 
-- Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. *Psychological Bulletin*, 132(3), 354-380. https://doi.org/10.1037/0033-2909.132.3.354 (abstract read only)
-- Reddy, S., Labutov, I., Banerjee, S., & Joachims, T. (2016). Unbounded human learning: Optimal scheduling for spaced repetition. *KDD 2016*. arXiv:1602.07032. https://arxiv.org/abs/1602.07032 (abstract read only)
+- Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. *Psychological Bulletin*, 132(3), 354-380. https://doi.org/10.1037/0033-2909.132.3.354 (cited statement checked in the full text, author manuscript: https://escholarship.org/uc/item/3rr6q10c)
+- Reddy, S., Labutov, I., Banerjee, S., & Joachims, T. (2016). Unbounded human learning: Optimal scheduling for spaced repetition. *KDD 2016*. arXiv:1602.07032. https://arxiv.org/abs/1602.07032 (cited statement checked in the full text, section 3.1)
 - Settles, B. (2017). Replication data for: A trainable spaced repetition model for language learning. Harvard Dataverse, V1. https://doi.org/10.7910/DVN/N8XJME (dataset; licence CC BY-NC 4.0)
-- Settles, B., & Meeder, B. (2016). A trainable spaced repetition model for language learning. *Proceedings of ACL 2016 (Volume 1)*, 1848-1858. https://doi.org/10.18653/v1/P16-1174 (content read: abstract, sections 1 to 3.3)
+- Settles, B., & Meeder, B. (2016). A trainable spaced repetition model for language learning. *Proceedings of ACL 2016 (Volume 1)*, 1848-1858. https://doi.org/10.18653/v1/P16-1174 (content read: abstract, sections 1 to 3.3; cited statements rechecked in sections 3.1 to 3.3)
 - Tabibian, B., Upadhyay, U., De, A., Zarezade, A., Schölkopf, B., & Gomez-Rodriguez, M. (2019). Enhancing human learning via spaced repetition optimization. *PNAS*, 116(10), 3988-3993. https://doi.org/10.1073/pnas.1815156116 (content read in arXiv:1712.01856 v2)
 
 # Supplementary appendix

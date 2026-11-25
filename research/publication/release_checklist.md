@@ -1,12 +1,15 @@
 <!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->
 # Release checklist (M6)
 
-- [ ] Clean clone in a separate directory; `uv sync --frozen` succeeds.
-- [ ] Full test suite run; actual counts recorded.
-- [ ] Smoke reproduction matches committed results within the documented tolerance.
-- [ ] Demo builds and works offline after initial load; keyboard and reduced-motion checks.
-- [ ] Manuscript and report PDFs generated with the Typst toolchain and visually inspected.
-- [ ] References and cross-links verified.
-- [ ] Data manifest verified; no non-redistributable data bundled.
-- [ ] Secret scan and personal-identifier scan clean.
-- [ ] Owner approval for any push or publication recorded.
+**Status (2026-11-25): release candidate `0.2.0-rc1` prepared and verified locally; awaiting the owner's review and any G-PUBLIC decision. Nothing has been pushed, tagged, released or published.** Each ticked item was verified in the M6 session; the evidence is in `research/publication/reproducibility_report.md` (section numbers below).
+
+- [x] Clean clone in a separate directory; `uv sync --frozen` succeeds. Evidence: local clone of `46b4a11` in the session scratchpad, `uv sync --frozen --all-groups --all-extras` completed (section 1); second clone after the M6 commit (section 6).
+- [x] Full test suite run; actual counts recorded. Evidence: clone `253 passed in 38.38s`; working repository after M6 changes `256 passed` (3 new link tests); demo `Tests 43 passed (43)` (sections 1 and 6).
+- [x] Smoke reproduction matches committed results within the documented tolerance. Evidence: `smoke` 25 runs ok, every metric identical to `results/exploratory/SMOKE-001-M3/results.json`, summary and contrast CSVs byte-identical; EXP-001 rerun to scratch, 250 runs ok, every metric identical to the committed `results.json` (only timing and provenance fields differ, the documented tolerance) (section 1).
+- [x] Demo builds and works offline after initial load; keyboard and reduced-motion checks. Evidence: `npm ci`, `npm test`, `npm run build`, `node tools/a11y_check.mjs dist` printed `A11Y-CHECK PASS` (offline sandbox run, keyboard 29 of 29, 0 running animations under reduced motion); export rerun left `git status` clean (section 1).
+- [x] Manuscript and report PDFs generated with the Typst toolchain and visually inspected. Evidence: 5 PDFs (manuscript 15 pages, supplement 5, reports 7, 7 and 10), every manuscript and supplement page and every report figure page read as PNG; seven layout findings fixed in the builder or the Markdown (R1 to R7); titles set, 0 e-mail addresses or local paths in text or metadata (sections 2 and 3).
+- [x] References and cross-links verified. Evidence: 5 of 5 references in `references.bib` and in the reference list; 4 sources' cited statements checked in free full texts (evidence audit section 6); `scripts/check_links.py` `LINK-CHECK PASS` (33 relative links, 0 broken) (section 4).
+- [x] Data manifest verified; no non-redistributable data bundled. Evidence: DS01 SHA-256, MD5 and size equal to `data/manifest.json`; only the manifest is tracked under `data/`; `SHA256SUMS` 18, 18 and 22 OK; 40 artifact-manifest paths exist (section 4).
+- [ ] Secret scan and personal-identifier scan clean. Secrets: clean (0 keys, tokens, private-key headers or `.env` files). Personal identifiers: not fully clean. 1 e-mail address (the AI co-author trailer in `CLAUDE.md`, not personal); absolute home-directory paths, which contain the local user name, remain in `CLAUDE.md` (5 lines), `research/feasibility.md` (5) and the append-only `progress.md` (1) and `research/decision_log.md` (3); the two in current code and the demo README were removed. Whether to scrub these before publication is for the owner (section 5).
+- [ ] Owner sign-off of `research/publication/author_review.md` (owner only).
+- [ ] Owner approval for any push or publication recorded (G-PUBLIC; owner only).

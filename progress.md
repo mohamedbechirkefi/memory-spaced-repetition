@@ -335,3 +335,40 @@ Offline after the first load (checker step 7), responsive (no horizontal scroll 
 - The sandbox seed does not reproduce a research seed (different random generator); stated on the page.
 - The articles are drafts the owner has not yet read; publication is the owner's decision.
 - Next: M6 (clean clone, PDFs, link checks, owner review checklist).
+
+## 2026-11-25, session 8: M6 release candidate (owner: "Next", second)
+
+**Milestone:** M6. **Bounded task:** `labs/_shared/M6-brief.md`. Authority: owner, 2026-11-25, "Next" (second) (`labs/_shared/owner-approvals-2026-11-25e.md`). No push, tag or release.
+
+### Starting state
+
+`git status`: clean at `46b4a11` on `main`.
+
+### Commands and actual outputs
+
+- Clean clone of `46b4a11` in the session scratchpad: `uv sync --frozen --all-groups --all-extras` ok; `.venv/bin/python -m pytest -q`: `253 passed in 38.38s`.
+- `memory_research smoke --out <scratch>/smoke`: refused (`exploratory outputs must go under a path containing 'exploratory'`); with `--out <scratch>/exploratory/SMOKE-001`: `SMOKE-001 [exploratory]: 25 runs, 25 ok, 0 excluded, 0 failed, wall clock 0.034 s`; against `results/exploratory/SMOKE-001-M3`: only timing and provenance leaves differ (103), `summary.csv` and `contrasts.csv` byte-identical.
+- `memory_research run --config research/experiments/EXP-001/config.json --out <scratch>/rerun-exp001`: `250 runs, 250 ok, 0 excluded, 0 failed, wall clock 0.288 s`; against the committed `results.json`: 1,003 differing leaves, all timing or provenance; every metric identical. Output discarded (reproducibility check, not a result).
+- Demo in the clone: `npm ci --prefer-offline` `added 53 packages`; `npm test` `Tests 43 passed (43)`; `npm run build` `✓ built`; `node tools/a11y_check.mjs dist` `A11Y-CHECK PASS`. `scripts/export_demo_data.py` then `--check`: `EXPORT-CHECK PASS`; `export_engine_fixture.py --check`: `FIXTURE-CHECK PASS`; `git status` empty.
+- PDFs: first build failed: `typst.TypstError: path "../experiments/EXP-001/figures/exp001_contrasts.svg" would escape the project root` (finding R1). After the builder fixes (R1 to R7 in `research/publication/reproducibility_report.md`): manuscript 15 pages (370,351 bytes), supplement 5 (138,304), EXP-001 7 (175,739), EXP-002 7 (189,070), EXP-003 10 (402,401). Pages rendered to PNG at 80 ppi and read: all manuscript and supplement pages, report pages 1 to 6, 1 to 6 and 1 to 8. pypdf: every PDF titled; 0 e-mail addresses, 0 local paths, 0 raw Markdown in text or metadata.
+- Sources: ACL Anthology PDF (Settles and Meeder), arXiv PDFs (Tabibian et al. 1712.01856v2; Reddy et al. 1602.07032) and the eScholarship author manuscript (Cepeda et al.) opened; every cited statement matches (evidence audit section 6).
+- `pandoc manuscript.md -s -t latex` regenerated `manuscript.tex` (1,063 lines with header).
+- `.venv/bin/python scripts/audit_numbers.py`: manuscript 220 numbers, supplementary 216, EXP-001 122, EXP-002 130, EXP-003 25, claims register 88; `AUDIT: 0 unmatched`.
+- `.venv/bin/python scripts/check_links.py`: `57 Markdown files, 33 relative links checked, 0 broken`, `LINK-CHECK PASS`.
+- Data: DS01 SHA-256, MD5 and size equal to `data/manifest.json`; `shasum -a 256 -c SHA256SUMS`: 18, 18 and 22 OK; 40 artifact-manifest paths exist.
+- Scan of 304 tracked text files: 1 e-mail (AI co-author trailer in `CLAUDE.md`), 0 keys or tokens, 0 `.env`, 18 home-path lines in 6 files (3 removed from current files; the rest listed in the reproducibility report and D-021).
+- Licences: `research/publication/dependency_licences.md`, 23 Python and 84 npm packages, none flagged.
+- `CITATION.cff` validated against the official CFF 1.2.0 schema (fetched to the scratchpad; `jsonschema` in a throwaway uv environment): `errors 0`.
+- `.venv/bin/python -m pytest -q` (working repository, final): `256 passed`; first run failed one test (`test_committed_export_is_identical`: the export records the claims register hash, which changed), fixed by rerunning `scripts/export_demo_data.py`. Demo: `npm test` `Tests 43 passed (43)`, `npm run build` ok, `A11Y-CHECK PASS`.
+
+### Files created or changed
+
+Created: `scripts/check_links.py`, `tests/test_links.py`, `research/publication/dependency_licences.md`, the five PDFs. Changed: `src/memory_research/report.py` (builder), `research/paper/{manuscript.md, manuscript.tex, supplementary.md, references.bib}`, the three `report.md` (blank lines before lists; two figure heights), `research/literature_review.md`, `research/claims_register.csv` (EXT-003, EXT-004 status), `research/publication/{reproducibility_report.md, evidence_audit.md, author_review.md, release_checklist.md, number_audit.json}`, `demo/public/data/results.json` (claims register hash), `demo/README.md`, `README.md`, `CITATION.cff`, `CONTRIBUTING.md` (commands appended), `roadmap.md`, `research/decision_log.md` (D-021).
+
+### Note on home paths in this journal
+
+Line 258 of this file (post-M4 entry) contains an absolute home-directory path. It is left as written (append-only); see D-021.
+
+### M6 status
+
+Release candidate prepared, awaiting owner review and G-PUBLIC. M6 is not done until the owner signs off `research/publication/author_review.md`.
