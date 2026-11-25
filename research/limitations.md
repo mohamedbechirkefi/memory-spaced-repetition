@@ -1,5 +1,5 @@
 <!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->
-# Limitations and threats to validity (M0 draft; no results exist yet)
+# Limitations and threats to validity (M0 draft, extended at the freeze, in M3 and in M4)
 
 ## Scope boundary
 
@@ -58,3 +58,16 @@
 - **Achieved precision.** At `RI = 281` the SD of paired differences was 0.0186 (EXP-001 primary) and 0.041 (EXP-002 primary contrasts), below the 0.07 adequacy threshold of protocol section 6.
 - **EXP-002 `ω` check not run.** The descriptive check with `ω ∈ {0.3, 3}` (EXP-002 protocol section 16) has no frozen configuration; robustness to `ω` is untested.
 - **`ω` check not run (owner decision, D-017).** The owner decided on 2026-11-25 ("approve all recommendations, RIGGED A", item 6) that the optional EXP-002 `ω` check is not run, because it has no frozen configuration. It is recorded as not run.
+
+## Added in M4 (2026-11-25, interpretation and second review pass)
+
+- **Fragile equivalence (EXP-002).** The frozen verdict stands, but the "equivalent within 0.02" classification of `greedy-exp` sits on the margin: bootstrap upper bound 0.0195, paired t upper bound 0.0201. Exploratory checks (SENS-001) give an interval above 0 on independent seeds (0.0098 [0.0007, 0.0187]) and at `RI` 7 and 30 on the confirmatory learners (0.0213 in both). What is robust is the size of the reduction (0.0347 to 0.0085), not the label (CLM-009).
+- **Initial half-life advantage.** Both greedy arms know each item's true initial half-life; the EXP-002 misspecification removes only the model-family advantage. Any remaining greedy advantage is an upper bound for a realistic scheduler. Not testable without a new, separately frozen experiment.
+- **No gap-dependent update.** In the model a review changes the forgetting rate by its outcome only, not by the gap since the previous review. "Spacing" acts only through review success and recency, so the results say nothing about the psychological spacing effect.
+- **Leitner capacity.** Leitner is forced to the fixed daily capacity of the adaptive arms, and spare capacity goes to items not yet due (A2). Its deficit against uniform in EXP-001 may reflect this rule rather than the box logic.
+- **Mastery share on a small base.** The EXP-001 mastery-share reversal (0.0200 to 0) concerns about one item of 50 per learner.
+- **Massed wins at a higher daily load.** In EXP-003 massed is the most frequent top arm (29 cells, 24 of them under the power law) while reviewing 50 items per session against 8 for the spread arms.
+- **Mechanism measured at one cell.** The reallocation diagnostics (CLM-011) come from the central cell (`k = 4`); the explanation of greedy's deficit at `k = 2` is not measured.
+- **Post hoc checks.** SENS-001 was specified after the confirmatory results were seen; its ceiling threshold (0.95) is post hoc. It changes no frozen verdict.
+- **E2 reading.** E2 compares signed differences; in groups where greedy is below uniform for every distribution, a magnitude reading could classify them differently (D-015 reading kept).
+- **Pre-freeze exposure.** Draft-setting probes with greedy below uniform (PROBE-001, PROBE-002) were seen before the freeze; disclosed in the freeze record and the manuscript.

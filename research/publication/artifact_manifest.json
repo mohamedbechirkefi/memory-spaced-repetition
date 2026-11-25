@@ -1,77 +1,454 @@
 {
-  "schema_version": "0.1.0",
-  "generated": "2026-11-24",
-  "note": "No confirmatory figure, table or claim exists yet. Exploratory planning artifacts are listed for traceability only; they are not findings and may not be cited as results.",
-  "artifacts": [
-    {
-      "artifact_id": "XPL-SMOKE-001",
-      "status": "exploratory",
-      "exp_id": null,
-      "related_draft_exp": "EXP-001",
-      "run_ids": "SMOKE-001/*",
-      "metric": "recall_mean (mean true-model recall at the delayed test)",
-      "result_path": "results/exploratory/SMOKE-001/results.json",
-      "report_path": "results/exploratory/SMOKE-001/report/report.md",
-      "generator": "memory_research.report",
-      "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
-      "code_revision_report": "13bb3d9",
-      "protocol_hash": null
-    },
-    {
-      "artifact_id": "XPL-PROBE-001",
-      "status": "exploratory",
-      "exp_id": null,
-      "related_draft_exp": "EXP-001",
-      "run_ids": "PROBE-001/*",
-      "metric": "recall_mean (mean true-model recall at the delayed test)",
-      "result_path": "results/exploratory/PROBE-001/results.json",
-      "report_path": "results/exploratory/PROBE-001/report/report.md",
-      "generator": "memory_research.report",
-      "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
-      "code_revision_report": "13bb3d9",
-      "protocol_hash": null
-    },
-    {
-      "artifact_id": "XPL-PROBE-002",
-      "status": "exploratory",
-      "exp_id": null,
-      "related_draft_exp": "EXP-002",
-      "run_ids": "PROBE-002/*",
-      "metric": "recall_mean (mean true-model recall at the delayed test)",
-      "result_path": "results/exploratory/PROBE-002/results.json",
-      "report_path": "results/exploratory/PROBE-002/report/report.md",
-      "generator": "memory_research.report",
-      "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
-      "code_revision_report": "13bb3d9",
-      "protocol_hash": null
-    },
-    {
-      "artifact_id": "XPL-PROBE-003",
-      "status": "exploratory",
-      "exp_id": null,
-      "related_draft_exp": "EXP-003",
-      "run_ids": "PROBE-003/*",
-      "metric": "recall_mean (mean true-model recall at the delayed test)",
-      "result_path": "results/exploratory/PROBE-003/results.json",
-      "report_path": "results/exploratory/PROBE-003/report/report.md",
-      "generator": "memory_research.report",
-      "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
-      "code_revision_report": "13bb3d9",
-      "protocol_hash": null
-    },
-    {
-      "artifact_id": "XPL-PROBE-004",
-      "status": "exploratory",
-      "exp_id": null,
-      "related_draft_exp": "EXP-003",
-      "run_ids": "PROBE-004/*",
-      "metric": "recall_mean (mean true-model recall at the delayed test)",
-      "result_path": "results/exploratory/PROBE-004/results.json",
-      "report_path": "results/exploratory/PROBE-004/report/report.md",
-      "generator": "memory_research.report",
-      "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
-      "code_revision_report": "13bb3d9",
-      "protocol_hash": null
-    }
+ "schema_version": "0.2.0",
+ "generated": "2026-11-25",
+ "milestone": "M4",
+ "note": "Maps every figure, table and claim of the manuscript, supplement and experiment reports to its experiment id, run ids, metric definition, result path, generator, configuration and protocol hashes and code revisions. Every decimal number in those documents is matched to a committed source at its printed precision by scripts/audit_numbers.py (output research/publication/number_audit.json, per-number line and source files). Integer counts are mapped in 'integer_counts'. Pre-freeze exploratory artifacts (XPL-*) are kept for traceability and are not findings.",
+ "number_audit": {
+  "path": "research/publication/number_audit.json",
+  "generator": "scripts/audit_numbers.py"
+ },
+ "claims_register": {
+  "path": "research/claims_register.csv",
+  "claims": [
+   "CLM-001",
+   "CLM-002",
+   "CLM-003",
+   "CLM-004",
+   "CLM-005",
+   "CLM-006",
+   "CLM-007",
+   "CLM-008",
+   "CLM-009",
+   "CLM-010",
+   "CLM-011",
+   "CLM-012",
+   "CLM-013",
+   "CLM-014",
+   "EXT-001",
+   "EXT-002",
+   "EXT-003",
+   "EXT-004"
   ]
+ },
+ "integer_counts": [
+  {
+   "value": "250 / 300 / 18,000 runs; 0 excluded, 0 failed",
+   "source": "results/confirmatory/EXP-00N/analysis/frozen_analysis.json key counts"
+  },
+  {
+   "value": "18,550 runs in total",
+   "source": "derived: 250 + 300 + 18,000"
+  },
+  {
+   "value": "72 cells; 70 with a reversal; 51 top-arm changes; 17 sign changes; 53 / 13 intervals above / below 0; top arm 29, 21, 19, 3, 0",
+   "source": "results/confirmatory/EXP-003/analysis/frozen_analysis.json (cells, cells_with_*) and EXP-003 results_tables.md"
+  },
+  {
+   "value": "13 cells below 0 = 10 power-law + 3 exponential, all k = 2",
+   "source": "frozen_analysis.json cells where ci_greedy[1] < 0 (checked in M4)"
+  },
+  {
+   "value": "E1 13 of 18; E2 16 of 24; failures 5 and 8",
+   "source": "frozen_analysis.json e1_*, e2_*"
+  },
+  {
+   "value": "ties in 3 cells (C000, C002, C016)",
+   "source": "frozen_analysis.json cells[].first_rank_share._seeds_with_tie"
+  },
+  {
+   "value": "SENS-001: 70/72, 54/56, 59 resolved top arms (28, 15, 14, 2), 16 ceiling cells (15 exponential, 1 power), 24 of 36, 14 and 14",
+   "source": "results/exploratory/SENS-001/sensitivity.json key B_exp003_resolved_reversals"
+  },
+  {
+   "value": "738 eligible words, 1 boundary; 427,005 validation trials",
+   "source": "results/exploratory/CAL-001/calibration.json; CAL-002/model_comparison.json"
+  },
+  {
+   "value": "234 tests; 38 METRICVAL checks, 0 failed",
+   "source": "progress.md session 5; results/exploratory/METRICVAL-001/validation.json"
+  },
+  {
+   "value": "288 arm-versus-uniform intervals",
+   "source": "derived: 72 cells x 4 contrasts"
+  }
+ ],
+ "artifacts": [
+  {
+   "artifact_id": "FIG-001",
+   "kind": "figure",
+   "status": "confirmatory",
+   "exp_id": "EXP-001",
+   "run_ids": "EXP-001/C000/*/s1000-s1049",
+   "metric": "mean delayed modelled recall R = (1/N) sum_i m_i(T_test), probability units; arm minus uniform paired over seeds; 95% percentile bootstrap (10,000 resamples, seed 20261124) and paired t",
+   "result_path": "results/confirmatory/EXP-001/analysis/frozen_analysis.json",
+   "result_sha256": "8a2333145deb95b49b4b76532f21c082e2e52e75d0cbea45b0d14af38ecc1381",
+   "raw_result_path": "results/confirmatory/EXP-001/results.json",
+   "artifact_path": "research/experiments/EXP-001/figures/exp001_contrasts.svg",
+   "generator": "scripts/analyse_confirmatory.py then scripts/build_experiment_records.py",
+   "config_canonical_sha256": "841629fa27db8c9652746f7dde5887afc8f8a6c8b538bb0234cddba3ca1818ce",
+   "protocol_sha256": "91a79174986aa519bb1f9c1bc294c474ca441ce172076a6779826535689c496d",
+   "study_protocol_sha256": "fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d",
+   "code_revision_run": "d4a793df271ec2dc1963d00715e3a6525a07863f",
+   "code_revision_analysis": "3811bb93bca8798c57b80c55d97a8713732a13b8",
+   "used_in": [
+    "manuscript Figure 1",
+    "EXP-001 report Figure 1"
+   ]
+  },
+  {
+   "artifact_id": "FIG-002",
+   "kind": "figure",
+   "status": "confirmatory",
+   "exp_id": "EXP-002",
+   "run_ids": "EXP-002/C000/*/s1000-s1049",
+   "metric": "mean delayed modelled recall R = (1/N) sum_i m_i(T_test), probability units; arm minus uniform paired over seeds; 95% percentile bootstrap (10,000 resamples, seed 20261124) and paired t",
+   "result_path": "results/confirmatory/EXP-002/analysis/frozen_analysis.json",
+   "result_sha256": "dfcd2105d2933051c882ae7a3ef18f06c0286d2e76be1520a164e92b86a9dce7",
+   "raw_result_path": "results/confirmatory/EXP-002/results.json",
+   "artifact_path": "research/experiments/EXP-002/figures/exp002_contrasts.svg",
+   "generator": "scripts/analyse_confirmatory.py then scripts/build_experiment_records.py",
+   "config_canonical_sha256": "930b73f2b673f44b4b066c3c9990c26a671dced9b8287a91bd892983d5c3c44d",
+   "protocol_sha256": "9f1e4e7c1b0275fb1d052015e13b5a88500fc3eaf5f82bebc7057e79621fbfa0",
+   "study_protocol_sha256": "fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d",
+   "code_revision_run": "d4a793df271ec2dc1963d00715e3a6525a07863f",
+   "code_revision_analysis": "3811bb93bca8798c57b80c55d97a8713732a13b8",
+   "used_in": [
+    "manuscript Figure 2",
+    "EXP-002 report Figure 1"
+   ]
+  },
+  {
+   "artifact_id": "FIG-003",
+   "kind": "figure",
+   "status": "confirmatory",
+   "exp_id": "EXP-003",
+   "run_ids": "EXP-003/C000-C071/*/s3000-s3349",
+   "metric": "mean delayed modelled recall R = (1/N) sum_i m_i(T_test), probability units; arm minus uniform paired over seeds; 95% percentile bootstrap (10,000 resamples, seed 20261124) and paired t; unadjusted",
+   "result_path": "results/confirmatory/EXP-003/analysis/frozen_analysis.json",
+   "result_sha256": "117c3ab341d99c5d22f9313f6188ee12b35eeb83f76189d2c4c27380b9b34cce",
+   "raw_result_path": "results/confirmatory/EXP-003/results.json",
+   "artifact_path": "research/experiments/EXP-003/figures/exp003_diff_greedy.svg",
+   "generator": "scripts/analyse_confirmatory.py then scripts/build_experiment_records.py",
+   "config_canonical_sha256": "7c886211f6f949112a8ff1193b6d1b073f776c391df94f4d0e542e89b264b2c8",
+   "protocol_sha256": "f4767c1998268d9a74272d32ec6916038acd1df92c2605e94c09bdfa771cf9a4",
+   "study_protocol_sha256": "fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d",
+   "code_revision_run": "d4a793df271ec2dc1963d00715e3a6525a07863f",
+   "code_revision_analysis": "3811bb93bca8798c57b80c55d97a8713732a13b8",
+   "used_in": [
+    "manuscript Figure 3",
+    "EXP-003 report Figure 1"
+   ]
+  },
+  {
+   "artifact_id": "FIG-004",
+   "kind": "figure",
+   "status": "confirmatory",
+   "exp_id": "EXP-003",
+   "run_ids": "EXP-003/C000-C071/*/s3000-s3349",
+   "metric": "share of seeds in which each arm has the highest R; exact ties share credit",
+   "result_path": "results/confirmatory/EXP-003/analysis/frozen_analysis.json",
+   "result_sha256": "117c3ab341d99c5d22f9313f6188ee12b35eeb83f76189d2c4c27380b9b34cce",
+   "raw_result_path": "results/confirmatory/EXP-003/results.json",
+   "artifact_path": "research/experiments/EXP-003/figures/exp003_first_rank_share.svg",
+   "generator": "scripts/analyse_confirmatory.py then scripts/build_experiment_records.py",
+   "config_canonical_sha256": "7c886211f6f949112a8ff1193b6d1b073f776c391df94f4d0e542e89b264b2c8",
+   "protocol_sha256": "f4767c1998268d9a74272d32ec6916038acd1df92c2605e94c09bdfa771cf9a4",
+   "study_protocol_sha256": "fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d",
+   "code_revision_run": "d4a793df271ec2dc1963d00715e3a6525a07863f",
+   "code_revision_analysis": "3811bb93bca8798c57b80c55d97a8713732a13b8",
+   "used_in": [
+    "manuscript Figure 4",
+    "EXP-003 report Figure 5"
+   ]
+  },
+  {
+   "artifact_id": "TAB-001",
+   "kind": "table",
+   "status": "confirmatory",
+   "exp_id": "EXP-001",
+   "run_ids": "EXP-001/C000/*/s1000-s1049",
+   "metric": "mean delayed modelled recall R = (1/N) sum_i m_i(T_test), probability units; arm minus uniform paired over seeds; 95% percentile bootstrap (10,000 resamples, seed 20261124) and paired t; Holm over four",
+   "result_path": "results/confirmatory/EXP-001/analysis/frozen_analysis.json",
+   "result_sha256": "8a2333145deb95b49b4b76532f21c082e2e52e75d0cbea45b0d14af38ecc1381",
+   "raw_result_path": "results/confirmatory/EXP-001/results.json",
+   "artifact_path": "research/experiments/EXP-001/results_tables.md (All contrasts versus uniform)",
+   "generator": "scripts/build_experiment_records.py",
+   "config_canonical_sha256": "841629fa27db8c9652746f7dde5887afc8f8a6c8b538bb0234cddba3ca1818ce",
+   "protocol_sha256": "91a79174986aa519bb1f9c1bc294c474ca441ce172076a6779826535689c496d",
+   "study_protocol_sha256": "fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d",
+   "code_revision_run": "d4a793df271ec2dc1963d00715e3a6525a07863f",
+   "code_revision_analysis": "3811bb93bca8798c57b80c55d97a8713732a13b8",
+   "used_in": [
+    "manuscript Table 1",
+    "EXP-001 report section 8"
+   ],
+   "keys": "primary, secondary_contrasts_holm4"
+  },
+  {
+   "artifact_id": "TAB-002",
+   "kind": "table",
+   "status": "confirmatory",
+   "exp_id": "EXP-001",
+   "run_ids": "EXP-001/C000/{greedy,uniform}/s1000-s1049",
+   "metric": "greedy minus uniform on observed recall, minimum and 10th-percentile item recall, mastery share (m >= 0.9)",
+   "result_path": "results/confirmatory/EXP-001/analysis/frozen_analysis.json",
+   "result_sha256": "8a2333145deb95b49b4b76532f21c082e2e52e75d0cbea45b0d14af38ecc1381",
+   "raw_result_path": "results/confirmatory/EXP-001/results.json",
+   "artifact_path": "research/experiments/EXP-001/results_tables.md (Metric-choice sensitivity)",
+   "generator": "scripts/build_experiment_records.py",
+   "config_canonical_sha256": "841629fa27db8c9652746f7dde5887afc8f8a6c8b538bb0234cddba3ca1818ce",
+   "protocol_sha256": "91a79174986aa519bb1f9c1bc294c474ca441ce172076a6779826535689c496d",
+   "study_protocol_sha256": "fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d",
+   "code_revision_run": "d4a793df271ec2dc1963d00715e3a6525a07863f",
+   "code_revision_analysis": "3811bb93bca8798c57b80c55d97a8713732a13b8",
+   "used_in": [
+    "manuscript Table 2"
+   ],
+   "keys": "sensitivity_metric_choice"
+  },
+  {
+   "artifact_id": "TAB-003",
+   "kind": "table",
+   "status": "confirmatory",
+   "exp_id": "EXP-002",
+   "run_ids": "EXP-002/C000/*/s1000-s1049",
+   "metric": "mean delayed modelled recall R = (1/N) sum_i m_i(T_test), probability units; arm minus uniform paired over seeds; 95% percentile bootstrap (10,000 resamples, seed 20261124) and paired t; Holm over two (primary) and over five (descriptive)",
+   "result_path": "results/confirmatory/EXP-002/analysis/frozen_analysis.json",
+   "result_sha256": "dfcd2105d2933051c882ae7a3ef18f06c0286d2e76be1520a164e92b86a9dce7",
+   "raw_result_path": "results/confirmatory/EXP-002/results.json",
+   "artifact_path": "research/experiments/EXP-002/results_tables.md",
+   "generator": "scripts/build_experiment_records.py",
+   "config_canonical_sha256": "930b73f2b673f44b4b066c3c9990c26a671dced9b8287a91bd892983d5c3c44d",
+   "protocol_sha256": "9f1e4e7c1b0275fb1d052015e13b5a88500fc3eaf5f82bebc7057e79621fbfa0",
+   "study_protocol_sha256": "fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d",
+   "code_revision_run": "d4a793df271ec2dc1963d00715e3a6525a07863f",
+   "code_revision_analysis": "3811bb93bca8798c57b80c55d97a8713732a13b8",
+   "used_in": [
+    "manuscript Table 3",
+    "EXP-002 report section 8"
+   ],
+   "keys": "primary_contrasts_holm2, secondary_contrasts_holm_all, interpretation_rule"
+  },
+  {
+   "artifact_id": "TAB-004",
+   "kind": "table",
+   "status": "confirmatory",
+   "exp_id": "EXP-003",
+   "run_ids": "EXP-003/C000-C071/*/s3000-s3349",
+   "metric": "counts over 72 cells: pairwise reversals vs EXP-001 order, top arm, sign of greedy minus uniform, intervals above or below 0, E1 and E2",
+   "result_path": "results/confirmatory/EXP-003/analysis/frozen_analysis.json",
+   "result_sha256": "117c3ab341d99c5d22f9313f6188ee12b35eeb83f76189d2c4c27380b9b34cce",
+   "raw_result_path": "results/confirmatory/EXP-003/results.json",
+   "artifact_path": "research/experiments/EXP-003/results_tables.md (Summary counts)",
+   "generator": "scripts/build_experiment_records.py",
+   "config_canonical_sha256": "7c886211f6f949112a8ff1193b6d1b073f776c391df94f4d0e542e89b264b2c8",
+   "protocol_sha256": "f4767c1998268d9a74272d32ec6916038acd1df92c2605e94c09bdfa771cf9a4",
+   "study_protocol_sha256": "fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d",
+   "code_revision_run": "d4a793df271ec2dc1963d00715e3a6525a07863f",
+   "code_revision_analysis": "3811bb93bca8798c57b80c55d97a8713732a13b8",
+   "used_in": [
+    "manuscript Table 4",
+    "EXP-003 report section 8"
+   ],
+   "keys": "cells, cells_with_*, e1_*, e2_*"
+  },
+  {
+   "artifact_id": "TAB-005",
+   "kind": "table",
+   "status": "synthesis",
+   "exp_id": "EXP-001; EXP-002; EXP-003",
+   "run_ids": "as TAB-001 to TAB-004",
+   "metric": "predictions from the frozen protocols; observations as in TAB-001 to TAB-004",
+   "artifact_path": "research/paper/manuscript.md section 5.4",
+   "generator": "hand-assembled from TAB-001 to TAB-004 (every value audited by scripts/audit_numbers.py)",
+   "used_in": [
+    "manuscript Table 5"
+   ]
+  },
+  {
+   "artifact_id": "TAB-006",
+   "kind": "table",
+   "status": "synthesis",
+   "exp_id": "EXP-001; EXP-002; EXP-003; SENS-001",
+   "run_ids": "as cited rows",
+   "metric": "competing explanations named in the protocols and the evidence that addresses them",
+   "artifact_path": "research/paper/manuscript.md section 6",
+   "generator": "hand-assembled",
+   "used_in": [
+    "manuscript Table 6"
+   ]
+  },
+  {
+   "artifact_id": "SENS-001-A",
+   "kind": "table",
+   "status": "exploratory (post hoc, M4)",
+   "exp_id": null,
+   "journal_id": "SENS-001",
+   "run_ids": "reuses confirmatory runs",
+   "metric": "arm minus uniform at RI 1, 7, 30 (metric recall_mean_at_ri) and min/max reviews per item, from committed EXP-001 and EXP-002 raw results",
+   "result_path": "results/exploratory/SENS-001/sensitivity.json",
+   "result_key": "A_recall_at_other_ri_and_item_spread",
+   "result_sha256": "68930eea8fe9e46bf172ae1e29f622818177cc988cfabb3d15a8d8625a8d41c9",
+   "generator": "scripts/m4_sensitivity.py",
+   "code_revision_run": "2e8cf056fab41ee9391e49dabf5b781199a30e40",
+   "config_canonical_sha256": "841629fa27db8c9652746f7dde5887afc8f8a6c8b538bb0234cddba3ca1818ce; 930b73f2b673f44b4b066c3c9990c26a671dced9b8287a91bd892983d5c3c44d",
+   "used_in": [
+    "supplementary S4.1, S4.2",
+    "manuscript 5.1, 5.2",
+    "EXP-001 and EXP-002 report addenda"
+   ]
+  },
+  {
+   "artifact_id": "SENS-001-B",
+   "kind": "table",
+   "status": "exploratory (post hoc, M4)",
+   "exp_id": null,
+   "journal_id": "SENS-001",
+   "run_ids": "reuses confirmatory runs",
+   "metric": "EXP-003 pairwise paired bootstrap intervals (10 pairs x 72 cells); resolved reversals; ceiling threshold 0.95 (post hoc)",
+   "result_path": "results/exploratory/SENS-001/sensitivity.json",
+   "result_key": "B_exp003_resolved_reversals",
+   "result_sha256": "68930eea8fe9e46bf172ae1e29f622818177cc988cfabb3d15a8d8625a8d41c9",
+   "generator": "scripts/m4_sensitivity.py",
+   "code_revision_run": "2e8cf056fab41ee9391e49dabf5b781199a30e40",
+   "config_canonical_sha256": "841629fa27db8c9652746f7dde5887afc8f8a6c8b538bb0234cddba3ca1818ce; 930b73f2b673f44b4b066c3c9990c26a671dced9b8287a91bd892983d5c3c44d; 7c886211f6f949112a8ff1193b6d1b073f776c391df94f4d0e542e89b264b2c8",
+   "used_in": [
+    "supplementary S4.3",
+    "manuscript 5.3",
+    "EXP-003 report addendum"
+   ]
+  },
+  {
+   "artifact_id": "SENS-001-C",
+   "kind": "table",
+   "status": "exploratory (post hoc, M4)",
+   "exp_id": null,
+   "journal_id": "SENS-001",
+   "run_ids": "seeds 5000-5049",
+   "metric": "EXP-001 and EXP-002 base settings re-simulated on seeds 5000-5049: contrasts and allocation and timing diagnostics",
+   "result_path": "results/exploratory/SENS-001/sensitivity.json",
+   "result_key": "C_independent_seed_replication_and_mechanism",
+   "result_sha256": "68930eea8fe9e46bf172ae1e29f622818177cc988cfabb3d15a8d8625a8d41c9",
+   "generator": "scripts/m4_sensitivity.py",
+   "code_revision_run": "2e8cf056fab41ee9391e49dabf5b781199a30e40",
+   "config_canonical_sha256": "841629fa27db8c9652746f7dde5887afc8f8a6c8b538bb0234cddba3ca1818ce; 930b73f2b673f44b4b066c3c9990c26a671dced9b8287a91bd892983d5c3c44d",
+   "used_in": [
+    "supplementary S4.4",
+    "manuscript 5.1, 5.2, 6",
+    "EXP-001 and EXP-002 report addenda"
+   ]
+  },
+  {
+   "artifact_id": "CAL-001",
+   "kind": "design input",
+   "status": "exploratory (pre-freeze)",
+   "exp_id": null,
+   "result_path": "results/exploratory/CAL-001/calibration.json",
+   "result_sha256": "068afc0cdd414b57f7d0f001b8b496c4925d81b46ca84a7a27679535ebf8aa94",
+   "generator": "scripts/calibrate_duolingo.py",
+   "protocol": "research/protocol.md sections 15.2, 16.1, 16.2",
+   "used_in": [
+    "manuscript 4.2",
+    "CLM-013"
+   ]
+  },
+  {
+   "artifact_id": "CAL-002",
+   "kind": "design input",
+   "status": "exploratory (pre-freeze)",
+   "exp_id": null,
+   "result_path": "results/exploratory/CAL-002/model_comparison.json",
+   "result_sha256": "3190ec53cee7f868576b01d5e1b72cfa8e1c43cef3b30219f78448ec7e3e8664",
+   "generator": "scripts/diagnose_forgetting_fit.py",
+   "protocol": "research/protocol.md sections 15.2, 16.1, 16.2",
+   "used_in": [
+    "manuscript 4.2",
+    "CLM-013"
+   ]
+  },
+  {
+   "artifact_id": "RI-001",
+   "kind": "design input",
+   "status": "exploratory (pre-freeze)",
+   "exp_id": null,
+   "result_path": "results/exploratory/RI-001/selection.json",
+   "result_sha256": "3bfd8a65272bcbd15dc8ad4613cdfbd6ddf1f8b4eff7b070c98f1cb2fc07c3b0",
+   "generator": "scripts/select_retention_interval.py",
+   "protocol": "research/protocol.md sections 15.2, 16.1, 16.2",
+   "used_in": [
+    "manuscript 4.2",
+    "CLM-014"
+   ]
+  },
+  {
+   "artifact_id": "XPL-SMOKE-001",
+   "status": "exploratory",
+   "exp_id": null,
+   "related_draft_exp": "EXP-001",
+   "run_ids": "SMOKE-001/*",
+   "metric": "recall_mean (mean true-model recall at the delayed test)",
+   "result_path": "results/exploratory/SMOKE-001/results.json",
+   "report_path": "results/exploratory/SMOKE-001/report/report.md",
+   "generator": "memory_research.report",
+   "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+   "code_revision_report": "13bb3d9",
+   "protocol_hash": null
+  },
+  {
+   "artifact_id": "XPL-PROBE-001",
+   "status": "exploratory",
+   "exp_id": null,
+   "related_draft_exp": "EXP-001",
+   "run_ids": "PROBE-001/*",
+   "metric": "recall_mean (mean true-model recall at the delayed test)",
+   "result_path": "results/exploratory/PROBE-001/results.json",
+   "report_path": "results/exploratory/PROBE-001/report/report.md",
+   "generator": "memory_research.report",
+   "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+   "code_revision_report": "13bb3d9",
+   "protocol_hash": null
+  },
+  {
+   "artifact_id": "XPL-PROBE-002",
+   "status": "exploratory",
+   "exp_id": null,
+   "related_draft_exp": "EXP-002",
+   "run_ids": "PROBE-002/*",
+   "metric": "recall_mean (mean true-model recall at the delayed test)",
+   "result_path": "results/exploratory/PROBE-002/results.json",
+   "report_path": "results/exploratory/PROBE-002/report/report.md",
+   "generator": "memory_research.report",
+   "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+   "code_revision_report": "13bb3d9",
+   "protocol_hash": null
+  },
+  {
+   "artifact_id": "XPL-PROBE-003",
+   "status": "exploratory",
+   "exp_id": null,
+   "related_draft_exp": "EXP-003",
+   "run_ids": "PROBE-003/*",
+   "metric": "recall_mean (mean true-model recall at the delayed test)",
+   "result_path": "results/exploratory/PROBE-003/results.json",
+   "report_path": "results/exploratory/PROBE-003/report/report.md",
+   "generator": "memory_research.report",
+   "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+   "code_revision_report": "13bb3d9",
+   "protocol_hash": null
+  },
+  {
+   "artifact_id": "XPL-PROBE-004",
+   "status": "exploratory",
+   "exp_id": null,
+   "related_draft_exp": "EXP-003",
+   "run_ids": "PROBE-004/*",
+   "metric": "recall_mean (mean true-model recall at the delayed test)",
+   "result_path": "results/exploratory/PROBE-004/results.json",
+   "report_path": "results/exploratory/PROBE-004/report/report.md",
+   "generator": "memory_research.report",
+   "code_revision_run": "bad36ee04f8598005a7070f99d0ee26eda6b6d33",
+   "code_revision_report": "13bb3d9",
+   "protocol_hash": null
+  }
+ ]
 }

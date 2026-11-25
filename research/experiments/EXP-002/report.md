@@ -3,7 +3,7 @@
 
 ## 1. Identification
 
-- **Experiment:** EXP-002. **Status:** CONFIRMATORY, complete: 300 of 300 planned runs, 0 excluded, 0 failed. **Report version:** M3 close, 2026-11-25. Written from the committed results, tables and figures only (owner, 2026-11-25, "approve all recommendations, RIGGED A", item 4; D-017).
+- **Experiment:** EXP-002. **Status:** CONFIRMATORY, complete: 300 of 300 planned runs, 0 excluded, 0 failed. **Report version:** M4 final, 2026-11-25 (M3 close text, with the M4 corrections and addendum marked below). Written from the committed results, tables and figures only (owner, 2026-11-25, "approve all recommendations, RIGGED A", item 4; D-017).
 - **Author:** Mohamed Bechir Kefi (C3). An AI system was used as a research and development assistant; it is not an author.
 - **Protocol:** `research/experiments/EXP-002/protocol.md`, FROZEN v1.1, SHA-256 `9f1e4e7c1b0275fb1d052015e13b5a88500fc3eaf5f82bebc7057e79621fbfa0`. Study protocol SHA-256 `fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d`.
 - **Configuration:** `research/experiments/EXP-002/config.json`, canonical SHA-256 `930b73f2b673f44b4b066c3c9990c26a671dced9b8287a91bd892983d5c3c44d`, equal to the freeze record.
@@ -93,7 +93,7 @@ Full tables are in `research/experiments/EXP-002/results_tables.md` (generated).
 
 | contrast | mean diff | 95% bootstrap CI | Holm p | rule |
 |---|---|---|---|---|
-| massed - uniform | 0.0530 | [0.0458, 0.0605] | 0.0000 | above zero |
+| massed - uniform | 0.0530 | [0.0458, 0.0605] | 0 (underflow; M4 note) | above zero |
 | expanding - uniform | 0.0399 | [0.0331, 0.0468] | 1.42e-14 | above zero |
 | greedy-power - uniform | 0.0347 | [0.0232, 0.0461] | 1.18e-06 | above zero |
 | greedy-exp - uniform | 0.0085 | [-0.0026, 0.0195] | 0.1457 | equivalent within delta |
@@ -125,13 +125,23 @@ Full tables are in `research/experiments/EXP-002/results_tables.md` (generated).
 ## 9. Expected versus observed, and interpretation
 
 - **Protocol framing.** The protocol predicted no direction for H0a or H0b. It framed EXP-002 as the test that could invalidate EXP-001.
-- **Observed.** With the true model, greedy beats uniform on power-law learners. With the wrong model, its advantage shrinks to a difference that is practically equivalent to zero. The invalidation condition of the frozen rule is met: the EXP-001 greedy advantage reflects privileged model knowledge, not a property of adaptive scheduling as such.
-- **Null result, stated as such.** "Equivalent within delta" is a positive finding of practical equivalence, because the whole interval lies inside ±0.02. It is not a reading of non-significance as equivalence.
+- **Observed.** With the true model, greedy beats uniform on power-law learners. With the wrong model, its advantage shrinks to a difference that the frozen rule classifies as practically equivalent to zero. The invalidation condition of the frozen rule is met: the EXP-001 greedy advantage is declared dependent on model knowledge. (M4 qualification: this is a statement about this model and setting; a misspecified scheduler keeps a small positive difference, 0.0085, and the classification is fragile, see the addendum below.)
+- **Null result, stated as such.** "Equivalent within delta" is a finding of practical equivalence under the frozen rule, because the whole bootstrap interval lies inside ±0.02. It is not a reading of non-significance as equivalence. (M4 qualification: the upper bound, 0.0195, is within 0.0005 of the margin.)
 - **Negative result for adaptive scheduling.** On power-law learners, the best arms are the non-adaptive late-placement schedules, `massed` and `expanding`. Even the oracle `greedy-power` does not beat them on mean `R`. In EXP-001 (exponential learners), `massed` was the worst arm. Which arm is best therefore depends on the forgetting model.
 - **Alternative explanations.**
   - Daily load: `massed` and `expanding` place all reviews on 4 sessions.
   - The heavy power-law tail rewards recency.
   - Both greedy arms receive the true initial half-lives, which is a remaining information advantage.
+
+### M4 addendum: fragility of the equivalence classification (second review pass; SENS-001, exploratory)
+
+The frozen verdict stands. Three observations, the first from the committed confirmatory output and the others exploratory and post hoc (`results/exploratory/SENS-001/sensitivity.json`), show that its categorical label is fragile:
+
+- **Interval method.** The paired t interval, the protocol's cross-check, is [-0.0031, 0.0201]; its upper end lies outside ±0.02, so under that interval the contrast would be "inconclusive". The bootstrap interval was the decision interval fixed before the data (D-015).
+- **Independent seeds.** Re-simulated on new seeds 5000 to 5049, greedy-exp minus uniform is 0.0098 [0.0007, 0.0187], entirely above 0.
+- **Other retention intervals.** On the confirmatory learners, greedy-exp minus uniform is 0.0113 [0.0008, 0.0213] at `RI` 1, 0.0213 [0.0110, 0.0313] at 7 and 0.0213 [0.0109, 0.0314] at 30 days: above 0 in every case.
+
+The robust reading is quantitative: misspecification reduced the greedy advantage on power-law learners from 0.0347 to 0.0085 (about three quarters), leaving a small positive difference whose classification depends on the seed block and the retention interval.
 
 ## 10. Threats to validity
 

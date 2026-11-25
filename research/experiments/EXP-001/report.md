@@ -3,7 +3,7 @@
 
 ## 1. Identification
 
-- **Experiment:** EXP-001. **Status:** CONFIRMATORY, complete: 250 of 250 planned runs, 0 excluded, 0 failed. **Report version:** M3 close, 2026-11-25. Written from the committed results, tables and figures only (owner, 2026-11-25, "approve all recommendations, RIGGED A", item 4; D-017). M4 completes the evidence audit.
+- **Experiment:** EXP-001. **Status:** CONFIRMATORY, complete: 250 of 250 planned runs, 0 excluded, 0 failed. **Report version:** M4 final, 2026-11-25. Written from the committed results, tables and figures only (owner, 2026-11-25, "approve all recommendations, RIGGED A", item 4; D-017); M4 evidence audit and exploratory addendum added (D-018, `research/publication/evidence_audit.md`).
 - **Author:** Mohamed Bechir Kefi (approved authorship, C3). An AI system was used as a research and development assistant; it is not an author.
 - **Protocol:** `research/experiments/EXP-001/protocol.md`, FROZEN v1.1, SHA-256 `91a79174986aa519bb1f9c1bc294c474ca441ce172076a6779826535689c496d`. Study protocol `research/protocol.md`, SHA-256 `fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d`. Freeze record `research/freeze.json`.
 - **Configuration:** `research/experiments/EXP-001/config.json`, canonical SHA-256 `841629fa27db8c9652746f7dde5887afc8f8a6c8b538bb0234cddba3ca1818ce`, equal to the freeze record.
@@ -119,8 +119,17 @@ The conclusion is restricted to the mean.
 - **Pattern in the data.** Greedy lifts the weakest items (minimum item recall +0.2560) while no item reaches 0.9 (mastery share 0.0000). It equalizes recall across items rather than raising all of it.
 - **Alternative explanations.**
   - `expanding` places reviews late without feedback and also beats uniform, so late placement is a competing explanation for part of the gain.
-  - Oracle advantage: in EXP-002, the misspecified greedy scheduler is practically equivalent to uniform.
+  - Oracle advantage: in EXP-002, the misspecified greedy scheduler is classified as practically equivalent to uniform under the frozen rule (a fragile classification; EXP-002 report, M4 addendum).
   - Load differences: `expanding` and `massed` use 4 sessions with a peak load of 50 reviews per session, while the other arms use 27 sessions with a peak load of 8.
+
+### M4 addendum: competing explanations checked (SENS-001, exploratory)
+
+Exploratory and post hoc (`results/exploratory/SENS-001/sensitivity.json`, journal SENS-001); the frozen verdict is unchanged.
+
+- **Replication.** On independent seeds the primary contrast is 0.0167 [0.0113, 0.0218] (EXP-003 cell C044, seeds 3300 to 3349, confirmatory run) and 0.0193 [0.0147, 0.0236] (SENS-001, seeds 5000 to 5049).
+- **Other retention intervals.** On the confirmatory learners, greedy minus uniform is 0.0076 [0.0060, 0.0093] at `RI` 1, 0.0189 [0.0159, 0.0221] at 7 and 0.0392 [0.0353, 0.0431] at 30 days.
+- **Recency versus targeting.** Greedy, uniform and Leitner share the daily capacity, so their mean review day is the same (14.065). Greedy gives the hardest third of items 5.326 reviews and the easiest third 2.714 (uniform 4 and 4), and its mean last-review day (23.978) is slightly earlier than uniform's (24.180). The gain comes from moving reviews to hard items, not from reviewing closer to the test. This addresses the first competing explanation of protocol section 3.
+- **Load.** Greedy and uniform have identical daily load (peak 8, 27 sessions), so load does not explain the primary contrast. It does confound the comparisons of expanding and massed with uniform.
 
 ## 10. Threats to validity
 

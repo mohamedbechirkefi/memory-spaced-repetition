@@ -215,3 +215,39 @@ Write the three 11.3 narrative reports from the generated tables, then M4 (evide
 ## 2026-11-25: M3 done (coordinator)
 
 The owner approved the experiment reports (owner, 2026-11-25, "approve all recommendations, RIGGED A", item 4). Subagents may not write report files, so the reports were composed by the M3 session from committed results only and written by the coordinator: 3 report(s). The coordinator checked that every decimal number in them appears in a committed file. With the complete matrices (or documented failures) recorded above, the M3 gate holds. M3 is **done**. Next: M4 (interpretation), not started.
+
+## 2026-11-25, session 6: M4 interpretation, evidence audit and manuscript (owner: "Approve all recommendations, push then next")
+
+**Milestone:** M4. **Bounded task:** `labs/_shared/M4-brief.md`. The project-specific follow-ups of `owner-approvals-2026-11-25b.md` concern HOUSE, RIGGED and FLOW only; none applies to MEMORY. No push.
+
+### Commands and actual outputs
+
+- `git status`: clean at `e4f9dae`. Raw `results.json` SHA-256 of EXP-001, EXP-002 and EXP-003 equal their `SHA256SUMS` entries (EXP-003 file present locally, git-ignored).
+- `scripts/m4_sensitivity.py` committed at `2e8cf05` before running; `nice -n 10 .venv/bin/python scripts/m4_sensitivity.py`: `SENS-001 [exploratory]: wrote .../results/exploratory/SENS-001/sensitivity.json in 2.5 s` (clean revision, one process). Journal entry SENS-001.
+- `.venv/bin/python scripts/audit_numbers.py` (final run): manuscript 216 numbers, supplementary 216, EXP-001 report 122, EXP-002 report 130, EXP-003 report 25, claims register 86; `AUDIT: 0 unmatched`. Before the corrections and script fixes, the first runs flagged section numbers, arXiv ids and the claims register's section column (classification fixes in the script, not number changes).
+- Targeted recomputation from `frozen_analysis.json`: 13 cells with greedy minus uniform below 0 are 10 power-law and 3 exponential (the EXP-003 report said 9 power-law); ties in 3 cells; E1 and E2 failure lists; manuscript Tables 1 to 3 compared programmatically with the frozen analyses (`bad 0`).
+- Figures cited by the manuscript compared byte for byte with the analysis copies: identical.
+- `pandoc manuscript.md -s -t latex` (3.6.3) regenerated `research/paper/manuscript.tex` (1,059 lines with header). No PDF built (M6).
+- `.venv/bin/python -m pytest -q`: `234 passed in 2.49s`.
+
+### Results (exploratory, post hoc; no frozen verdict changed)
+
+- EXP-001 primary replicates on independent seeds (C044 0.0167 [0.0113, 0.0218]; SENS-001 0.0193 [0.0147, 0.0236]) and holds at RI 1, 7, 30; greedy reallocates reviews to hard items (5.326 against 2.714) without later placement.
+- EXP-002 "equivalent within 0.02" is fragile: paired t upper bound 0.0201; independent seeds 0.0098 [0.0007, 0.0187]; RI 7 and 30: 0.0213 with intervals above 0. Verdict kept, reading restated quantitatively.
+- EXP-003 instability robust: 70 of 72 resolved reversals, 54 of 56 without ceiling cells; top arm resolved in 59 cells.
+
+### Failures and deviations
+
+None. No confirmatory rerun; no frozen protocol, configuration or seed changed.
+
+### Files created or changed
+
+Created: `scripts/m4_sensitivity.py`, `scripts/audit_numbers.py`, `results/exploratory/SENS-001/sensitivity.json`, `research/publication/{evidence_audit.md, number_audit.json, review_pass_2.md}`. Changed: `research/paper/{manuscript.md, manuscript.tex, supplementary.md}`, the three `report.md` (M4 final, corrections and addenda), `research/claims_register.csv` (restructured), `research/publication/{artifact_manifest.json, claims_audit.md}`, `research/{limitations.md, decision_log.md (D-018), experiment_journal.jsonl, experiment_registry.csv}`, `roadmap.md`.
+
+### M4 gate
+
+Every numerical claim maps to a result id, configuration hash and figure or table (claims register, artifact manifest, number audit); every external claim maps to a source read at the stated level (abstract-only sources marked). **M4 done.**
+
+### Risks and next action
+
+Open: the initial half-life advantage of both greedy arms; the untested `ω` sensitivity (D-017). Next: M5 (static interactive page using the same verified results and labels).

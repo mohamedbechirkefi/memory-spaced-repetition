@@ -1,59 +1,290 @@
 ---
 # SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0
-title: "The mathematics of remembering (working title; to be revised after results)"
+title: "Review scheduling under a fixed budget in simulated forgetting models: a model-based advantage that depends on model knowledge and on the setting"
 author: "Mohamed Bechir Kefi"
-status: "Skeleton (protocol frozen 2026-11-24, v1.1 after the round-3 pre-data amendment). Independent research manuscript / preprint draft, not peer-reviewed. No results exist."
-ai_disclosure: "An AI system (Claude, Anthropic) was used as a research and development assistant for code, protocol drafting and documentation under the author's direction; it is not an author."
+status: "Independent research manuscript / preprint draft, not peer-reviewed. M4 synthesis, 2026-11-25, revised after the second review pass (research/publication/review_pass_2.md)."
+ai_disclosure: "An AI system (Claude, Anthropic) was used as a research and development assistant for code, protocol drafting, analysis scripts and documentation under the author's direction; it is not an author. See section 11."
 ---
 
 # Abstract
 
-<!-- Drafted after analysis (master prompt 11.4). -->
+Model-based spaced-repetition schedulers review the items with the lowest predicted recall. Whether this beats simple equal spacing under a fixed number of reviews depends on the memory model as much as on the schedule. We compared five schedules (uniform, expanding, massed, Leitner and a greedy lowest-predicted-recall scheduler) in a simulation of exponential and power-law forgetting with multiplicative retrieval updates, under an exactly matched budget of 200 reviews for 50 synthetic items, with two parameters calibrated to public Duolingo traces. Three experiments were frozen before any confirmatory run (18,550 runs, none excluded). At the central setting, with a test 281 days after a 28-day study window, an oracle greedy scheduler raised mean modelled recall over uniform review by 0.0162 (95% bootstrap interval 0.0110 to 0.0213; 50 paired simulated learners), while lowering the already small share of items above 0.9 (0.0200 to 0). On power-law learners, the same scheduler using a misspecified exponential model gained 0.0085 (interval -0.0026 to 0.0195), which the frozen rule classifies as practically equivalent to uniform; exploratory checks show that this classification is fragile. Across a 72-cell sweep, the arm ranking changed in 70 cells and the best arm was most often massed review (29 cells), which places every review in the last four sessions. Within these models no schedule is best in general; the answer depends on forgetting model, budget, retention interval and the scheduler's knowledge. Neither model predicts real first-review recall better than a constant, so none of this is a claim about human learners.
 
 # Keywords
 
-<!-- 4 to 7 keywords. -->
+spaced repetition; forgetting curves; review scheduling; simulation study; model misspecification; protocol freezing
 
 # 1. Introduction
 
+Learning software decides when a learner should see an item again. Two families of rules are common: fixed rules, which space reviews by a timetable, and adaptive rules, which use the learner's history. Model-based adaptive rules go further: they estimate each item's current recall probability under a forgetting model and review the items that are about to be forgotten. Tabibian et al. (2019) derive such a rule as the optimal review intensity under a forgetting model and a review cost. Settles and Meeder (2016) fit a half-life regression model to Duolingo traces for the same purpose.
+
+A model-based scheduler is only as good as its model. In a simulation, the experimenter chooses the true model and can give the scheduler that same model, which makes the comparison easy to win. This study asks how much of the advantage of a model-based scheduler survives three changes: a fixed, exactly matched review budget; a scheduler whose model is wrong; and a sweep over settings that a reader could reasonably have chosen instead.
+
+**Research question.** Which review schedule maximizes modelled delayed recall of a set of synthetic items under a fixed study budget (a fixed total number of review events within a fixed study window)?
+
+**Hypotheses.** The primary contrast is greedy minus uniform at the central setting under exponential forgetting (EXP-001), with H0 that the mean paired difference is 0 and a two-sided H1; the directional prediction, stated before the run, was greedy above uniform. EXP-002 is the principal invalidation test: it repeats the contrast on power-law learners with a scheduler whose model is either matched or misspecified. EXP-003 is a descriptive sweep without hypothesis tests.
+
+**Contributions.** The contributions are limited to what the evidence supports:
+
+1. A budget-matched simulation comparison of five review schedules under two published forgetting-model families, with a protocol, configurations and analysis code frozen and hashed before any confirmatory output (18,550 runs).
+2. A direct test of how much of the model-based advantage depends on the scheduler knowing the true model (EXP-002), with a pre-stated interpretation rule, and exploratory evidence on how robust that rule's outcome is.
+3. A 72-cell descriptive sweep showing that the ranking of schedules depends on forgetting model, budget, retention interval and item distribution, including settings where the model-based scheduler is worse than equal spacing.
+4. A calibration of the simulated item population's time scale to public first-review recall data, together with the finding that neither forgetting model predicts that recall better than a constant, which bounds every other result.
+
+No novelty is claimed relative to the literature that was not read (section 2).
+
 # 2. Related work
 
+The related-work base is small and every source is labelled by how much of it was read (`research/literature_review.md`). This is not a systematic review.
+
+**Forgetting models and optimal scheduling (content read).** Tabibian et al. (2019; content read in arXiv:1712.01856 v2) state an exponential recall model $m(t) = \exp(-n\Delta)$ and a power-law model $m(t) = (1 + \omega\Delta)^{-n}$, with a multiplicative update of the forgetting rate $n$ after a success or failure. Under a quadratic loss with a review cost, they derive an optimal review intensity that grows as predicted recall falls, and compare it with uniform and threshold baselines. MEMORY uses these model forms and update directly. It differs in two ways: the budget is a hard count of review events rather than a priced intensity, and the scheduler's knowledge of the model is varied on purpose.
+
+**Half-life regression and classic schedules (content read).** Settles and Meeder (2016; abstract and sections 1 to 3.3 read) model recall as $p = 2^{-\Delta/h}$ with a learned half-life $h$, and describe the Pimsleur graduated-interval method and the Leitner box system (intervals of 1, 2, 4, 8 and 16 days). The expanding and Leitner arms of this study follow those descriptions. Their engagement and error-reduction findings are theirs and are not used here.
+
+**Spacing and retention interval (abstract read only).** The abstract of Cepeda et al. (2006) reports, from a quantitative synthesis of 839 assessments in 317 experiments, that the inter-study interval that maximizes retention increases with the retention interval. This motivated the retention-interval factor of EXP-003. Only the abstract was read; no further claim about that work is made.
+
+**Leitner queueing model (abstract read only).** Reddy et al. (2016; arXiv:1602.07032, abstract read) model the Leitner system as a queueing network. It is related work for the Leitner arm and is not used for any result.
+
+**Not read.** Wixted and Ebbesen (1991), Averell and Heathcote (2011), Pavlik and Anderson (2005), Ye et al. (2022) and Cepeda et al. (2008) were identified at metadata level only. They are relevant (the form of forgetting curves, alternative memory models, optimal-control scheduling) but are not cited for content, and the study cannot say whether its comparison already exists in them.
+
+**Relation to prior work.** The study is an extension of published model families, not a new memory model and not a replication of any experiment. Its original part is the design: a hard budget, matched seeds, a pre-stated invalidation test for the scheduler's model knowledge, and a sweep reported in full.
+
 # 3. Background and formal model
+
+**Time and items.** Time $t$ is in days. Review sessions occur at integer days $1, \dots, D-1$ of a study window $[0, D)$; every item is first studied at day 0 (encoding, outside the budget). The delayed test is at $T_{test} = D - 1 + RI$, where $RI$ is the retention interval after the last session. A simulated learner holds $N$ items.
+
+**Forgetting.** With $\Delta = t - t_{r,i}$ the time since item $i$ was last reviewed and $n_i$ its current forgetting rate, the true recall probability is
+
+$$m_i(t) = \exp(-n_i \Delta) \quad \text{(exponential)}, \qquad m_i(t) = (1 + \omega\Delta)^{-n_i} \quad \text{(power law)}.$$
+
+**Retrieval update.** At a review, the outcome is $r \sim \text{Bernoulli}(m_i(t))$. A success sets $n_i \leftarrow (1-\alpha)\,n_i$ and a failure $n_i \leftarrow (1+\beta)\,n_i$; in both cases $t_{r,i} \leftarrow t$. Items within a session are processed in ascending index order. In this model a review's effect on $n_i$ depends only on its outcome, not on the gap since the last review; spacing matters only through the success probability at the review and the time from the last review to the test.
+
+**Item difficulty.** Initial half-lives $h_i(0)$ are homogeneous ($h_0$), lognormal ($\log h_i(0) \sim N(\log h_0, \sigma^2)$) or bimodal (an even mixture of $h_0/3$ and $3h_0$). The exponential rate is $n_i(0) = \ln 2 / h_i(0)$; the power-law exponent is set so that the initial half-life is the same, $n_i(0) = \ln 2 / \ln(1 + \omega h_i(0))$.
+
+**Primary metric.** Delayed modelled recall $R = \frac{1}{N}\sum_i m_i(T_{test})$, the learner's mean true-model recall probability at the test, in probability units. It is the exact model probability, not a Bernoulli draw. Secondary metrics include observed recall (one Bernoulli test draw per item), mastery share (fraction of items with $m_i(T_{test}) \ge 0.9$), minimum and 10th-percentile item recall, scheduler calibration error, peak daily load and sessions used.
+
+**Complexity.** One run costs $O(D \cdot N \log N)$ operations (a sort of $N$ items per session for the adaptive arms); a run took a few milliseconds.
 
 # 4. Methods
 
 ## 4.1 Design and protocol registration
 
-## 4.2 Simulated learners and synthetic items
+The study protocol (`research/protocol.md`) and three experiment protocols were frozen by the owner before any confirmatory run. Version 1.0 was frozen on 2026-11-24 and superseded the same day by version 1.1 after a pre-data amendment (section 4.2); no confirmatory run was made under v1.0. The SHA-256 of each protocol and of each canonical configuration is stored in `research/freeze.json`; the run command refuses any confirmatory configuration whose hashes differ (exit 3). The protocol was not registered with an external registry; "frozen" means hashed and committed in the project repository before the runs.
+
+Before the freeze, exploratory probes at the draft setting (initial half-life 1 day) had computed the primary contrast on seeds disjoint from the confirmatory ones, with greedy below uniform (PROBE-001: -0.0286, interval -0.0349 to -0.0226). These values are disclosed in the freeze record. The draft setting was replaced by the calibration and amendments below, which were set by the owner's approvals and by rules written before the computations they govern, not chosen from these values.
+
+## 4.2 Simulated learners, calibration and the central setting
+
+**Calibration (CAL-001).** Two parameters of the item population were fitted to public data: DS01, the Duolingo spaced-repetition traces of Settles (2017, Harvard Dataverse, doi:10.7910/DVN/N8XJME, CC BY-NC 4.0). The method was committed before the fit. Rows where the learner had seen the word exactly once before measure recall at the first review. Learners were split by a hash of their identifier; per-word half-lives were fitted by maximum likelihood on the calibration split (738 eligible words, 1 at a boundary). The median gave $h_0 = 54.0$ days and a robust spread $\sigma = 0.759$. The validation split gave 55.2 days and 0.721, within the stability rule. The real data sets only these two values; it never compares schedules.
+
+**Model fit (CAL-002).** On held-out first-review recall (427,005 trials), the mean log-loss per trial was 0.328 for a constant predictor, 0.549 for the best exponential curve and 0.428 for the best power-law curve. Neither forgetting model beats the constant: observed recall stays near 0.9 at every delay (0.912 below one hour, 0.868 at 30 days or more), which a curve starting at $p(0) = 1$ cannot represent.
+
+**Central setting.** $N = 50$, $D = 28$, $k = 4$ reviews per item (budget $B = 200$), $h_0 = 54.0$ days, lognormal items with $\sigma = 0.759$, $\alpha = 0.4$, $\beta = 0.6$, $\omega = 1$ per day. $\alpha$, $\beta$ and $\omega$ are planning values, not estimates. With $RI = 7$ days the uniform baseline sat near the ceiling (mean $R$ 0.959, PROBE-005), where differences are compressed. Under an owner-approved rule written before it was applied (protocol 16.2), the central retention interval was moved, using the uniform arm alone on exploratory seeds, to the value whose baseline recall was closest to 0.55: $RI = 281$ days (baseline 0.550; RI-001). No other arm and no contrast was computed for this choice. The central cell therefore describes recall about nine months after a four-week course.
 
 ## 4.3 Schedules and baseline
 
+All arms place exactly $B$ reviews in sessions 1 to 27, at most one review per item per session.
+
+- `uniform` (baseline): each item gets $k$ equally spaced reviews, staggered by item index.
+- `expanding`: $k$ reviews with gaps doubling, scaled to end at the last session (Pimsleur-style).
+- `massed` (negative control): all $k$ reviews in the last $k$ sessions.
+- `leitner`: five boxes with intervals 1, 2, 4, 8 and 16 days; success promotes, failure demotes to box 1.
+- `greedy`: each session reviews the items with the lowest predicted recall under the scheduler's model.
+
+The adaptive arms share a fixed daily capacity $c_s = \lfloor sB/27 \rfloor - \lfloor (s-1)B/27 \rfloor$, which sums exactly to $B$, and first review any item not yet reviewed since encoding. `uniform` is the baseline because it is the simplest schedule that spends the budget and spaces practice. In EXP-001 the greedy scheduler knows the true model and each item's initial half-life (an oracle). In EXP-002, `greedy-power` has the true power-law model and `greedy-exp` assumes exponential forgetting with the same initial half-lives; both still receive the true initial half-lives.
+
 ## 4.4 Metrics and statistical analysis
+
+The unit of analysis is the simulated learner (one seed); item outcomes within a learner are averaged first. Arms are matched by common random numbers: for a seed, every arm sees the same item difficulties and the same pre-drawn uniform numbers per item and review index. For each arm and seed the paired difference to `uniform` is computed; the mean is reported with a 95% percentile bootstrap interval over seeds (10,000 resamples, bootstrap seed 20261124) and a paired t interval as a cross-check.
+
+**Decision rule (frozen).** For a 95% bootstrap interval of the paired difference: entirely above 0, the difference is above zero; entirely below 0, below zero; containing 0 and inside $[-0.02, +0.02]$, practically equivalent; otherwise inconclusive. Secondary contrasts use a Holm adjustment over the contrasts of the family for any statement of difference.
+
+**EXP-002 interpretation rule (frozen).** If EXP-001 shows a positive difference, and either H0b (greedy-exp equals uniform) is not rejected with its interval inside $\pm 0.02$ or its interval lies entirely below 0, the EXP-001 advantage is declared dependent on model knowledge. Readings left implicit in the protocols ("positive difference" means the bootstrap interval is above 0; "not rejected" means a Holm-adjusted paired t p-value of at least 0.05 over the two EXP-002 primary contrasts) were fixed in code and in decision D-015 before any confirmatory output existed.
+
+**EXP-003 (descriptive).** Per cell, arm means and unadjusted 95% bootstrap intervals of arm minus uniform; the rank order of arms by mean $R$; a rank reversal is any pair of arms ordered differently from EXP-001; the share of seeds in which each arm ranks first. Two expectations were stated in advance and are not tested: E1, `massed` improves relative to `uniform` as $RI$ decreases; E2, the greedy advantage is smallest for homogeneous items.
 
 ## 4.5 Implementation, seeds and compute budget
 
+The simulator is a NumPy package (`src/memory_research/`) with 234 passing tests at the run revision, covering probability bounds, exact budgets, event ordering, known curve values and a differential check against a reference simulator. A separate check computed every metric and statistic on hand-solved cases (METRICVAL-001: 38 checks, 0 failed). EXP-001 and EXP-002 use seeds 1000 to 1049; EXP-003 uses a disjoint block of 50 seeds per retention interval (3000 to 3049, 3100 to 3149, 3200 to 3249 and 3300 to 3349), so its retention-interval cells are independent samples. All runs were executed once, at clean revision `d4a793d`, on an Apple M1 Pro laptop (macOS 15.3.1, Python 3.12.1, NumPy 2.5.4), at zero cost. Wall-clock time was 0.603 s for EXP-001 (250 runs), 0.907 s for EXP-002 (300 runs) and 36.063 s for EXP-003 (18,000 runs), against caps of 10, 10 and 90 minutes.
+
 ## 4.6 Exploratory versus confirmatory work
+
+EXP-001 and EXP-002 are confirmatory. EXP-003 is a confirmatory run of a descriptive experiment: its counts are reported, not tested. Everything labelled SENS-001 in this manuscript is exploratory and post hoc: it was specified after the confirmatory results were seen (script committed at `2e8cf05` before it was run), it uses committed raw outputs and new exploratory seeds 5000 to 5049, and it never changes a frozen verdict. The calibration and selection runs (CAL-001, CAL-002, RI-001, PROBE-001 to PROBE-009) are exploratory design inputs.
 
 # 5. Results
 
-## 5.1 EXP-001
+Every run of the frozen matrices completed: 250 of 250 (EXP-001), 300 of 300 (EXP-002) and 18,000 of 18,000 (EXP-003), with 0 excluded and 0 failed. Numbers below come from `results/confirmatory/EXP-00N/analysis/frozen_analysis.json` and, where labelled, from `results/exploratory/SENS-001/sensitivity.json`; the mapping of every number is in `research/publication/artifact_manifest.json`.
 
-## 5.2 EXP-002
+## 5.1 EXP-001: exponential forgetting, central setting (confirmatory)
 
-## 5.3 EXP-003
+**Table 1.** Arm minus uniform, mean delayed modelled recall $R$, 50 paired learners. Holm over the four contrasts.
+
+| contrast | mean diff | 95% bootstrap CI | paired t 95% CI | Holm p | rule |
+|---|---|---|---|---|---|
+| greedy (primary) | 0.0162 | [0.0110, 0.0213] | [0.0109, 0.0215] | 2.70e-07 | above zero |
+| expanding | 0.0104 | [0.0072, 0.0138] | [0.0070, 0.0139] | 2.70e-07 | above zero |
+| leitner | -0.0105 | [-0.0127, -0.0082] | [-0.0128, -0.0082] | 1.05e-11 | below zero |
+| massed | -0.0368 | [-0.0432, -0.0306] | [-0.0433, -0.0302] | 1.33e-14 | below zero |
+
+The primary interval lies entirely above 0, so the directional prediction is supported under the frozen rule. The effect is small: 0.0162 on a baseline of 0.5327, a relative change of 0.0303, with standardized paired effect $d_z$ 0.8674. The upper end of the interval (0.0213) is just above the 0.02 margin. The standard deviation of the paired differences, 0.0186, is well below the 0.07 adequacy threshold of the protocol, so 50 seeds were sufficient.
+
+**Metric choice.** The direction depends on the metric (Table 2). Greedy raises the weakest items strongly and the observed (Bernoulli) recall difference has an interval that contains 0. Mastery share reverses: no item reaches 0.9 under greedy (0.0000) against 0.0200 under uniform. Under the protocol's sensitivity rule, the EXP-001 conclusion is restricted to mean recall. The reversal is formally decisive but small in absolute terms: 0.0200 of 50 items is one item per learner on average.
+
+**Table 2.** Greedy minus uniform on other metrics (EXP-001).
+
+| metric | mean diff | 95% bootstrap CI | same sign as primary |
+|---|---|---|---|
+| observed recall | 0.0072 | [-0.0044, 0.0184] | yes, interval contains 0 |
+| minimum item recall | 0.2560 | [0.2291, 0.2817] | yes |
+| 10th-percentile item recall | 0.2806 | [0.2625, 0.2984] | yes |
+| mastery share | -0.0200 | [-0.0248, -0.0152] | no |
+
+**Arms.** Mean $R$ was 0.5489 for greedy, 0.5432 for expanding, 0.5327 for uniform, 0.5222 for Leitner and 0.4960 for massed. Leitner, an adaptive rule, fell below equal spacing. This may reflect the fixed daily capacity imposed on it (spare capacity goes to items that are not yet due) rather than the box logic itself; the design does not separate the two. The oracle scheduler's calibration error was exactly 0, as it must be.
+
+![Forest plot of the four EXP-001 contrasts against uniform with 95% bootstrap intervals and the grey equivalence band from -0.02 to 0.02.](../experiments/EXP-001/figures/exp001_contrasts.svg)
+
+*Figure 1 (FIG-001).* EXP-001: mean paired difference in $R$ (arm minus uniform), probability units, with 95% percentile bootstrap intervals over 50 seeds; the grey band is the practical-equivalence margin of ±0.02. Confirmatory. Source: `results/confirmatory/EXP-001/analysis/frozen_analysis.json`.
+
+**Independent-seed replication and other retention intervals (exploratory).** The EXP-003 cell with the central setting (C044, independent seeds 3300 to 3349) gave greedy minus uniform 0.0167 [0.0113, 0.0218] with the same rank order as EXP-001. SENS-001 re-simulated the central setting on seeds 5000 to 5049 and gave 0.0193 [0.0147, 0.0236]. On the confirmatory learners, the recorded recall at shorter retention intervals also favours greedy: 0.0076 [0.0060, 0.0093] at $RI = 1$, 0.0189 [0.0159, 0.0221] at 7 and 0.0392 [0.0353, 0.0431] at 30 days. The direction of the primary result is therefore not an artefact of one seed block or of the 281-day test.
+
+**Mechanism (exploratory, SENS-001).** Greedy, uniform and Leitner share the same daily capacity, so their mean review day is identical (14.065). Greedy gave the hardest third of items (shortest initial half-life) 5.33 reviews on average and the easiest third 2.71, against 4 and 4 for uniform; its mean last-review day (23.98) was slightly earlier than uniform's (24.18). Its gain therefore comes from moving reviews to hard items, not from placing reviews closer to the test. Expanding and massed end every item on the last session (day 27); expanding beats uniform and massed does not, so late placement alone does not explain the expanding gain either.
+
+## 5.2 EXP-002: power-law forgetting and model misspecification (confirmatory)
+
+**Table 3.** Arm minus uniform on power-law learners, 50 paired learners. The two primary contrasts use Holm over two; the others are descriptive (Holm over five).
+
+| contrast | mean diff | 95% bootstrap CI | paired t 95% CI | Holm p | rule |
+|---|---|---|---|---|---|
+| greedy-power (primary) | 0.0347 | [0.0232, 0.0461] | [0.0228, 0.0466] | 7.87e-07 | above zero |
+| greedy-exp (primary) | 0.0085 | [-0.0026, 0.0195] | [-0.0031, 0.0201] | 0.1457 | equivalent within delta |
+| massed | 0.0530 | [0.0458, 0.0605] | [0.0453, 0.0606] | 0 (underflow) | above zero |
+| expanding | 0.0399 | [0.0331, 0.0468] | [0.0328, 0.0471] | 1.42e-14 | above zero |
+| leitner | 0.0075 | [0.0027, 0.0123] | [0.0024, 0.0125] | 0.0090 | above zero |
+
+(The paired t p-value of the massed contrast underflows to 0 in double precision, so the analysis records 0; the true value is positive and very small.)
+
+H0a is rejected: with the true model, greedy beats uniform. H0b is not rejected and its bootstrap interval lies inside ±0.02. Under the frozen interpretation rule, **the EXP-001 greedy advantage is declared dependent on model knowledge.** The misspecification was effective: the calibration error of `greedy-exp` was 0.1804, against 0 for the oracle.
+
+**Fragility of the equivalence classification (second review pass; exploratory).** Three observations qualify this verdict without changing it. First, the paired t interval of the same contrast, the protocol's cross-check, reaches 0.0201, just outside the margin; the bootstrap interval was the pre-fixed decision interval, but the classification sits on the boundary. Second, on the independent seeds of SENS-001 the same contrast is 0.0098 [0.0007, 0.0187], an interval entirely above 0. Third, on the confirmatory learners, at retention intervals of 7 and 30 days, `greedy-exp` minus uniform is 0.0213 [0.0110, 0.0313] and 0.0213 [0.0109, 0.0314]. The stable finding is quantitative: misspecification cut the greedy advantage on power-law learners from 0.0347 to 0.0085 (about three quarters), leaving a small positive difference near 0.01 whose classification as "equivalent" or "above zero" depends on the seed block and the retention interval.
+
+**Non-adaptive arms win on power-law learners.** Massed (0.0530) and expanding (0.0399) beat uniform by more than either greedy arm. Massed, the worst arm in EXP-001, is the best arm here (mean $R$ 0.7236 against 0.7053 for greedy-power and 0.6706 for uniform). Under a power law, recall decays slowly at long delays, so the time from the last review to the test matters more than which items are reviewed.
+
+![Forest plot of the five EXP-002 contrasts against uniform with 95% bootstrap intervals and the equivalence band.](../experiments/EXP-002/figures/exp002_contrasts.svg)
+
+*Figure 2 (FIG-002).* EXP-002: mean paired difference in $R$ (arm minus uniform) for power-law learners, with 95% percentile bootstrap intervals over 50 seeds; grey band ±0.02. Confirmatory. Source: `results/confirmatory/EXP-002/analysis/frozen_analysis.json`.
+
+**Not run.** The protocol's optional check with $\omega \in \{0.3, 3\}$ had no frozen configuration and was not run, by the owner's decision of 2026-11-25 (D-017). Sensitivity to $\omega$ is untested.
+
+## 5.3 EXP-003: robustness sweep (confirmatory run, descriptive)
+
+The sweep crossed forgetting model (2) × budget $k \in \{2, 4, 8\}$ × $RI \in \{1, 7, 30, 281\}$ days × item distribution (3), giving 72 cells with 5 arms and 50 seeds each. Intervals are unadjusted.
+
+**Table 4.** EXP-003 summary counts (72 cells).
+
+| quantity | value |
+|---|---|
+| cells with at least one pairwise rank reversal against EXP-001 | 70 |
+| cells whose top arm is not greedy | 51 |
+| top arm by mean $R$: massed, greedy, expanding, uniform, leitner | 29, 21, 19, 3, 0 |
+| cells where greedy minus uniform has the opposite sign to EXP-001 (point estimate) | 17 |
+| cells where the greedy minus uniform interval lies entirely above 0 / below 0 | 53 / 13 |
+| E1 holds (groups) | 13 of 18 |
+| E2 holds (groups) | 16 of 24 |
+
+**The ranking is not stable.** Against the EXP-001 order (greedy, expanding, uniform, leitner, massed), 70 of 72 cells reverse at least one pair. The two forgetting models behave differently: under the power law the top arm was massed in 24 of 36 cells; under exponential forgetting the top arm was greedy or expanding in 14 cells each (SENS-001, from the frozen cell means).
+
+**Greedy below uniform.** The greedy minus uniform interval lies entirely below 0 in 13 cells, all at the smallest budget ($k = 2$): 10 power-law cells, and the three exponential cells at $RI = 281$ (homogeneous -0.0090 [-0.0107, -0.0074], lognormal -0.0444 [-0.0487, -0.0402], bimodal -0.0698 [-0.0725, -0.0668]). A plausible mechanism, measured only at the central cell (section 6), is that with two reviews per item the extra reviews greedy gives hard items leave some easy items with a single review; this was not measured at $k = 2$.
+
+**Central cells.** C044 (exponential) reproduces the EXP-001 order on independent seeds (greedy minus uniform 0.0167 [0.0113, 0.0218]); C045 (power law) gives massed first, as EXP-002 did (greedy minus uniform 0.0417 [0.0307, 0.0524]).
+
+**Expectations.** E1 holds in 13 of 18 groups; its five failures are all power-law groups (budget 4 with homogeneous and lognormal items; budget 8 with all three distributions), where massed beats uniform at every $RI$ but not monotonically. E2 holds in 16 of 24 groups; seven of its eight failures are power-law groups.
+
+**Robustness of the instability (exploratory, SENS-001).** The 70-cell count uses point estimates, and 16 cells (15 exponential, 1 power-law) have a uniform baseline above 0.95, where differences are tiny. Counting a reversal only when the reversed pairwise difference has a 95% bootstrap interval that excludes 0 still gives 70 of 72 cells; without the 16 ceiling cells, 54 of 56. The top arm is separated from every other arm by such an interval in 59 of 72 cells (massed 28, greedy 15, expanding 14, uniform 2). The instability is not an artefact of noise or of the ceiling.
+
+![Six panels of greedy minus uniform by retention interval, budget and model, with intervals.](../experiments/EXP-003/figures/exp003_diff_greedy.svg)
+
+*Figure 3 (FIG-003).* EXP-003: greedy minus uniform per cell. Panels show model × item distribution; the x axis is $RI$ in days; lines show budget $k$; bars are unadjusted 95% percentile bootstrap intervals over 50 seeds. Confirmatory, descriptive. Source: `results/confirmatory/EXP-003/analysis/frozen_analysis.json`.
+
+![Heat map of the share of seeds in which each arm ranks first, per cell.](../experiments/EXP-003/figures/exp003_first_rank_share.svg)
+
+*Figure 4 (FIG-004).* EXP-003: share of the 50 seeds in which each arm has the highest $R$, per cell; exact ties share the credit (ties occur in 3 cells). Confirmatory, descriptive.
+
+## 5.4 Expected versus observed
+
+**Table 5.** Predictions stated before the runs, observations and verdicts under the frozen rules.
+
+| experiment | prediction (before the run) | observation | verdict under the frozen rule |
+|---|---|---|---|
+| EXP-001 primary | greedy above uniform | +0.0162 [0.0110, 0.0213] | above zero; prediction supported (mean recall only) |
+| EXP-001 sensitivity | same sign on other metrics | mastery share reverses (-0.0200) | conclusion restricted to the mean |
+| EXP-001 secondary | none stated | expanding above, leitner and massed below uniform | Holm-adjusted differences |
+| EXP-002 H0a | no direction stated | greedy-power +0.0347 [0.0232, 0.0461] | H0a rejected |
+| EXP-002 H0b | no direction stated; the invalidation test | greedy-exp +0.0085 [-0.0026, 0.0195] | equivalent within 0.02; EXP-001 advantage dependent on model knowledge (fragile, section 5.2) |
+| EXP-003 E1 | massed improves as $RI$ decreases | 13 of 18 groups | descriptive; partly holds |
+| EXP-003 E2 | greedy advantage smallest for homogeneous items | 16 of 24 groups | descriptive; partly holds |
+| EXP-003 generality | a reversal in any cell limits EXP-001 | 70 of 72 cells | EXP-001 does not generalize across the sweep |
 
 # 6. Discussion
 
+**What the evidence supports.** Within these models, a scheduler that knows the true model and each item's initial half-life, and reviews the items with the lowest predicted recall, gives a small gain in mean recall over equal spacing at the central setting. The gain replicates on two independent seed blocks and at shorter retention intervals. Its mechanism, visible in the exploratory diagnostics, is reallocation: hard items get more reviews and easy items fewer. That mechanism also explains its costs. Mastery share falls to 0, consistent with easy items, the only ones that could stay above 0.9 after 281 days, losing reviews. At two reviews per item the same reallocation plausibly becomes harmful (13 cells below uniform, all at $k = 2$), although the allocation was measured only at the central cell.
+
+**Model knowledge.** The pre-stated invalidation test asked whether the advantage survives a wrong model. It mostly does not: with an exponential model on power-law learners the gain fell from 0.0347 to 0.0085, and the frozen rule classified it as equivalent to uniform. The classification is fragile (section 5.2), but the size of the drop is not. Both greedy arms still received each item's true initial half-life, which no deployed scheduler has; the remaining advantage is an upper bound on what a real scheduler with this model family could gain.
+
+**Competing explanations.** The protocols named three for EXP-001 and one for EXP-002; Table 6 states which the evidence addresses.
+
+**Table 6.** Competing explanations and the evidence that addresses them.
+
+| competing explanation (protocol) | addressed by | status |
+|---|---|---|
+| greedy gains by reviewing close to the test (recency), not by targeting | `massed` and `expanding` controls; SENS-001 timing and allocation diagnostics | addressed: greedy's last reviews are slightly earlier than uniform's, and it moves reviews to hard items |
+| the advantage comes from oracle model knowledge | EXP-002 (frozen rule) | supported: misspecification removes about three quarters of the gain; the "equivalent" label is fragile |
+| daily capacity rules favour one arm | load reported; greedy, uniform and Leitner share capacity | partly addressed: the adaptive arms and uniform have identical daily load (peak 8, 27 sessions); expanding and massed use 4 sessions at a peak of 50, so their comparison with uniform confounds timing with load |
+| the remaining initial half-life advantage (EXP-002) | not tested | open: both greedy arms know each item's initial half-life |
+| rank changes reflect floor or ceiling regions (EXP-003) | SENS-001 resolved-reversal count without ceiling cells | addressed: 54 of 56 non-ceiling cells still reverse |
+| rank changes reflect the capacity rule at small budgets (EXP-003) | allocation diagnostics at the central cell only | open at $k = 2$; consistent with the reallocation mechanism |
+| the memory model itself is wrong | CAL-002 | not testable here; every result is conditional on it |
+
+**Retention interval and forgetting model.** The arm that wins depends on the forgetting model more than on anything else. Under exponential forgetting, recency matters little at long retention intervals and targeting pays; under the power law, the slow tail makes the time from the last review to the test decisive, and massed review wins in two thirds of the cells. This is consistent in direction with the report in the abstract of Cepeda et al. (2006) that the best spacing depends on the retention interval, but MEMORY's models contain no spacing mechanism of the kind studied in human experiments (a review's effect does not depend on the gap), so the agreement is not evidence for either.
+
+**Practical significance.** The largest confirmatory effect is a few hundredths of a recall probability for a simulated learner. Since neither model predicts real first-review recall better than a constant, these magnitudes say nothing about human learners. What transfers is methodological, and only as a caution: evaluating a model-based scheduler on learners simulated from its own model can overstate its advantage (here by a factor of about four at the central power-law setting, 0.0347 against 0.0085), and a single setting can produce a ranking that most nearby settings reverse.
+
 # 7. Limitations and threats to validity
+
+- **Construct validity.** Recall is a model probability, never a human measurement. Neither forgetting model beats a constant predictor of held-out real first-review recall (CAL-002). The calibration fixes the time scale of the simulated items, not the shape of forgetting.
+- **Model mechanics.** The retrieval update ignores the gap since the last review, so the models contain no spacing effect in the psychological sense; "spacing" here acts only through review success and recency.
+- **Information advantage.** Both greedy arms know each item's true initial half-life; EXP-001's greedy also knows the true model.
+- **Load confound.** Expanding and massed concentrate all reviews on 4 sessions (peak 50 per session); the other arms use 27 sessions (peak 8). Budgets are equal; daily burden is not. The Leitner arm is forced to the same fixed daily capacity as greedy, which may explain part of its deficit.
+- **Setting dependence.** The central retention interval (281 days) was chosen to move the baseline off the ceiling; it is a design choice, not a typical use case. $\alpha$, $\beta$ and $\omega$ are planning values, and robustness to $\omega$ is untested (D-017).
+- **Fragile classification.** The EXP-002 "equivalent within 0.02" verdict sits on the margin and does not replicate on independent seeds or shorter retention intervals (exploratory).
+- **Pre-freeze exposure.** Draft-setting contrasts with the opposite sign were seen before the freeze (disclosed in the freeze record); the frozen setting was set by rules, not by these values.
+- **Statistics.** EXP-003 has 288 unadjusted arm-versus-uniform intervals; no single cell supports a confirmatory statement. Observed (Bernoulli) recall is noisier than $R$ and its EXP-001 interval contains 0. E1 and E2 are judged on point estimates, and E2 compares signed differences, which reads oddly where greedy is below uniform in every distribution.
+- **Exploratory checks.** SENS-001 was specified after the results were seen; its thresholds (for example the 0.95 ceiling) are post hoc.
+- **Population.** The calibration data are Duolingo learners and words from 2013; they represent no other population.
 
 # 8. Ethics and responsible research
 
+No human participant was recruited and no user data was collected. The only real data is DS01, used under its CC BY-NC 4.0 licence with attribution; it holds pseudonymous learner identifiers, is not redistributed (the file is git-ignored) and only aggregate fitted values are committed. No ethics approval was sought, because none was required for this design. The results must not be used to claim that any schedule improves human learning, or to rank commercial products; no proprietary algorithm was studied. A study of human learners would need its own owner-approved review and safeguards.
+
 # 9. Conclusion and future work
+
+In a budget-matched simulation of published forgetting models, a model-based greedy scheduler beats equal spacing at one calibrated setting by a small margin, mainly when it knows the true model, and at the cost of item-level mastery. Across 72 settings no schedule is best in general; massed review, the negative control of the central experiment, is the most frequent winner, mostly under power-law forgetting and at a daily load (50 reviews per session) that the other arms never reach. The study's answer to "which schedule maximizes recall" is therefore conditional: on the forgetting model, the budget, the retention interval and the scheduler's knowledge. Feasible extensions are a scheduler that learns item half-lives from outcomes instead of receiving them, the untested $\omega$ check, a load-matched variant of the expanding and massed arms, and a memory model that fits real first-review recall better than a constant.
 
 # 10. Data and code availability
 
+All code, frozen protocols, configurations, results (except the git-ignored 15.5 MB EXP-003 raw file, which the run command regenerates) and reports are in the project repository, at a URL to be added on release (`<REPOSITORY URL: unpublished>`). Reproduction: `uv sync --frozen`, then `uv run python -m memory_research run --config research/experiments/EXP-00N/config.json --report --pdf` for N = 1, 2, 3, then `scripts/analyse_confirmatory.py`; the exploratory checks run with `.venv/bin/python scripts/m4_sensitivity.py`. Experiment reports: `research/experiments/EXP-00N/report.md`. DS01 is downloaded by `scripts/download_duolingo.py` from its Dataverse DOI and checked against `data/manifest.json`.
+
 # 11. Funding, competing interests and AI assistance
+
+No funding was received. The author declares no competing interests. An AI system (Claude, Anthropic) was used as a research and development assistant: it drafted protocols, code, analysis scripts and documentation under the author's direction. The author approved every protocol freeze and amendment. All numbers were generated by committed code from committed results, and an automated cross-check of every decimal number in the manuscript and reports against those results was run (`research/publication/evidence_audit.md`). The AI's internal review is quality control, not external peer review; this manuscript has not been peer-reviewed.
 
 # References
 
+- Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. *Psychological Bulletin*, 132(3), 354-380. https://doi.org/10.1037/0033-2909.132.3.354 (abstract read only)
+- Reddy, S., Labutov, I., Banerjee, S., & Joachims, T. (2016). Unbounded human learning: Optimal scheduling for spaced repetition. *KDD 2016*. arXiv:1602.07032. https://arxiv.org/abs/1602.07032 (abstract read only)
+- Settles, B. (2017). Replication data for: A trainable spaced repetition model for language learning. Harvard Dataverse, V1. https://doi.org/10.7910/DVN/N8XJME (dataset; licence CC BY-NC 4.0)
+- Settles, B., & Meeder, B. (2016). A trainable spaced repetition model for language learning. *Proceedings of ACL 2016 (Volume 1)*, 1848-1858. https://doi.org/10.18653/v1/P16-1174 (content read: abstract, sections 1 to 3.3)
+- Tabibian, B., Upadhyay, U., De, A., Zarezade, A., Schölkopf, B., & Gomez-Rodriguez, M. (2019). Enhancing human learning via spaced repetition optimization. *PNAS*, 116(10), 3988-3993. https://doi.org/10.1073/pnas.1815156116 (content read in arXiv:1712.01856 v2)
+
 # Supplementary appendix
+
+The supplementary file (`research/paper/supplementary.md`) holds the complete experimental matrix, the configurations and their hashes, the extended tables, the robustness results of SENS-001, the report links and every deviation and owner decision.
