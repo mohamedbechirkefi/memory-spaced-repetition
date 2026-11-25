@@ -251,3 +251,25 @@ Every numerical claim maps to a result id, configuration hash and figure or tabl
 ### Risks and next action
 
 Open: the initial half-life advantage of both greedy arms; the untested `ω` sensitivity (D-017). Next: M5 (static interactive page using the same verified results and labels).
+
+
+## 2026-11-25: post-M4 owner decisions (statements)
+
+**Starting state:** `d191875`, working tree clean. Authority: owner, 2026-11-25, "Approve all" (post-M4) (`/Users/bechir/research/labs/_shared/owner-approvals-2026-11-25c.md`, item 2; coordinator brief `/Users/bechir/research/labs/_shared/POST-M4-brief.md`, item 2 only).
+
+- Item 2: the funding, competing-interest and AI-use wording in manuscript section 11 is recorded as owner-approved (D-019). No wording changed.
+- No frozen protocol, config, seed or result changed. No computation. No manuscript rebuild (the manuscript text did not change).
+
+### Owner placeholders for M5
+
+1. Manuscript section 10: "at a URL to be added on release (`<REPOSITORY URL: unpublished>`)". Only the owner can supply the repository URL, at a release decision (G-PUBLIC).
+
+Section 11 (funding, competing interests, AI assistance) contains no placeholder. `research/publication/author_review.md` still has the box "Authorship and metadata approved by the owner" unticked.
+
+### Tests
+
+`.venv/bin/python -m pytest -q`: 234 passed in 2.66s (after the changes; src/ and tests/ unchanged).
+
+### Next action
+
+M5, with the placeholders above put to the owner.
