@@ -53,3 +53,9 @@ Experiment, smoke and report-export commands (M2):
 - Exploratory smoke run and report: `uv run python -m memory_research smoke --pdf`.
 - Run a matrix configuration: `uv run python -m memory_research run --config experiments/configs/probe_central.json --report`. Confirmatory configurations (`research/experiments/EXP-NNN/config.json`) are refused until their protocol is frozen.
 - Rebuild a report from a result file: `uv run python -m memory_research report --results results/exploratory/SMOKE-001/results.json --pdf`.
+
+Interactive page (M5):
+
+- Regenerate the page data: `.venv/bin/python scripts/export_demo_data.py` (`--check` compares with the committed file).
+- Regenerate the engine fixture: `.venv/bin/python scripts/export_engine_fixture.py` (`--check` likewise).
+- Build and check the page: `cd demo && npm ci && npm test && npm run build && node tools/a11y_check.mjs dist`; serve it with `npm run preview`.

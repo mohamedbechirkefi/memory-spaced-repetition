@@ -273,3 +273,65 @@ Section 11 (funding, competing interests, AI assistance) contains no placeholder
 ### Next action
 
 M5, with the placeholders above put to the owner.
+
+## 2026-11-25, session 7: M5 interactive page (owner: "Next")
+
+**Milestone:** M5. **Bounded task:** `labs/_shared/M5-brief.md`. Authority: owner, 2026-11-25, "Next" (`labs/_shared/owner-approvals-2026-11-25d.md`; stack: TypeScript, React and Vite from the shared template). No push.
+
+### Starting state
+
+`git status`: clean at `5cbef23` on `main`. `demo/` held only its README.
+
+### Commands and actual outputs
+
+- Template copied into `demo/` without `node_modules` (rsync), `.npmrc` kept; `npm ci --prefer-offline` (Node v22.23.3 from helix/.tools, npm cache in the session scratchpad): `added 53 packages`. No version changed, no dependency added.
+- `../.tools/py/bin/uv sync --frozen --all-groups --all-extras`: `Audited 24 packages`. Baseline `.venv/bin/python -m pytest -q`: `234 passed`.
+- `.venv/bin/python scripts/export_demo_data.py`: `wrote demo/public/data/results.json`; `--check`: `EXPORT-CHECK PASS`.
+- `.venv/bin/python scripts/export_engine_fixture.py`: `wrote demo/src/fixtures/engine_fixture.json (204070 bytes)`, 0.115 s wall clock; `--check`: `FIXTURE-CHECK PASS`.
+- `.venv/bin/python -m pytest -q` (final): `253 passed in 2.58s` (234 earlier tests plus 19 in `tests/test_demo_export.py`).
+- `npm test` (final): `Test Files  2 passed (2)`, `Tests  43 passed (43)` (18 results-validation tests, 25 engine-port tests).
+- `npm run build` (final): `tsc --noEmit && vite build`, `✓ built`; `dist/assets/index-*.js` 259.88 kB, worker 6.61 kB, CSS 7.07 kB.
+- `node tools/a11y_check.mjs dist --screenshots <scratchpad>/memory/shots` (final), full output:
+
+```
+PASS results render (no fail-closed panel): 6 experiment panels
+PASS text contrast, light scheme (WCAG AA)
+PASS text contrast, dark scheme (WCAG AA)
+PASS keyboard reaches every focusable element: 29 reached of 29
+PASS visible focus indicator
+PASS no horizontal page scroll at 360 px: overflow 0px
+PASS reduced motion: no running animations: 0 running
+PASS no request leaves the local origin
+PASS offline after first load: results stay, sandbox runs: Sandbox output (seed 1, 20 sandbox learners, exponential forgetting, k = 4, RI 2
+A11Y-CHECK PASS
+```
+
+- Earlier checker runs failed and were fixed (D-020): first run `FAIL text contrast, light scheme` (sandbox background in `color-mix`), `FAIL keyboard reaches every focusable element: 23 reached of 30` (duplicate keys), `FAIL no horizontal page scroll at 360 px: overflow 204px` (scenario select); second run `29 reached of 30` (a focusable table inside a closed `details`).
+- Screenshots inspected with the Read tool: desktop light, desktop dark, mobile light (checker), plus the playground after a run in light, dark and 360 px (scratchpad script). Fixed after inspection: wrapped interval columns (now no-wrap), unreadable chart text at 360 px (narrow drawings), estimate tables at 360 px (stacked rows), the "Verdict under the frozen rule" label on exploratory and descriptive entries (now labelled by kind).
+- `docs/demo.png`: 780 x 1200, 86,293 bytes, from the desktop-light screenshot.
+- `grep -rn REPLACE demo/ --exclude-dir=node_modules`: no output.
+
+### Results
+
+No new result. The page shows only committed results; the sandbox is a browser port of the engine (exact on identical random numbers, own random generator; D-020).
+
+### Files created or changed
+
+Created: `demo/` (template files with the MEMORY SPDX header; `src/{engine.ts, engine.test.ts, charts.tsx, Published.tsx, fixtures/engine_fixture.json}`; rewritten `src/{App.tsx, Sandbox.tsx, sandbox.worker.ts, results.ts, results.test.ts, style.css}`; `public/data/results.json`), `scripts/export_demo_data.py`, `scripts/export_engine_fixture.py`, `tests/test_demo_export.py`, `docs/demo.png`, `articles/medium.md`, `articles/linkedin.md`. Changed: `README.md`, `CITATION.cff`, `demo/README.md`, `articles/README.md`, `CONTRIBUTING.md` (commands appended), `roadmap.md`, `research/decision_log.md` (D-020), `progress.md`.
+
+### M5 gate
+
+Offline after the first load (checker step 7), responsive (no horizontal scroll at 360 px; screenshots), keyboard usable (29 of 29 focusable elements reached with a visible outline), no fabricated data (every number from `results.json`, which a test ties to the manuscript and the generated tables), no runtime service (static files; no foreign request). **M5 done.**
+
+### Owner placeholders that remain
+
+1. `<REPOSITORY URL: unpublished>`: manuscript section 10, README, `CITATION.cff` comment, articles.
+2. `<DEMO URL: unpublished>`: README, articles, `demo/README.md`.
+3. `<AFFILIATION: to be supplied or confirmed by the owner>`: README, `CITATION.cff` comment; Medium byline `<AUTHOR LINE AND AFFILIATION: to be confirmed by the owner>`.
+4. `research/publication/author_review.md`: all boxes unticked (owner only).
+
+### Risks and next action
+
+- The sandbox seed does not reproduce a research seed (different random generator); stated on the page.
+- The articles are drafts the owner has not yet read; publication is the owner's decision.
+- Next: M6 (clean clone, PDFs, link checks, owner review checklist).
