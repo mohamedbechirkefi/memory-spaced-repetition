@@ -57,3 +57,4 @@
 - **Daily load confound.** `expanding` and `massed` place every item's reviews on the same 4 sessions (peak load 50 reviews per session), while `uniform`, `leitner` and the greedy arms spread reviews over 27 sessions with a peak of 8. Total budget is equal; daily burden is not.
 - **Achieved precision.** At `RI = 281` the SD of paired differences was 0.0186 (EXP-001 primary) and 0.041 (EXP-002 primary contrasts), below the 0.07 adequacy threshold of protocol section 6.
 - **EXP-002 `ω` check not run.** The descriptive check with `ω ∈ {0.3, 3}` (EXP-002 protocol section 16) has no frozen configuration; robustness to `ω` is untested.
+- **`ω` check not run (owner decision, D-017).** The owner decided on 2026-11-25 ("approve all recommendations, RIGGED A", item 6) that the optional EXP-002 `ω` check is not run, because it has no frozen configuration. It is recorded as not run.

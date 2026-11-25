@@ -224,5 +224,24 @@
     "sha256": "6d828809a1b2597fac61cd2e08d936383a7c86877242168421d7496c2602eb36"
    }
   }
- ]
+ ],
+ "post_freeze_record": {
+  "note": "Records added after the freeze. They change no frozen protocol, configuration or seed.",
+  "deviations": [],
+  "not_run": [
+   {
+    "item": "EXP-002 protocol section 16: descriptive check with omega in {0.3, 3}",
+    "reason": "no frozen configuration",
+    "decided_by": "the owner, 2026-11-25, \"approve all recommendations, RIGGED A\" (owner-approvals-2026-11-25.md, item 6): \"EXP-002's optional ω check is not run, because it has no frozen config.\"",
+    "decision_log": "D-017"
+   }
+  ],
+  "confirmatory_runs": {
+   "revision": "d4a793df271ec2dc1963d00715e3a6525a07863f",
+   "EXP-001": "250/250 ok",
+   "EXP-002": "300/300 ok",
+   "EXP-003": "18000/18000 ok",
+   "deviations_from_frozen_matrices": "none (D-016)"
+  }
+ }
 }

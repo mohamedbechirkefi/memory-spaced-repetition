@@ -204,3 +204,10 @@ Created: `src/memory_research/frozen_analysis.py`, `scripts/{analyse_confirmator
 ### Next action
 
 Write the three 11.3 narrative reports from the generated tables, then M4 (evidence audit, second review pass, manuscript synthesis).
+
+## 2026-11-25, session 5b: M3 close brief (owner decisions of 2026-11-25)
+
+- Recorded the owner's decisions ("approve all recommendations, RIGGED A", items 4 and 6) as D-017, and updated the limitations, the registry and `research/freeze.json` (`post_freeze_record.not_run`: the EXP-002 `ω` check). The claims register needed no change.
+- Item 4: the Write tool again refused `research/experiments/EXP-001/report.md` ("Subagents should return findings as text, not write report files"). As the close brief requires, the session stopped the report work without a workaround. The three narrative reports and the `reproduction.md` updates remain unwritten.
+- M3 status: **in progress, not done.** The matrices are complete with no dropped runs, but the reports are missing.
+- Guard still accepts the frozen configurations (the freeze record's hashed fields are unchanged).

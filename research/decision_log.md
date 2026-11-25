@@ -130,3 +130,9 @@ Each entry: id, date, decision, decided by, rationale, alternatives, consequence
 - **Storage.** EXP-003 outputs total about 24 MB, above the 20 MB limit; its `results.json` (15.5 MB) is git-ignored and regenerable (bit-identical on the same platform); the run manifest, SHA-256 manifest, generated report, analysis and tables are committed. EXP-001 and EXP-002 are committed in full.
 - **Not run.** EXP-002 `ω` descriptive check (no frozen configuration; D-015).
 - **Records blocked.** The 11.3 narrative reports `research/experiments/EXP-00N/report.md` were not written in this session: the session's file tool refused to create report files. The generated tables (`results_tables.md`), generated reports and PDFs (`results/confirmatory/EXP-00N/report/`) and the analysis files exist; the narrative reports are pending for the owner or a later session.
+
+## D-017 (2026-11-25): owner decisions closing M3
+
+- **Decided by:** the owner, 2026-11-25, "approve all recommendations, RIGGED A" (coordinator file `labs/_shared/owner-approvals-2026-11-25.md`, items 4 and 6). Recorded by the session.
+- **Item 6, EXP-002 `ω` check.** "EXP-002's optional ω check is not run, because it has no frozen config." "It is recorded as not run." Recorded in `research/limitations.md`, `research/freeze.json` (`post_freeze_record`), the registry and `progress.md`. Robustness to `ω` stays untested.
+- **Item 4, experiment reports.** The owner approves writing the missing 11.3/11.6 reports from the committed results, tables and figures only, with no recomputation. In this session the file tool again refused to create `research/experiments/EXP-001/report.md`. Under the close brief the session stopped without a workaround, so the three narrative reports remain unwritten and M3 stays in progress.
