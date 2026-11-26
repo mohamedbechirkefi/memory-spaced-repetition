@@ -38,7 +38,7 @@ export function App() {
       <header className="bar">
         <div className="bar-in">
           <a className="brand" href="#top" aria-label="Memory, back to the top">
-            <img src="./brand/memory-lockup.svg" alt="" width="113" height="30" />
+            <img src="./brand/memory-lockup.svg" alt="" width="106" height="30" />
           </a>
           <nav aria-label="Sections">
             <ul>
@@ -92,7 +92,7 @@ export function App() {
       <footer className="site">
         <div className="wrap foot-grid">
           <div>
-            <img src="./brand/memory-lockup-light.svg" alt="Memory" width="136" height="36" />
+            <img src="./brand/memory-lockup-light.svg" alt="Memory" width="128" height="36" />
             <p>
               Mohamed Bechir Kefi, independent researcher. Independent research manuscript / preprint draft, not
               peer-reviewed.
@@ -119,7 +119,7 @@ export function App() {
               An AI system (Claude, Anthropic) was used as a research and development assistant; it is not an author.
             </p>
             <p>
-              Type: Zilla Slab (Mozilla Foundation) and Alegreya Sans (Huerta Tipográfica), both under the SIL Open
+              Type: Courier Prime (Alan Dague-Greene) and Crimson Pro (Jacques Le Bailly), both under the SIL Open
               Font License, self-hosted.
             </p>
           </div>

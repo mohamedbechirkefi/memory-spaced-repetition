@@ -427,3 +427,23 @@ The owner: B15 (article drafts), B16 (full-text review and sign-off of `research
 ### Next action
 
 The coordinator rebuilds and deploys `demo/dist` when the owner agrees; nothing pushed or deployed here.
+
+## 2026-11-26, session 11: unique typeface pair for the demo
+
+**Bounded task:** `labs/_shared/FONT-UNIQUE-brief.md`, MEMORY row (owner request of 2026-11-26: no typeface shared between lab demos; Zilla Slab stays with PARADOX, Alegreya Sans with EVOLVE). Demo only; no number, data, fixture, test or wording of a scientific statement changed.
+
+### Commands and actual outputs
+
+- `npm uninstall @fontsource/zilla-slab @fontsource/alegreya-sans`: `removed 2 packages`. `npm_config_before=2026-11-12 npm install --save-exact @fontsource/courier-prime@5.3.0 @fontsource/crimson-pro@5.3.0`: `added 2 packages`; both `OFL-1.1` per `npm view`; `package.json` pins `5.3.0` exactly.
+- Glyph check with fontTools: Crimson Pro (Latin subset, no Greek subset published) lacks ω, σ, α, β, Δ; they fall back to Georgia or Times New Roman (recorded in `demo/DESIGN.md` and `demo/README.md`). Crimson Pro has `tnum`; Courier Prime is monospaced. Courier Prime is kept to display sizes (headings, wordmark, tabs, card figures, box labels, Run button) so it does not read as monospace data labels; tables, chart text and status labels are Crimson Pro.
+- Wordmark and lockups redrawn from Courier Prime Bold outlines (`memory-lockup.svg`, `memory-lockup-light.svg`, `memory-wordmark.svg`); `svg_audit.py`: 0 FAIL, near-miss-angle warnings on the type only. The mark and favicons contain no text and are unchanged. `og.png` re-rendered with Chrome headless (1200x630, 75,351 bytes).
+- `npm test`: `Tests 43 passed (43)`. `npm run build`: `✓ built in 125ms`; `dist/` 675,192 bytes. `node tools/a11y_check.mjs dist`: `A11Y-CHECK PASS`. `.venv/bin/python -m pytest -q`: `256 passed in 2.85s`.
+- Screenshots: `python3 -m http.server 5222 --bind 127.0.0.1` (stopped afterwards), Chrome headless desktop 1440 px and phone 390 px; type scale re-tuned for the wide monospace display face (smaller h1 and h2, body 19 px for Crimson Pro's small x-height, nav labels 0.92 rem).
+
+### Files changed
+
+`demo/package.json`, `demo/package-lock.json`, `demo/src/{main.tsx, style.css, App.tsx}`, `demo/public/brand/{memory-lockup.svg, memory-lockup-light.svg, memory-wordmark.svg, og.png}`, `demo/DESIGN.md`, `demo/README.md`, `progress.md`.
+
+### Next action
+
+The coordinator deploys `demo/dist` when the owner agrees; nothing pushed or deployed here.

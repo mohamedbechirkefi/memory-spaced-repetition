@@ -24,10 +24,14 @@ Arm colours are inks that sit on paper: ink blue (greedy), red ink (expanding), 
 
 ## Type
 
-- **Zilla Slab** (600, 500; OFL): headings, the wordmark, card tabs. A slab with the sturdiness of a typed index-card label, without being a monospace.
-- **Alegreya Sans** (400, 500, 700, 400 italic; OFL; Latin and Greek subsets for ω, σ, α, β, Δ): body, tables, controls. A humanist sans with calligraphic roots, like a careful hand; lining tabular figures for every number.
+Revised on 2026-11-26 (owner request: no typeface shared between lab demos; Zilla Slab and Alegreya Sans belong to other demos).
 
-Scale (about 1.25): 15 px small, 17 px body, 21 px lede, 27 px h3 and card figures, 34 px h2, clamp(34 px, 5vw, 58 px) hero. Line length capped at 68 characters for prose.
+- **Courier Prime** (700 and 400; OFL): display only. Headings, the wordmark, the filing tabs and section tabs of the bar, the typed figures on the overview index cards, the box labels of the hero and the Run button. Index cards were typed on typewriters; Courier Prime is a typewriter face redrawn for the screen, so headings read as typed card labels.
+- **Crimson Pro** (400, 400 italic, 600; OFL): body, tables, chart labels, controls, status labels. An old-style book serif that reads like the printed page of a psychology paper, with tabular figures (`tnum`) for every column of numbers.
+
+Monospace check: a monospace face for small data labels is one of the generated-page tells. Courier Prime is therefore kept to display sizes and to the typed card entries; every table, chart tick, axis label and status label is set in Crimson Pro. Crimson Pro has no Greek glyphs, so ω, σ, α, β and Δ fall back to Georgia or Times New Roman, both serifs close to Crimson Pro in weight.
+
+Scale: body 19 px (Crimson Pro has a small x-height), 15 px small, h1 clamp(26 px, 3.3vw, 41 px) and h2 clamp(23 px, 3vw, 30 px) in Courier Prime 700 with -0.02em tracking (a monospace is wide, so display sizes are smaller than with the earlier slab), card figures 37 px. Prose capped at 42 rem.
 
 ## Layout concept
 
@@ -70,7 +74,7 @@ The Leitner box that sorts itself when the page opens. Everything else stays qui
 - *Cream plus terracotta*: avoided. The ground is a cool graph-paper grey-green; the only warm colour is a thin red rule, as on a real index card.
 - *Near-black with one acid accent*: not used; light paper only.
 - *All-caps tracked eyebrows*: the old kicker "MEMORY · a simulation study..." (an uppercase eyebrow joined with a middle dot) is removed. Card tabs carry experiment ids in sentence case; they are filing information, not decoration.
-- *Mono data labels*: none; figures use Alegreya Sans tabular lining numerals.
+- *Mono data labels*: none; tables and charts use Crimson Pro tabular figures; Courier Prime appears only at display sizes (see Type).
 - *01/02/03 markers*: only the Leitner box numbers 1 to 5, which are a real sequence.
 - *Identical rounded SaaS cards*: the three overview cards were first planned as plain rounded panels; revised into index cards with ruled lines, a red header rule and a filing tab, with a 2 px radius like real card stock. Result panels below are lab-sheet sections, not cards.
 - *Fade-up on every section*: none. Only charts ink in, once.
