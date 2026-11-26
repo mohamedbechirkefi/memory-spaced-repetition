@@ -43,17 +43,25 @@ From `labs/_shared/owner-approvals-2026-11-25e.md`, `progress.md` and `research/
 12. Absolute home-directory paths with the local user name remain in `CLAUDE.md`, `research/feasibility.md` and the append-only logs; whether to scrub them before any publication is for the owner (release checklist, secret and identifier item).
 13. The FIG-004 heat map has small cell labels in the PDFs (legible when zoomed); regenerating the figure with a larger layout would be a presentation change for the owner to approve.
 
-### Remaining owner placeholders (file and line, at the M6 commit)
+### Remaining owner placeholders (updated 2026-11-26)
 
-| file | line | placeholder |
-|---|---|---|
-| `CITATION.cff` | 14 | `<REPOSITORY URL: unpublished>` (comment) |
-| `CITATION.cff` | 15 | `<AFFILIATION: to be supplied or confirmed by the owner>` (comment) |
-| `README.md` | 41 | `<DEMO URL: unpublished>` |
-| `README.md` | 75 | `<REPOSITORY URL: unpublished>`, `<AFFILIATION: to be supplied or confirmed by the owner>` |
-| `articles/linkedin.md` | 14 | `<REPOSITORY URL: unpublished>` |
-| `articles/linkedin.md` | 15 | `<DEMO URL: unpublished>` |
-| `articles/medium.md` | 6 | `<AUTHOR LINE AND AFFILIATION: to be confirmed by the owner>` |
-| `articles/medium.md` | 50 | `<REPOSITORY URL: unpublished>`, `<DEMO URL: unpublished>` |
-| `demo/README.md` | 31 | `<DEMO URL: unpublished>` |
-| `research/paper/manuscript.md` | 274 | `<REPOSITORY URL: unpublished>` (section 10) |
+None. Every placeholder listed at the M6 commit was filled on 2026-11-26 (owner, 2026-11-26, decision sheet, B1 to B3): the repository URL in `CITATION.cff` (`repository-code`), `README.md`, `articles/linkedin.md`, `articles/medium.md` and manuscript section 10; the demo URL in `README.md`, both articles and `demo/README.md`; the author line and affiliation in `CITATION.cff` (`affiliation: "Independent researcher"`), `README.md` and the Medium byline. The items of "Open decisions for this repository" above are as of M6; the section below gives their state on 2026-11-26.
+
+## Owner answers recorded (2026-11-26)
+
+Authority: owner, 2026-11-26, decision sheet (`labs/_shared/owner-decision-sheet-2026-11-26.md`, answers in `labs/_shared/owner-approvals-2026-11-26.md`); applied in D-022. No box above is ticked by an agent.
+
+- **A1.** The repository is public at https://github.com/mohamedbechirkefi/memory-spaced-repetition since 2026-11-25; the out-of-date "nothing pushed" sentences were corrected in `release_checklist.md`, `README.md` and `articles/README.md`. Open decision 1 above is settled for the push and the demo hosting; release, tag, DOI and articles stay open.
+- **B1.** Repository URL filled everywhere (open decision 3 closed).
+- **B2.** Demo hosted as Cloudflare Workers static assets, free plan, at https://memory-spaced-repetition.kefimohamedbechir.workers.dev, deployed by the coordinator; `demo/wrangler.jsonc` declares the assets folder `./dist` (open decision 4 closed).
+- **B3.** Author "Mohamed Bechir Kefi", affiliation "Independent researcher", in the manuscript, supplement, three reports, `CITATION.cff`, README, both articles and the demo footer (open decisions 5 and 6 closed).
+- **B4.** "No funding was received." and "The author declares no competing interests." confirmed; the manuscript already printed both (open decision 10 closed).
+- **B5, B6, B7.** The AI-use statement and the manuscript title were already approved for MEMORY (D-019, 2026-11-25); `CITATION.cff` `title` now equals the manuscript title, as does its `preferred-citation`.
+- **B8.** `0.2.0-rc1` and no `date-released` kept; at the release the version becomes `0.2.0` and `date-released` the release day (`release_checklist.md`; open decision 8 settled as policy).
+- **B9.** Home paths scrubbed from `CLAUDE.md` and `research/feasibility.md`; 4 lines remain in append-only logs (`reproducibility_report.md` section 7; open decision 12 closed).
+- **B10.** The committed PDFs stay and are attached to a release.
+- **B11.** FIG-004 kept with small labels and noted in the draft release notes (open decision 13 closed).
+- **B13, B14.** Build-tool and source-label sentences added to the draft release notes; the source labels are accepted.
+- **R-MEMORY-1.** The untested `ω` sensitivity stays a disclosed limitation (open decision 11 closed).
+
+Still open (owner only): B15, the article drafts (`articles/medium.md`, `articles/linkedin.md`) are not yet read or posted (open decision 7); B16, the full-text review of the manuscript and reports and the sign-off of the seven boxes above (open decision 2); B18, the release (GitHub release, tag, optional DOI or preprint) and with it the final version and `date-released`; the preferred citation's status (open decision 9). No freeze is pending in this repository.

@@ -11,7 +11,7 @@ One defensible finding: a scheduler that knows the true memory model beat equal 
 
 Caveat: these are simulated learners, not people. Neither forgetting model predicts real first-review recall from public Duolingo data better than a constant, so this says nothing about human learning gains. One planned sensitivity check was not run.
 
-Manuscript (preprint draft, not peer-reviewed), reports and code: `<REPOSITORY URL: unpublished>`
-Interactive page: `<DEMO URL: unpublished>`
+Manuscript (preprint draft, not peer-reviewed), reports and code: https://github.com/mohamedbechirkefi/memory-spaced-repetition
+Interactive page: https://memory-spaced-repetition.kefimohamedbechir.workers.dev
 
-An AI system (Claude, Anthropic) was used as a research and development assistant.
+Mohamed Bechir Kefi, independent researcher. An AI system (Claude, Anthropic) was used as a research and development assistant.

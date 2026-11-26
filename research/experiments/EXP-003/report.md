@@ -4,7 +4,7 @@
 ## 1. Identification
 
 - **Experiment:** EXP-003. **Status:** CONFIRMATORY run of a DESCRIPTIVE experiment (no hypothesis tests), complete: 18,000 of 18,000 planned runs, 0 excluded, 0 failed. **Report version:** M4 final, 2026-11-25 (M3 close text, with the M4 corrections and addendum marked below). Written from the committed results, tables and figures only (owner, 2026-11-25, "approve all recommendations, RIGGED A", item 4; D-017).
-- **Author:** Mohamed Bechir Kefi (C3). An AI system was used as a research and development assistant; it is not an author.
+- **Author:** Mohamed Bechir Kefi, independent researcher (C3). An AI system was used as a research and development assistant; it is not an author.
 - **Protocol:** `research/experiments/EXP-003/protocol.md`, FROZEN v1.1, SHA-256 `f4767c1998268d9a74272d32ec6916038acd1df92c2605e94c09bdfa771cf9a4`.
 - **Configuration:** canonical SHA-256 `7c886211f6f949112a8ff1193b6d1b073f776c391df94f4d0e542e89b264b2c8`, equal to the freeze record.
 - **Provenance revision (the run):** `d4a793df271ec2dc1963d00715e3a6525a07863f`, clean tree. Analysis revision `3811bb93bca8798c57b80c55d97a8713732a13b8` (figure layout only, D-016).

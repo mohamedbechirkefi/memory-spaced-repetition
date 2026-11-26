@@ -22,7 +22,7 @@ Then run `git status` and inspect existing files. Never overwrite the owner's ch
 - **One integrated manuscript (11.4)**, venue-neutral, default status "independent research manuscript / preprint draft, not peer-reviewed".
 - **Evidence pipeline (11.5).** Tables and figures are generated once from versioned results and reused everywhere. An artifact manifest maps every number, table and figure to EXP id, run ids, metric definition, result path, generator script, config/protocol hash and code revision. A second review pass challenges the preferred hypothesis.
 - **Milestone additions (11.6).** M0/M1: registry, manuscript skeleton, experiment protocols, zero-cost toolchain, freeze before execution. M2: versioned output schemas, reproducibility manifests and report generators alongside the core. M3: reports written as experiments finish; provenance captured at run time. M4: reports finished, evidence audit, synthesis into the manuscript. M5: demo, paper, reports and articles use identical verified results. M6: compile and visually inspect PDFs, verify references and links, reproduce smoke in a clean clone, owner review checklist.
-- **Toolchain (decision D-002).** No TeX distribution exists. PDFs are built as Markdown to Typst with pandoc (`/Users/bechir/research/labs/.tools/pandoc`), compiled with the `typst` Python package in `/Users/bechir/research/labs/.tools/py/bin/python`; `manuscript.tex` is generated from Markdown with pandoc and is not compiled. Never claim a PDF exists unless it was generated and inspected.
+- **Toolchain (decision D-002).** No TeX distribution exists. PDFs are built as Markdown to Typst with pandoc (`../.tools/pandoc`, relative to the repository), compiled with the `typst` Python package in `../.tools/py/bin/python`; `manuscript.tex` is generated from Markdown with pandoc and is not compiled. Never claim a PDF exists unless it was generated and inspected.
 
 ## 3. Rules
 
@@ -33,8 +33,8 @@ Then run `git status` and inspect existing files. Never overwrite the owner's ch
 - No confirmatory experiments without a frozen, owner-approved protocol. Tiny exploratory smoke checks of the toolchain or engine are allowed and labelled exploratory.
 
 ### Scope
-- Work only inside `/Users/bechir/research/labs/memory-spaced-repetition/`. Tools under `/Users/bechir/research/labs/.tools/` and `/Users/bechir/research/helix/.tools/node/bin` are used read-only; never modify them.
-- Do not touch any other folder under `/Users/bechir/research` (hive, helix, cogkt, trading, other labs).
+- Work only inside this repository. Tools under `../.tools/` (the shared labs tools folder) and `helix/.tools/node/bin` under the research root are used read-only; never modify them.
+- Do not touch any other folder under the research root (hive, helix, cogkt, trading, other labs).
 - Never kill processes you did not start. Never delete anything you did not create in the current session.
 
 ### Truthfulness
@@ -60,8 +60,8 @@ Then run `git status` and inspect existing files. Never overwrite the owner's ch
 
 ## 4. Commands (implemented in M2; also in CONTRIBUTING.md)
 
-- Lock dependencies: `/Users/bechir/research/labs/.tools/py/bin/uv lock`
-- Sync environment: `/Users/bechir/research/labs/.tools/py/bin/uv sync`
+- Lock dependencies: `../.tools/py/bin/uv lock` (from the repository root)
+- Sync environment: `../.tools/py/bin/uv sync`
 - Tests: `uv run python -m memory_research test` (or `uv run pytest`).
 - Exploratory smoke: `uv run python -m memory_research smoke [--pdf]` (writes `results/exploratory/SMOKE-001/`).
 - Run a matrix: `uv run python -m memory_research run --config PATH [--report] [--pdf]`. Confirmatory configs are refused (exit 3) until the protocol is frozen and its hash recorded in the registry.

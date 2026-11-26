@@ -4,7 +4,7 @@
 ## 1. Identification
 
 - **Experiment:** EXP-001. **Status:** CONFIRMATORY, complete: 250 of 250 planned runs, 0 excluded, 0 failed. **Report version:** M4 final, 2026-11-25. Written from the committed results, tables and figures only (owner, 2026-11-25, "approve all recommendations, RIGGED A", item 4; D-017); M4 evidence audit and exploratory addendum added (D-018, `research/publication/evidence_audit.md`).
-- **Author:** Mohamed Bechir Kefi (approved authorship, C3). An AI system was used as a research and development assistant; it is not an author.
+- **Author:** Mohamed Bechir Kefi, independent researcher (approved authorship, C3). An AI system was used as a research and development assistant; it is not an author.
 - **Protocol:** `research/experiments/EXP-001/protocol.md`, FROZEN v1.1, SHA-256 `91a79174986aa519bb1f9c1bc294c474ca441ce172076a6779826535689c496d`. Study protocol `research/protocol.md`, SHA-256 `fb9258a46b4b03fa1ffb171744ab951577bdf316c6147c93a00a3854603dff0d`. Freeze record `research/freeze.json`.
 - **Configuration:** `research/experiments/EXP-001/config.json`, canonical SHA-256 `841629fa27db8c9652746f7dde5887afc8f8a6c8b538bb0234cddba3ca1818ce`, equal to the freeze record.
 - **Provenance revision (the run):** `d4a793df271ec2dc1963d00715e3a6525a07863f`, clean tree. Analysis revision `3811bb93bca8798c57b80c55d97a8713732a13b8`. It differs from the run revision only in figure layout (D-016).

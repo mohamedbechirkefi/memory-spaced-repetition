@@ -28,4 +28,8 @@ Node 22 on `PATH` (in the development workspace, the Node binary of the shared t
 
 Regenerate the data and the fixture from the repository root: `.venv/bin/python scripts/export_demo_data.py` and `.venv/bin/python scripts/export_engine_fixture.py`.
 
-Demo URL: `<DEMO URL: unpublished>`.
+## Hosting
+
+Demo URL: https://memory-spaced-repetition.kefimohamedbechir.workers.dev.
+
+The built page (`dist/`) is hosted as Cloudflare Workers static assets on the free plan (owner, 2026-11-26, decision sheet, B2). `wrangler.jsonc` in this folder declares the assets only (no Worker script). The deploy is done by the lab coordinator, not by any script of this repository. The page loads nothing from another origin (checked by `tools/a11y_check.mjs`, "no foreign request").

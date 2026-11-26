@@ -66,6 +66,7 @@ export function App() {
           <p>
             Runs offline after the first load. No data about visitors is collected, stored or sent anywhere.
             Independent research manuscript / preprint draft, not peer-reviewed: research/paper/manuscript.md.
+            Mohamed Bechir Kefi, independent researcher.
           </p>
         </div>
       </footer>

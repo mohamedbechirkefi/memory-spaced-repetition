@@ -3,7 +3,7 @@
 
 **Question.** Which review schedule maximizes modelled delayed recall under a fixed study budget?
 
-**Status: simulation study; M6 release candidate prepared (2026-11-25), awaiting the owner's review and any publication decision; independent research manuscript / preprint draft, not peer-reviewed.** The three frozen experiments (protocol v1.1, owner-approved 2026-11-24) ran in full: 18,550 runs, none excluded or failed. The owner approved the manuscript title and the funding, competing-interest and AI-use statements on 2026-11-25. Full-text owner review of the manuscript is still pending (`research/publication/author_review.md`). Simulated learners are not human participants: nothing here shows a human learning gain.
+**Status: simulation study; M6 release candidate prepared (2026-11-25); the repository is public since 2026-11-25, with no release, tag or DOI yet; awaiting the owner's full-text review and sign-off; independent research manuscript / preprint draft, not peer-reviewed.** The three frozen experiments (protocol v1.1, owner-approved 2026-11-24) ran in full: 18,550 runs, none excluded or failed. The owner approved the manuscript title and the funding, competing-interest and AI-use statements on 2026-11-25. Full-text owner review of the manuscript is still pending (`research/publication/author_review.md`). Simulated learners are not human participants: nothing here shows a human learning gain.
 
 ![Screenshot of the MEMORY research page: the question, the status line, three result cards (0.0162 with interval [0.0110, 0.0213]; 0.0085 with interval [-0.0026, 0.0195]; 70 of 72 cells) and the forgetting-curve chart of mean modelled recall by retention interval for five schedules.](docs/demo.png)
 
@@ -38,7 +38,7 @@ Spaced-repetition tools decide when to review each item. Model-based schedulers 
 
 ## Interactive page (demo)
 
-A static page with the forgetting curves of the EXP-003 sweep, a calendar comparison of the schedules, every published result with its interval, the assumptions, the method and limitations, and a playground that runs a port of the engine in the browser (seed, scenario, reset). Measured results, sandbox output and assumptions are labelled separately. It runs offline after the first load and sends nothing anywhere. Demo URL: `<DEMO URL: unpublished>`.
+A static page with the forgetting curves of the EXP-003 sweep, a calendar comparison of the schedules, every published result with its interval, the assumptions, the method and limitations, and a playground that runs a port of the engine in the browser (seed, scenario, reset). Measured results, sandbox output and assumptions are labelled separately. It runs offline after the first load and sends nothing anywhere. Demo URL: https://memory-spaced-repetition.kefimohamedbechir.workers.dev (Cloudflare Workers static assets, free plan; see `demo/README.md`).
 
 Quick start (Node 22):
 
@@ -72,4 +72,4 @@ Source-available, non-commercial: MEMORY Source-Available Non-Commercial Researc
 
 ## Citation
 
-See `CITATION.cff`. Repository URL: `<REPOSITORY URL: unpublished>`. Affiliation: `<AFFILIATION: to be supplied or confirmed by the owner>`. There is no publication yet; the manuscript is a preprint draft, not peer-reviewed. An AI system (Claude, Anthropic) was used as a research and development assistant; it is not an author.
+See `CITATION.cff`. Author: Mohamed Bechir Kefi, independent researcher. Repository: https://github.com/mohamedbechirkefi/memory-spaced-repetition. There is no release or journal publication yet; the manuscript is a preprint draft, not peer-reviewed. An AI system (Claude, Anthropic) was used as a research and development assistant; it is not an author.

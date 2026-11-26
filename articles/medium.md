@@ -3,7 +3,7 @@
 
 # The mathematics of remembering: a smart review scheduler wins in its own model, and mostly only there
 
-*Draft. Author line: `<AUTHOR LINE AND AFFILIATION: to be confirmed by the owner>`. A simulation study; not peer-reviewed.*
+*Draft. By Mohamed Bechir Kefi, independent researcher. A simulation study; not peer-reviewed.*
 
 Flashcard apps decide when you should see a card again. The clever ones keep a model of your memory and show you the cards you are about to forget. That sounds obviously better than reviewing everything on a fixed timetable. But how would you know? If you test the clever scheduler on simulated learners whose memory follows the scheduler's own model, the comparison is rigged in its favour.
 
@@ -47,6 +47,6 @@ Recall is a model probability, not a measurement of people. The scheduler is giv
 
 ## Reproduce it
 
-Code, frozen protocols, results, the manuscript and the experiment reports: `<REPOSITORY URL: unpublished>`. Interactive page: `<DEMO URL: unpublished>`. The manuscript is `research/paper/manuscript.md`; the reports are `research/experiments/EXP-00N/report.md`.
+Code, frozen protocols, results, the manuscript and the experiment reports: https://github.com/mohamedbechirkefi/memory-spaced-repetition. Interactive page: https://memory-spaced-repetition.kefimohamedbechir.workers.dev. The manuscript is `research/paper/manuscript.md`; the reports are `research/experiments/EXP-00N/report.md`.
 
 *An AI system (Claude, Anthropic) was used as a research and development assistant for code, analysis scripts and documentation under the author's direction; it is not an author.*

@@ -67,7 +67,7 @@ Metadata (pypdf): every PDF has a title (manuscript: the approved title; supplem
 - E-mail addresses: 1 hit, `CLAUDE.md` line 59, the commit-trailer address of the AI co-author instruction (not personal; kept).
 - Tokens, keys, private-key headers (AWS, GitHub, Slack, Google, generic `api_key/secret/token/password = "..."` patterns): 0.
 - `.env` files tracked: 0.
-- Absolute home-directory paths: 18 lines in 6 files before M6. Removed from current files: `src/memory_research/report.py` (2), `demo/README.md` (1). Kept: `CLAUDE.md` (5; operating instructions that name the shared tools), `research/feasibility.md` (5; the M0 record of commands and outputs), and the append-only `progress.md` (1) and `research/decision_log.md` (3), where a note is appended instead (D-021). No git history was rewritten.
+- Absolute home-directory paths: 18 lines in 6 files before M6. Removed from current files: `src/memory_research/report.py` (2), `demo/README.md` (1). Kept: `CLAUDE.md` (5; operating instructions that name the shared tools), `research/feasibility.md` (5; the M0 record of commands and outputs), and the append-only `progress.md` (1) and `research/decision_log.md` (3), where a note is appended instead (D-021). No git history was rewritten. Update of 2026-11-26: `CLAUDE.md` and `research/feasibility.md` were scrubbed (section 7).
 - Dependency licences: `research/publication/dependency_licences.md` (23 Python packages, 84 npm packages); none outside the permissive set.
 - SPDX headers: every tracked text file whose format allows a comment carries `LicenseRef-MEMORY-NC-Research-1.0`, except the owner's licence files and `master_prompt.md` (initial commit, before M0) and the `SHA256SUMS` files (a comment line would break `shasum -c`).
 
@@ -85,3 +85,17 @@ A fresh local clone of `ac66801` in the session scratchpad (deleted afterwards),
 | demo: `npm ci --prefer-offline`, `npm test`, `npm run build`, `node tools/a11y_check.mjs dist` | `added 53 packages`; `Tests 43 passed (43)`; `✓ built`; `A11Y-CHECK PASS` |
 | `scripts/export_demo_data.py`, `--check`; `export_engine_fixture.py --check`; `git status --short` | `EXPORT-CHECK PASS`, `FIXTURE-CHECK PASS`; 0 changed files |
 | PDF rebuild of the manuscript, supplement and three reports with `build_pdf` (the clone lies outside the labs folder, so `MEMORY_PANDOC` and `MEMORY_TYPST_PYTHON` were set as documented) | builds succeed (finding R1 fixed); pages 15, 5, 7, 7, 10 and byte sizes identical to the committed PDFs; every PDF titled; the files differ from the committed ones only in 3 lines each (creation and modification timestamps), so PDFs are reproducible except for their timestamps |
+
+## 7. Owner answers applied (2026-11-26)
+
+Authority: owner, 2026-11-26, decision sheet (D-022). Wording and configuration only; no result, analysis, figure, configuration, seed, frozen protocol, protocol hash or checksummed output changed.
+
+| step | actual output |
+|---|---|
+| `.venv/bin/python -m pytest -q` | `256 passed` |
+| `scripts/export_demo_data.py`, `--check`; `export_engine_fixture.py --check` | `wrote demo/public/data/results.json (84389 bytes)`, `EXPORT-CHECK PASS`, `FIXTURE-CHECK PASS`; `results.json` unchanged |
+| demo: `npm test`, `npm run build`, `node tools/a11y_check.mjs dist` | `Tests 43 passed (43)`; `✓ built`; nine `PASS` lines including "no request leaves the local origin", `A11Y-CHECK PASS` |
+| `manuscript.tex` regenerated with pandoc 3.6.3 | differs from the previous file only in the author line, `pdfauthor` and section 10 |
+| PDF rebuild with `build_pdf` (manuscript, supplement, three reports; every source changed) | pages 15, 5, 7, 7, 10 (unchanged); bytes 369,428, 138,320, 175,751, 189,086, 402,413; manuscript metadata author "Mohamed Bechir Kefi, independent researcher"; 0 local paths in the text. Inspected as PNG at 80 ppi: manuscript pages 1 (author line) and 15 (sections 10 and 11), the first page of the supplement and of each report (author line) |
+
+**Absolute home paths remaining in tracked files (B9).** 4 lines, all in append-only records that are never edited: `progress.md` line 258 and `research/decision_log.md` lines 17, 154 and 161 (D-002, D-019, D-020). They name the shared tools folder and the coordinator's brief and approval files. They stay as written because the records are append-only; they were already public in the history, which is not rewritten. Scrubbed on 2026-11-26: `CLAUDE.md` (5 lines; paths now relative to the repository, `../.tools/`, and "the research root" in words; `../.tools/py/bin/uv --version` from the repository root prints `uv 0.9.5`) and `research/feasibility.md` (5 lines; the M0 command record now writes `~` and relative tool paths, with a dated note that the commands were run with absolute paths). Frozen protocols, checksummed results, run logs and licence files contain no home path.

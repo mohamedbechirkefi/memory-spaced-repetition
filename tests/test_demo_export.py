@@ -161,9 +161,17 @@ def test_public_texts_use_only_manuscript_numbers(rel):
     assert bad == []
 
 
+REPOSITORY_URL = "https://github.com/mohamedbechirkefi/memory-spaced-repetition"
+DEMO_URL = "https://memory-spaced-repetition.kefimohamedbechir.workers.dev"
+
+
 @pytest.mark.parametrize("rel", PUBLIC_TEXTS[2:])
-def test_public_texts_keep_url_placeholders(rel):
+def test_public_texts_use_public_urls(rel):
+    """Owner, 2026-11-26, decision sheet, B1 and B2: the placeholders are filled with the public addresses."""
     text = (ROOT / rel).read_text(encoding="utf-8")
-    assert "http://" not in text and "https://" not in text
+    assert "http://" not in text and "<REPOSITORY URL" not in text and "<DEMO URL" not in text
+    urls = set(re.findall(r"https://[^\s`)>]+?(?=[.,;]?(?:\s|$|`|\)))", text))
+    assert urls <= {REPOSITORY_URL, DEMO_URL}
+    assert DEMO_URL in urls
     if rel.startswith("articles/"):
-        assert "<REPOSITORY URL: unpublished>" in text and "<DEMO URL: unpublished>" in text
+        assert REPOSITORY_URL in urls

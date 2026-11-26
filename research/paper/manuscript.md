@@ -1,7 +1,7 @@
 ---
 # SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0
 title: "Review scheduling under a fixed budget in simulated forgetting models: a model-based advantage that depends on model knowledge and on the setting"
-author: "Mohamed Bechir Kefi"
+author: "Mohamed Bechir Kefi, independent researcher"
 status: "Independent research manuscript / preprint draft, not peer-reviewed. M4 synthesis, 2026-11-25, revised after the second review pass (research/publication/review_pass_2.md)."
 ai_disclosure: "An AI system (Claude, Anthropic) was used as a research and development assistant for code, protocol drafting, analysis scripts and documentation under the author's direction; it is not an author. See section 11."
 ---
@@ -271,7 +271,7 @@ In a budget-matched simulation of published forgetting models, a model-based gre
 
 # 10. Data and code availability
 
-All code, frozen protocols, configurations, results (except the git-ignored 15.5 MB EXP-003 raw file, which the run command regenerates) and reports are in the project repository, at a URL to be added on release (`<REPOSITORY URL: unpublished>`). Reproduction: `uv sync --frozen`, then `uv run python -m memory_research run --config research/experiments/EXP-00N/config.json --report --pdf` for N = 1, 2, 3, then `scripts/analyse_confirmatory.py`; the exploratory checks run with `.venv/bin/python scripts/m4_sensitivity.py`. Experiment reports: `research/experiments/EXP-00N/report.md`. DS01 is downloaded by `scripts/download_duolingo.py` from its Dataverse DOI and checked against `data/manifest.json`.
+All code, frozen protocols, configurations, results (except the git-ignored 15.5 MB EXP-003 raw file, which the run command regenerates) and reports are in the project repository, https://github.com/mohamedbechirkefi/memory-spaced-repetition. Reproduction: `uv sync --frozen`, then `uv run python -m memory_research run --config research/experiments/EXP-00N/config.json --report --pdf` for N = 1, 2, 3, then `scripts/analyse_confirmatory.py`; the exploratory checks run with `.venv/bin/python scripts/m4_sensitivity.py`. Experiment reports: `research/experiments/EXP-00N/report.md`. DS01 is downloaded by `scripts/download_duolingo.py` from its Dataverse DOI and checked against `data/manifest.json`.
 
 # 11. Funding, competing interests and AI assistance
 

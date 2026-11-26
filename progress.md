@@ -380,3 +380,29 @@ Fresh clone of `ac66801`: `uv sync --frozen` ok; `pytest -q` `256 passed in 8.50
 ### Next action
 
 The owner reads `research/publication/author_review.md` (section "Prepared for the owner") and decides on sign-off and any publication (G-PUBLIC).
+
+## 2026-11-26, session 9: owner answers of 2026-11-26 applied
+
+**Bounded task:** `labs/_shared/OWNER-ANSWERS-brief.md`. Authority: owner, 2026-11-26, decision sheet (D-022). Wording and configuration only; no push, deploy, tag or release; no `author_review.md` box ticked.
+
+### Starting state
+
+`git status`: clean at `0c9bde0` on `main`.
+
+### Commands and actual outputs
+
+- Placeholder scan of tracked text files (excluding append-only logs): 10 placeholder lines in `CITATION.cff`, `README.md`, both articles, `demo/README.md`, `research/paper/manuscript.md` (and its generated `manuscript.tex`); all filled. After the edits: 0 `<REPOSITORY URL`, `<DEMO URL`, `<AFFILIATION` or `<AUTHOR LINE` outside append-only logs.
+- Home-path scan (`git ls-files | xargs grep -n "/Users/"`): 14 lines before, 4 after (`progress.md` line 258; `research/decision_log.md` lines 17, 154, 161; append-only). `../.tools/py/bin/uv --version` from the repository root: `uv 0.9.5 (d5f39331a 2025-10-21)`.
+- `pandoc manuscript.md -s -t latex` with the two header lines: diff against the previous `manuscript.tex` limited to `pdfauthor`, `\author` and section 10.
+- `build_pdf` on the manuscript, supplement and three reports: pages 15, 5, 7, 7, 10 (unchanged); 369,428, 138,320, 175,751, 189,086, 402,413 bytes. PNG at 80 ppi inspected: manuscript pages 1 and 15, supplement page 1, report pages 1 (author line, sections 10 and 11). pypdf: manuscript author metadata "Mohamed Bechir Kefi, independent researcher"; 0 local paths. Intermediate `.typ` files moved to the session scratchpad.
+- `.venv/bin/python -m pytest -q`: `256 passed in 3.07s` (the URL test in `tests/test_demo_export.py` now requires the public addresses).
+- `scripts/export_demo_data.py`: `wrote demo/public/data/results.json (84389 bytes)`, `--check` `EXPORT-CHECK PASS`; `export_engine_fixture.py --check` `FIXTURE-CHECK PASS`; `results.json` unchanged.
+- Demo (Node from the helix tools folder, npm cache in the session scratchpad): `npm test` `Tests 43 passed (43)`; `npm run build` `✓ built in 150ms`; `node tools/a11y_check.mjs dist`: nine `PASS` lines including "no request leaves the local origin", `A11Y-CHECK PASS`. No `http` address in `dist/index.html` or the CSS.
+
+### Files changed
+
+`CITATION.cff`, `CLAUDE.md`, `README.md`, `articles/{README.md, medium.md, linkedin.md}`, `demo/README.md`, `demo/src/App.tsx` (footer author line), `demo/wrangler.jsonc` (new), `research/paper/{manuscript.md, manuscript.tex, manuscript.pdf, supplementary.md, supplementary.pdf}`, `research/experiments/EXP-00{1,2,3}/{report.md, report.pdf}` (Author line only), `research/feasibility.md`, `research/publication/{author_review.md, release_checklist.md, reproducibility_report.md}`, `roadmap.md`, `research/decision_log.md` (D-022), `tests/test_demo_export.py`.
+
+### Next action
+
+The owner: B15 (article drafts), B16 (full-text review and sign-off of `research/publication/author_review.md`), B18 (release). The coordinator deploys `demo/dist` with `demo/wrangler.jsonc` and pushes.

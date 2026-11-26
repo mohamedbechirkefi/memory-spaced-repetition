@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->
 # Supplementary material
 
-Companion to `research/paper/manuscript.md` (independent research manuscript / preprint draft, not peer-reviewed). M4, 2026-11-25. Every number here is in a committed result file named in the same section; the full mapping is in `research/publication/artifact_manifest.json`.
+Companion to `research/paper/manuscript.md` (independent research manuscript / preprint draft, not peer-reviewed). Author: Mohamed Bechir Kefi, independent researcher. M4, 2026-11-25. Every number here is in a committed result file named in the same section; the full mapping is in `research/publication/artifact_manifest.json`.
 
 ## S1. Complete experimental matrix
 

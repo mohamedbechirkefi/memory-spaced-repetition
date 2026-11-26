@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-MEMORY-NC-Research-1.0 -->
 # Feasibility audit (M0, 2026-11-24)
 
-All outputs below are copied from commands actually run in this session.
+All outputs below are copied from commands actually run in this session. Note (2026-11-26, owner, 2026-11-26, decision sheet, B9): the commands were run with absolute paths; the home folder is now written `~`, and the shared tools folder `../.tools/` (relative to the repository) and `helix/.tools/` (under the research root). Outputs are unchanged.
 
 ## 1. Hardware
 
@@ -11,7 +11,7 @@ All outputs below are copied from commands actually run in this session.
 | Cores | `sysctl -n hw.ncpu` | `10` |
 | Memory | `sysctl -n hw.memsize` | `17179869184` (16 GiB) |
 | OS | `sw_vers` | `macOS 15.3.1`, build `24D70` |
-| Free disk | `df -h /Users/bechir` | `129Gi` available at the first check, `128Gi` at the second (460Gi volume) |
+| Free disk | `df -h ~` | `129Gi` available at the first check, `128Gi` at the second (460Gi volume) |
 
 Confirms the brief: Apple M1 Pro, 10 cores, 16 GB RAM, macOS 15.3.1, about 127 to 129 GB free.
 
@@ -20,10 +20,10 @@ Confirms the brief: Apple M1 Pro, 10 cores, 16 GB RAM, macOS 15.3.1, about 127 t
 | Tool | Command | Output |
 |---|---|---|
 | Python | `/usr/local/bin/python3 --version` | `Python 3.12.1` |
-| uv | `/Users/bechir/research/labs/.tools/py/bin/uv --version` | `uv 0.9.5 (d5f39331a 2025-10-21)` |
-| typst, pypdf, pillow | import in `/Users/bechir/research/labs/.tools/py/bin/python` | `typst 0.15.0`, `pypdf 6.20.0`, `pillow 11.3.0` |
-| pandoc | `/Users/bechir/research/labs/.tools/pandoc --version` | `pandoc 3.6.3` |
-| Node | `/Users/bechir/research/helix/.tools/node/bin/node --version` | `v22.23.3` (read-only use) |
+| uv | `../.tools/py/bin/uv --version` | `uv 0.9.5 (d5f39331a 2025-10-21)` |
+| typst, pypdf, pillow | import in `../.tools/py/bin/python` | `typst 0.15.0`, `pypdf 6.20.0`, `pillow 11.3.0` |
+| pandoc | `../.tools/pandoc --version` | `pandoc 3.6.3` |
+| Node | `helix/.tools/node/bin/node --version` | `v22.23.3` (read-only use) |
 | git | `git --version` | `git version 2.42.1` |
 | TeX | `which tex pdflatex xelatex typst` | all `not found` (no TeX distribution; no typst CLI on PATH; the Python package is used) |
 
