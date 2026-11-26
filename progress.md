@@ -406,3 +406,24 @@ The owner reads `research/publication/author_review.md` (section "Prepared for t
 ### Next action
 
 The owner: B15 (article drafts), B16 (full-text review and sign-off of `research/publication/author_review.md`), B18 (release). The coordinator deploys `demo/dist` with `demo/wrangler.jsonc` and pushes.
+
+## 2026-11-26, session 10: demo brand identity, motion and UI redesign
+
+**Bounded task:** `labs/_shared/DEMO-BRAND-brief.md` for MEMORY (owner request of 2026-11-26, D-023). Demo only; no result, data, fixture or test changed.
+
+### Commands and actual outputs
+
+- Fonts: `npm_config_before=2026-11-12 npm install --save-exact @fontsource/zilla-slab@5.3.0 @fontsource/alegreya-sans@5.3.0` (npm cache in the session scratchpad): `added 2 packages`. Both `OFL-1.1` per `npm view`.
+- Logo: generated as SVG paths by a scratchpad script (hand-built mark; wordmark outlines from Zilla Slab 600 via fontTools). `svg_audit.py` on the nine SVGs: 0 FAIL; warnings are near-miss angles of curve end cuts and of the type, and the deliberate paper curve on the favicon tile. `render_png.py` (Chrome backend): `favicon-32.png` 32x32, `apple-touch-icon.png` 180x180. Open Graph image rendered from an HTML page with Chrome headless: `og.png` 1200x630, 74,210 bytes.
+- `npm test`: `Tests 43 passed (43)`. `npm run build`: `✓ built in 122ms`; JS 266.23 kB (gzip 82.54 kB), CSS about 18 kB. `dist/` total 784,375 bytes on disk (it carries woff and woff2 for each face; browsers fetch only woff2).
+- `node tools/a11y_check.mjs dist`: nine `PASS` lines (contrast light and dark, 38 of 38 focusable reached, visible focus, no overflow at 360 px, reduced motion 0 running, no foreign request, offline sandbox run), `A11Y-CHECK PASS`.
+- Screenshots: built folder served with `python3 -m http.server 5222 --bind 127.0.0.1` (stopped afterwards); Chrome headless desktop 1440 px full page and phone 390 px (iframe wrapper), with `--virtual-time-budget`; two critique passes. Changes from the critique: ruled lines of the overview cards aligned to the text lines; repeated question in the overview turned into a "precisely" note; direct chart labels moved clear of the markers; graph-paper grid lightened and removed from the calendar; red rule on the hero answer removed (one accessory too many); on phones the illustration tag moved above the drawing, interval captions hidden and labels enlarged, the nav row fades at its right edge.
+- `.venv/bin/python -m pytest -q`: `256 passed in 2.71s` (includes the demo README number and URL tests).
+
+### Files changed
+
+`demo/DESIGN.md` (new), `demo/README.md` (design and third-party notes), `demo/index.html` (description, theme colour, icons, Open Graph), `demo/package.json`, `demo/package-lock.json`, `demo/public/brand/` (new), `demo/src/{App.tsx, Hero.tsx (new), ui.tsx (new), Published.tsx, charts.tsx, Sandbox.tsx, main.tsx, style.css}`, `research/decision_log.md` (D-023), `progress.md`.
+
+### Next action
+
+The coordinator rebuilds and deploys `demo/dist` when the owner agrees; nothing pushed or deployed here.

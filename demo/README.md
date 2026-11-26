@@ -16,6 +16,17 @@ Measured results, sandbox output and assumptions carry distinct labels and are n
 
 **Privacy.** No visitor input is collected or stored; nothing leaves the page; no font, script or image comes from another host.
 
+## Design and third-party notes
+
+The page has its own brand (owner request of 2026-11-26): index cards, a Leitner box and forgetting curves plotted on graph paper, in ink blue and graphite. The plan, palette, type, layout and motion rules are in `DESIGN.md`. The hero shows an illustration of a Leitner box, labelled on the page as an illustration and not study data; it contains no result.
+
+Brand files are in `public/brand/`: the mark (`memory-mark.svg`, with one-colour and dark-background versions), the lockup and wordmark, `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` and the Open Graph image `og.png` (1200 by 630). The mark is drawn by hand as SVG paths; the wordmark outlines come from Zilla Slab, which the font licence permits.
+
+Fonts, self-hosted from npm and bundled (nothing is fetched from another host):
+
+- Zilla Slab, package `@fontsource/zilla-slab` version `5.3.0`, weights 500 and 600, Latin subset; Mozilla Foundation; licence `OFL-1.1` (SIL Open Font License).
+- Alegreya Sans, package `@fontsource/alegreya-sans` version `5.3.0`, weights 400, 500 and 700 and 400 italic, Latin and Greek subsets; Huerta Tipográfica; licence `OFL-1.1` (SIL Open Font License).
+
 ## Commands
 
 Node 22 on `PATH` (in the development workspace, the Node binary of the shared tools folder is used read-only).

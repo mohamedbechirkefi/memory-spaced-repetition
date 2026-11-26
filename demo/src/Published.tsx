@@ -3,6 +3,7 @@
 // public/data/results.json, whose display strings are the manuscript's text.
 import { useState } from "react";
 import { CalendarChart, IntervalChart, Legend, LineChart } from "./charts";
+import { InkFigure, Segmented } from "./ui";
 import { ARMS5, fmtEstimate, fmtInterval, type Estimate, type Experiment, type Results, type SweepCell } from "./results";
 
 const KIND_LABEL: Record<string, string> = {
@@ -36,32 +37,41 @@ export function Overview({ r }: { r: Results }) {
   const e3 = r.experiments.find((e) => e.id === "EXP-003")!.estimates[0];
   return (
     <section id="overview" aria-labelledby="h-overview">
-      <h2 id="h-overview">Overview</h2>
+      <h2 id="h-overview">The three frozen experiments, filed</h2>
       <p className="status-label"><strong>Status.</strong> {r.status_label}</p>
-      <p className="lede">{r.question}</p>
-      <p>
+      <p className="prose"><strong>The question, precisely.</strong> {r.question}</p>
+      <p className="prose">
         Five schedules spend exactly the same budget of reviews on 50 synthetic items. The memory models are
         published forgetting curves (exponential and power law) with an update after each review. Nothing here is
         a measurement of human learners.
       </p>
       <div className="cards">
-        <article className="card">
-          <KindChip kind="confirmatory" />
-          <p className="big">{fmtEstimate(e1)}</p>
-          <p className="ci">95% interval {fmtInterval(e1)}</p>
-          <p>EXP-001: greedy (oracle model) minus uniform, mean modelled recall. Small, and above zero.</p>
+        <article className="icard tab-1">
+          <p className="icard-tab">EXP-001</p>
+          <div className="icard-body">
+            <div className="icard-head"><KindChip kind="confirmatory" /></div>
+            <p className="big">{fmtEstimate(e1)}</p>
+            <p className="ci">95% interval {fmtInterval(e1)}</p>
+            <p>Greedy (oracle model) minus uniform, mean modelled recall. Small, and above zero.</p>
+          </div>
         </article>
-        <article className="card">
-          <KindChip kind="confirmatory" />
-          <p className="big">{fmtEstimate(e2)}</p>
-          <p className="ci">95% interval {fmtInterval(e2)}</p>
-          <p>EXP-002: the same scheduler with a wrong model on power-law learners. Classified as equivalent to uniform (fragile).</p>
+        <article className="icard tab-2">
+          <p className="icard-tab">EXP-002</p>
+          <div className="icard-body">
+            <div className="icard-head"><KindChip kind="confirmatory" /></div>
+            <p className="big">{fmtEstimate(e2)}</p>
+            <p className="ci">95% interval {fmtInterval(e2)}</p>
+            <p>The same scheduler with a wrong model on power-law learners. Classified as equivalent to uniform (fragile).</p>
+          </div>
         </article>
-        <article className="card">
-          <KindChip kind="descriptive" />
-          <p className="big">{fmtEstimate(e3)}</p>
-          <p className="ci">count, no interval</p>
-          <p>EXP-003: cells of the sweep in which the EXP-001 ranking of schedules changes.</p>
+        <article className="icard tab-3">
+          <p className="icard-tab">EXP-003</p>
+          <div className="icard-body">
+            <div className="icard-head"><KindChip kind="descriptive" /></div>
+            <p className="big">{fmtEstimate(e3)}</p>
+            <p className="ci">count, no interval</p>
+            <p>Cells of the sweep in which the EXP-001 ranking of schedules changes.</p>
+          </div>
         </article>
       </div>
     </section>
@@ -85,36 +95,24 @@ export function ForgettingCurves({ r }: { r: Results }) {
   return (
     <section id="curves" aria-labelledby="h-curves">
       <h2 id="h-curves">Forgetting curves after the course <Label kind="measured" /></h2>
-      <p>
+      <p className="prose">
         Mean modelled recall <em>R</em> at the test, by how long after the last study session the test happens.
         Each point is a confirmatory EXP-003 cell (50 simulated learners; each retention interval uses its own
         independent block of seeds). Choose a forgetting model, a budget and an item distribution.
       </p>
-      <div className="controls" role="group" aria-label="Sweep cell selection">
-        <label>Forgetting model{" "}
-          <select id="pub-model" value={model} onChange={(e) => setModel(e.target.value as SweepCell["true_model"])}>
-            <option value="exponential">exponential</option>
-            <option value="power">power law</option>
-          </select>
-        </label>
-        <label>Reviews per item, k{" "}
-          <select id="pub-k" value={k} onChange={(e) => setK(Number(e.target.value))}>
-            {[2, 4, 8].map((x) => <option key={x} value={x}>{x}</option>)}
-          </select>
-        </label>
-        <label>Item distribution{" "}
-          <select id="pub-items" value={dist} onChange={(e) => setDist(e.target.value as SweepCell["item_distribution"])}>
-            <option value="homogeneous">homogeneous</option>
-            <option value="lognormal">lognormal</option>
-            <option value="bimodal">bimodal</option>
-          </select>
-        </label>
+      <div className="controls seg-row" role="group" aria-label="Sweep cell selection">
+        <Segmented id="pub-model" label="Forgetting model" value={model} onChange={setModel}
+          options={[{ value: "exponential", label: "exponential" }, { value: "power", label: "power law" }]} />
+        <Segmented id="pub-k" label="Reviews per item, k" value={k} onChange={setK}
+          options={[2, 4, 8].map((x) => ({ value: x, label: String(x) }))} />
+        <Segmented id="pub-items" label="Item distribution" value={dist} onChange={setDist}
+          options={[{ value: "homogeneous", label: "homogeneous" }, { value: "lognormal", label: "lognormal" }, { value: "bimodal", label: "bimodal" }]} />
       </div>
       <p className="note">
         {central ? "This is the central setting of EXP-001 (the 281-day point is cell C044, an independent-seed replication)." : "Not the central setting."}
         {" "}The horizontal axis is ordinal, not to scale. The vertical axis starts at {lo.toFixed(1)}.
       </p>
-      <figure>
+      <InkFigure>
         <LineChart
           title="Mean modelled recall by retention interval"
           desc={`${model} forgetting, k = ${k}, ${dist} items. ${ARMS5.map((a) => `${a}: ${cs.map((c) => c.means_display[a]).join(", ")}`).join("; ")} at 1, 7, 30 and 281 days.`}
@@ -134,8 +132,8 @@ export function ForgettingCurves({ r }: { r: Results }) {
           Arm means have no interval in EXP-003; the uncertainty of the comparison that matters, greedy minus uniform,
           is shown below with its unadjusted 95% bootstrap interval.
         </figcaption>
-      </figure>
-      <figure>
+      </InkFigure>
+      <InkFigure>
         <IntervalChart
           title="Greedy minus uniform by retention interval"
           desc={cs.map((c) => `RI ${c.retention_interval_days} days: ${c.greedy_minus_uniform.display} ${c.greedy_minus_uniform.interval_display}`).join("; ")}
@@ -146,7 +144,7 @@ export function ForgettingCurves({ r }: { r: Results }) {
           domain={[dlo - 0.005, dhi + 0.005]}
         />
         <figcaption>Dot: mean paired difference over 50 learners. Bar: unadjusted 95% bootstrap interval. Grey band: ±0.02.</figcaption>
-      </figure>
+      </InkFigure>
       <div className="table-scroll" role="region" aria-label="Sweep values for the selected cells" tabIndex={0} id="tbl-sweep">
         <table>
           <caption>Values as printed in research/experiments/EXP-003/results_tables.md</caption>
@@ -177,12 +175,12 @@ export function CalendarView({ r }: { r: Results }) {
   return (
     <section id="calendar" aria-labelledby="h-calendar">
       <h2 id="h-calendar">Calendar comparison of the schedules <Label kind="measured" /></h2>
-      <p>
+      <p className="prose">
         How each schedule spends the same {cal.budget} reviews of {cal.n_items} items over the study days, at the
         EXP-001 setting. Darker cells hold more reviews. Expanding and massed concentrate every review on 4 days;
         the others spread reviews over every session.
       </p>
-      <figure>
+      <InkFigure>
         <CalendarChart
           days={cal.days}
           rows={arms.map((a) => ({ arm: a, loads: cal.loads[a] }))}
@@ -190,7 +188,7 @@ export function CalendarView({ r }: { r: Results }) {
           desc={arms.map((a) => `${a}: reviews on ${cal.measured[a].sessions_used} days, at most ${cal.measured[a].peak_daily_load} per day`).join("; ")}
         />
         <figcaption>{cal.note}</figcaption>
-      </figure>
+      </InkFigure>
       <div className="table-scroll" role="region" aria-label="Calendar summary and measured recall" tabIndex={0} id="tbl-calendar">
         <table>
           <caption>Load from the schedule definition; mean R measured in EXP-001 (50 learners, 95% bootstrap interval)</caption>
@@ -281,7 +279,7 @@ export function PublishedResults({ r }: { r: Results }) {
             <p><KindChip kind={e.kind} /> <span className="badge">{e.status}</span></p>
             <p><strong>{VERDICT_LABEL[e.kind] ?? "Verdict"}:</strong> {e.verdict}</p>
             {rows.length > 0 && (
-              <figure>
+              <InkFigure>
                 <IntervalChart
                   title={`${e.id}: arm minus uniform`}
                   desc={rows.map((x) => x.tip).join("; ")}
@@ -289,14 +287,12 @@ export function PublishedResults({ r }: { r: Results }) {
                   domain={[Math.min(-0.03, ...rows.map((x) => x.lo)) - 0.005, Math.max(0.03, ...rows.map((x) => x.hi)) + 0.005]}
                 />
                 <figcaption>Mean paired difference in R (arm minus uniform) with its 95% percentile bootstrap interval over 50 learners; grey band ±0.02.</figcaption>
-              </figure>
+              </InkFigure>
             )}
             <EstimatesTable e={e} />
             {e.notes.map((n, i) => <p key={i} className="note">{n}</p>)}
-            <p className="meta">
-              Report: <code>{e.report_path}</code>
-              {e.claim_ids.length > 0 && <> · Claims: {e.claim_ids.join(", ")}</>}
-            </p>
+            <p className="meta">Report: <code>{e.report_path}</code></p>
+            {e.claim_ids.length > 0 && <p className="meta">Claims: {e.claim_ids.join(", ")}</p>}
           </article>
         );
       })}
@@ -331,7 +327,7 @@ export function Method({ r }: { r: Results }) {
   return (
     <section id="method" aria-labelledby="h-method">
       <h2 id="h-method">Method and limitations</h2>
-      <p>
+      <p className="prose">
         Each simulated learner holds 50 items, first studied on day 0. Recall of an item decays as
         exp(−n·Δ) or (1 + ω·Δ)<sup>−n</sup>, where Δ is the time since its last review. A review succeeds with that
         probability; success multiplies n by (1 − α), failure by (1 + β). Every schedule places exactly the same

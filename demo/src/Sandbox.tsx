@@ -107,7 +107,7 @@ export function Sandbox({ scenarios }: { scenarios: Scenario[] }) {
   return (
     <section id="sandbox" aria-labelledby="h-sandbox" className="sandbox">
       <h2 id="h-sandbox">Playground <Label kind="sandbox" /></h2>
-      <p className="note">
+      <p className="note prose">
         The playground runs a port of the research engine in your browser. The port reproduces the Python engine
         exactly when both are given the same random numbers (checked by an automated test), but it draws its own
         random numbers, so sandbox seed 1000 is not research seed 1000. Its numbers are not research results and are
@@ -156,7 +156,7 @@ export function Sandbox({ scenarios }: { scenarios: Scenario[] }) {
         σ {config.lognormal_sigma}, α {config.alpha}, β {config.beta}, ω {config.omega_per_day} per day.
       </p>
       <div className="controls">
-        <button type="button" onClick={run} disabled={running}>Run</button>
+        <button type="button" className="btn-primary" onClick={run} disabled={running}>Run</button>
         <button type="button" onClick={cancel} disabled={!running}>Cancel</button>
         <button type="button" onClick={reset}>Reset</button>
         <button type="button" onClick={download} disabled={!out}>Download sandbox output (JSON)</button>

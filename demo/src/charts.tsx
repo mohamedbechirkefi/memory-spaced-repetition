@@ -105,6 +105,7 @@ export function LineChart(p: LineChartProps) {
       <text x={m.l + pw / 2} y={H - 8} textAnchor="middle" className="axis-label">{narrow && p.xLabelNarrow ? p.xLabelNarrow : p.xLabel}</text>
       <text x={14} y={m.t + ph / 2} textAnchor="middle" transform={`rotate(-90 14 ${m.t + ph / 2})`} className="axis-label">{p.yLabel}</text>
       {p.bands}
+      <g className="ink">
       {p.series.map((s) => (
         <g key={s.arm}>
           <polyline
@@ -113,13 +114,14 @@ export function LineChart(p: LineChartProps) {
             points={s.points.map(([x, y]) => `${X(x).toFixed(1)},${Y(y).toFixed(1)}`).join(" ")}
           />
           {p.markers && s.points.map(([x, y]) => (
-            <circle key={x} cx={X(x)} cy={Y(y)} r="4" fill={armVar(s.arm)} className="marker">
+            <circle key={x} cx={X(x)} cy={Y(y)} r="4.5" stroke={armVar(s.arm)} className="marker">
               {p.pointTitle && <title>{p.pointTitle(s.arm, x, y)}</title>}
             </circle>
           ))}
-          <text x={m.l + pw + 8} y={ends[s.arm] + 4} className="direct-label">{s.arm}</text>
+          <text x={m.l + pw + 13} y={ends[s.arm] + 4} className="direct-label">{s.arm}</text>
         </g>
       ))}
+      </g>
     </svg>
   );
 }
@@ -152,6 +154,7 @@ export function IntervalChart(props: {
         </g>
       ))}
       <text x={m.l + pw / 2} y={H - 4} textAnchor="middle" className="axis-label">{narrow ? "difference in R (band ±0.02)" : "difference in mean recall R (grey band: ±0.02)"}</text>
+      <g className="ink">
       {props.rows.map((r, i) => {
         const y = m.t + rowH * i + rowH / 2;
         return (
@@ -165,6 +168,7 @@ export function IntervalChart(props: {
           </g>
         );
       })}
+      </g>
     </svg>
   );
 }
@@ -175,20 +179,22 @@ export function CalendarChart(props: { days: number[]; rows: { arm: string; load
   const cw = narrow ? 10 : 20, rh = 30, m = { l: 80, r: 8, t: 8, b: 36 };
   const W = m.l + m.r + cw * props.days.length, H = m.t + m.b + rh * props.rows.length;
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="chart" role="img" aria-label={`Review calendar. ${props.desc}`}>
+    <svg viewBox={`0 0 ${W} ${H}`} className="chart plain" role="img" aria-label={`Review calendar. ${props.desc}`}>
       <title>Review calendar</title>
       <desc>{props.desc}</desc>
+      <g className="ink">
       {props.rows.map((r, i) => (
         <g key={r.arm}>
           <text x={m.l - 10} y={m.t + rh * i + rh / 2 + 4} textAnchor="end" className="tick">{r.arm}</text>
           {r.loads.map((v, d) => (
-            <rect key={d} x={m.l + d * cw + 1} y={m.t + rh * i + 2} width={cw - 2} height={rh - 4} rx="3"
+            <rect key={d} x={m.l + d * cw + 1} y={m.t + rh * i + 2} width={cw - 2} height={rh - 4} rx="1"
               className={v === 0 ? "cal-empty" : "cal-cell"} style={v ? { fillOpacity: 0.18 + 0.82 * (v / props.max) } : undefined}>
               <title>{`${r.arm}, day ${props.days[d]}: ${v} reviews`}</title>
             </rect>
           ))}
         </g>
       ))}
+      </g>
       {props.days.filter((d) => d === 1 || d % 5 === 0 || d === props.days.length).map((d) => (
         <text key={d} x={m.l + (d - 1) * cw + cw / 2} y={H - 18} textAnchor="middle" className="tick">{d}</text>
       ))}
